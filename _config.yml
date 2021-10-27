@@ -34,30 +34,24 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-airtable
-  - environment_variables_generator
+  - jekyll-money
 
 airtable:
   enable_sync: true
-  base_uid: 'financing.bike'
+  base_uid: 'appQDiGy9oyBWoqcC'
   tables:
-    - name: 'Use Cases' 
-    - name: 'Whitepapers'    
-    - name: 'Quotes'
-      long_text_columns:
-        - 'column name'
+    - name: 'Electric Bikes' 
 
 collections_dir: collections
 collections:
-  use_cases:
-    output: true
-  whitepapers:
+  electric_bikes:
     output: true
 
 defaults:
   - scope:
-      type: "whitepapers"
+      type: "electric_bikes"
     values:
-      layout: "page" # any jekyll layout file you already have in the _layouts that you want to use for this collection type.
+      layout: "bikes" # any jekyll layout file you already have in the _layouts that you want to use for this collection type.
       
 # Exclude from processing.
 # The following items will not be processed, by default.

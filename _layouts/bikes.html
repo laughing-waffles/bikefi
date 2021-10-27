@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<article class="animal">
+
+
+    <img src="{{ page.picture }}" alt="Photo of a {{ page.title | downcase }}">
+
+
+  <h1>It's a bike! {{ page.model_name }}</h1>
+
+  <div class="animal-class {{ page.class | downcase }}">
+    {{ page.manufacturer }}
+  </div>
+
+  <div class="animal-family {{ page.family | downcase }}">
+    {{ page.msrp | money }}
+  </div>
+
+  <div>
+     {{ page.product_link }}
+  </div>
+
+</article>
+
