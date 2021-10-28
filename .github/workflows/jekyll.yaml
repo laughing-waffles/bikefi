@@ -8,6 +8,7 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    environment: standard
     steps:
       - name: GitHub Checkout
         uses: actions/checkout@v1
