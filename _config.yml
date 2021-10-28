@@ -41,11 +41,13 @@ airtable:
   base_uid: 'appQDiGy9oyBWoqcC'
   tables:
     - name: 'Electric Bikes' 
+    - name: 'Discounts'
 
 collections_dir: collections
 collections:
   electric_bikes:
     output: true
+  discounts:
 
 defaults:
   - scope:

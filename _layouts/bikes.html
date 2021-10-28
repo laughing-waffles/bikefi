@@ -20,6 +20,13 @@ layout: default
   <div>
      {{ page.product_link }}
   </div>
+  
+  
+  {% for discount in site.discounts %}
+    <h2>{{ discount.name }} - {{ discount.discount_name }}</h2>
+    <p>{{ discount.discount_notes }}</p>
+  {% endfor %}
+
 
 </article>
 
