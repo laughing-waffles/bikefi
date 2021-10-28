@@ -27,6 +27,8 @@ layout: default
     <p>{{ discount.discount_notes }}</p>
   {% endfor %}
 
-
+<script>
+  var discountData = {{ site.discounts | jsonify }};
+</script>
 </article>
 
