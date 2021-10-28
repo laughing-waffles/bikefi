@@ -19,6 +19,8 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
+      - name: Build
+        uses: jerryjvl/jekyll-build-action@v1
       - name: Build & Deploy to Edvard DH
         uses: wlixcc/SFTP-Deploy-Action@v1.2.1
         with:
