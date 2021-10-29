@@ -2,340 +2,293 @@
 layout: default
 ---
 
-{% include pageheader.html %} 
+{% include pageheader.html %}
 
 <div class="py-6 py-lg-12">
   <div class="container">
-    <div class="row align-items-center">
-      <!-- image -->
-      <div class="col-lg-4 col-md-4 col-12">
-        {% cloudinary {{ page.picture | absolute_url }} alt="Photo of a {{ page.title | downcase }}" class="img-fluid" %}
-        <img src="{{ page.picture | absolute_url }}" alt="Photo of a {{ page.title | downcase }}" class="img-fluid" />
-      </div>
-      <!-- description -->
-      <div class="offset-lg-1 col-lg-7 col-md-8 col-12">
-        <h2>{{ page.model_name }}</h2>
-        <p>by<span class="text-primary"> {{ page.manufacturer }}</span></p>
-        <div class="d-flex">
-          <div class="dropdown">
-            <span class="font-12">
-              <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
-            </span>
-            <a class="text-dark" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="align-middle"><i class="fe fe-chevron-down"></i></span>
-            </a>
-            <!-- dropdown menu -->
-            <div class="dropdown-menu dropdown-menu-lg p-3" aria-labelledby="dropdownMenuLink">
-              <span class="font-14">
-                <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
-              </span>
-              <span class="h5 ms-2">4.6 out of 5</span>
-              <p class="font-14">2,693 customer ratings</p>
-              <!-- row -->
-              <div class="row align-items-center mb-1">
-                <div class="col-md-2 col-2 pe-0">
-                  <div class="font-12 text-dark">5 Star</div>
-                </div>
-                <div class="col-md-8 col-8 pe-2">
-                  <div class="progress" style="height: 8px;">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 78%;" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-                <div class="col-md-2 col-2">
-                  <div class="font-12 text-dark">78%</div>
-                </div>
-              </div>
-              <div class="row align-items-center mb-1">
-                <div class="col-md-2 col-2 pe-0">
-                  <div class="font-12 text-dark">4 Star</div>
-                </div>
-                <div class="col-md-8 col-8 pe-2">
-                  <div class="progress" style="height: 8px;">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 12%;" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-                <div class="col-md-2 col-2">
-                  <div class="font-12 text-dark">12%</div>
-                </div>
-              </div>
-              <div class="row align-items-center mb-1">
-                <div class="col-md-2 col-2 pe-0">
-                  <div class="font-12 text-dark">3 Star</div>
-                </div>
-                <div class="col-md-8 col-8 pe-2">
-                  <div class="progress" style="height: 8px;">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-                <div class="col-md-2 col-2">
-                  <div class="font-12 text-dark">5%</div>
-                </div>
-              </div>
-              <div class="row align-items-center mb-1">
-                <div class="col-md-2 col-2 pe-0">
-                  <div class="font-12 text-dark">2 Star</div>
-                </div>
-                <div class="col-md-8 col-8 pe-2">
-                  <div class="progress" style="height: 8px;">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 2%;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-                <div class="col-md-2 col-2">
-                  <div class="font-12 text-dark">2%</div>
-                </div>
-              </div>
-              <div class="row align-items-center mb-2">
-                <div class="col-md-2 col-2 pe-0">
-                  <div class="font-12 text-dark">1 Star</div>
-                </div>
-                <div class="col-md-8 col-8 pe-2">
-                  <div class="progress" style="height: 8px;">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 1%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-                <div class="col-md-2 col-2">
-                  <div class="font-12 text-dark">1%</div>
-                </div>
-              </div>
-              <a href="#">See all customer reviews</a>
-            </div>
-          </div>
-          <!-- rating -->
-          <div>
-            <span class="ms-2 font-12 text-dark"> 2,693 ratings</span>
-            <span class="badge bg-success-soft text-uppercase ms-3">In Stock</span>
-          </div>
-        </div>
-        <hr class="my-4" />
-        <div class="mb-3 font-20">
-          <span class="text-dark me-2">{{ page.msrp | money }}</span>
-          <span class="text-muted"><s>{{ page.msrp | money }}</s></span>
-        </div>
-        <a href="{{ page.product_link }}" class="btn btn-outline-primary me-2">Add to cart</a>
-        <a href="#" class="btn btn-light">Add to wishlist</a>
-        <p class="mt-4 font-14 mb-1"><span class="text-dark me-1">Category:</span><a href="#" class="text-inherit ms-1">Motivational</a></p>
-        <p class="font-14"><span class="text-dark me-1">Tags:</span><a href="#" class="text-inherit ms-1">life coach</a>,<a href="#" class="text-inherit ms-1">motivation</a>,<a href="#" class="text-inherit ms-1">success</a></p>
-      </div>
-    </div>
-    <hr class="my-10" />
-    <!-- product detail list -->
     <div class="row">
-      <div class="col-lg-4 col-md-5 col-12">
-        <div class="mb-6 mb-md-0">
-          <h4 class="mb-3">Product details</h4>
-          <ul class="list-group list-group-flush font-14 mb-0">
-            <li class="list-group-item px-0 py-1"><span class="text-dark">Hardcover:</span> 320 pages</li>
-            <li class="list-group-item px-0 py-1"><span class="text-dark">Publisher:</span> Coach; 1st edition (October 03, 2021)</li>
-            <li class="list-group-item px-0 py-1"><span class="text-dark">Language:</span> English</li>
-            <li class="list-group-item px-0 py-1"><span class="text-dark">ISBN:</span> 978-2-12-345680-3</li>
-            <li class="list-group-item px-0 py-1"><span class="text-dark">ISBN:</span> 123-2-12-123456-2</li>
-            <li class="list-group-item px-0 py-1"><span class="text-dark">Product Dimensiona:</span> 6.2 x 1 x 9.3 inches</li>
-          </ul>
-        </div>
-      </div>
-      <!-- description -->
-      <div class="col-lg-8 col-md-7 col-12">
-        <h4 class="mb-3">Descriptions</h4>
-        {% for discount in site.discounts %}
-        <p><strong>{{ discount.name }} - {{ discount.discount_name }}</strong></p>
-        <p>{{ discount.discount_notes }}</p>
-        {% endfor %}
-
-        <p>
-          Same generally the with so, change. But the and was after know called absolutely morning, are supposedly of unionized didn’t be chime very my remodelling and back transmitting familiarity possible with of his a he of rank geared
-          and small promptness been economics.
-        </p>
-        <p>
-          Aenean vitae nibh vel mi vestibulum condimentum ac sed metus. Integer orci velit, eleifend at ante eget, tempor eleifend dolor. Sed molestie egestas massa, commodo aliquet nunc sagittis at. Quisque nisi nibh, euismod eu velit id,
-          suscipit accumsan est. Pellentesque dictum volutpat varius.
-        </p>
-      </div>
-    </div>
-    <hr class="my-10" />
-    <div class="row">
-      <!-- customer reviews -->
-      <div class="col-lg-4 col-md-5 col-12 mb-4 mb-lg-0 pe-lg-6">
-        <div class="mb-8">
-          <h4 class="mb-3">Customer reviews</h4>
-          <span class="font-14"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i></span>
-          <span class="h5 ms-2">4.6 out of 5</span>
-          <p class="font-14">2,693 customer ratings</p>
-          <div class="row align-items-center mb-1">
-            <div class="col-md-2 col-2 pe-0">
-              <div class="font-12 text-dark">5 Star</div>
-            </div>
-            <div class="col-md-8 col-8 pe-2">
-              <div class="progress" style="height: 8px;">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 78%;" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="col-md-2 col-2">
-              <div class="font-12 text-primary">78%</div>
+      <div class="col-lg-9 col-md-7 col-12">
+        <!-- result and filter -->
+        <div class="row align-items-center mb-4">
+          <div class="col-lg-6 col-md-4 col-7">
+            <h5 class="mb-0">Showing 1–9 of 29 results</h5>
+          </div>
+          <!-- btn group -->
+          <div class="col-lg-3 col-md-4 col-5">
+            <div class="nav btn-group justify-content-end" role="tablist">
+              <button class="btn btn-white border-light" data-bs-toggle="tab" data-bs-target="#shopGrid" role="tab" aria-controls="shopGrid" aria-selected="false">
+                <span class="fe fe-grid"></span>
+              </button>
+              <button class="btn btn-white border-light active" data-bs-toggle="tab" data-bs-target="#shopList" role="tab" aria-controls="shopList" aria-selected="true">
+                <span class="fe fe-list"></span>
+              </button>
             </div>
           </div>
-          <div class="row align-items-center mb-1">
-            <div class="col-md-2 col-2 pe-0">
-              <div class="font-12 text-dark">4 Star</div>
-            </div>
-            <div class="col-md-8 col-8 pe-2">
-              <div class="progress" style="height: 8px;">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 12%;" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="col-md-2 col-2">
-              <div class="font-12 text-primary">12%</div>
-            </div>
-          </div>
-          <div class="row align-items-center mb-1">
-            <div class="col-md-2 col-2 pe-0">
-              <div class="font-12 text-dark">3 Star</div>
-            </div>
-            <div class="col-md-8 col-8 pe-2">
-              <div class="progress" style="height: 8px;">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="col-md-2 col-2">
-              <div class="font-12 text-primary">5%</div>
-            </div>
-          </div>
-          <div class="row align-items-center mb-1">
-            <div class="col-md-2 col-2 pe-0">
-              <div class="font-12 text-dark">2 Star</div>
-            </div>
-            <div class="col-md-8 col-8 pe-2">
-              <div class="progress" style="height: 8px;">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 2%;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="col-md-2 col-2">
-              <div class="font-12 text-primary">2%</div>
-            </div>
-          </div>
-          <div class="row align-items-center mb-2">
-            <div class="col-md-2 col-2 pe-0">
-              <div class="font-12 text-dark">1 Star</div>
-            </div>
-            <div class="col-md-8 col-8 pe-2">
-              <div class="progress" style="height: 8px;">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 1%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="col-md-2 col-2">
-              <div class="font-12 text-primary">1%</div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h4 class="mb-1 mt-5">Review this book</h4>
-          <p class="font-12">Share your thoughts with other customers</p>
-          <div class="d-grid">
-            <a href="#" class="btn btn-primary">Write A Review</a>
-          </div>
-        </div>
-      </div>
-      <!-- customer reviews list -->
-      <div class="col-lg-8 col-md-7 col-12">
-        <div class="d-flex align-items-center justify-content-between mb-4">
-          <div>
-            <h4 class="mb-0">Ratings &amp; Reviews</h4>
-          </div>
-          <div>
+          <!-- sorting -->
+          <div class="col-lg-3 col-md-4 col-12 mt-3 mt-lg-0">
             <select class="form-select">
-              <option selected="">Sort on</option>
-              <option value="Most Recent">Most Recent</option>
-              <option value="Relevant">Relevant</option>
-              <option value="Newest">Newest</option>
+              <option selected="">Sorting</option>
+              <option value="Newset FirstNewset First">Newset First</option>
+              <option value="Average rating">Average rating</option>
+              <option value="Price: Low to Hight">Price: Low to Hight</option>
+              <option value="Price: High to Low">Price: High to Low</option>
+              <option value="Popularity">Popularity</option>
             </select>
           </div>
         </div>
-        <!-- reviews -->
-        <div class="mb-4 pb-4 border-bottom">
-          <div class="d-flex mb-3 align-items-center">
-            <img src="{{ '/assets/images/avatar-1.png' | absolute_url }}" alt="" class="rounded-circle avatar-lg" />
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade" id="shopGrid" role="tabpanel" aria-labelledby="shopGrid">
+            <div class="row">
 
-            <div class="ms-3 lh-1">
-              <h5 class="mb-1">
-                Sohail Rahman
-                <img src="{{ '/assets/images/verified.svg' | absolute_url }}" alt="" />
-              </h5>
-
-              <p class="font-12 mb-0"><span>Kolkata</span> <span>October 03,2021</span></p>
+              {% assign bikebybrand = site.electric_bikes | where: "manufacturer", page.manufacturer %} {% for bike in bikebybrand %}
+              <!-- shop thumbnail -->
+              <div class="col-lg-4 col-md-6 col-12">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div>
+                        <div class="badge bg-primary-soft">New</div>
+                      </div>
+                      <div>
+                        <a href="#" class="btn-like">
+                          <i class="fe fe-heart"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <a href="shop-single.html"><img src="{{ bike.picture }}" alt="" class="mt-3 img-fluid" /></a>
+                    <div class="mt-3">
+                      <a href="shop-single.html">
+                        <h4 class="mb-1">{{ bike.model_name }}</h4>
+                      </a>
+                      <p class="font-12 mb-2">{{ bike.manufacturer }}</p>
+                      <span class="text-dark me-2">{{ bike.msrp }}</span><span class="text-muted"><s>{{ bike.msrp }}</s></span>
+                      <div class="font-12">
+                        <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i> <span class="ms-1">6</span>
+                      </div>
+                      <a href="{{ bike.product_link }}" class="btn btn-outline-primary btn-sm mt-3">Add to cart</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+              
             </div>
           </div>
-          <div class="mb-2">
-            <span class="font-14">
-              <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
-            </span>
-            <span class="h5 ms-2">Highly recommended</span>
-          </div>
-          <p>
-            Nice book explained in simplified method surely it will bring meaningful changes in your lifestyle which you always dream off Beat of luck coach you are great continue bringing great stuffs
-          </p>
+          <div class="tab-pane fade active show" id="shopList" role="tabpanel" aria-labelledby="shopList">
+            <div class="row">
 
-          <a href="#" class="btn btn-light btn-sm me-2">Helpful</a>
-          <a href="#" class="text-inherit font-14">Report abuse</a>
-        </div>
-        <!-- reviews -->
-        <div class="mb-4 pb-4 border-bottom">
-          <div class="d-flex mb-3 align-items-center">
-            <img src="{{ '/assets/images/avatar-4.png' | absolute_url }}" alt="" class="rounded-circle avatar-lg" />
+              {% assign bikebybrand = site.electric_bikes | where: "manufacturer", page.manufacturer %} {% for bike in bikebybrand %}
+              <!-- shop list -->
+              <div class="col-lg-12 col-md-12 col-12">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-lg-4 col-md-12 col-12 text-center">
+                        <div class="position-relative">
+                          <div class="badge bg-primary-soft position-absolute start-0">New</div>
+                        </div>
+                        <a href="shop-single.html"> <img src="{{ bike.picture }}" alt="" class="mt-3" height="190" /></a>
+                      </div>
 
-            <div class="ms-3 lh-1">
-              <h5 class="mb-1">
-                Riya Poojary
-                <img src="{{ '/assets/images/verified.svg' | absolute_url }}" alt="" />
-              </h5>
+                      <div class="col-lg-4 col-md-12 col-12">
+                        <div class="mt-3">
+                          <a href="#">
+                            <h4 class="mb-1">{{ bike.model_name }}</h4>
+                          </a>
+                          <p class="font-12 mb-2">by<span class="text-danger ms-1">{{ bike.manufacturer }}</span></p>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12 col-12">
+                        <span class="text-dark me-2">{{ bike.msrp }}</span><span class="text-muted"><s>{{ bike.msrp }}</s></span>
+                        <div class="font-12 mb-3">
+                          <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
+                          <span class="ms-1">6</span>
+                        </div>
+                        <a href="{{ bike.product_link }}" class="btn btn-outline-primary btn-sm me-2">Add to cart</a>
+                        <a href="#" class="btn-like d-inline-block">
+                          <i class="fe fe-heart"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
 
-              <p class="font-14 mb-0"><span>Ahmedabad</span> <span>4 Month ago</span></p>
             </div>
           </div>
-          <div class="mb-2">
-            <span class="font-14">
-              <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
-            </span>
-            <span class="h5 ms-2">Beware!! This Book can change your Life :)</span>
-          </div>
-          <p>
-            And I absolutely mean it what I said in Headline of my comment. I have been following coach.com from very long. His one article has absolutely changed my life, imagine what this book can offer to you. If you are looking to form
-            a new habit you have to read this Book.
-          </p>
 
-          <a href="#" class="btn btn-light btn-sm me-2">Helpful</a>
-          <a href="#" class="text-inherit font-14">Report abuse</a>
+          <!-- pagination -->
+          <ul class="pagination">
+            <li class="page-item me-2 active">
+              <a class="page-link rounded" href="#">1</a>
+            </li>
+            <li class="page-item me-2">
+              <a class="page-link rounded" href="#">2</a>
+            </li>
+            <li class="page-item me-2">
+              <a class="page-link rounded" href="#">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link rounded" href="#">4</a>
+            </li>
+          </ul>
         </div>
-        <!-- reviews -->
-        <div class="mb-4 pb-4 border-bottom">
-          <div class="d-flex mb-3 align-items-center">
-            <img src="{{ '/assets/images/avatar-7.png' | absolute_url }}" alt="" class="rounded-circle avatar-lg" />
+        <!-- pagination -->
+      </div>
 
-            <div class="ms-3 lh-1">
-              <h5 class="mb-1">Francoise <img src="{{ '/assets/images/verified.svg' | absolute_url }}" alt="" /></h5>
-
-              <p class="font-12 mb-0"><span>United Kingdom</span> <span>4 Month ago</span></p>
-            </div>
-          </div>
-          <div class="mb-2">
-            <span class="font-14">
-              <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
+      <!-- sidebar -->
+      <div class="col-lg-3 col-md-5 col-12">
+        <!-- price ranger -->
+        <div class="card rounded-3 mb-3 mt-5 mt-lg-0">
+          <div class="card-body p-4">
+            <h4 class="mb-4">Price</h4>
+            <span class="irs irs--flat js-irs-0 irs-with-grid">
+              <span class="irs">
+                <span class="irs-line" tabindex="0"></span><span class="irs-min" style="visibility: visible;">$0</span><span class="irs-max" style="visibility: visible;">$40</span>
+                <span class="irs-from" style="visibility: visible; left: 7.92437%;">$5</span><span class="irs-to" style="visibility: visible; left: 69.6084%;">$32</span>
+                <span class="irs-single" style="visibility: hidden; left: 31.7676%;">$5 — $32</span>
+              </span>
+              <span class="irs-grid" style="width: 93.5477%; left: 3.12616%;">
+                <span class="irs-grid-pol" style="left: 0%;"></span><span class="irs-grid-text js-grid-text-0" style="left: 0%; margin-left: -2.55359%;">0</span><span class="irs-grid-pol small" style="left: 20%;"></span>
+                <span class="irs-grid-pol small" style="left: 15%;"></span><span class="irs-grid-pol small" style="left: 10%;"></span><span class="irs-grid-pol small" style="left: 5%;"></span>
+                <span class="irs-grid-pol" style="left: 25%;"></span><span class="irs-grid-text js-grid-text-1" style="left: 25%; visibility: visible; margin-left: -3.8987%;">10</span>
+                <span class="irs-grid-pol small" style="left: 45%;"></span><span class="irs-grid-pol small" style="left: 40%;"></span><span class="irs-grid-pol small" style="left: 35%;"></span>
+                <span class="irs-grid-pol small" style="left: 30%;"></span><span class="irs-grid-pol" style="left: 50%;"></span>
+                <span class="irs-grid-text js-grid-text-2" style="left: 50%; visibility: visible; margin-left: -3.8987%;">20</span><span class="irs-grid-pol small" style="left: 70%;"></span>
+                <span class="irs-grid-pol small" style="left: 65%;"></span><span class="irs-grid-pol small" style="left: 60%;"></span><span class="irs-grid-pol small" style="left: 55%;"></span>
+                <span class="irs-grid-pol" style="left: 75%;"></span><span class="irs-grid-text js-grid-text-3" style="left: 75%; visibility: visible; margin-left: -3.8987%;">30</span>
+                <span class="irs-grid-pol small" style="left: 95%;"></span><span class="irs-grid-pol small" style="left: 90%;"></span><span class="irs-grid-pol small" style="left: 85%;"></span>
+                <span class="irs-grid-pol small" style="left: 80%;"></span><span class="irs-grid-pol" style="left: 100%;"></span><span class="irs-grid-text js-grid-text-4" style="left: 100%; margin-left: -3.8987%;">40</span>
+              </span>
+              <span class="irs-bar" style="left: 14.9196%; width: 63.1447%;"></span><span class="irs-shadow shadow-from" style="display: none;"></span><span class="irs-shadow shadow-to" style="display: none;"></span>
+              <span class="irs-handle from" style="left: 11.6935%;"><i></i><i></i><i></i></span><span class="irs-handle to type_last" style="left: 74.8382%;"><i></i><i></i><i></i></span>
             </span>
-            <span class="h5 ms-2">Absolutely superb!</span>
+            <input id="price_ranger" type="text" value="" class="irs-hidden-input" tabindex="-1" readonly="" />
           </div>
-          <p>
-            I have read so many books as part of my personal development but I always find that authors end up glorifying themselves throughout continuously going on and on about their own achievements. I urge anyone who loves the book to
-            read his blog which has loads of truly awesome resources.
-          </p>
-
-          <a href="#" class="btn btn-light btn-sm me-2">Helpful</a>
-          <a href="#" class="text-inherit font-14">Report abuse</a>
         </div>
-
-        <a href="#" class="btn btn-primary">Read More Reviews</a>
+        <!-- category -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body p-4">
+            <h4 class="mb-3">Category</h4>
+            <ul class="list-unstyled mb-0">
+              <li class="d-flex justify-content-between mb-2">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="development" />
+                  <label class="form-check-label" for="development">Self Development</label>
+                </div>
+                <div class="text-dark">
+                  2
+                </div>
+              </li>
+              <li class="d-flex justify-content-between mb-2">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="motivational" />
+                  <label class="form-check-label" for="motivational">Motivational</label>
+                </div>
+                <div class="text-dark">
+                  1
+                </div>
+              </li>
+              <li class="d-flex justify-content-between mb-2">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="lifeHack" />
+                  <label class="form-check-label" for="lifeHack">Life Hack</label>
+                </div>
+                <div class="text-dark">
+                  3
+                </div>
+              </li>
+              <li class="d-flex justify-content-between mb-2">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="ceoCoach" />
+                  <label class="form-check-label" for="ceoCoach">CEO Coach</label>
+                </div>
+                <div class="text-dark">
+                  2
+                </div>
+              </li>
+              <li class="d-flex justify-content-between">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="businessCoach" />
+                  <label class="form-check-label" for="businessCoach">Business Coach</label>
+                </div>
+                <div class="text-dark">
+                  1
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- rating -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body p-4">
+            <h4 class="mb-3">Rating</h4>
+            <ul class="list-unstyled mb-0">
+              <!-- list group -->
+              <li class="d-flex justify-content-between mb-2">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="starOne" />
+                  <label class="form-check-label font-14" for="starOne">
+                    <i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i><i class="far fa-star text-warning"></i><i class="far fa-star text-warning"></i><i class="far fa-star text-warning"></i>
+                  </label>
+                </div>
+                <div class="text-dark">
+                  1
+                </div>
+              </li>
+              <!-- list group -->
+              <li class="d-flex justify-content-between mb-2">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="starTwo" />
+                  <label class="form-check-label font-14" for="starTwo">
+                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i><i class="far fa-star text-warning"></i><i class="far fa-star text-warning"></i>
+                  </label>
+                </div>
+                <div class="text-dark">
+                  4
+                </div>
+              </li>
+              <!-- list group -->
+              <li class="d-flex justify-content-between mb-2">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="starThree" />
+                  <label class="form-check-label font-14" for="starThree">
+                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i><i class="far fa-star text-warning"></i>
+                  </label>
+                </div>
+                <div class="text-dark">
+                  8
+                </div>
+              </li>
+              <!-- list group -->
+              <li class="d-flex justify-content-between mb-2">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="starFour" />
+                  <label class="form-check-label font-14" for="starFour">
+                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
+                  </label>
+                </div>
+                <div class="text-dark">
+                  23
+                </div>
+              </li>
+              <!-- list group -->
+              <li class="d-flex justify-content-between">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="starFive" />
+                  <label class="form-check-label font-14" for="starFive">
+                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
+                  </label>
+                </div>
+                <div class="text-dark">
+                  213
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-<script>
-  var discountData = {{ site.discounts | jsonify }};
-</script>

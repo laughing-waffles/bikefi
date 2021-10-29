@@ -1,4 +1,4 @@
-title: "Bike Financing" # the name of your site, e.g. ACME Corp.
+title: "Critical Financing" # the name of your site, e.g. ACME Corp.
 tagline: "Finance an electric bike"
 email: your.email@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
@@ -35,6 +35,8 @@ collections:
     output: true
   discounts:
     output: true
+  manufacturers:
+    output: true
 
 sass:
   sass_dir: assets/css
@@ -43,7 +45,11 @@ defaults:
   - scope:
       type: "electric_bikes"
     values:
-      layout: "bikes" # any jekyll layout file you already have in the _layouts that you want to use for this collection type.
+      layout: "bikes-single" # any jekyll layout file you already have in the _layouts that you want to use for this collection type.
+  - scope:
+      type: "manufacturers"
+    values:
+      layout: "bikes"
       
 compress_html:
   clippings: all
