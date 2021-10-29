@@ -1,0 +1,16 @@
+//  fonts
+$font-size: font !default;
+@for $i from 12 through 48 {
+    .#{$font-size}-#{$i} {
+        font-size: 0px + $i;
+    }
+}
+
+
+.font-dm-serif {
+    font-family: $font-family-dm-serif;
+}
+
+.text-inherit {
+    color: inherit;
+}
