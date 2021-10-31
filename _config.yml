@@ -41,9 +41,9 @@ page_gen-dirs: true
 page_gen:
   - data: 'ebikes.records'
     template: 'bikes'
-    name: 'id'
+    name_expr: record['fields']['Manufacturer'] + "-" +record['fields']['ModelName']
     dir: 'ebikes'
-    debug: true
+    index_files: true
 
 collections_dir: collections
 collections:
