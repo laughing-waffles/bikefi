@@ -7,22 +7,22 @@ layout: default
     <img src="{{ page.picture }}" alt="Photo of a {{ page.title | downcase }}">
 
 
-  <h1>It's a bike! {{ page.model_name }}</h1>
+  <h1>It's a bike! {{ page.fields.ModelName }}</h1>
 
   <div class="animal-class {{ page.class | downcase }}">
-    {{ page.manufacturer }}
+    {{ page.fields.Manufacturer }}
   </div>
 
   <div class="animal-family {{ page.family | downcase }}">
-    {{ page.msrp | money }}
+    {{ page.fields.MSRP | money }}
   </div>
 
   <div>
-     {{ page.product_link }}
+     {{ page.fields.ProductLink }}
   </div>
   
   
-  {% for discount in site.discounts %}
+  {% for discount in site.data.discounts %}
     <h2>{{ discount.name }} - {{ discount.discount_name }}</h2>
     <p>{{ discount.discount_notes }}</p>
   {% endfor %}
@@ -32,3 +32,10 @@ layout: default
 </script>
 </article>
 
+<pre>
+    site: {{ site | jsonify | escape }}
+    page: {{ page | jsonify | escape }}
+    layout: {{ layout | jsonify | escape }}
+    content: {{ content | jsonify | escape }}
+    paginator: {{ paginator | jsonify | escape }}
+</pre>

@@ -17,10 +17,10 @@ gem "minima", "~> 2.5"
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-feed"
-  gem "jekyll-airtable"
   gem "jekyll-mentions"
   gem "webrick"
   gem "dotenv"
+  gem "jekyll-datapage-generator"
   gem "kramdown-parser-gfm"
   gem 'jekyll-money'
 end

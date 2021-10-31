@@ -33,25 +33,26 @@ github_username:  jekyll
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-airtable
+  - jekyll-datapage-generator
   - jekyll-money
 
-airtable:
-  enable_sync: true
-  base_uid: 'appQDiGy9oyBWoqcC'
-  tables:
-    - name: 'Electric Bikes' 
-    - name: 'Discounts'
+page_gen-dirs: true
+
+page_gen:
+  - data: 'ebikes.records'
+    template: 'bikes'
+    name: 'id'
+    dir: 'ebikes'
+    debug: true
 
 collections_dir: collections
 collections:
-  electric_bikes:
+  ebikes:
     output: true
-  discounts:
 
 defaults:
   - scope:
-      type: "electric_bikes"
+      type: "ebikes"
     values:
       layout: "bikes" # any jekyll layout file you already have in the _layouts that you want to use for this collection type.
       
