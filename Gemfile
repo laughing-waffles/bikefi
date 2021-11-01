@@ -27,3 +27,5 @@ group :jekyll_plugins do
   gem "jekyll-cloudinary"
 end
 
+
+gem "jekyll-get-json", "~> 1.0"

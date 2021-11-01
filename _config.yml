@@ -21,6 +21,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-target-blank
+  - jekyll-get-json
 
 airtable:
   enable_sync: true
@@ -28,6 +29,10 @@ airtable:
   tables:
     - name: 'Electric Bikes' 
     - name: 'Discounts'
+
+jekyll_get_json:
+  - data: austintexas
+    json: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyBAwAykHUt0goZNODDdiVDU-7zcs34Ar8o&location=30.267153,-97.74306079999999&radius=10000&type=bicycle_store&keyword=ebike'
 
 collections_dir: collections
 collections:
