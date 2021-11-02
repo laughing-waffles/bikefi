@@ -1,7 +1,12 @@
-curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Electric%20Bikes?maxRecords=100&view=Grid%20view" \
- -H "Authorization: Bearer $1" > _data/ebikes.json
-curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Lenders?maxRecords=100&view=Grid%20view" \
- -H "Authorization: Bearer $1" > _data/financing.json
+#curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Electric%20Bikes?maxRecords=100&view=Grid%20view" \
+ #-H "Authorization: Bearer $1" > _data/ebikes.json
+#curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Lenders?maxRecords=100&view=Grid%20view" \
+ #-H "Authorization: Bearer $1" > _data/financing.json
 
-#Move this to jekyll.yaml using a get_json plugin to load the data files
-#Actually 
+rm -rf temp
+rm -rf collections/_ebikes/
+curl -X GET "https://objectif.app/ebike/generatemd.php" > temp.zip
+unzip temp.zip
+mv temp/* collections/
+rm -rf temp
+rm -rf temp.zip
