@@ -21,20 +21,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-target-blank
 
-page_gen-dirs: true
-
-page_gen:
-  - data: 'ebikes.records'
-    template: 'bikes-single'
-    name_expr: record['fields']['Manufacturer'] + "-" +record['fields']['ModelName']
-    dir: 'ebikes'
-    index_files: true
-  - data: 'financing.records'
-    template: 'page'
-    name_expr: record['fields']['Name']
-    dir: 'financing'
-    index_files: true
-
 collections_dir: collections
 collections:
   ebikes:
