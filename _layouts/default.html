@@ -1,0 +1,60 @@
+--- 
+layout: compress    
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% if jekyll.environment == 'production' %}
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "{{ site.google_analytics }}");
+    </script>
+    <!-- End Google Tag Manager -->
+    {% endif %}
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    {% seo %}
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="{{'/assets/libs/ion-rangeslider/css/ion.rangeSlider.min.css' | absolute_url }}">
+    <link rel="stylesheet" href="{{'/assets/libs/litepicker/dist/css/litepicker.css' | absolute_url }}">
+    <link rel="stylesheet" href="{{'/assets/libs/bootstrap-icons/font/bootstrap-icons.css' | absolute_url }}">
+    <link rel="stylesheet"  href="{{'/assets/libs/magnific-popup/dist/magnific-popup.css' | absolute_url }}">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{{'/assets/css/theme.min.css' | absolute_url }}" />
+
+  </head>
+
+  {% capture layout %} {% if page.layout %}layout-{{ page.layout }} {% endif %} {% endcapture %}
+
+  <body class="{{layout}}">
+
+    {% if jekyll.environment == 'production' %}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.google_analytics }}" height="0" width="0" style="display: none; visibility: hidden;"></iframe></noscript>
+    {% endif %} 
+    
+    {% include header.html %} 
+        
+    {{ content }} 
+    
+    {% include schema.html %} 
+    
+    {% include footer.html %}
+
+  </body>
+</html>

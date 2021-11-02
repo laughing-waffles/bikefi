@@ -1,0 +1,18 @@
+// Extended from Bootstrap
+// color
+
+.grayscale{
+
+    filter: grayscale(100%);
+    opacity: .5;
+}
+
+
+.color-white-filter{
+    filter: brightness(0) invert(1);
+}
+
+
+.color-dark-filter{
+    filter: brightness(1) invert(0);
+}

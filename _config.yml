@@ -1,61 +1,87 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-
-title: Your awesome title
-email: your-email@example.com
+title: "Critical Financing" # the name of your site, e.g. ACME Corp.
+tagline: "Finance an electric bike"
+email: your.email@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
+ Add description here
+author: name
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+baseurl: "" # the subpath of your site, e.g. /blog
+google_analytics: UA-111111111-1
+twitter:
+  username: 
+  card: summary #keep this to generate a twitter share card
+permalink: pretty
+
 
 # Build settings
-theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-datapage-generator
   - jekyll-money
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-target-blank
 
-page_gen-dirs: true
-
-page_gen:
-  - data: 'ebikes.records'
-    template: 'bikes'
-    name_expr: record['fields']['Manufacturer'] + "-" +record['fields']['ModelName']
-    dir: 'ebikes'
-    index_files: true
 
 collections_dir: collections
 collections:
   ebikes:
     output: true
+  financing:
+    output: true
 
-defaults:
-  - scope:
-      type: "ebikes"
-    values:
-      layout: "bikes" # any jekyll layout file you already have in the _layouts that you want to use for this collection type.
+sass:
+  sass_dir: assets/css
       
+compress_html:
+  clippings: all
+  comments:
+    - '<!-- '
+    - ' -->'
+  endings:
+    - html
+    - head
+    - body
+    - li
+    - dt
+    - dd
+    - rt
+    - rp
+    - optgroup
+    - option
+    - colgroup
+    - caption
+    - thead
+    - tbody
+    - tfoot
+    - tr
+    - td
+    - th
+  profile: false
+  blanklines: false
+  ignore:
+    envs: []
+
+cloudinary:
+  cloud_name: judsonlmoore-com
+  verbose: false
+  presets:
+    default:
+      min_width: 320
+      max_width: 1600
+      fallback_max_width: 800
+      steps: 5
+      sizes: '(min-width: 50rem) 50rem, 90vw'
+      figure: always
+    logo:
+      min_width: 80
+      max_width: 400
+      fallback_max_width: 200
+      steps: 3
+      sizes: '(min-width: 50rem) 13rem, (min-width: 40rem) 25vw, 45vw'
+      figure: never
+      attributes:
+        class: logo
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

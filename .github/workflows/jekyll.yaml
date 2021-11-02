@@ -26,9 +26,9 @@ jobs:
       - name: Build & Deploy to Edvard DH
         uses: wlixcc/SFTP-Deploy-Action@v1.2.1
         with:
-                  username: 'launchsociety'
-                  server: 'edpad.com'
-                  ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
-                  local_path: './_site/*'
-                  remote_path: '/home/launchsociety/critical.financing.bike/'
-                  args: '-o ConnectTimeout=5'
+          username: 'launchsociety'
+          server: 'edpad.com'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
+          local_path: './_site/*'
+          remote_path: '/home/launchsociety/critical.financing.bike/'
+          args: '-o ConnectTimeout=5'
