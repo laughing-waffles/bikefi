@@ -20,7 +20,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-target-blank
-  - jekyll-datapage-generator
 
 page_gen-dirs: true
 
