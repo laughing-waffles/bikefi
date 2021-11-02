@@ -15,7 +15,6 @@ gem "jekyll"
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-feed"
-  gem "jekyll-airtable"
   gem "jekyll-mentions"
   gem "webrick"
   gem "dotenv"
@@ -25,7 +24,5 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-target-blank"
   gem "jekyll-cloudinary"
+  gem "jekyll-datapage-generator"
 end
-
-
-gem "jekyll-get-json", "~> 1.0"

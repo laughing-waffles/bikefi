@@ -16,45 +16,35 @@ permalink: pretty
 # Build settings
 plugins:
   - jekyll-feed
-  - jekyll-airtable
   - jekyll-money
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-target-blank
-  - jekyll-get-json
+  - jekyll-datapage-generator
 
-airtable:
-  enable_sync: true
-  base_uid: 'appQDiGy9oyBWoqcC'
-  tables:
-    - name: 'Electric Bikes' 
-    - name: 'Discounts'
+page_gen-dirs: true
 
-jekyll_get_json:
-  - data: austintexas
-    json: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyBAwAykHUt0goZNODDdiVDU-7zcs34Ar8o&location=30.267153,-97.74306079999999&radius=10000&type=bicycle_store&keyword=ebike'
+page_gen:
+  - data: 'ebikes.records'
+    template: 'bikes-single'
+    name_expr: record['fields']['Manufacturer'] + "-" +record['fields']['ModelName']
+    dir: 'ebikes'
+    index_files: true
+  - data: 'financing.records'
+    template: 'page'
+    name_expr: record['fields']['Name']
+    dir: 'financing'
+    index_files: true
 
 collections_dir: collections
 collections:
-  electric_bikes:
+  ebikes:
     output: true
-  discounts:
-    output: true
-  manufacturers:
+  financing:
     output: true
 
 sass:
   sass_dir: assets/css
-
-defaults:
-  - scope:
-      type: "electric_bikes"
-    values:
-      layout: "bikes-single" # any jekyll layout file you already have in the _layouts that you want to use for this collection type.
-  - scope:
-      type: "manufacturers"
-    values:
-      layout: "bikes"
       
 compress_html:
   clippings: all

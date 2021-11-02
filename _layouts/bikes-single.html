@@ -9,12 +9,12 @@ layout: default
     <div class="row align-items-center">
       <!-- image -->
       <div class="col-lg-4 col-md-4 col-12">
-        <img src="{{ page.picture | absolute_url }}" alt="Photo of a {{ page.title | downcase }}" class="img-fluid" />
+        <img src="{{ page.fields.Picture | absolute_url }}" alt="Photo of a {{ page.title | downcase }}" class="img-fluid" />
       </div>
       <!-- description -->
       <div class="offset-lg-1 col-lg-7 col-md-8 col-12">
-        <h2>{{ page.model_name }}</h2>
-        <p>by<span class="text-primary"> {{ page.manufacturer }}</span></p>
+        <h2>{{ page.fields.ModelName }}</h2>
+        <p>by<span class="text-primary"> {{ page.fields.Manufacturer }}</span></p>
         <div class="d-flex">
           <div class="dropdown">
             <span class="font-12">
@@ -107,10 +107,10 @@ layout: default
         </div>
         <hr class="my-4" />
         <div class="mb-3 font-20">
-          <span class="text-dark me-2">{{ page.msrp | money }}</span>
-          <span class="text-muted"><s>{{ page.msrp | money }}</s></span>
+          <span class="text-dark me-2">{{ page.fields.MSRP | money }}</span>
+          <span class="text-muted"><s>{{ page.fields.MSRP | money }}</s></span>
         </div>
-        <a href="{{ page.product_link }}" class="btn btn-outline-primary me-2">Add to cart</a>
+        <a href="{{ page.fields.ProductLink }}" class="btn btn-outline-primary me-2">Add to cart</a>
         <a href="#" class="btn btn-light">Add to wishlist</a>
         <p class="mt-4 font-14 mb-1"><span class="text-dark me-1">Category:</span><a href="#" class="text-inherit ms-1">Motivational</a></p>
         <p class="font-14"><span class="text-dark me-1">Tags:</span><a href="#" class="text-inherit ms-1">life coach</a>,<a href="#" class="text-inherit ms-1">motivation</a>,<a href="#" class="text-inherit ms-1">success</a></p>
