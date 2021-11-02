@@ -16,19 +16,22 @@ permalink: pretty
 # Build settings
 plugins:
   - jekyll-feed
-  - jekyll-airtable
   - jekyll-money
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-target-blank
   - jekyll-get-json
 
-airtable:
-  enable_sync: true
-  base_uid: 'appQDiGy9oyBWoqcC'
-  tables:
-    - name: 'Electric Bikes' 
-    - name: 'Discounts'
+collections_dir: collections
+collections:
+  ebikes:
+    output: true
+
+defaults:
+  - scope:
+      type: "ebikes"
+    values:
+      layout: "bikes" # any jekyll layout file you already have in the _layouts that you want to use for this collection type.
 
 jekyll_get_json:
   - data: austintexas
@@ -36,7 +39,7 @@ jekyll_get_json:
 
 collections_dir: collections
 collections:
-  electric_bikes:
+  ebikes:
     output: true
   discounts:
     output: true
