@@ -18,6 +18,7 @@ group :jekyll_plugins do
   gem "jekyll-mentions"
   gem "webrick"
   gem "dotenv"
+  gem "jekyll-datapage-generator"
   gem "kramdown-parser-gfm"
   gem "jekyll-money"
   gem "jekyll-seo-tag"

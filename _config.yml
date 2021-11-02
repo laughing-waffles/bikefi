@@ -21,6 +21,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-target-blank
 
+
 collections_dir: collections
 collections:
   ebikes:
