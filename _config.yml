@@ -12,8 +12,9 @@ twitter:
   card: summary #keep this to generate a twitter share card
 permalink: pretty
 
-
 # Build settings
+gems:
+  - jekyll-paginate-v2
 plugins:
   - jekyll-feed
   - jekyll-money
@@ -21,13 +22,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-target-blank
 
-
-collections_dir: collections
-collections:
-  ebikes:
-    output: true
-  financing:
-    output: true
+indlude:
+  - _pages
+  - _ebikes
 
 sass:
   sass_dir: assets/css
@@ -101,3 +98,77 @@ cloudinary:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+defaults:
+  - scope:
+      path: ''
+    values:
+      layout: page
+  - scope:
+      path: _pages
+    values:
+      layout: bikes
+      permalink: '/:basename'
+      pagination: 
+        enabled: "true"
+  - scope:
+      path: "_ebikes"
+    values:
+      layout: "bikes-single"
+  - scope:
+      path: "assets/*"
+    values:
+      sitemap: false
+
+
+collections:
+  ebikes:
+    output: true
+
+
+pagination:
+  enabled: true
+  per_page: 2
+  permalink: '/page-:num/'
+  title: ':title'
+  limit: 0
+  sort_field: date
+  sort_reverse: true
+  trail:
+    before: 2
+    after: 2
+autopages:
+  enabled: true
+  categories:
+    layouts:
+      - bikes.html
+    title: 'Posts in category :cat'
+    permalink: '/category/:cat'
+    slugify:
+      mode: default
+      case: true
+  tags:
+    layouts:
+      - bikes.html
+    title: 'Posts tagged with :tag'
+    permalink: '/tag/:tag'
+    slugify:
+      mode: default
+      case: true
+  collections:
+    layouts:
+      - bikes.html
+    title: 'Posts in collection :coll'
+    permalink: '/:coll'
+    slugify:
+      mode: default
+      case: true
+  shop:
+    layouts:
+      - shop-single.html
+    title: 'Products in category :coll'
+    permalink: '/product/:coll'
+    slugify:
+      mode: default
+      case: true
+

@@ -11,10 +11,10 @@ layout: default
         <!-- result and filter -->
         <div class="row align-items-center mb-4">
           <div class="col-lg-6 col-md-4 col-7">
-            <h5 class="mb-0">Showing 1–9 of 29 results</h5>
+            <h5 class="mb-0">Showing Page {{ paginator.page }} of {{ paginator.total_pages }}</h5>
           </div>
           <!-- btn group -->
-          <div class="col-lg-3 col-md-4 col-5">
+          <div class="col-lg-3 col-md-4 col-5 ms-auto">
             <div class="nav btn-group justify-content-end" role="tablist">
               <button class="btn btn-white border-light" data-bs-toggle="tab" data-bs-target="#shopGrid" role="tab" aria-controls="shopGrid" aria-selected="false">
                 <span class="fe fe-grid"></span>
@@ -24,23 +24,12 @@ layout: default
               </button>
             </div>
           </div>
-          <!-- sorting -->
-          <div class="col-lg-3 col-md-4 col-12 mt-3 mt-lg-0">
-            <select class="form-select">
-              <option selected="">Sorting</option>
-              <option value="Newset FirstNewset First">Newset First</option>
-              <option value="Average rating">Average rating</option>
-              <option value="Price: Low to Hight">Price: Low to Hight</option>
-              <option value="Price: High to Low">Price: High to Low</option>
-              <option value="Popularity">Popularity</option>
-            </select>
-          </div>
         </div>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade" id="shopGrid" role="tabpanel" aria-labelledby="shopGrid">
             <div class="row">
 
-              {% assign bikebybrand = site.electric_bikes | where: "manufacturer", page.manufacturer %} {% for bike in bikebybrand %}
+              {% for post in paginator.posts %}
               <!-- shop thumbnail -->
               <div class="col-lg-4 col-md-6 col-12">
                 <div class="card mb-4">
@@ -55,17 +44,17 @@ layout: default
                         </a>
                       </div>
                     </div>
-                    <a href="shop-single.html"><img src="{{ bike.picture }}" alt="" class="mt-3 img-fluid" /></a>
+                    <a href="{{ post.url }}"><img src="{{ post.picture }}" alt="" class="mt-3 img-fluid" /></a>
                     <div class="mt-3">
-                      <a href="shop-single.html">
-                        <h4 class="mb-1">{{ bike.model_name }}</h4>
+                      <a href="{{ post.url }}">
+                        <h4 class="mb-1">{{ post.modelname }}</h4>
                       </a>
-                      <p class="font-12 mb-2">{{ bike.manufacturer }}</p>
-                      <span class="text-dark me-2">{{ bike.msrp }}</span><span class="text-muted"><s>{{ bike.msrp }}</s></span>
+                      <p class="font-12 mb-2">{{ post.manufacturer }}</p>
+                      <span class="text-dark me-2">{{ post.msrp | money }}</span><span class="text-muted"><s>{{ post.msrp | money }}</s></span>
                       <div class="font-12">
                         <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i> <span class="ms-1">6</span>
                       </div>
-                      <a href="{{ bike.product_link }}" class="btn btn-outline-primary btn-sm mt-3">Add to cart</a>
+                      <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm mt-3">View bike</a>
                     </div>
                   </div>
                 </div>
@@ -77,7 +66,7 @@ layout: default
           <div class="tab-pane fade active show" id="shopList" role="tabpanel" aria-labelledby="shopList">
             <div class="row">
 
-              {% assign bikebybrand = site.electric_bikes | where: "manufacturer", page.manufacturer %} {% for bike in bikebybrand %}
+              {% for post in paginator.posts %}
               <!-- shop list -->
               <div class="col-lg-12 col-md-12 col-12">
                 <div class="card mb-4">
@@ -87,24 +76,24 @@ layout: default
                         <div class="position-relative">
                           <div class="badge bg-primary-soft position-absolute start-0">New</div>
                         </div>
-                        <a href="shop-single.html"> <img src="{{ bike.picture }}" alt="" class="mt-3" height="190" /></a>
+                        <a href="{{ post.url }}"> <img src="{{ post.picture }}" alt="" class="mt-5 img-fluid" height="190" /></a>
                       </div>
 
                       <div class="col-lg-4 col-md-12 col-12">
                         <div class="mt-3">
                           <a href="#">
-                            <h4 class="mb-1">{{ bike.model_name }}</h4>
+                            <h4 class="mb-1">{{ post.modelname }}</h4>
                           </a>
-                          <p class="font-12 mb-2">by<span class="text-danger ms-1">{{ bike.manufacturer }}</span></p>
+                          <p class="font-12 mb-2">by<span class="text-danger ms-1">{{ post.manufacturer }}</span></p>
                         </div>
                       </div>
                       <div class="col-lg-4 col-md-12 col-12">
-                        <span class="text-dark me-2">{{ bike.msrp }}</span><span class="text-muted"><s>{{ bike.msrp }}</s></span>
+                        <span class="text-dark me-2">{{ post.msrp | money }}</span><span class="text-muted"><s>{{ post.msrp | money }}</s></span>
                         <div class="font-12 mb-3">
                           <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
                           <span class="ms-1">6</span>
                         </div>
-                        <a href="{{ bike.product_link }}" class="btn btn-outline-primary btn-sm me-2">Add to cart</a>
+                        <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm me-2">View bike</a>
                         <a href="#" class="btn-like d-inline-block">
                           <i class="fe fe-heart"></i>
                         </a>
@@ -118,23 +107,9 @@ layout: default
             </div>
           </div>
 
-          <!-- pagination -->
-          <ul class="pagination">
-            <li class="page-item me-2 active">
-              <a class="page-link rounded" href="#">1</a>
-            </li>
-            <li class="page-item me-2">
-              <a class="page-link rounded" href="#">2</a>
-            </li>
-            <li class="page-item me-2">
-              <a class="page-link rounded" href="#">3</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link rounded" href="#">4</a>
-            </li>
-          </ul>
+          {% include pagination.html %}
+
         </div>
-        <!-- pagination -->
       </div>
 
       <!-- sidebar -->
@@ -142,152 +117,8 @@ layout: default
         <!-- price ranger -->
         <div class="card rounded-3 mb-3 mt-5 mt-lg-0">
           <div class="card-body p-4">
-            <h4 class="mb-4">Price</h4>
-            <span class="irs irs--flat js-irs-0 irs-with-grid">
-              <span class="irs">
-                <span class="irs-line" tabindex="0"></span><span class="irs-min" style="visibility: visible;">$0</span><span class="irs-max" style="visibility: visible;">$40</span>
-                <span class="irs-from" style="visibility: visible; left: 7.92437%;">$5</span><span class="irs-to" style="visibility: visible; left: 69.6084%;">$32</span>
-                <span class="irs-single" style="visibility: hidden; left: 31.7676%;">$5 — $32</span>
-              </span>
-              <span class="irs-grid" style="width: 93.5477%; left: 3.12616%;">
-                <span class="irs-grid-pol" style="left: 0%;"></span><span class="irs-grid-text js-grid-text-0" style="left: 0%; margin-left: -2.55359%;">0</span><span class="irs-grid-pol small" style="left: 20%;"></span>
-                <span class="irs-grid-pol small" style="left: 15%;"></span><span class="irs-grid-pol small" style="left: 10%;"></span><span class="irs-grid-pol small" style="left: 5%;"></span>
-                <span class="irs-grid-pol" style="left: 25%;"></span><span class="irs-grid-text js-grid-text-1" style="left: 25%; visibility: visible; margin-left: -3.8987%;">10</span>
-                <span class="irs-grid-pol small" style="left: 45%;"></span><span class="irs-grid-pol small" style="left: 40%;"></span><span class="irs-grid-pol small" style="left: 35%;"></span>
-                <span class="irs-grid-pol small" style="left: 30%;"></span><span class="irs-grid-pol" style="left: 50%;"></span>
-                <span class="irs-grid-text js-grid-text-2" style="left: 50%; visibility: visible; margin-left: -3.8987%;">20</span><span class="irs-grid-pol small" style="left: 70%;"></span>
-                <span class="irs-grid-pol small" style="left: 65%;"></span><span class="irs-grid-pol small" style="left: 60%;"></span><span class="irs-grid-pol small" style="left: 55%;"></span>
-                <span class="irs-grid-pol" style="left: 75%;"></span><span class="irs-grid-text js-grid-text-3" style="left: 75%; visibility: visible; margin-left: -3.8987%;">30</span>
-                <span class="irs-grid-pol small" style="left: 95%;"></span><span class="irs-grid-pol small" style="left: 90%;"></span><span class="irs-grid-pol small" style="left: 85%;"></span>
-                <span class="irs-grid-pol small" style="left: 80%;"></span><span class="irs-grid-pol" style="left: 100%;"></span><span class="irs-grid-text js-grid-text-4" style="left: 100%; margin-left: -3.8987%;">40</span>
-              </span>
-              <span class="irs-bar" style="left: 14.9196%; width: 63.1447%;"></span><span class="irs-shadow shadow-from" style="display: none;"></span><span class="irs-shadow shadow-to" style="display: none;"></span>
-              <span class="irs-handle from" style="left: 11.6935%;"><i></i><i></i><i></i></span><span class="irs-handle to type_last" style="left: 74.8382%;"><i></i><i></i><i></i></span>
-            </span>
-            <input id="price_ranger" type="text" value="" class="irs-hidden-input" tabindex="-1" readonly="" />
+            <p>nothing to see here</p>
           </div>
-        </div>
-        <!-- category -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body p-4">
-            <h4 class="mb-3">Category</h4>
-            <ul class="list-unstyled mb-0">
-              <li class="d-flex justify-content-between mb-2">
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="development" />
-                  <label class="form-check-label" for="development">Self Development</label>
-                </div>
-                <div class="text-dark">
-                  2
-                </div>
-              </li>
-              <li class="d-flex justify-content-between mb-2">
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="motivational" />
-                  <label class="form-check-label" for="motivational">Motivational</label>
-                </div>
-                <div class="text-dark">
-                  1
-                </div>
-              </li>
-              <li class="d-flex justify-content-between mb-2">
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="lifeHack" />
-                  <label class="form-check-label" for="lifeHack">Life Hack</label>
-                </div>
-                <div class="text-dark">
-                  3
-                </div>
-              </li>
-              <li class="d-flex justify-content-between mb-2">
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="ceoCoach" />
-                  <label class="form-check-label" for="ceoCoach">CEO Coach</label>
-                </div>
-                <div class="text-dark">
-                  2
-                </div>
-              </li>
-              <li class="d-flex justify-content-between">
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="businessCoach" />
-                  <label class="form-check-label" for="businessCoach">Business Coach</label>
-                </div>
-                <div class="text-dark">
-                  1
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- rating -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body p-4">
-            <h4 class="mb-3">Rating</h4>
-            <ul class="list-unstyled mb-0">
-              <!-- list group -->
-              <li class="d-flex justify-content-between mb-2">
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="starOne" />
-                  <label class="form-check-label font-14" for="starOne">
-                    <i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i><i class="far fa-star text-warning"></i><i class="far fa-star text-warning"></i><i class="far fa-star text-warning"></i>
-                  </label>
-                </div>
-                <div class="text-dark">
-                  1
-                </div>
-              </li>
-              <!-- list group -->
-              <li class="d-flex justify-content-between mb-2">
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="starTwo" />
-                  <label class="form-check-label font-14" for="starTwo">
-                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i><i class="far fa-star text-warning"></i><i class="far fa-star text-warning"></i>
-                  </label>
-                </div>
-                <div class="text-dark">
-                  4
-                </div>
-              </li>
-              <!-- list group -->
-              <li class="d-flex justify-content-between mb-2">
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="starThree" />
-                  <label class="form-check-label font-14" for="starThree">
-                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i><i class="far fa-star text-warning"></i>
-                  </label>
-                </div>
-                <div class="text-dark">
-                  8
-                </div>
-              </li>
-              <!-- list group -->
-              <li class="d-flex justify-content-between mb-2">
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="starFour" />
-                  <label class="form-check-label font-14" for="starFour">
-                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
-                  </label>
-                </div>
-                <div class="text-dark">
-                  23
-                </div>
-              </li>
-              <!-- list group -->
-              <li class="d-flex justify-content-between">
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="starFive" />
-                  <label class="form-check-label font-14" for="starFive">
-                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-                  </label>
-                </div>
-                <div class="text-dark">
-                  213
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   </div>

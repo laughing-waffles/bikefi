@@ -4,9 +4,9 @@
  #-H "Authorization: Bearer $1" > _data/financing.json
 
 rm -rf temp
-rm -rf collections/_ebikes/
+rm -rf _ebikes/
 curl -X GET "https://objectif.app/ebike/generatemd.php" > temp.zip
 unzip temp.zip
-mv temp/* collections/
+mv temp/* _ebikes/
 rm -rf temp
 rm -rf temp.zip

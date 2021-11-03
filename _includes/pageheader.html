@@ -8,14 +8,16 @@
           <div class="custom-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="../index.html">Home</a>
+                <a href="{{ '/' | absolute_url }}">Home</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="shop.html">Product</a>
+                <a href="{{ 'ebikes' | absolute_url }}">{{ page.title }}</a>
               </li>
+              {% if page.modelname %}
               <li class="breadcrumb-item active" aria-current="page">
-                Product Details
+                {{ page.modelname }}
               </li>
+              {% endif %}
             </ol>
           </div>
         </div>
