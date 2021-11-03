@@ -1,5 +1,5 @@
 ---
-layout: bikes-single
+layout: shop-single
 title: Sinch
 manufacturer: Aventon
 msrp: 169900

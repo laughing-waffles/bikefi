@@ -1,5 +1,5 @@
 ---
-layout: bikes-single
+layout: shop-single
 title: X3
 manufacturer: VanMoof
 msrp: 2298

@@ -1,5 +1,5 @@
 ---
-layout: bikes-single
+layout: shop-single
 title: Level
 manufacturer: Aventon
 msrp: 179900

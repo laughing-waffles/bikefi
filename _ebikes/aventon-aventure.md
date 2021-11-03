@@ -1,5 +1,5 @@
 ---
-layout: bikes-single
+layout: shop-single
 title: Aventure
 manufacturer: Aventon
 msrp: 199900
