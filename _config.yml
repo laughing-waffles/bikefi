@@ -24,8 +24,11 @@ sass:
 indlude:
   - _pages
   - _ebikes
+  - _dealers
 collections:
   ebikes:
+    output: true
+  dealers:
     output: true
 defaults:
   - scope:
@@ -37,6 +40,11 @@ defaults:
     values:
       layout: "shop-single"
       permalink: '/ebikes/:title/'
+  - scope:
+      path: "_dealers"
+    values:
+      layout: "dealers-single"
+      permalink: '/dealers/:title/'
   - scope:
       path: "assets/*"
     values:
@@ -57,6 +65,14 @@ autopages:
   collections:
     layouts:
       - shop.html
+    title: ':coll'
+    permalink: '/:coll/'
+    slugify:
+      mode: default
+      case: true
+  dealers:
+    layouts:
+      - dealers.html
     title: ':coll'
     permalink: '/:coll/'
     slugify:
