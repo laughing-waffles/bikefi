@@ -20,7 +20,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
       - name: Get latest data from Airtable
-        run: sh ./.github/pulldata.sh 
+        run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }}
       - name: Build
         uses: jerryjvl/jekyll-build-action@v1
       - name: Build & Deploy to Edvard DH

@@ -5,3 +5,6 @@ _site
 .env
 .DS_Store
 collections
+_ebikes
+_data
+_dealers
