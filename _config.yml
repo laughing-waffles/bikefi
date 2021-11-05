@@ -13,12 +13,16 @@ twitter:
 permalink: pretty
 gems:
   - jekyll-paginate-v2
+  - jekyll-maps
 plugins:
   - jekyll-feed
   - jekyll-money
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-target-blank
+maps:
+  google:
+    api_key: 'AIzaSyBAwAykHUt0goZNODDdiVDU-7zcs34Ar8o'
 sass:
   sass_dir: assets/css
 indlude:

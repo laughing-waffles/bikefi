@@ -20,10 +20,11 @@ layout: default
 					<h1 class="text-white mb-lg-3 mb-2 display-4">
 						{{ page.name }}
 					</h1>
-					<p class="text-light mb-5 lead">{{ page.address }}</p>
-					<a href="#" class="btn btn-warning btn-lg"
-						>Shop eBike Inventory</a
-					>
+					<p class="text-light mb-5 lead">{{ page.vicinity }}</p>
+					<a href="#" class="btn btn-warning btn-lg">
+						Shop eBike Inventory
+						{{ site.data.google-places-api-dealers.results }}
+					</a>
 				</div>
 			</div>
 		</div>
@@ -234,6 +235,12 @@ layout: default
 			<div class="col-lg-4 col-md-4 col-12">
 				<div class="mb-5">
 					<h3 class="mb-4">Event Information</h3>
+					{% google_map
+						zoom="10"
+						latitude="40.4378698"
+						longitude="-3.8196204"
+						marker_title="Madrid!"
+						marker_url="https://en.wikipedia.org/wiki/Madrid" %}
 					<div
 						id="mapid"
 						class="
@@ -378,7 +385,10 @@ layout: default
 						</div>
 						<h4 class="h5">Address</h4>
 						<p class="mb-0">
-							{{ page.address }}
+							{{ page.vicinity }}
+						</p>
+						<p class="mb-0">
+							Lat/Long: {{ page.location_lat }},{{ page.location_lon }}
 						</p>
 					</div>
 				</div>

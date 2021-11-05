@@ -26,4 +26,6 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-target-blank"
   gem "jekyll-cloudinary"
+  gem "jekyll-get-json"
+  gem "jekyll-maps"
 end
