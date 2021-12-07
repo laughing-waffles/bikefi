@@ -14,9 +14,9 @@ GEM
     concurrent-ruby (1.1.9)
     deep_merge (1.2.1)
     dotenv (2.7.6)
-    em-websocket (0.5.2)
+    em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
-      http_parser.rb (~> 0.6.0)
+      http_parser.rb (~> 0)
     eventmachine (1.2.7)
     fastimage (2.2.5)
     ffi (1.15.4)
@@ -24,7 +24,7 @@ GEM
     html-pipeline (2.14.0)
       activesupport (>= 2)
       nokogiri (>= 1.4)
-    http_parser.rb (0.6.0)
+    http_parser.rb (0.8.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     jekyll (4.2.1)
@@ -133,4 +133,4 @@ DEPENDENCIES
   webrick
 
 BUNDLED WITH
-   2.2.30
+   2.2.31
