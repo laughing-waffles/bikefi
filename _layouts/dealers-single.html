@@ -10,7 +10,7 @@ layout: default
 				rgba(30, 24, 53, 0.4) 0%,
 				rgba(30, 24, 53, 0.4) 90.16%
 			),
-			url({{ '/assets/images/event-single-hero-img.jpg' | absolute_url }});
+			url(https://images.unsplash.com/photo-1587932690919-ca4bead01ff5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1676&q=80);
 	"
 >
 	<div class="container">
@@ -21,9 +21,8 @@ layout: default
 						{{ page.name }}
 					</h1>
 					<p class="text-light mb-5 lead">{{ page.vicinity }}</p>
-					<a href="#" class="btn btn-warning btn-lg">
+					<a href="{{page.website}}" class="btn btn-warning btn-lg">
 						Shop eBike Inventory
-						{{ site.data.google-places-api-dealers.results }}
 					</a>
 				</div>
 			</div>
@@ -235,12 +234,6 @@ layout: default
 			<div class="col-lg-4 col-md-4 col-12">
 				<div class="mb-5">
 					<h3 class="mb-4">Event Information</h3>
-					{% google_map
-						zoom="10"
-						latitude="40.4378698"
-						longitude="-3.8196204"
-						marker_title="Madrid!"
-						marker_url="https://en.wikipedia.org/wiki/Madrid" %}
 					<div
 						id="mapid"
 						class="
@@ -388,7 +381,7 @@ layout: default
 							{{ page.vicinity }}
 						</p>
 						<p class="mb-0">
-							Lat/Long: {{ page.location_lat }},{{ page.location_lon }}
+							{{ page.address }}
 						</p>
 					</div>
 				</div>

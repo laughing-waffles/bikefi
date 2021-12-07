@@ -22,44 +22,15 @@
               Menu
             </a>
           </li>
-          {% for collection in site.collections %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="menu-{{ forloop.index }}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ collection.label }}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ 'dealers' | absolute_url }}" id="menu-1">
+              Bike Shops
             </a>
-            <ul class="dropdown-menu dropdown-menu-arrow dropdown-menu-right dropdown-menu-xl-left" aria-labelledby="menu-{{ forloop.index }}">
-              {% for item in collection %}
-              {% if item.title %}
-              <li>
-                <a class="dropdown-item" href="{{ item.url | absolute_url }}">
-                  <div class="d-flex align-items-center">
-                    <div class="mr-3 icon-shape icon-lg rounded-circle bg-light">
-                      <i class="{{ entry.icon }} font-24"></i>
-                    </div>
-                    <div>
-                      <h5 class="mb-0">{{ item.title }}</h5>
-                      <span class="font-12 text-muted">
-                        {{ item.title }}
-                      </span>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              {% endif %}
-              {% endfor %}
-            </ul>
           </li>
-          {% endfor %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="search" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-search"></i>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ 'ebikes' | absolute_url }}" id="menu-2">
+              Bikes
             </a>
-            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right dropdown-menu-xl-left p-2" aria-labelledby="search">
-              <form class="my-2 my-lg-0">
-                <input type="search" class="form-control mr-sm-2" id="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
-                <ul class="list-group" id="results-container" style="z-index: 9999; position: absolute;"></ul>
-              </form>
-            </div>
           </li>
         </ul>
         <div class="header-btn">
