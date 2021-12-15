@@ -15,7 +15,7 @@ gems:
   - jekyll-maps
 plugins:
   - jekyll-feed
-  - jekyll-money
+  - jekyll-money2
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-target-blank
@@ -24,11 +24,11 @@ sass:
 indlude:
   - _pages
   - _ebikes
-  - _dealers
+  - _bike-shops
 collections:
   ebikes:
     output: true
-  dealers:
+  bike-shops:
     output: true
 defaults:
   - scope:
@@ -41,10 +41,10 @@ defaults:
       layout: "shop-single"
       permalink: '/ebikes/:title/'
   - scope:
-      path: "_dealers"
+      path: "bike-shops"
     values:
-      layout: "dealers-single"
-      permalink: '/dealers/:title/'
+      layout: "bike-shops-single"
+      permalink: '/bike-shops/:title/'
   - scope:
       path: "assets/*"
     values:
@@ -70,9 +70,9 @@ autopages:
     slugify:
       mode: default
       case: true
-  dealers:
+  bike-shops:
     layouts:
-      - dealers.html
+      - bike-shops.html
     title: ':coll'
     permalink: '/:coll/'
     slugify:

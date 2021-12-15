@@ -21,11 +21,9 @@ group :jekyll_plugins do
   gem "dotenv"
   gem "jekyll-datapage-generator"
   gem "kramdown-parser-gfm"
-  gem "jekyll-money"
+  gem "jekyll-money2"
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
   gem "jekyll-target-blank"
   gem "jekyll-cloudinary"
-  gem "jekyll-get-json"
-  gem "jekyll-maps"
 end
