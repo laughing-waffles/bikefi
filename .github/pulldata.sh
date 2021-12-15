@@ -12,7 +12,7 @@ curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Dealers?maxRecords=10
 
 rm -rf temp
 rm -rf _ebikes/
-rm -rf _dealers/
+rm -rf _bike-shops/
 curl -X GET "https://objectif.app/ebike/generatemd.php" > temp.zip
 unzip temp.zip
 mv temp/* .
