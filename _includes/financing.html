@@ -1,0 +1,41 @@
+<!-- financing -->
+<div class="mb-4" id="financing">
+	<h3 class="mb-4">Finance your new eBike</h3>
+	<div class="mb-5">
+
+		{% if page.location_state == "texas" %}
+			Texas financing goes here. 
+		{% elsif page.financing_special == "special" %}
+			Special financing option goes here. 
+		{% else %}
+			<div class="alert alert-info" role="alert">
+				Show default financing here. 
+			</div>
+		{% endif %}
+
+		<table class="table table-hover">
+
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Interest Rate</th>
+					<th scope="col">Eligability</th>
+					<th scope="col">Link</th>
+					
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for item in site.data.financing.records %}
+				<tr>
+					<th scope="row">{{ item.fields["Name"] }}</th>
+					<td>{{ item.fields["Interest Rate"] }}</td>
+					<td>{{ item.fields["Eligibility State"] }} <a href="{{ item.fields["Eligibility Link"] }}" alt="Read more eligability information from {{ item.fields["Name"] }}" class="text-muted"><i class="fas fa-info-circle"></i></a></td>
+					<td><a href="{{ item.fields["Loan Link"] }}">Apply</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+</div>
