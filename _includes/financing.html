@@ -2,16 +2,13 @@
 <div class="mb-4" id="financing">
 	<h3 class="mb-4">Finance your new eBike</h3>
 	<div class="mb-5">
+    <div>See financing options that may be unique to your area. Enter your Zip Code: <input type="text" name="zipcode" /><button id="updatezip">Go</button>
 
-		{% if page.location_state == "texas" %}
-			Texas financing goes here. 
-		{% elsif page.financing_special == "special" %}
-			Special financing option goes here. 
-		{% else %}
-			<div class="alert alert-info" role="alert">
+
+			<div class="alert alert-info" role="alert" id="primaryfinancing">
 				Show default financing here. 
 			</div>
-		{% endif %}
+
 
 		<table class="table table-hover">
 
