@@ -135,6 +135,9 @@ layout: default
       <!-- description -->
       <div class="col-lg-8 col-md-7 col-12">
         <h4 class="mb-3">Descriptions</h4>
+
+        {{content | newline_to_br }}
+
         {% for discount in site.discounts %}
         <p><strong>{{ discount.name }} - {{ discount.discount_name }}</strong></p>
         <p>{{ discount.discount_notes }}</p>
