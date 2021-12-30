@@ -37,6 +37,9 @@ Create a new virtual environment _(do this with each restart of terminal if you 
 Install Scrapy
 `pip install scrapy`
 
+Install html2text
+`pip install html2text`
+
 Crate a Scrapy project at /books/
 `scrapy startproject books`
 
