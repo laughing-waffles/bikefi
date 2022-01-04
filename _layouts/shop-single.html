@@ -9,12 +9,12 @@ layout: default
     <div class="row align-items-center">
       <!-- image -->
       <div class="col-lg-4 col-md-4 col-12">
-        <img src="{{ page.picture | absolute_url }}" alt="Photo of a {{ page.title | downcase }}" class="img-fluid" />
+        <img src="{{ page.images | first }}" alt="Photo of a {{ page.Make }}" class="img-fluid" />
       </div>
       <!-- description -->
       <div class="offset-lg-1 col-lg-7 col-md-8 col-12">
-        <h2>{{ page.modelname }}</h2>
-        <p>by<span class="text-primary"> {{ page.manufacturer }}</span></p>
+        <h2>{{ page.Make }} {{ page.category }}</h2>
+        <p>by<span class="text-primary"> {{ page.Model }}</span></p>
         <div class="d-flex">
           <div class="dropdown">
             <span class="font-12">
@@ -102,13 +102,13 @@ layout: default
           <!-- rating -->
           <div>
             <span class="ms-2 font-12 text-dark"> 2,693 ratings</span>
-            <span class="badge bg-success-soft text-uppercase ms-3">In Stock</span>
+            <span class="badge bg-success-soft text-uppercase ms-3">{{ page.availability }}</span>
           </div>
         </div>
         <hr class="my-4" />
         <div class="mb-3 font-20">
-          <span class="text-dark me-2">{{ page.msrp | money }}</span>
-          <span class="text-muted"><s>{{ page.msrp | money }}</s></span>
+          <span class="text-dark me-2">{{ page.price_current }}</span>
+          <span class="text-muted"><s>{{ page.price_msrp }}</s></span>
         </div>
         <a href="{{ page.productlink }}" class="btn btn-outline-primary me-2">Add to cart</a>
         <a href="#" class="btn btn-light">Add to wishlist</a>
@@ -123,12 +123,9 @@ layout: default
         <div class="mb-6 mb-md-0">
           <h4 class="mb-3">Product details</h4>
           <ul class="list-group list-group-flush font-14 mb-0">
-            <li class="list-group-item px-0 py-1"><span class="text-dark">Hardcover:</span> 320 pages</li>
-            <li class="list-group-item px-0 py-1"><span class="text-dark">Publisher:</span> Coach; 1st edition (October 03, 2021)</li>
-            <li class="list-group-item px-0 py-1"><span class="text-dark">Language:</span> English</li>
-            <li class="list-group-item px-0 py-1"><span class="text-dark">ISBN:</span> 978-2-12-345680-3</li>
-            <li class="list-group-item px-0 py-1"><span class="text-dark">ISBN:</span> 123-2-12-123456-2</li>
-            <li class="list-group-item px-0 py-1"><span class="text-dark">Product Dimensiona:</span> 6.2 x 1 x 9.3 inches</li>
+            {% for item in page.attributes %}
+            <li class="list-group-item px-0 py-1"><span class="text-dark"><b>{{ item.first }}</b></span> {{ item.last }}</li>
+            {% endfor %}
           </ul>
         </div>
       </div>
@@ -136,21 +133,15 @@ layout: default
       <div class="col-lg-8 col-md-7 col-12">
         <h4 class="mb-3">Descriptions</h4>
 
-        {{content | newline_to_br }}
+        {{ page.description | markdownify }}
 
+        {% if site.discounts %}
         {% for discount in site.discounts %}
         <p><strong>{{ discount.name }} - {{ discount.discount_name }}</strong></p>
         <p>{{ discount.discount_notes }}</p>
         {% endfor %}
+        {% endif %}
 
-        <p>
-          Same generally the with so, change. But the and was after know called absolutely morning, are supposedly of unionized didn’t be chime very my remodelling and back transmitting familiarity possible with of his a he of rank geared
-          and small promptness been economics.
-        </p>
-        <p>
-          Aenean vitae nibh vel mi vestibulum condimentum ac sed metus. Integer orci velit, eleifend at ante eget, tempor eleifend dolor. Sed molestie egestas massa, commodo aliquet nunc sagittis at. Quisque nisi nibh, euismod eu velit id,
-          suscipit accumsan est. Pellentesque dictum volutpat varius.
-        </p>
       </div>
     </div>
     <hr class="my-10" />

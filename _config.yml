@@ -1,14 +1,14 @@
-title: "Critical Financing" # the name of your site, e.g. ACME Corp.
+title: "Financing Biking" # the name of your site, e.g. ACME Corp.
 tagline: "Finance an electric bike"
-email: your.email@gmail.com
+email: contact@financing.bike
 description: >- # this means to ignore newlines until "baseurl:"
   Add description here
 author: name
-url: "https://critical.financing.bike/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://financing.bike/" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
-twitter:
-  username: 
-  card: summary #keep this to generate a twitter share card
+#twitter:
+#  username: 
+#  card: summary #keep this to generate a twitter share card
 permalink: pretty
 gems:
   - jekyll-paginate-v2
@@ -19,12 +19,15 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-target-blank
+  - jekyll-datapage-generator
 sass:
   sass_dir: assets/css
 indlude:
   - _pages
   - _ebikes
   - _bike-shops
+exclude: 
+  - scrapy
 collections:
   ebikes:
     output: true
@@ -36,24 +39,19 @@ defaults:
     values:
       layout: page
   - scope:
-      path: "_ebikes"
+      path: bike-shops
     values:
-      layout: "shop-single"
-      permalink: '/ebikes/:title/'
+      layout: dealers-single
+      permalink: /bike-shops/:title/
   - scope:
-      path: "bike-shops"
-    values:
-      layout: "bike-shops-single"
-      permalink: '/bike-shops/:title/'
-  - scope:
-      path: "assets/*"
+      path: assets/*
     values:
       sitemap: false
 pagination:
   enabled: true
   per_page: 10
-  permalink: '/page-:num/'
-  title: ':title'
+  permalink: /page-:num/
+  title: :title
   limit: 0
   sort_field: date
   sort_reverse: true
@@ -64,7 +62,7 @@ autopages:
   enabled: true
   collections:
     layouts:
-      - srp.html
+      - srp
     title: ':coll'
     permalink: '/:coll/'
     slugify:
@@ -72,7 +70,7 @@ autopages:
       case: true
   bike-shops:
     layouts:
-      - bike-shops.html
+      - shop-single
     title: ':coll'
     permalink: '/:coll/'
     slugify:
@@ -106,6 +104,12 @@ compress_html:
   blanklines: false
   ignore:
     envs: []
+page_gen-dirs: true # uncomment, if you prefer to generate named folders
+page_gen:
+  - data: 'bikes'
+    template: 'shop-single'
+    name: 'name'
+    dir: 'bikes'
 cloudinary:
   cloud_name: judsonlmoore-com
   verbose: false
