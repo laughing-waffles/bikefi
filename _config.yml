@@ -19,7 +19,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-target-blank
-  - jekyll-datapage-generator
 sass:
   sass_dir: assets/css
 indlude:
@@ -28,6 +27,7 @@ indlude:
   - _bike-shops
 exclude: 
   - scrapy
+  - config/json
 collections:
   ebikes:
     output: true
@@ -104,12 +104,6 @@ compress_html:
   blanklines: false
   ignore:
     envs: []
-page_gen-dirs: true # uncomment, if you prefer to generate named folders
-page_gen:
-  - data: 'bikes'
-    template: 'shop-single'
-    name: 'name'
-    dir: 'bikes'
 cloudinary:
   cloud_name: judsonlmoore-com
   verbose: false
