@@ -15,7 +15,7 @@ gem "jekyll"
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-datapage-generator"
-  #gem "jekyll-feed"
+  gem "jekyll-feed"
   gem "webrick"
   gem "dotenv"
   gem "jekyll-money2"

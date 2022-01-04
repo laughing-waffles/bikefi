@@ -17,7 +17,10 @@ class SpiderSpider(CrawlSpider):
 
             # GET Product Data
             id = response.xpath('//span[@itemprop="productId"]/text()').get()
-            brand_logo = response.xpath('//div[@class="product-brand-icon visible-lg visible-md pull-left"]/a/img/@src').get()
+            brand_logo_relative = response.xpath('//div[@class="product-brand-icon visible-lg visible-md pull-left"]/a/img/@src').get()
+                brand_logo = response.brand_logo_relativejoin(base_url)
+
+
             name = response.xpath('//div[@class="product-name"]/h1/text()').get()
             star_rating = response.xpath('//meta[@itemprop="ratingValue"]/@content').get()
             price_current = response.xpath('//span[@id="price"]/text()').get()

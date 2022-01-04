@@ -26,6 +26,8 @@ indlude:
   - _pages
   - _ebikes
   - _bike-shops
+exclude: 
+  - scrapy
 collections:
   ebikes:
     output: true
