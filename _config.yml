@@ -4,7 +4,7 @@ email: contact@financing.bike
 description: >- # this means to ignore newlines until "baseurl:"
   Add description here
 author: name
-url: "https://financing.bike/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://financing.bike" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 #twitter:
 #  username: 
@@ -24,14 +24,16 @@ sass:
 indlude:
   - _pages
   - _ebikes
+  - _bikes
   - _bike-shops
 exclude: 
   - scrapy
-  - config/json
 collections:
   ebikes:
     output: true
   bike-shops:
+    output: true
+  bikes:
     output: true
 defaults:
   - scope:
@@ -43,6 +45,11 @@ defaults:
     values:
       layout: dealers-single
       permalink: /bike-shops/:title/
+  - scope:
+      path: bikes
+    values:
+      layout: shop-single
+      permalink: /bikes/:title/
   - scope:
       path: assets/*
     values:
