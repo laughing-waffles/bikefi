@@ -22,4 +22,6 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-target-blank"
   gem "jekyll-cloudinary"
+  gem "jekyll-paginate-v2"
+
 end

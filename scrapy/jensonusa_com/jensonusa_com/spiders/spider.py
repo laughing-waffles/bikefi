@@ -5,43 +5,45 @@ import html2text
 class SpiderSpider(CrawlSpider):
     name = 'spider'
     allowed_domains = ['jensonusa.com']
-    start_urls = ['https://www.jensonusa.com/Orbea-Terra-H40-Bike-2021']
+    start_urls = ['https://www.jensonusa.com/Marin-Nicasio-650B-Bike-2022-7']
     base_url = 'https://www.jensonusa.com/'
 
     rules = [Rule(LinkExtractor(allow='/'),
         callback='parse_filter_bike', follow=True)]
 
     def parse_filter_bike(self, response):
-        exists = response.xpath('//a[@href="/complete-bikes"]').get()
+        exists = response.xpath('//div[@class="breadcrumb"]/div/span/span[3]/a[@href="/complete-bikes"]').get()
         if exists:
 
             # GET Product Data
             id = response.xpath('//span[@itemprop="productId"]/text()').get()
+            category = response.xpath('//div[@class="breadcrumb"]/div/span/span[3]/a/span/text()').get()
+            sub_category = response.xpath('//div[@class="breadcrumb"]/div/span/span[5]/a/span/text()').get()
             brand_logo_relative = response.xpath('//div[@class="product-brand-icon visible-lg visible-md pull-left"]/a/img/@src').get()
-                brand_logo = response.brand_logo_relativejoin(base_url)
-
-
+            brand_logo = response.urljoin(brand_logo_relative)
             name = response.xpath('//div[@class="product-name"]/h1/text()').get()
             star_rating = response.xpath('//meta[@itemprop="ratingValue"]/@content').get()
             price_current = response.xpath('//span[@id="price"]/text()').get()
             price_msrp = response.xpath('//span[@class="msrp"]/span/text()').get()
             price_discount = response.xpath('//span[@class="prcoff bright"]/text()').get()
             availability = response.xpath('//span[@itemprop="availability"]/text()').get().strip()
-            description = response.xpath('//section[@id="product-description"]').get().strip()
-            make = response.xpath('//div[@class="product-name"]/h1/text()').get()
+            description = response.xpath('//section[@id="product-description"]/p').get()
+            make = response.xpath('//div[@class="product-brand-icon visible-lg visible-md pull-left"]/a/img/@alt').get()
             model = response.xpath('//span[@class="seProductBrandName"]/following-sibling::span/text()').get()
             images = response.xpath('//div[contains(@class, "product-main-image")][1]/div/a/@href').getall()
+            video = response.xpath('//div[contains(@class, "is-video")]/p/iframe/@src').get()
 
-            rows = response.css('table.spec tbody tr')
+            attribute_rows = response.css('table.spec tbody tr')
             attributes = {}
-            for row in rows:
+            for row in attribute_rows:
                 key_column = row.css('th ::text').get()
                 value_column = row.css('td ::text').get()
                 attributes[key_column.strip()] = value_column.strip()
 
+
             # GET Metadata
             meta_description = response.xpath('//meta[@name="Description"]/@content').get().strip()
-            meta_keywords = response.xpath('//meta[@name="Keywords"]/@content').get().strip()
+            meta_keywords = response.xpath('//meta[@name="Keywords"]/@content').getall()
 
             # GET Open Graph Data
             og_description = response.xpath('//meta[@property="og:description"]/@content').get()
@@ -79,23 +81,25 @@ class SpiderSpider(CrawlSpider):
             
             yield {
                     # Yield Product Data
-                    'ID': id,
-                    'Make': make,
-                    'Model': model,
+                    'id': id,
+                    'category': [category, sub_category],
+                    'make': make,
+                    'model': model,
                     'brand_logo': brand_logo,
-                    'name': name,
+                    'title': name,
                     'star_rating': star_rating,
                     'price_current': price_current,
                     'price_msrp': price_msrp,
                     'price_discount': price_discount,
                     'availability': availability,
-                    'description': html2text.html2text(description),
+                    'content': description,
                     'images': images,
-                    "attributes": attributes,
+                    'video': video,
+                    'attributes': attributes,
 
                     # Yield meta data
-                    'meta_description': meta_description,
-                    'meta_keywords': meta_keywords,
+                    'description': meta_description,
+                    'tags': meta_keywords,
 
                     # Yield Open Graph Data
                     'og_description': og_description,
