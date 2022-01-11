@@ -5,8 +5,5 @@ _site
 .env
 .DS_Store
 collections
-_ebikes
-_data
-_bike-shops
-_data/ebikes.json
-_data/financing.json
+_data/
+_posts/
