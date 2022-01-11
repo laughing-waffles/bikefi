@@ -5,10 +5,10 @@ import html2text
 class SpiderSpider(CrawlSpider):
     name = 'spider'
     allowed_domains = ['jensonusa.com']
-    start_urls = ['https://www.jensonusa.com/Marin-Nicasio-650B-Bike-2022-7']
+    start_urls = ['https://www.jensonusa.com/complete-bikes']
     base_url = 'https://www.jensonusa.com/'
 
-    rules = [Rule(LinkExtractor(allow='/'),
+    rules = [Rule(LinkExtractor(allow=''),
         callback='parse_filter_bike', follow=True)]
 
     def parse_filter_bike(self, response):
@@ -21,7 +21,7 @@ class SpiderSpider(CrawlSpider):
             sub_category = response.xpath('//div[@class="breadcrumb"]/div/span/span[5]/a/span/text()').get()
             brand_logo_relative = response.xpath('//div[@class="product-brand-icon visible-lg visible-md pull-left"]/a/img/@src').get()
             brand_logo = response.urljoin(brand_logo_relative)
-            name = response.xpath('//div[@class="product-name"]/h1/text()').get()
+            title = response.xpath('//div[@class="product-name"]/h1/text()').get()
             star_rating = response.xpath('//meta[@itemprop="ratingValue"]/@content').get()
             price_current = response.xpath('//span[@id="price"]/text()').get()
             price_msrp = response.xpath('//span[@class="msrp"]/span/text()').get()
@@ -86,7 +86,7 @@ class SpiderSpider(CrawlSpider):
                     'make': make,
                     'model': model,
                     'brand_logo': brand_logo,
-                    'title': name,
+                    'title': title,
                     'star_rating': star_rating,
                     'price_current': price_current,
                     'price_msrp': price_msrp,
