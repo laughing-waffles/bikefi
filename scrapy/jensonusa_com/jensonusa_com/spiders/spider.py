@@ -8,7 +8,7 @@ class SpiderSpider(CrawlSpider):
     start_urls = ['https://www.jensonusa.com/complete-bikes']
     base_url = 'https://www.jensonusa.com/'
 
-    rules = [Rule(LinkExtractor(allow=''),
+    rules = [Rule(LinkExtractor(allow='/', deny='='),
         callback='parse_filter_bike', follow=True)]
 
     def parse_filter_bike(self, response):

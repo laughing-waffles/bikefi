@@ -1,0 +1,8 @@
+{% assign availability = page.availability %}
+{% if availability contains 'Only' %}
+<span class="badge bg-warning-soft text-uppercase ms-3">{{ page.availability }}</span>
+{% elsif availability contains 'In' %}
+<span class="badge bg-success-soft text-uppercase ms-3">{{ page.availability }}</span>
+{% else %}
+<span class="badge bg-danger-soft text-uppercase ms-3">{{ page.availability }}</span>
+{% endif %}
