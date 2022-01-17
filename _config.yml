@@ -115,23 +115,43 @@ compress_html:
   blanklines: false
   ignore:
     envs: []
-cloudinary:
+cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
   cloud_name: judsonlmoore-com
-  verbose: false
+  only_prod: true
   presets:
     default:
       min_width: 320
       max_width: 1600
-      fallback_max_width: 800
+      fallback_max_width: 1600
       steps: 5
-      sizes: '(min-width: 50rem) 50rem, 90vw'
-      figure: always
-    logo:
-      min_width: 80
-      max_width: 400
-      fallback_max_width: 200
-      steps: 3
-      sizes: '(min-width: 50rem) 13rem, (min-width: 40rem) 25vw, 45vw'
-      figure: never
+      loading: lazy
+    productImage:
+      min_width: 343
+      max_width: 738
+      fallback_max_width: 738
+      steps: 5
       attributes:
-        class: logo
+        class: d-block img-fluid
+    productCarouselNavbar: 
+      min_width: 125
+      max_width: 250
+      fallback_max_width: 250
+      steps: 5
+      attributes:
+        class: nav-link d-block p-1 
+        width: 125px
+    srpProductImageVertical: 
+      min_width: 125
+      max_width: 250
+      fallback_max_width: 250
+      steps: 5
+      attributes:
+        class: mt-5 img-fluid
+        width: 190px
+    srpProductImageHorizontal: 
+      min_width: 125
+      max_width: 250
+      fallback_max_width: 250
+      steps: 5
+      attributes:
+        class: mt-3 img-fluid       
