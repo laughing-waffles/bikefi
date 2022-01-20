@@ -1,0 +1,4 @@
+---
+layout: srp
+paginate: true
+--- 

@@ -5,10 +5,10 @@ import html2text
 class SpiderSpider(CrawlSpider):
     name = 'spider'
     allowed_domains = ['jensonusa.com']
-    start_urls = ['https://www.jensonusa.com/complete-bikes']
+    start_urls = ['https://www.jensonusa.com/Marin-Kentfield-2-700C-Bike-2021-9']
     base_url = 'https://www.jensonusa.com/'
 
-    rules = [Rule(LinkExtractor(allow='/', deny='='),
+    rules = [Rule(LinkExtractor(allow='https://www.jensonusa.com/Marin-Kentfield-2-700C-Bike-2021-9', deny='='),
         callback='parse_filter_bike', follow=True)]
 
     def parse_filter_bike(self, response):

@@ -38,7 +38,7 @@ defaults:
     values:
       layout: page
   - scope:
-      path: bike-shops
+      path: _posts/bike-shops
     values:
       layout: dealers-single
       permalink: /bike-shops/:slug
