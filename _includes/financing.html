@@ -3,15 +3,11 @@
 	<h3 class="mb-4">Finance your new eBike</h3>
 	<div class="mb-5">
 
-		{% if page.location_state == "texas" %}
-			Texas financing goes here. 
-		{% elsif page.financing_special == "special" %}
-			Special financing option goes here. 
-		{% else %}
+<input type="text" name="zip" id="zip" placeholder="Enter your zip code" /><input type="button" value="See options" />
 			<div class="alert alert-info" role="alert">
 				Show default financing here. 
 			</div>
-		{% endif %}
+		
 
 		<table class="table table-hover">
 
@@ -39,3 +35,9 @@
 
 	</div>
 </div>
+
+
+
+<script>
+  var financingData = '{{ site.data.financing | jsonify }}';
+</script>
