@@ -23,12 +23,12 @@ jobs:
         run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }}
       - name: Build
         uses: jerryjvl/jekyll-build-action@v1
-      - name: Build & Deploy to Edvard DH
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
+      - name: Rsync Deployments Action
+        uses: Burnett01/rsync-deployments@5.2
         with:
-          username: 'launchsociety'
-          server: 'edpad.com'
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
-          local_path: './_site/*'
+          remote_user: 'launchsociety'
+          remote_host: 'edpad.com'
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }} 
+          path: './_site/*'
           remote_path: '/home/launchsociety/critical.financing.bike/'
-          args: '-o ConnectTimeout=5'
+          switches: '-avzr --delete'
