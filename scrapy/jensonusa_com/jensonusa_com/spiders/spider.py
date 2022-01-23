@@ -1,45 +1,47 @@
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
-import html2text
 
 class SpiderSpider(CrawlSpider):
     name = 'spider'
     allowed_domains = ['jensonusa.com']
-    start_urls = ['https://www.jensonusa.com/Marin-Kentfield-2-700C-Bike-2021-9']
+    start_urls = ['https://www.jensonusa.com/']
     base_url = 'https://www.jensonusa.com/'
 
-    rules = [Rule(LinkExtractor(allow='https://www.jensonusa.com/Marin-Kentfield-2-700C-Bike-2021-9', deny='='),
+    rules = [Rule(LinkExtractor(allow='https://www.jensonusa.com/', deny='='),
         callback='parse_filter_bike', follow=True)]
 
     def parse_filter_bike(self, response):
-        exists = response.xpath('//div[@class="breadcrumb"]/div/span/span[3]/a[@href="/complete-bikes"]').get()
+        exists = response.xpath('//div[@class="breadcrumb"]/div/span/span/a').get()
         if exists:
 
             # GET Product Data
             id = response.xpath('//span[@itemprop="productId"]/text()').get()
-            category = response.xpath('//div[@class="breadcrumb"]/div/span/span[3]/a/span/text()').get()
-            sub_category = response.xpath('//div[@class="breadcrumb"]/div/span/span[5]/a/span/text()').get()
+            url_relative = response.xpath('//div[@class="breadcrumb"]/div/span/span[9]/a/@href').get()
+            url = response.urljoin(url_relative)
+            category = response.xpath('//div[@class="breadcrumb"]/div/span/span/a/span/text()').getall()
             brand_logo_relative = response.xpath('//div[@class="product-brand-icon visible-lg visible-md pull-left"]/a/img/@src').get()
             brand_logo = response.urljoin(brand_logo_relative)
+            colors = response.xpath('//div[contains(@class, "color")]/@data-attr-color').getall()
             title = response.xpath('//div[@class="product-name"]/h1/text()').get()
             star_rating = response.xpath('//meta[@itemprop="ratingValue"]/@content').get()
             price_current = response.xpath('//span[@id="price"]/text()').get()
-            price_msrp = response.xpath('//span[@class="msrp"]/span/text()').get()
-            price_discount = response.xpath('//span[@class="prcoff bright"]/text()').get()
+            price_msrp = response.xpath('//span[@class="msrp "]/span/text()').get()
+            price_discount = response.xpath('//span[@class="prcoff bright "]/text()').get()
             availability = response.xpath('//span[@itemprop="availability"]/text()').get().strip()
-            description = response.xpath('//section[@id="product-description"]/p').get()
+            description = response.xpath('//section[@id="product-description"]/p').getall()
             make = response.xpath('//div[@class="product-brand-icon visible-lg visible-md pull-left"]/a/img/@alt').get()
             model = response.xpath('//span[@class="seProductBrandName"]/following-sibling::span/text()').get()
             images = response.xpath('//div[contains(@class, "product-main-image")][1]/div/a/@href').getall()
-            video = response.xpath('//div[contains(@class, "is-video")]/p/iframe/@src').get()
+            
 
+
+            video = response.xpath('//div[contains(@class, "is-video")]/p/iframe/@src').get()
             attribute_rows = response.css('table.spec tbody tr')
             attributes = {}
             for row in attribute_rows:
                 key_column = row.css('th ::text').get()
                 value_column = row.css('td ::text').get()
                 attributes[key_column.strip()] = value_column.strip()
-
 
             # GET Metadata
             meta_description = response.xpath('//meta[@name="Description"]/@content').get().strip()
@@ -82,7 +84,8 @@ class SpiderSpider(CrawlSpider):
             yield {
                     # Yield Product Data
                     'id': id,
-                    'category': [category, sub_category],
+                    'url': url,
+                    'category': category,
                     'make': make,
                     'model': model,
                     'brand_logo': brand_logo,
@@ -95,6 +98,7 @@ class SpiderSpider(CrawlSpider):
                     'content': description,
                     'images': images,
                     'video': video,
+                    'colors': colors,
                     'attributes': attributes,
 
                     # Yield meta data
