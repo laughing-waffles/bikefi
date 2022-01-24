@@ -3,7 +3,9 @@
 	<h3 class="mb-4">Finance your new eBike</h3>
 	<div class="mb-5">
 
-<input type="text" name="zip" id="zip" placeholder="Enter your zip code" /><input type="button" value="See options" />
+Zip code: <input type="text" name="zip" id="zip" placeholder="Enter your zip code" /><input type="button" id="findfinance" value="See options" />
+
+
 			<div class="alert alert-info" role="alert">
 				Show default financing here. 
 			</div>
@@ -37,7 +39,21 @@
 </div>
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 <script>
-  var financingData = '{{ site.data.financing | jsonify }}';
+  var financingData = {{ site.data.financing | jsonify }};
+  $( document ).ready(function() {
+    $( "#findfinance" ).click(function() {
+      var zipval = $('#zip').val();
+      Cookies.set('zip', zipval, { expires: 356 });
+      $.getJSON( "https://objectif.app/ebike/zipsearch.php?1=" + zipval, function( data ) {
+        Cookies.set('state', data.state, { expires: 356 });
+      });
+      console.log($.inArray(Cookies.get('state'), financingData));
+      var returnedData = $.grep(financingData.records, function (element, index) {
+          return element.fields['Eligibility State'].indexOf("VT") >= 0;
+      });
+    });
+  });
+  
 </script>
