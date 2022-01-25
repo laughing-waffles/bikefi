@@ -7,28 +7,37 @@ layout: default
     <div class="row align-items-center">
 
 
+      {% if page.categories.size > 0 %}
       <div id="breadcrumbs" class="my-5">
+
         <!-- breadcrumbs -->
         <div class="custom-breadcrumb">
           <ol class="breadcrumb">
-            {% assign crumbs = page.url | remove:'/index.html' | split: '/' %}
             <li class="breadcrumb-item  text-primary">
               <a href="{{ '/' | absolute_url }}">Home</a>
             </li>
-            {% for crumb in crumbs offset: 1 %}
+
+            {% for item in page.categories %}
             {% if forloop.last %}
             <li class="breadcrumb-item active text-primary">
-              {{ page.title }}
+              {{ item }}
             </li>
             {% else %}
             <li class="breadcrumb-item text-primary">
-              <a href="{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' | replace:'without-plugin/','without-plugins/' }}{% endfor %}">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</a>
+              <a 
+                href="{{ item | slugify | prepend: '/category/' | absolute_url }}" 
+                class="text-inherit ms-1">
+                {{ item }}
+              </a>
             </li>
             {% endif %}
             {% endfor %}
+  
+
           </ol>
         </div>
       </div>
+      {% endif %}
 
       <!-- image -->
       <div class="col-lg-7 col-md-8 col-12">
@@ -36,7 +45,7 @@ layout: default
           <div class="carousel-inner">
             {% for image in page.images %}
             <div class="carousel-item{% if forloop.first %} active{% endif %}">
-              <a href="{{ image }}" data-lightbox="productImage" data-title="{{ page.title }}" data-footer="Source: {{ site.title }}" disableScrolling="true">
+              <a href="https://res.cloudinary.com/{{ site.cloudinary.cloud_name }}/image/fetch/c_limit,f_auto,q_auto,w_1250/{{ image }}" data-lightbox="productImage" data-title="{{ page.title }}" data-footer="Source: {{ site.title }}" disableScrolling="true">
                 {% cloudinary productImage {{ image }} alt="Photo of a {{ page.title }}" %}
               </a>
             </div>
@@ -61,20 +70,28 @@ layout: default
       <!-- description -->
       <div class="offset-lg-1 col-lg-4 col-md-4 col-12">
         <h2>{{ page.title }}</h2>
+        {% if page.make %}
         <p>by {{ page.make }}</p>
+        {% endif %}
         <div class="d-flex">
 
           <!-- Star ratings -->
-          {% if page.star_rating %}
-          <span class="font-12">
-            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
-            {{ page.star_rating }}
+          {% if page.star_rating.size > 0 %}
+          <span class="font-12 mt-1">
+
+            {% assign num = page.star_rating %}
+            {% assign range = (1..num) %}
+            {% for i in range %}
+              <i class="fas fa-star text-warning"></i>
+            {% endfor %}
           </span>
           {% endif %}
 
           <!-- rating -->
           <div>
-            <span class="ms-2 font-12 text-dark"> 2,693 ratings</span>
+            {% if page.star_rating.size > 0 %}
+            <span class="ms-2 font-12 text-dark"> {{ page.star_rating }} 3 of 5 stars</span>
+            {% endif %}
             {% assign availability = page.availability %}
             {% include availability-badge.html %}
           </div>
@@ -84,21 +101,13 @@ layout: default
           {% if page.price_current %}<span class="text-dark me-2">{{ page.price_current }}</span>{% endif %}
           {% if page.price_msrp %}<span class="text-muted"><s>{{ page.price_msrp }}</s></span>{% endif %}
         </div>
-        <a href="{{ page.productlink }}" class="btn btn-outline-primary me-2">Add to cart</a>
+        <a href="{{ page.affiliate_url }}" class="btn btn-outline-primary me-2">Add to cart</a>
         <a href="#financing" class="btn btn-light">Get financing</a>
 
-        {% if page.category.size > 0 %}
-        <p class="mt-4 font-14 mb-1"><span class="text-dark me-1">{% if page.category.size > 1 %}Categories{% else %}Category{% endif %}:</span>
-          {% for item in page.category %}
-          <a href="{{ absolute_url }}/category/{{ item | slugify }}" class="text-inherit ms-1">{{ item }}</a>{% unless forloop.last %}, {% endunless %}
-          {% endfor %}
-        </p>
-        {% endif %}
-
         {% if page.tags.size > 0 %}
-        <p class="font-14"><span class="text-dark me-1">Tag{% if page.tags.size > 1 %}s{% endif %}:</span>
+        <p class="mt-4 font-14 mb-1"><span class="text-dark me-1">Tag{% if page.tags.size > 1 %}s{% endif %}:</span>
           {% for tag in page.tags %}
-          <a href="{{ absolute_url }}/tag/{{ tag | slugify }}" class="text-inherit ms-1">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+          <a href="{{ tag | slugify | prepend: '/tag/' | absolute_url }}" class="text-inherit ms-1">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
           {% endfor %}
         </p>
         {% endif %}
@@ -111,17 +120,19 @@ layout: default
       <div class="col-lg-4 col-md-5 col-12">
         <div class="mb-6 mb-md-0">
           <h4 class="mb-3">Product details</h4>
-          <ul class="list-group list-group-flush font-14 mb-0">
-            {% for item in page.attributes %}
-            <li class="list-group-item px-0 py-1"><span class="text-dark"><b>{{ item.first }}</b></span> {{ item.last }}</li>
-            {% endfor %}
-            <li class="list-group-item px-0 py-1"><span class="text-dark"><b>Last Updated</b></span> {{ page.date | date_to_long_string }}</li>
-          </ul>
+
+          {% for item in page.attributes %}
+          <div class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1">
+            <div class="col-5 text-dark"><b>{{ item.first }}</b></div>
+            <div class="col-7">{{ item.last }}</div>
+          </div>
+          {% endfor %}
+
         </div>
       </div>
       <!-- description -->
       <div class="col-lg-8 col-md-7 col-12">
-        <h4 class="mb-3">Descriptions</h4>
+        <h4 class="mb-3">Description</h4>
 
         {{ content | markdownify }}
 

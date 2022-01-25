@@ -17,7 +17,6 @@ group :jekyll_plugins do
   gem "jekyll-feed"
   gem "webrick"
   gem "dotenv"
-  gem "jekyll-money2"
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
   gem "jekyll-target-blank"

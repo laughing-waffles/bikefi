@@ -15,7 +15,6 @@ gems:
   - jekyll-maps
 plugins:
   - jekyll-feed
-  - jekyll-money2
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-target-blank
@@ -117,7 +116,9 @@ compress_html:
     envs: []
 cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
   cloud_name: judsonlmoore-com
-  only_prod: true
+  verbose: false
+  only_prod: false
+  origin_url: https://www.jensonusa.com
   presets:
     default:
       min_width: 320
@@ -138,7 +139,7 @@ cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
       fallback_max_width: 250
       steps: 5
       attributes:
-        class: nav-link d-block p-1 
+        class: nav-link d-block p-1 img-fluid
         width: 125px
     srpProductImageVertical: 
       min_width: 125

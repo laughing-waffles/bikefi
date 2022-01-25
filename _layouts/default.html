@@ -1,5 +1,5 @@
---- 
-layout: compress    
+---
+layout: compress
 ---
 
 <!DOCTYPE html>
@@ -7,56 +7,150 @@ layout: compress
   <head>
     {% if jekyll.environment == 'production' %}
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WS46NNR');</script>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WS46NNR");
+    </script>
     <!-- End Google Tag Manager -->
     {% endif %}
 
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     {% seo %}
 
     <!-- Libs CSS -->
-    <link rel="stylesheet" href="{{'/assets/libs/ion-rangeslider/css/ion.rangeSlider.min.css' | absolute_url }}">
-    <link rel="stylesheet" href="{{'/assets/libs/litepicker/dist/css/litepicker.css' | absolute_url }}">
-    <link rel="stylesheet" href="{{'/assets/libs/bootstrap-icons/font/bootstrap-icons.css' | absolute_url }}">
-    <link rel="stylesheet"  href="{{'/assets/libs/magnific-popup/dist/magnific-popup.css' | absolute_url }}">
-    
+    <link
+      rel="stylesheet"
+      href="{{'/assets/libs/ion-rangeslider/css/ion.rangeSlider.min.css' | absolute_url }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{'/assets/libs/litepicker/dist/css/litepicker.css' | absolute_url }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{'/assets/libs/bootstrap-icons/font/bootstrap-icons.css' | absolute_url }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{'/assets/libs/magnific-popup/dist/magnific-popup.css' | absolute_url }}"
+    />
+
     <!-- Lightbox2 CSS https://lokeshdhakar.com/projects/lightbox2/ -->
-    <link rel="stylesheet"  href="{{'/assets/css/lightbox.min.css' | absolute_url }}">
+    <link
+      rel="stylesheet"
+      href="{{'/assets/css/lightbox.min.css' | absolute_url }}"
+    />
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" href="{{'/assets/css/theme.min.css' | absolute_url }}" />
+    <link
+      rel="stylesheet"
+      href="{{'/assets/css/theme.min.css' | absolute_url }}"
+    />
 
     <!-- Google Ad Sense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7935910456441748"
-     crossorigin="anonymous"></script>
-
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7935910456441748"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
-  {% capture layout %} {% if page.layout %}layout-{{ page.layout }} {% endif %} {% endcapture %}
+  {% capture layout %} {% if page.layout %}layout-{{ page.layout }} {% endif %}
+  {% endcapture %}
 
   <body class="{{layout}}">
-
     {% if jekyll.environment == 'production' %}
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WS46NNR"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WS46NNR"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    {% endif %} 
-    
-    {% include header.html %} 
-        
-    {{ content }} 
-    
-    {% include schema.html %} 
-    
-    {% include footer.html %}
+    {% endif %} {% include header.html %} {{ content }} {% include schema.html
+    %}
 
+    <!-- footer -->
+    <div class="footer pb-3 mt-5 bg-dark text-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="mt-8">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  © {{ site.time | date: '%Y' }} {{ site.title }}
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="text-reset"> Privacy Policy </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="text-reset"> Terms</a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="{{ 'sitemap.xml' | absolute_url }}"
+                    class="text-reset"
+                  >
+                    Sitemap</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Libs JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Libs JS -->
+    <script src="{{ '/assets/libs/jquery-slimscroll/jquery.slimscroll.min.js' | absolute_url }}"></script>
+    <script src="{{ '/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js' | absolute_url }}"></script>
+    <script src="{{ '/assets/libs/prismjs/prism.js' | absolute_url }}"></script>
+    <script src="{{ '/assets/libs/leaflet/dist/leaflet.js' | absolute_url }}"></script>
+    <script src="{{ '/assets/libs/litepicker/dist/litepicker.js' | absolute_url }}"></script>
+    <script src="{{ '/assets/libs/ion-rangeslider/js/ion.rangeSlider.min.js' | absolute_url }}"></script>
+    <script src="{{ '/assets/libs/inputmask/dist/jquery.inputmask.min.js' | absolute_url }}"></script>
+
+    <!-- Lightbox2 JS https://lokeshdhakar.com/projects/lightbox2/ -->
+    <script src="{{ '/assets/js/lightbox.min.js' | absolute_url }}"></script>
+
+    <!-- clipboard -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+    <!-- Theme JS -->
+    <script src="{{ '/assets/js/theme.min.js' | absolute_url }}"></script>
   </body>
 </html>

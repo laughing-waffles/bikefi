@@ -11,7 +11,7 @@ class SpiderSpider(CrawlSpider):
         callback='parse_filter_bike', follow=True)]
 
     def parse_filter_bike(self, response):
-        exists = response.xpath('//div[@class="breadcrumb"]/div/span/span/a').get()
+        exists = response.xpath('//div[@class="breadcrumb"]/div/span/span[3]/a[@href="/complete-bikes"]').get()
         if exists:
 
             # GET Product Data
@@ -28,7 +28,7 @@ class SpiderSpider(CrawlSpider):
             price_msrp = response.xpath('//span[@class="msrp "]/span/text()').get()
             price_discount = response.xpath('//span[@class="prcoff bright "]/text()').get()
             availability = response.xpath('//span[@itemprop="availability"]/text()').get().strip()
-            description = response.xpath('//section[@id="product-description"]/p').getall()
+            description = response.xpath('//section[@id="product-description"]/p/text()').getall()
             make = response.xpath('//div[@class="product-brand-icon visible-lg visible-md pull-left"]/a/img/@alt').get()
             model = response.xpath('//span[@class="seProductBrandName"]/following-sibling::span/text()').get()
             images = response.xpath('//div[contains(@class, "product-main-image")][1]/div/a/@href').getall()
