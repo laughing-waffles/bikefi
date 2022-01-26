@@ -29,26 +29,95 @@ layout: compress
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    {% seo %}
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta name="generator" content="Jekyll v4.2.1" />
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta name="author" content="{{ site.title }}" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="{{ page.description }}" />
+    <meta property="og:description" content="{{ page.description }}" />
+    <link rel="canonical" href="{{ page.url | absolute_url }}" />
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <meta property="og:site_name" content="{{ site.title }}" />
+    <meta
+      property="article:published_time"
+      content="{{ site.time | date_to_string }}"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="{{ page.title }}" />
+
+    <script type="application/ld+json">
+      {
+        "dateModified": "{{ site.time | date_to_string }}",
+        "description": "{{ page.description }}",
+        "datePublished": "{{ site.time | date_to_string }}",
+        "headline": "{{ page.title }}",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "{{ page.url | absolute_url }}"
+        },
+        "url": "{{ page.url | absolute_url }}"
+      }
+    </script>
+
+    {% if page.layout == 'dealer-single' %}
+    <!-- BikeStore Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "BikeStore",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "{{ page.city }}",
+          "addressRegion": "{{ page.state }}",
+          "postalCode": "{{ page.zip }}",
+          "streetAddress": "{{ page.street_address }}"
+        },
+        "name": "{{ page.name }}",
+        "url": "{{ page.website }}",
+        "email": "{{ page.email }}",
+        "telephone": "{{ page.phone }}",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "{{ page.rating }}",
+          "reviewCount": "{{ page.rating_count }}"
+        },
+        "paymentAccepted": "Visa, Master Card, Discover, Amex, ApplePay, AndroidPay"
+      }
+    </script>
+    {% endif %} {% if page.layout == 'shop-single' %}
+    <!-- Bike Product Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "{{ page.title }}",
+        "image": "{{ page.images[0] }}",
+        "description": "{{ page.description }}",
+        "brand": {
+          "@type": "Thing",
+          "name": "{{ page.make }}"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "{{ page.star_rating }}"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "{{ page.price_current }}",
+          "itemCondition": "NewCondition",
+          "availability": "{{ page.availability }}",
+          "seller": {
+            "@type": "Organization",
+            "name": "{{ site.title }}"
+          }
+        }
+      }
+    </script>
+    {% endif %}
 
     <!-- Libs CSS -->
-    <link
-      rel="stylesheet"
-      href="{{'/assets/libs/ion-rangeslider/css/ion.rangeSlider.min.css' | absolute_url }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{'/assets/libs/litepicker/dist/css/litepicker.css' | absolute_url }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{'/assets/libs/bootstrap-icons/font/bootstrap-icons.css' | absolute_url }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{'/assets/libs/magnific-popup/dist/magnific-popup.css' | absolute_url }}"
-    />
-
     <!-- Lightbox2 CSS https://lokeshdhakar.com/projects/lightbox2/ -->
     <link
       rel="stylesheet"
@@ -84,11 +153,88 @@ layout: compress
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    {% endif %} {% include header.html %} {{ content }} {% include schema.html
-    %}
+    {% endif %}
+
+    <script src="{{ '/assets/libs/jquery/dist/jquery.min.js' | absolute_url }}"></script>
+
+    <!-- header -->
+    <div
+      class="header fixed-top border-top-3 border-top border-primary bg-dark"
+    >
+      <!-- navigation start -->
+      <div class="container-lg">
+        <nav class="navbar navbar-expand-lg navbar-default">
+          <a class="navbar-brand" href="{{ '/' | absolute_url }}">
+            <h1 class="font-weight-bolder d-block text-white h4 m-0">
+              {{ site.title }}
+            </h1>
+            <p class="font-weight-light h6 text-white m-0">
+              {{ site.subtitle }}
+            </p>
+          </a>
+          <button
+            class="navbar-toggler collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar-default"
+            aria-controls="navbar-default"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="icon-bar top-bar mt-0"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar-default">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbar-default"
+              aria-controls="navbar-default"
+              aria-expanded="true"
+              aria-label="Toggle navigation"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+            <ul class="navbar-nav ms-auto mr-lg-3">
+              <li class="nav-item dropdown">
+                <a class="nav-link d-lg-none" href="#"> Menu </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ '/' | absolute_url }}" id="menu-1">
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{{ 'bikes' | absolute_url }}"
+                  id="menu-2"
+                >
+                  Bikes
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{{ 'bike-shops' | absolute_url }}"
+                  id="menu-1"
+                >
+                  Bike Shops
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <!-- navigation close -->
+    </div>
+
+    {{ content }}
 
     <!-- footer -->
-    <div class="footer pb-3 mt-5 bg-dark text-body">
+    <div class="footer pb-3 bg-dark text-body">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -98,10 +244,20 @@ layout: compress
                   © {{ site.time | date: '%Y' }} {{ site.title }}
                 </li>
                 <li class="list-inline-item">
-                  <a href="#" class="text-reset"> Privacy Policy </a>
+                  <a
+                    href="{{ 'privacy-policy' | absolute_url }}"
+                    class="text-reset"
+                  >
+                    Privacy Policy
+                  </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#" class="text-reset"> Terms</a>
+                  <a
+                    href="{{ 'terms-of-service' | absolute_url }}"
+                    class="text-reset"
+                  >
+                    Terms</a
+                  >
                 </li>
                 <li class="list-inline-item">
                   <a
@@ -119,36 +275,10 @@ layout: compress
     </div>
 
     <!-- Libs JS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- Libs JS -->
+    <script src="{{ '/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' | absolute_url }}"></script>
     <script src="{{ '/assets/libs/jquery-slimscroll/jquery.slimscroll.min.js' | absolute_url }}"></script>
-    <script src="{{ '/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js' | absolute_url }}"></script>
-    <script src="{{ '/assets/libs/prismjs/prism.js' | absolute_url }}"></script>
     <script src="{{ '/assets/libs/leaflet/dist/leaflet.js' | absolute_url }}"></script>
-    <script src="{{ '/assets/libs/litepicker/dist/litepicker.js' | absolute_url }}"></script>
-    <script src="{{ '/assets/libs/ion-rangeslider/js/ion.rangeSlider.min.js' | absolute_url }}"></script>
-    <script src="{{ '/assets/libs/inputmask/dist/jquery.inputmask.min.js' | absolute_url }}"></script>
-
-    <!-- Lightbox2 JS https://lokeshdhakar.com/projects/lightbox2/ -->
     <script src="{{ '/assets/js/lightbox.min.js' | absolute_url }}"></script>
-
-    <!-- clipboard -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
 
     <!-- Theme JS -->
     <script src="{{ '/assets/js/theme.min.js' | absolute_url }}"></script>
