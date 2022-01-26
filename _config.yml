@@ -71,7 +71,7 @@ autopages:
       case: true
   collections:
     layouts:
-      - autopage-collection.html
+      - autopages-collection.html
     title: :coll
     permalink: /:coll/
     slugify:
