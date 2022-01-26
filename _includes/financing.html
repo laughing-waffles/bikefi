@@ -1,28 +1,40 @@
 <!-- financing -->
 <div class="mb-4" id="financing">
-	<h3 class="mb-4">Finance your new eBike</h3>
+	<h4 class="mb-3">Finance your new eBike</h4>
 	<div class="mb-5">
 
-Zip code: <input type="text" name="zip" id="zip" placeholder="Enter your zip code" /><input type="button" id="findfinance" value="See options" />
+    <!-- @Ed here is your original code
+    Zip code: 
+    <input type="text" name="zip" id="zip" placeholder="Enter your zip code" />
+    <input type="button" id="findfinance" value="See options" /> 
+    -->
 
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">Search for local savings</h4>
+      <p>Some localities offer special rebates or discounts for biek financing</p>
+      <hr>
+      <!-- @Ed check out validation rules https://getbootstrap.com/docs/5.1/forms/validation/ -->
+      <form>
+        <label for="zip" class="form-label">Zip Code</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="zip" name="zip" placeholder="Enter your zip code" aria-label="Enter your zip code" aria-describedby="zipHelpBlock">
+          <button class="btn btn-secondary" type="button" id="zipHelpBlock">Search</button>
+        </div>
+        <div id="zipHelpBlock" class="form-text">
+          We do not store your personal information. 
+        </div>
+      </form>
+    </div>
 
-			<div class="alert alert-info" role="alert">
-				Show default financing here. 
-			</div>
-		
-
-		<table class="table table-hover">
-
+    <table class="table table-hover">
 			<thead>
 				<tr>
 					<th scope="col">Name</th>
 					<th scope="col">Interest Rate</th>
 					<th scope="col">Eligability</th>
-					<th scope="col">Link</th>
-					
+					<th scope="col">Link</th>					
 				</tr>
 			</thead>
-
 			<tbody>
 				{% for item in site.data.financing.records %}
 				<tr>
