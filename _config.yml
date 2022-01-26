@@ -1,5 +1,5 @@
 title: "Financing Bike" # the name of your site, e.g. ACME Corp.
-tagline: "Finance an electric bike"
+tagline: "Finance your next set of wheels"
 email: contact@financing.bike
 description: >- # this means to ignore newlines until "baseurl:"
   Add description here
@@ -20,17 +20,8 @@ plugins:
   - jekyll-target-blank
 sass:
   sass_dir: assets/css
-indlude:
-  - _pages
-  - _posts
-  - _bike-shops
 exclude: 
   - scrapy
-collections:
-  ebikes:
-    output: true
-  bike-shops:
-    output: true
 defaults:
   - scope:
       path: ''
@@ -64,56 +55,28 @@ autopages:
   enabled: true
   categories: 
     layouts: 
-      - 'srp.html'
-    title: ':cat'
-    permalink: '/category/:cat'
+      - autopages-categories.html
+    title: :cat
+    permalink: /category/:cat
     slugify:
-      mode: 'pretty'
+      mode: default
       case: true
   tags:
     layouts: 
-      - 'srp.html'
-    title: ':tag'
-    permalink: '/tag/:tag'
+      - autopages-tags.html
+    title: :tag
+    permalink: /tag/:tag
     slugify:
-      mode: 'pretty'
+      mode: default
       case: true
   collections:
     layouts:
-      - srp.html
-    title: ':coll'
-    permalink: '/:coll/'
+      - autopage-collection.html
+    title: :coll
+    permalink: /:coll/
     slugify:
-      mode: 'pretty'
+      mode: default
       case: true
-compress_html:
-  clippings: all
-  comments:
-    - '<!-- '
-    - ' -->'
-  endings:
-    - html
-    - head
-    - body
-    - li
-    - dt
-    - dd
-    - rt
-    - rp
-    - optgroup
-    - option
-    - colgroup
-    - caption
-    - thead
-    - tbody
-    - tfoot
-    - tr
-    - td
-    - th
-  profile: false
-  blanklines: false
-  ignore:
-    envs: []
 cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
   cloud_name: judsonlmoore-com
   verbose: false
@@ -155,4 +118,32 @@ cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
       fallback_max_width: 250
       steps: 5
       attributes:
-        class: mt-3 img-fluid       
+        class: mt-3 img-fluid
+compress_html:
+  clippings: all
+  comments:
+    - '<!-- '
+    - ' -->'
+  endings:
+    - html
+    - head
+    - body
+    - li
+    - dt
+    - dd
+    - rt
+    - rp
+    - optgroup
+    - option
+    - colgroup
+    - caption
+    - thead
+    - tbody
+    - tfoot
+    - tr
+    - td
+    - th
+  profile: false
+  blanklines: false
+  ignore:
+    envs: []
