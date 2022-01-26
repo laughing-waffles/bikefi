@@ -1,6 +1,6 @@
 ---
-layout: srp
+layout: autopages-bikes
 pagination: 
   enabled: true
-  path: bikes
+  category: bikes
 --- 

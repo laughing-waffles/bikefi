@@ -48,19 +48,22 @@ layout: compress
 
     <script type="application/ld+json">
       {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "name": "{{ site.title }}",
+        "url": "{{ site.url | absolute_url }}",
         "dateModified": "{{ site.time | date_to_string }}",
-        "description": "{{ page.description }}",
+        "description": "{{ site.description }}",
         "datePublished": "{{ site.time | date_to_string }}",
-        "headline": "{{ page.title }}",
+        "headline": "{{ site.tagline }}",
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "{{ page.url | absolute_url }}"
-        },
-        "url": "{{ page.url | absolute_url }}"
+          "@id": "{{ site.url | absolute_url }}"
+        }
       }
     </script>
 
-    {% if page.layout == 'dealer-single' %}
+    {% if page.layout == 'dealers-single' %}
     <!-- BikeStore Schema -->
     <script type="application/ld+json">
       {

@@ -2,21 +2,18 @@
 layout: default
 ---
 
-<div class="py-6 py-lg-12 pt-5 pt-lg-12">
+<div class="py-6 py-lg-12 pt-8 pt-lg-12">
   <div class="container">
     <div class="row align-items-center">
 
-
       {% if page.categories.size > 0 %}
+      <!-- breadcrumbs -->
       <div id="breadcrumbs" class="my-5">
-
-        <!-- breadcrumbs -->
         <div class="custom-breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item  text-primary">
               <a href="{{ '/' | absolute_url }}">Home</a>
             </li>
-
             {% for item in page.categories %}
             {% if forloop.last %}
             <li class="breadcrumb-item active text-primary">
@@ -32,11 +29,10 @@ layout: default
             </li>
             {% endif %}
             {% endfor %}
-  
-
           </ol>
         </div>
       </div>
+      <!-- breadcrumbs -->
       {% endif %}
 
       <!-- image -->
@@ -75,22 +71,12 @@ layout: default
         {% endif %}
         <div class="d-flex">
 
-          <!-- Star ratings -->
-          {% if page.star_rating.size > 0 %}
-          <span class="font-12 mt-1">
-
-            {% assign num = page.star_rating %}
-            {% assign range = (1..num) %}
-            {% for i in range %}
-              <i class="fas fa-star text-warning"></i>
-            {% endfor %}
-          </span>
-          {% endif %}
+          {% include star-ratings.html %}
 
           <!-- rating -->
           <div>
-            {% if page.star_rating.size > 0 %}
-            <span class="ms-2 font-12 text-dark"> {{ page.star_rating }} 3 of 5 stars</span>
+            {% if page.star_rating.size >= 1 %}
+            <span class="ms-2 font-12 text-dark"> {{ page.star_rating }} of 5 stars</span>
             {% endif %}
             {% assign availability = page.availability %}
             {% include availability-badge.html %}
