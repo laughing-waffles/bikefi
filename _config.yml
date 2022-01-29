@@ -12,10 +12,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 permalink: pretty
 gems:
   - jekyll-paginate-v2
-  - jekyll-maps
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-target-blank
 sass:
@@ -36,7 +34,7 @@ defaults:
       path: _posts/bikes
     values:
       layout: shop-single
-      permalink: /:slugified_categories/:slug
+      permalink: /:slug
   - scope:
       path: assets/*
     values:
@@ -44,7 +42,7 @@ defaults:
 pagination:
   enabled: true
   per_page: 10
-#  permalink: /page-:num/
+  permalink: /page-:num/
   title: :title
   sort_field: title
   sort_reverse: true
@@ -57,7 +55,7 @@ autopages:
     layouts: 
       - autopages-categories.html
     title: :cat
-    permalink: /category/:cat
+    permalink: /:cat
     slugify:
       mode: default
       case: true
@@ -73,7 +71,7 @@ autopages:
     layouts:
       - autopages-collection.html
     title: :coll
-    permalink: /:coll/
+    permalink: /:coll
     slugify:
       mode: default
       case: true

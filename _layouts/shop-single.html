@@ -22,7 +22,7 @@ layout: default
             {% else %}
             <li class="breadcrumb-item text-primary">
               <a 
-                href="{{ item | slugify | prepend: '/category/' | absolute_url }}" 
+                href="{{ item | slugify | absolute_url }}" 
                 class="text-inherit ms-1">
                 {{ item }}
               </a>
@@ -71,6 +71,7 @@ layout: default
         {% endif %}
         <div class="d-flex">
 
+          {% assign stars = page.star_rating %}
           {% include star-ratings.html %}
 
           <!-- rating -->

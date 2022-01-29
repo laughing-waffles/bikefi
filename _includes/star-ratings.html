@@ -1,7 +1,7 @@
 <!-- Star ratings -->
 <span class="font-12 mt-1">
-  {% assign num = post.star_rating %}
-  {% assign range = (1..5) %}
+{% assign num = stars %}
+{% assign range = (1..5) %}
   {% for item in range limit: num %}
   <i class="fas fa-star text-warning"></i>
   {% endfor %}

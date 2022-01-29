@@ -8,11 +8,6 @@ layout: default
       <div class="col-xl-12 col-lg-12 col-md-12 col-12">
         <div class="pt-lg-18 pb-lg-14 pt-14 pb-12">
           <h1 class="h2 text-white">{{ page.title | capitalize }}</h1>
-
-
-
-
-
           <!-- breadcrumbs -->
           <div class="custom-breadcrumb">
             <ol class="breadcrumb">
@@ -20,7 +15,7 @@ layout: default
                 <a href="{{ '/' | absolute_url }}">Home</a>
               </li>
               <li class="breadcrumb-item active">
-                Bike Shops
+                eBikes
               </li>
             </ol>
           </div>
@@ -61,16 +56,25 @@ layout: default
                   <div class="card mb-4">
                     <div class="card-body">
                       <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                          {% assign availability = post.availability %}
+                          {% include availability-badge.html%}
+                        </div>
                       </div>
-                      <a href="{{ post.url | absolute_url }}"><img src="{{ post.ogimage }}" alt="" class="mt-3 img-fluid" /></a>
+                      {% if post.images.size > 0 %}
+                      <a href="{{ post.url | absolute_url }}">{% cloudinary srpProductImageHorizontal {{ post.images[0] }} alt="Image of a {{ post.title }}" %}</a>
+                      {% endif %}
                       <div class="mt-3">
-                        <a href="{{ post.url }}">
-                          <h4 class="mb-1">{{ post.name }}</h4>
+                        <a href="{{ post.url | absolute_url }}">
+                          <h4 class="mb-1">{{ post.title }}</h4>
                         </a>
-                        <p class="font-12 mb-2">{{ post.address }}</p>
-                        <span class="text-dark me-2">{{ post.msrp | money }}</span><span class="text-muted"><s>{{ post.msrp | money }}</s></span>
-                        {% include star-ratings.html %}
-                        <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm mt-3">View shop</a>
+                        <p class="font-12 mb-2">{{ post.manufacturer }}</p>
+                        <span class="text-dark me-2">{{ post.price_current }}</span>{% if post.msrp %}<span class="text-muted"><s>{{ post.msrp }}</s></span>{% endif %}
+                        <div class="font-12">
+                          {% assign stars = post.star_rating %}
+                          {% include star-ratings.html %}
+                        </div>
+                        <a href="{{ post.url | absolute_url }}" class="btn btn-outline-primary btn-sm mt-3">View bike</a>
                       </div>
                     </div>
                   </div>
@@ -91,21 +95,28 @@ layout: default
                       <div class="row align-items-center">
                         <div class="col-lg-4 col-md-12 col-12 text-center">
                           <div class="position-relative">
-                            <div class="badge bg-primary-soft position-absolute start-0">New</div>
+                            {% assign availability = post.availability %}
+                            {% include availability-badge.html%}
                           </div>
-                          <a href="{{ post.url }}"> <img src="{{ post.ogimage }}" alt="" class="mt-5 img-fluid" height="190" /></a>
+                          {% if post.images.size > 0 %}
+                          <a href="{{ post.url | absolute_url }}">{% cloudinary srpProductImageVertical {{ post.images[0] }} alt="Image of a {{ post.title }}" %}</a>
+                          {% endif %}
                         </div>
   
                         <div class="col-lg-4 col-md-12 col-12">
                           <div class="mt-3">
-                            <a href="#">
-                              <h4 class="mb-1">{{ post.name }}</h4>
+                            <a href="{{ post.url | absolute_url }}">
+                              <h4 class="mb-1">{{ post.title }}</h4>
                             </a>
-                            <p class="font-12 mb-2">at<span class="text-danger ms-1">{{ post.address }}</span></p>
+                            <p class="font-12 mb-2">by {{ post.make }}</p>
                           </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-12">
-                          <a href="{{ post.url | absolute_url }}" class="btn btn-outline-primary btn-sm me-2">View shop</a>
+                          <span class="text-dark me-2">{{ post.price_current }}</span>{% if post.price_msrp %}<span class="text-muted"><s>{{ post.price_msrp }}</s></span>{% endif %}
+                          <div class="font-12 mb-3">
+                            {% include star-ratings.html %}                            
+                          </div>
+                          <a href="{{ post.url | absolute_url }}" class="btn btn-outline-primary btn-sm me-2">View bike</a>
                         </div>
                       </div>
                     </div>
