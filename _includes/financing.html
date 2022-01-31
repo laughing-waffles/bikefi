@@ -30,10 +30,11 @@
 				</tr>
 			</thead>
 			<tbody id="fintable">
+        {% comment %}
+           @judson, I can't figure out why this IF statement isn't working to show Affirm. Any ideas?
+        {% endcomment %}
 				{% for item in site.data.financing.records %}
-        {{ item.fields["Eligibility State"] }}
-        {% assign states = item.fields["Eligibility State"] | split:"," %}
-        {% if states contains 'All' %}
+        {% if item.fields["Eligibility State"] == "All" %}
 				<tr>
 					<th scope="row">{{ item.fields["Name"] }}</th>
 					<td>{{ item.fields["Interest Rate"] }}</td>
@@ -78,9 +79,10 @@
       Cookies.set('zip', zipval, { expires: 356 });
       $.getJSON( "https://objectif.app/ebike/zipsearch.php?1=" + zipval, function( data ) {
         Cookies.set('state', data.state, { expires: 356 });
+        findLocal(Cookies.get('state'));
+        console.log('running');
       });
-      findLocal(Cookies.get('state'));
-      console.log('running');
+     
     });
   });
   
