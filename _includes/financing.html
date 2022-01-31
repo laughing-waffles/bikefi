@@ -3,22 +3,16 @@
 	<h4 class="mb-3">Finance your new eBike</h4>
 	<div class="mb-5">
 
-    <!-- @Ed here is your original code
-    Zip code: 
-    <input type="text" name="zip" id="zip" placeholder="Enter your zip code" />
-    <input type="button" id="findfinance" value="See options" /> 
-    -->
-
-    <div class="alert alert-info" role="alert">
+    <div class="alert alert-info" role="alert" id="searchlocal">
       <h4 class="alert-heading">Search for local savings</h4>
-      <p>Some localities offer special rebates or discounts for biek financing</p>
+      <p>Some cities offer special rebates or discounts for bike financing</p>
       <hr>
       <!-- @Ed check out validation rules https://getbootstrap.com/docs/5.1/forms/validation/ -->
       <form>
         <label for="zip" class="form-label">Zip Code</label>
         <div class="input-group mb-3">
           <input type="text" class="form-control" id="zip" name="zip" placeholder="Enter your zip code" aria-label="Enter your zip code" aria-describedby="zipHelpBlock">
-          <button class="btn btn-secondary" type="button" id="zipHelpBlock">Search</button>
+          <button class="btn btn-secondary" type="button" id="findfinance">Search</button>
         </div>
         <div id="zipHelpBlock" class="form-text">
           We do not store your personal information. 
@@ -35,14 +29,18 @@
 					<th scope="col">Link</th>					
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="fintable">
 				{% for item in site.data.financing.records %}
+        {{ item.fields["Eligibility State"] }}
+        {% assign states = item.fields["Eligibility State"] | split:"," %}
+        {% if states contains 'All' %}
 				<tr>
 					<th scope="row">{{ item.fields["Name"] }}</th>
 					<td>{{ item.fields["Interest Rate"] }}</td>
-					<td>{{ item.fields["Eligibility State"] }} <a href="{{ item.fields["Eligibility Link"] }}" alt="Read more eligability information from {{ item.fields["Name"] }}" class="text-muted"><i class="fas fa-info-circle"></i></a></td>
-					<td><a href="{{ item.fields["Loan Link"] }}">Apply</a></td>
+					<td><a href="{{ item.fields["Eligibility Link"] }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Read more eligibility information from {{ item.fields["Name"] }}" class="text-muted"><i class="fas fa-info-circle"></i></a></td>
+					<td><a href="{{ item.fields["Loan Link"] }}">Learn More</a></td>
 				</tr>
+        {% endif %}
 				{% endfor %}
 			</tbody>
 		</table>
@@ -54,17 +52,35 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 <script>
   var financingData = {{ site.data.financing | jsonify }};
+  function findLocal(state) {
+    for (var i = 0; i < Object.keys(financingData['records']).length; i++) { 
+        if (financingData['records'][i]['fields']["Eligibility State"].includes(state)) {
+          $( "#fintable" ).prepend( '<tr><th scope="row">' +  financingData['records'][i]['fields']['Name'] + '</th><td>' + financingData['records'][i]['fields']['Interest Rate'] + '</td><td><a href="' + financingData['records'][i]['fields']['Eligibility Link'] + '" alt="Read more eligability information from ' + financingData['records'][i]['fields']['Name'] + '" class="text-muted"><i class="fas fa-info-circle"></i></a></td><td><a href="' + financingData['records'][i]['fields']['Loan Link'] + '">Learn More</a></td></tr>' );
+          
+        }
+      } 
+    }
+
+
+
   $( document ).ready(function() {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
+    if (Cookies.get('state')) {
+      $('#searchlocal').hide();
+      findLocal(Cookies.get('state'));
+    }
+    
     $( "#findfinance" ).click(function() {
       var zipval = $('#zip').val();
       Cookies.set('zip', zipval, { expires: 356 });
       $.getJSON( "https://objectif.app/ebike/zipsearch.php?1=" + zipval, function( data ) {
         Cookies.set('state', data.state, { expires: 356 });
       });
-      console.log($.inArray(Cookies.get('state'), financingData));
-      var returnedData = $.grep(financingData.records, function (element, index) {
-          return element.fields['Eligibility State'].indexOf("VT") >= 0;
-      });
+      findLocal(Cookies.get('state'));
+      console.log('running');
     });
   });
   
