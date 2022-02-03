@@ -35,9 +35,9 @@
            @ed I think the answer is in here but I'm not finding it yet https://jekyllrb.com/docs/liquid/filters/
         {% endcomment %}
 
-        {% assign eligability == site.data.financing.records | where: "Eligibility State", "All" %}
-        {% if eligability == "All" %}
-        {% for item in site.data.financing.records %}
+        {% assign eligibility == site.data.financing.records | where_exp: "item","fields['Eligibility State'] contains 'All'" %}
+        {{ eligibility | jsonify }}
+        {% for item in eligibility %}
 				<tr>
 					<th scope="row">{{ item.fields["Name"] }}</th>
 					<td>{{ item.fields["Interest Rate"] }}</td>
@@ -45,7 +45,6 @@
 					<td><a href="{{ item.fields["Loan Link"] }}">Learn More</a></td>
 				</tr>
 				{% endfor %}
-        {% endif %}
 			</tbody>
 		</table>
 
