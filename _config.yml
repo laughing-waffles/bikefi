@@ -55,7 +55,7 @@ autopages:
     layouts: 
       - autopages-categories.html
     title: :cat
-    permalink: /:cat
+    permalink: /category/:cat
     slugify:
       mode: default
       case: true

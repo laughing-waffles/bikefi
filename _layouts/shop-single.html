@@ -114,6 +114,10 @@ layout: default
             <div class="col-7">{{ item.last }}</div>
           </div>
           {% endfor %}
+          <div class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1">
+            <div class="col-5 text-dark"><b>Updated</b></div>
+            <div class="col-7">{{ post.date | date: "%b %d, %Y" }}</div>
+          </div>
 
         </div>
       </div>
