@@ -51,12 +51,20 @@
 
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 <script>
+  
+  function runTooltip() {
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  });
+}
+  
   var financingData = {{ site.data.financing | jsonify }};
   function findLocal(state) {
     $('.inserteddyn').remove();
     for (var i = 0; i < Object.keys(financingData['records']).length; i++) { 
         if (financingData['records'][i]['fields']["Eligibility State"].includes(state)) {
-          $( "#fintable" ).append( '<tr class="inserteddyn"><th scope="row">' +  financingData['records'][i]['fields']['Name'] + '</th><td>' + financingData['records'][i]['fields']['Interest Rate'] + '</td><td><a href="' + financingData['records'][i]['fields']['Eligibility Link'] + '" alt="Read more eligability information from ' + financingData['records'][i]['fields']['Name'] + '" class="text-muted"><i class="fas fa-info-circle"></i></a></td><td><a href="' + financingData['records'][i]['fields']['Loan Link'] + '">Learn More</a></td></tr>' );
+          $( "#fintable" ).append( '<tr class="inserteddyn"><th scope="row">' +  financingData['records'][i]['fields']['Name'] + '</th><td>' + financingData['records'][i]['fields']['Interest Rate'] + '</td><td><a href="' + financingData['records'][i]['fields']['Eligibility Link'] + '" data-bs-toggle="tooltip" data-bs-placement="top" alt="Read more eligability information from ' + financingData['records'][i]['fields']['Name'] + '" class="text-muted"><i class="fas fa-info-circle"></i></a></td><td><a href="' + financingData['records'][i]['fields']['Loan Link'] + '">Learn More</a></td></tr>' );
           
         }
       }
@@ -70,13 +78,7 @@
 
   $( document ).ready(function() {
     $('#changelocal').hide();
-    function runTooltip() {
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl)
-    });
-  }
-  runTooltip();
+    runTooltip();
     if (Cookies.get('state')) {
       $('#searchlocal').hide();
       findLocal(Cookies.get('state'));
