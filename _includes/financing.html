@@ -30,25 +30,11 @@
 				</tr>
 			</thead>
 			<tbody id="fintable">
-        {% comment %}
-           @judson, I can't figure out why this IF statement isn't working to show Affirm. Any ideas?
-           @ed I think the answer is in here but I'm not finding it yet https://jekyllrb.com/docs/liquid/filters/
-        {% endcomment %}
-        
-        {% assign data == item in site.data.fianncing.records %}
-        {% assign eligibility == data.records | where_exp: "item","item.id contains 'recDf9P2Ny21EAjoY'" %}
-{{ eligibility | jsonify }}
-        
-        
-        works:
-        {{ site.data.financing.records | where_exp: "item","item.fields['Eligibility State'] contains 'All'" }}
-
-        doesn't work:
-        {% assign eligibility == site.data.financing.records | where_exp: "item","item.id contains 'recDf9P2Ny21EAjoY'" %}
+        {% assign eligibility = site.data.financing.records | where_exp: "item","item.fields['Eligibility State'] contains 'All'" %}
         
         {% for item in eligibility %}
 				<tr>
-					<th scope="row">{{ item.fields["Name"] }}</th>
+					<th data-id="{{ item.id }}" scope="row">{{ item.fields["Name"] }}</th>
 					<td>{{ item.fields["Interest Rate"] }}</td>
 					<td><a href="{{ item.fields["Eligibility Link"] }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Read more eligibility information from {{ item.fields["Name"] }}" class="text-muted"><i class="fas fa-info-circle"></i></a></td>
 					<td><a href="{{ item.fields["Loan Link"] }}">Learn More</a></td>
