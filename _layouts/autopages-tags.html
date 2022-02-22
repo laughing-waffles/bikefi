@@ -61,8 +61,8 @@ layout: default
                           {% include availability-badge.html%}
                         </div>
                       </div>
-                      {% if post.images.size > 0 %}
-                      <a href="{{ post.url | absolute_url }}">{% cloudinary srpProductImageHorizontal {{ post.images[0] }} alt="Image of a {{ post.title }}" %}</a>
+                      {% if post.images_cached.size > 0 %}
+                      <a href="{{ post.url | absolute_url }}">{% cloudinary srpProductImageHorizontal {{ post.images_cached[0] }} alt="Image of a {{ post.title }}" %}</a>
                       {% endif %}
                       <div class="mt-3">
                         <a href="{{ post.url | absolute_url }}">
@@ -98,8 +98,8 @@ layout: default
                             {% assign availability = post.availability %}
                             {% include availability-badge.html%}
                           </div>
-                          {% if post.images.size > 0 %}
-                          <a href="{{ post.url | absolute_url }}">{% cloudinary srpProductImageVertical {{ post.images[0] }} alt="Image of a {{ post.title }}" %}</a>
+                          {% if post.images_cached.size > 0 %}
+                          <a href="{{ post.url | absolute_url }}">{% cloudinary srpProductImageVertical {{ post.images_cached[0] }} alt="Image of a {{ post.title }}" %}</a>
                           {% endif %}
                         </div>
   

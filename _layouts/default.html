@@ -95,7 +95,7 @@ layout: compress
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": "{{ page.title }}",
-        "image": "{{ page.images[0] }}",
+        "image": "{{ page.images_cached[0] }}",
         "description": "{{ page.description }}",
         "brand": {
           "@type": "Thing",
@@ -212,7 +212,7 @@ layout: compress
               <li class="nav-item">
                 <a
                   class="nav-link"
-                  href="{{ 'bikes' | absolute_url }}"
+                  href="{{ '/category/bikes/' | absolute_url }}"
                   id="menu-2"
                 >
                   Bikes

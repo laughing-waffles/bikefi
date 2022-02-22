@@ -34,7 +34,7 @@ defaults:
       path: _posts/bikes
     values:
       layout: shop-single
-      permalink: /:slug
+      permalink: /bike/:slug
   - scope:
       path: assets/*
     values:
@@ -78,8 +78,8 @@ autopages:
 cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
   cloud_name: judsonlmoore-com
   verbose: false
-  only_prod: false
-  origin_url: https://www.jensonusa.com
+  only_prod: true
+  origin_url: https://cdn.financing.bike
   presets:
     default:
       min_width: 320

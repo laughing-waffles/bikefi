@@ -16,9 +16,9 @@ class SpiderSpider(CrawlSpider):
 
             # GET Product Data
             id = response.xpath('//span[@itemprop="productId"]/text()').get()
-            url_relative = response.xpath('//div[@class="breadcrumb"]/div/span/span[9]/a/@href').get()
+            url_relative = response.xpath('//div[@class="breadcrumb"]/div/span/span[last()]/a/@href').get()
             url = response.urljoin(url_relative)
-            category = response.xpath('//div[@class="breadcrumb"]/div/span/span/a/span/text()').getall()
+            category = response.xpath('//div[@class="breadcrumb"]/div/span/span[position()<7]/a/span/text()').getall()
             brand_logo_relative = response.xpath('//div[@class="product-brand-icon visible-lg visible-md pull-left"]/a/img/@src').get()
             brand_logo = response.urljoin(brand_logo_relative)
             colors = response.xpath('//div[contains(@class, "color")]/@data-attr-color').getall()
@@ -32,10 +32,8 @@ class SpiderSpider(CrawlSpider):
             make = response.xpath('//div[@class="product-brand-icon visible-lg visible-md pull-left"]/a/img/@alt').get()
             model = response.xpath('//span[@class="seProductBrandName"]/following-sibling::span/text()').get()
             images = response.xpath('//div[contains(@class, "product-main-image")][1]/div/a/@href').getall()
-            
-
-
             video = response.xpath('//div[contains(@class, "is-video")]/p/iframe/@src').get()
+            #sizes = response.xpath('//a[@class="prod-attsel-size"]/text()').getall()
             attribute_rows = response.css('table.spec tbody tr')
             attributes = {}
             for row in attribute_rows:
@@ -97,6 +95,7 @@ class SpiderSpider(CrawlSpider):
                     'availability': availability,
                     'content': description,
                     'images': images,
+                    #'sizes': sizes,
                     'video': video,
                     'colors': colors,
                     'attributes': attributes,
