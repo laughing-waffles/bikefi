@@ -1,13 +1,9 @@
----
-layout: default
----
-
-<div class="bg-shape bg-dark">
+<div class="bg-shape bg-dark" >
   <div class="container">
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-12">
         <div class="pt-lg-18 pb-lg-14 pt-14 pb-12">
-          <h1 class="h2 text-white">{{ page.title | capitalize }}</h1>
+          <h1 class="h2 text-white">{{ page.autopages.display_name }}</h1>
           <!-- breadcrumbs -->
           <div class="custom-breadcrumb">
             <ol class="breadcrumb">
@@ -15,7 +11,7 @@ layout: default
                 <a href="{{ '/' | absolute_url }}">Home</a>
               </li>
               <li class="breadcrumb-item active">
-                Bike Shops
+                {{ page.autopages.display_name }}
               </li>
             </ol>
           </div>
@@ -27,6 +23,25 @@ layout: default
 
 <div class="py-6 py-lg-12">
     <div class="container">
+
+
+    <!-- navbar scroll -->
+    <div class="row d-flex align-items-center mb-5">
+      <div class="col">
+        <div class="navbar-scroll">
+          <ul>
+            {% for category in site.categories %} 
+            {% assign cat_name = category[0] %} 
+            <li>
+              <a href="{{ cat_name | slugify | absolute_url }}">{{ cat_name | join: " " }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
       <div class="row">
         <div class="col">
           <!-- result and filter -->
@@ -108,12 +123,13 @@ layout: default
                             <a href="{{ post.url | absolute_url }}">
                               <h4 class="mb-1">{{ post.title }}</h4>
                             </a>
-                            <p class="font-12 mb-2">by {{ post.make }}</p>
+                            <p class="font-12 mb-2">by<span class="ms-1">{{ post.make }}</span></p>
                           </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-12">
                           <span class="text-dark me-2">{{ post.price_current }}</span>{% if post.price_msrp %}<span class="text-muted"><s>{{ post.price_msrp }}</s></span>{% endif %}
                           <div class="font-12 mb-3">
+                            {% assign stars = post.star_rating %}
                             {% include star-ratings.html %}                            
                           </div>
                           <a href="{{ post.url | absolute_url }}" class="btn btn-outline-primary btn-sm me-2">View bike</a>
@@ -131,5 +147,6 @@ layout: default
   
           </div>
         </div>
+      </div>
     </div>
   </div>

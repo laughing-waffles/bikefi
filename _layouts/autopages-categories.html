@@ -27,6 +27,25 @@ layout: default
 
 <div class="py-6 py-lg-12">
     <div class="container">
+
+
+    <!-- navbar scroll -->
+    <div class="row d-flex align-items-center mb-5">
+      <div class="col">
+        <div class="navbar-scroll">
+          <ul>
+            {% for category in site.categories %} 
+            {% assign cat_name = category[0] %} 
+            <li>
+              <a href="{{ cat_name | slugify | absolute_url }}">{{ cat_name | join: " " }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
       <div class="row">
         <div class="col">
           <!-- result and filter -->

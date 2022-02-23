@@ -54,7 +54,7 @@ autopages:
   enabled: true
   categories: 
     layouts: 
-      - autopages-categories.html
+      - srp.html
     title: :cat
     permalink: /:cat
     slugify:
@@ -62,7 +62,7 @@ autopages:
       case: true
   tags:
     layouts: 
-      - autopages-tags.html
+      - srp.html
     title: :tag
     permalink: /tag/:tag
     slugify:
@@ -70,7 +70,7 @@ autopages:
       case: true
   collections:
     layouts:
-      - autopages-collection.html
+      - srp.html
     title: :coll
     permalink: /:coll
     slugify:
