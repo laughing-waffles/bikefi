@@ -3,12 +3,12 @@
 	<h4 class="mb-3">Finance your new eBike</h4>
 	<div class="mb-5">
 
-    <div class="alert alert-info" role="alert" id="searchlocal">
+    <div class="alert alert-info" role="alert">
       <h4 class="alert-heading">Search for local savings</h4>
       <p>Some cities offer special rebates or discounts for bike financing</p>
       <hr>
       <!-- @Ed check out validation rules https://getbootstrap.com/docs/5.1/forms/validation/ -->
-      <form>
+      <form id="searchlocal">
         <label for="zip" class="form-label">Zip Code</label>
         <div class="input-group mb-3">
           <input type="text" class="form-control" id="zip" name="zip" placeholder="Enter your zip code" aria-label="Enter your zip code" aria-describedby="zipHelpBlock">
@@ -18,13 +18,10 @@
           We do not store your personal information. 
         </div>
       </form>
-    </div>
-
-
-    <div id="changelocal">
-      <div class="alert alert-info" role="alert">
-        <span id="localname"></span> Change location?
-      </div>
+      <div id="changelocal">
+        <p>Showing offers from zip code <span id="localname" class="fw-bold"></span></p>
+        <span role="button" tabindex="0"><u class="text-primary">Change location</u></span>
+      </div>  
     </div>
 
     <table class="table table-hover">
@@ -52,7 +49,6 @@
 
 	</div>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 <script>
