@@ -44,7 +44,7 @@
 					<th scope="row">{{ item.fields["Name"] }}</th>
 					<td>{{ item.fields["Interest Rate"] }}</td>
 					<td><a href="{{ item.fields["Eligibility Link"] }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Read more eligibility information from {{ item.fields["Name"] }}" class="text-muted"><i class="fas fa-info-circle"></i></a></td>
-					<td><a href="{{ item.fields["Loan Link"] }}">Learn More</a></td>
+					<td><a href="{{ item.fields["Loan Link"] }}" target="_blank">Learn More</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>
@@ -69,7 +69,7 @@
     $('.inserteddyn').remove();
     for (var i = 0; i < Object.keys(financingData['records']).length; i++) { 
         if (financingData['records'][i]['fields']["Eligibility State"].includes(state)) {
-          $( "#fintable" ).append( '<tr class="inserteddyn"><th scope="row">' +  financingData['records'][i]['fields']['Name'] + '</th><td>' + financingData['records'][i]['fields']['Interest Rate'] + '</td><td><a href="' + financingData['records'][i]['fields']['Eligibility Link'] + '" data-bs-toggle="tooltip" data-bs-placement="top" alt="Read more eligability information from ' + financingData['records'][i]['fields']['Name'] + '" class="text-muted"><i class="fas fa-info-circle"></i></a></td><td><a href="' + financingData['records'][i]['fields']['Loan Link'] + '">Learn More</a></td></tr>' );
+          $( "#fintable" ).append( '<tr class="inserteddyn"><th scope="row">' +  financingData['records'][i]['fields']['Name'] + '</th><td>' + financingData['records'][i]['fields']['Interest Rate'] + '</td><td><a href="' + financingData['records'][i]['fields']['Eligibility Link'] + '" data-bs-toggle="tooltip" data-bs-placement="top" alt="Read more eligability information from ' + financingData['records'][i]['fields']['Name'] + '" class="text-muted"><i class="fas fa-info-circle"></i></a></td><td><a href="' + financingData['records'][i]['fields']['Loan Link'] + '" target="_blank">Learn More</a></td></tr>' );
           
         }
       }
