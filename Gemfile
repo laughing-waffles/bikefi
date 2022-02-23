@@ -21,4 +21,5 @@ group :jekyll_plugins do
   gem "jekyll-target-blank"
   gem "jekyll-cloudinary"
   gem "jekyll-paginate-v2"
+  gem "jekyll-include-cache"
 end

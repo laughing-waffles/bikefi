@@ -16,6 +16,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-target-blank
+  - jekyll-include-cache
 sass:
   sass_dir: assets/css
 exclude: 
@@ -55,7 +56,7 @@ autopages:
     layouts: 
       - autopages-categories.html
     title: :cat
-    permalink: /category/:cat
+    permalink: /:cat
     slugify:
       mode: default
       case: true

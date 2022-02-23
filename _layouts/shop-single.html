@@ -48,18 +48,21 @@ layout: default
             {% endfor %}
           </div>
         </div>
-        
+ 
         {% if page.images_cached.size > 1 %}
-        <nav id="productCarouselNavbar" class="navbar navbar-light">
-          <ul class="navbar-scroll list-inline">
-            {% for image in page.images_cached %}
-            <li data-bs-target="#productCarousel" data-bs-slide-to="{{ forloop.index0 }}" class="nav-item list-inline-item shadow-sm m-3{% if forloop.first %} active{% endif %}">
-              {% cloudinary productCarouselNavbar {{ image }} alt="Click here to see a larger photo of a {{ page.title }}" %}
-            </li>
-            {% endfor %}
-          </ul>
-        </nav>
+        <div class="row d-flex">
+          <div class="navbar-scroll">
+            <ul>
+              {% for image in page.images_cached %}
+              <li data-bs-target="#productCarousel" data-bs-slide-to="{{ forloop.index0 }}" class="shadow-sm m-3">
+                {% cloudinary productCarouselNavbar {{ image }} alt="Thumbnail image {{ forloop.index }} of a {{ page.title }}" %}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
         {% endif %}
+        
 
       </div>
 
