@@ -84,8 +84,20 @@ layout: default
       </div>
       <!-- event sidebar -->
       <div class="col-lg-4 col-md-4 col-12">
+
+        {% if page.ogimage %}
+        <!-- logo -->
+        <div class="card mb-4">
+          <div class="card-body p-4">
+            <div class="mb-4">
+              {% cloudinary {{page.ogimage}} alt="{{ page.title }}" %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
         <div class="mb-5">
-          <h3 class="mb-4">Event Information</h3>
+          <h3 class="mb-4">Bike Shop Information</h3>
           <div id="map" style="height: 350px"></div>
         </div>
         <!-- address -->

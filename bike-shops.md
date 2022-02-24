@@ -1,6 +1,7 @@
 ---
-layout: autopages-bike-shops
-title: Bike shops
+layout: srp
+title: Bike Shops
 pagination: 
   enabled: true
---- 
+  collection: posts
+---

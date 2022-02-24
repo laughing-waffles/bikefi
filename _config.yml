@@ -17,6 +17,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-target-blank
   - jekyll-include-cache
+collections:
+  bike-shops:
+    output: true
 sass:
   sass_dir: assets/css
 exclude: 
