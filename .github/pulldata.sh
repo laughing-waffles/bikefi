@@ -15,6 +15,7 @@ rm -rf _posts/bikes/
 rm -rf _posts/bike-shops/
 curl -X GET "https://objectif.app/ebike/generatemd.php" > temp.zip
 unzip temp.zip
+mkdir _posts/
 mv temp/* _posts/
 rm -rf temp
 rm -rf temp.zip
