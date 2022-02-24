@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-12">
         <div class="pt-lg-18 pb-lg-14 pt-14 pb-12">
-          <h1 class="h2 text-white">{{ page.autopages.display_name }}</h1>
+          <h1 class="h2 text-white">{{ page.autopages.display_name | replace: "-", " " }}</h1>
           <!-- breadcrumbs -->
           <div class="custom-breadcrumb">
             <ol class="breadcrumb">
@@ -11,7 +11,7 @@
                 <a href="{{ '/' | absolute_url }}">Home</a>
               </li>
               <li class="breadcrumb-item active">
-                {{ page.autopages.display_name }}
+                {{ page.autopages.display_name | replace: "-", " " }}
               </li>
             </ol>
           </div>
