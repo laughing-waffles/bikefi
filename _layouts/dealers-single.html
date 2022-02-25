@@ -20,15 +20,15 @@ layout: default
           <h1 class="text-white mb-lg-3 mb-2 display-4">{{ page.name }}</h1>
           <p class="text-light mb-5 lead">{{ page.vicinity }}</p>
           <div class="d-grid gap-2 d-md-block">
-						{% if page.website %}
-						<a href="{{page.website}}" class="btn btn-warning btn-lg">
-							Shop bike inventory
-						</a>
-						{% endif %}
-						<a href="#financing" class="btn btn-outline-light btn-lg">
-							See financing options
-						</a>
-					</div>
+            {% if page.website %}
+            <a href="{{page.website}}" class="btn btn-warning btn-lg">
+              Shop bike inventory
+            </a>
+            {% endif %}
+            <a href="#financing" class="btn btn-outline-light btn-lg">
+              See financing options
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -39,12 +39,16 @@ layout: default
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-12">
-
         <div class="mb-10">
           {% if page.ogdescription %}
           <p class="lead text-dark">{{ page.ogdescription }}</p>
           {% endif %}
-          <p>Visit {{ page.name }} in {{ page.neighborhood }} today, or give them a quick call at {{ page.phone }}. Alternatively, see their inventory of bikes and accessories on the web on their website at <a href="{{ page.website }}">{{ page.website }}</a>.</p>
+          <p>
+            Visit {{ page.name }} in {{ page.neighborhood }} today, or give them
+            a quick call at {{ page.phone }}. Alternatively, see their inventory
+            of bikes and accessories on the web on their website at
+            <a href="{{ page.website }}">{{ page.website }}</a>.
+          </p>
         </div>
 
         {% include financing.html %}
@@ -66,17 +70,16 @@ layout: default
         <!-- event video -->
 
         {% include faq.html %}
-
       </div>
       <!-- event sidebar -->
       <div class="col-lg-4 col-md-4 col-12">
-
         {% if page.ogimage %}
         <!-- logo -->
         <div class="card mb-4">
           <div class="card-body p-4">
             <div class="mb-4">
-              {% cloudinary productImage {{page.ogimage}} alt="{{ page.title }}" %}
+              {% cloudinary productImage {{page.ogimage}} alt="{{ page.title }}"
+              %}
             </div>
           </div>
         </div>
