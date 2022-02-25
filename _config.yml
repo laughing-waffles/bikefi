@@ -29,17 +29,16 @@ defaults:
       path: ''
     values:
       layout: page
-      permalink: "/:basename/"
   - scope:
       path: _posts/bike-shops
     values:
       layout: dealers-single
-      permalink: /bike-shops/:slug
+      permalink: /bike-shops/:slug/
   - scope:
       path: _posts/bikes
     values:
       layout: shop-single
-      permalink: /bike/:slug
+      permalink: /bikes/:slug/
   - scope:
       path: assets/*
     values:
@@ -60,7 +59,7 @@ autopages:
     layouts: 
       - srp.html
     title: :cat
-    permalink: /:cat
+    permalink: /:cat/
     slugify:
       mode: default
       case: true
@@ -68,7 +67,7 @@ autopages:
     layouts: 
       - srp.html
     title: :tag
-    permalink: /tag/:tag
+    permalink: /tag/:tag/
     slugify:
       mode: default
       case: true
@@ -76,7 +75,7 @@ autopages:
     layouts:
       - srp.html
     title: :coll
-    permalink: /:coll
+    permalink: /:coll/
     slugify:
       mode: default
       case: true
