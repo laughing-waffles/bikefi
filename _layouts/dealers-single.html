@@ -1,5 +1,6 @@
 ---
 layout: default
+hero-image: /assets/images/shop-single-hero-default.jpeg
 ---
 
 <div
@@ -10,9 +11,12 @@ layout: default
         rgba(30, 24, 53, 0.4) 0%,
         rgba(30, 24, 53, 0.4) 90.16%
       ),
-      url(https://images.unsplash.com/photo-1587932690919-ca4bead01ff5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1676&q=80);
-  "
->
+      {% if jekyll.environment == 'production' %}
+      url(https://res.cloudinary.com/{{ site.cloudinary.cloud_name }}/image/fetch/c_limit,f_auto,q_auto,w_1250/{{ layout.hero-image | absolute_url }});
+      {% else %}
+      url({{ layout.hero-image | absolute_url }});
+      {% endif %}
+  ">
   <div class="container">
     <div class="pt-lg-20 pb-lg-19 pt-18 pb-16 text-center">
       <div class="row">
@@ -55,21 +59,35 @@ layout: default
 
         <div class="mb-8">
           <!-- <h3 class="mb-4">Event Video</h3> -->
+          <!-- Embedded YouTube video Markup with the lazy class -->
           <div class="ratio ratio-16x9">
             <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube-nocookie.com/embed/6MM6MbDISQI?controls=0"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+                class="lazy" 
+                data-src="https://www.youtube-nocookie.com/embed/6MM6MbDISQI?controls=0" 
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+            >
+            </iframe>
           </div>
+          <script>
+          // Set the options globally
+          // to make LazyLoad self-initialize
+          window.lazyLoadOptions = {
+              // Your custom settings go here
+          };
+
+          // Listen to the initialization event
+          // and get the instance of LazyLoad
+          window.addEventListener("LazyLoad::Initialized", function (event) {
+              window.lazyLoadInstance = event.detail.instance;
+          }, false);
+          </script>
         </div>
         <!-- event video -->
 
         {% include faq.html %}
+
       </div>
       <!-- event sidebar -->
       <div class="col-lg-4 col-md-4 col-12">
@@ -78,8 +96,7 @@ layout: default
         <div class="card mb-4">
           <div class="card-body p-4">
             <div class="mb-4">
-              {% cloudinary productImage {{page.ogimage}} alt="{{ page.title }}"
-              %}
+              {% cloudinary productImage {{page.ogimage}} alt="{{ page.title }}" %}
             </div>
           </div>
         </div>

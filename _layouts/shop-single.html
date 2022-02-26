@@ -1,5 +1,6 @@
 ---
 layout: default
+hero-image: /assets/images/shop-single-hero-default.jpeg
 ---
 
 <div class="py-6 py-lg-12 pt-8 pt-lg-12">
@@ -131,7 +132,28 @@ layout: default
         {{ content | markdownify }}
 
         {% if page.video %}
-        <iframe title="vimeo-player" src="{{ page.video }}" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+        <!-- Embedded YouTube video Markup with the lazy class -->
+        <iframe
+            class="lazy" 
+            data-src="{{ page.video }}" 
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+        >
+        </iframe>
+        <script>
+        // Set the options globally
+        // to make LazyLoad self-initialize
+        window.lazyLoadOptions = {
+            // Your custom settings go here
+        };
+
+        // Listen to the initialization event
+        // and get the instance of LazyLoad
+        window.addEventListener("LazyLoad::Initialized", function (event) {
+            window.lazyLoadInstance = event.detail.instance;
+        }, false);
+        </script>
         {% endif %}
 
         {% if site.discounts %}
