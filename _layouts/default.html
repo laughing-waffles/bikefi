@@ -121,24 +121,20 @@ layout: compress
     {% endif %}
 
     <!-- Libs CSS -->
-    <!-- Lightbox2 CSS https://lokeshdhakar.com/projects/lightbox2/ -->
-    <link
-      rel="stylesheet"
-      href="{{'/assets/css/lightbox.min.css' | absolute_url }}"
-    />
-
     <!-- Theme CSS -->
     <link
       rel="stylesheet"
       href="{{'/assets/css/theme.min.css' | absolute_url }}"
     />
 
-    <!-- Google Ad Sense -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7935910456441748"
-      crossorigin="anonymous"
-    ></script>
+    {% if page.url contains "bikes" %}
+    <!-- Lightbox2 CSS https://lokeshdhakar.com/projects/lightbox2/ -->
+    <link
+      rel="stylesheet"
+      href="{{'/assets/css/lightbox.min.css' | absolute_url }}"
+    />
+    {% endif %}
+
   </head>
 
   {% capture layout %} {% if page.layout %}layout-{{ page.layout }} {% endif %}
@@ -280,10 +276,22 @@ layout: compress
     <!-- Libs JS -->
     <script src="{{ '/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' | absolute_url }}"></script>
     <script src="{{ '/assets/libs/jquery-slimscroll/jquery.slimscroll.min.js' | absolute_url }}"></script>
-    <script src="{{ '/assets/libs/leaflet/dist/leaflet.js' | absolute_url }}"></script>
-    <script src="{{ '/assets/js/lightbox.min.js' | absolute_url }}"></script>
 
     <!-- Theme JS -->
     <script src="{{ '/assets/js/theme.min.js' | absolute_url }}"></script>
+    
+    {% if page.url contains "bike-shops" %}
+    <script src="{{ '/assets/libs/leaflet/dist/leaflet.js' | absolute_url }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@latest/dist/lazyload.min.js" async></script>
+    {% endif %}
+
+    {% if page.url contains "bikes" %}
+    <script src="{{ '/assets/js/lightbox.min.js' | absolute_url }}"></script>
+    {% endif %}
+
+    {% if page.video %}
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@latest/dist/lazyload.min.js" async></script>
+    {% endif %}
+
   </body>
 </html>
