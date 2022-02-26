@@ -48,10 +48,9 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
           <p class="lead text-dark">{{ page.ogdescription }}</p>
           {% endif %}
           <p>
-            Visit {{ page.name }} in {{ page.neighborhood }} today, or give them
-            a quick call at {{ page.phone }}. Alternatively, see their inventory
-            of bikes and accessories on the web on their website at
-            <a href="{{ page.website }}">{{ page.website }}</a>.
+            Visit {{ page.name }} in {{ page.neighborhood }} today{% if page.phone %}, or give them
+            a quick call at {{ page.phone }}{% endif %}.{% if page.website %} Alternatively, see their inventory
+            of bikes and accessories on the web on their website at <a href="{{ page.website }}">{{ page.website }}</a>.{% endif %}
           </p>
         </div>
 
