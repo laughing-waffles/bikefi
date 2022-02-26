@@ -1,9 +1,19 @@
 ---
 layout: default
+hero-image: /assets/images/home-hero.jpeg
 ---
 
 <!-- hero section -->
-<div class="py-lg-19 pt-14 pb-10 bg-cover" style="background-image: linear-gradient(180deg, rgba(30, 24, 53, 0.4) 0%, rgba(30, 24, 53, 0.4) 90.16%), url(https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2348&q=80);">
+<div 
+  class="py-lg-19 pt-14 pb-10 bg-cover" 
+  style="
+    background-image: linear-gradient(180deg, rgba(30, 24, 53, 0.4) 0%, rgba(30, 24, 53, 0.4) 90.16%), 
+    {% if jekyll.environment == 'production' %}
+    url(https://res.cloudinary.com/{{ site.cloudinary.cloud_name }}/image/fetch/c_limit,f_auto,q_auto,w_1250/{{ layout.hero-image | absolute_url }});
+    {% else %}
+    url({{ layout.hero-image | absolute_url }});
+    {% endif %}
+    ">
   <div class="container">
     <div class="row">
       <div class="col-xxl-5 col-lg-6 col-md-8 col-12">
