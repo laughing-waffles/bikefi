@@ -22,4 +22,5 @@ group :jekyll_plugins do
   gem "jekyll-cloudinary"
   gem "jekyll-paginate-v2"
   gem "jekyll-include-cache"
+  gem "jekyll-algolia", '~> 1.0'
 end
