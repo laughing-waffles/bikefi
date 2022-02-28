@@ -124,6 +124,9 @@ cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
 algolia:
   application_id: 'UF8CKBPQYZ'
   index_name: 'financing.bike'
+  search_only_api_key: '904e148249c3c17bb57ec463208cda93'
+
+
 compress_html:
   clippings: all
   comments:
