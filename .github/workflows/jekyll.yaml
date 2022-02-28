@@ -15,7 +15,7 @@ jobs:
       - name: ruby setup
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 2.7.3
           bundler-cache: true
       - name: Get latest data from Airtable
         run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }}
