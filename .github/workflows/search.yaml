@@ -12,7 +12,6 @@ jobs:
       
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7'
           bundler-cache: true
           
       - uses: actions/cache@v2.1.6
