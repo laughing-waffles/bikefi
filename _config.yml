@@ -121,6 +121,9 @@ cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
       steps: 5
       attributes:
         class: mt-3 img-fluid
+algolia:
+  application_id: 'UF8CKBPQYZ'
+  index_name: 'financing.bike'
 compress_html:
   clippings: all
   comments:
