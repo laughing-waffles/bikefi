@@ -21,10 +21,10 @@ jobs:
         run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }}
       - name: Build
         uses: jerryjvl/jekyll-build-action@v1
-      - name: Index with Algolia
-        env:
-          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
-        run:  bundle exec jekyll algolia --config _config.yml
+      - name: Algolia Jekyll Action
+        uses: dieghernan/algolia-jekyll-action@v1
+        with:
+          APIKEY: '${{ secrets.ALGOLIA_API_KEY }}'
       - name: Rsync Deployments Action
         uses: Burnett01/rsync-deployments@5.2
         with:
