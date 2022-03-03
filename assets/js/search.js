@@ -1,3 +1,4 @@
+$(document).ready(function(){
 const search = instantsearch({
     appId: 'R6Y1H83FNX',
     apiKey: 'b0f283176b810e5223f70e3ab3ac7c04',
@@ -27,3 +28,4 @@ const search = instantsearch({
   );
   
   search.start();
+});
