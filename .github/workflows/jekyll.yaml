@@ -22,9 +22,7 @@ jobs:
       - name: Build
         uses: jerryjvl/jekyll-build-action@v1
       - name: Algolia Jekyll Action
-        uses: dieghernan/algolia-jekyll-action@v1
-        with:
-          APIKEY: '${{ secrets.ALGOLIA_API_KEY }}'
+        run: sh ./.github/runalgolia.sh
       - name: Rsync Deployments Action
         uses: Burnett01/rsync-deployments@5.2
         with:
