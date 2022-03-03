@@ -19,10 +19,10 @@ jobs:
           bundler-cache: true
       - name: Get latest data from Airtable
         run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }}
-      - name: Build
-        uses: jerryjvl/jekyll-build-action@v1
       - name: Algolia Jekyll Action
         run: sh ./.github/runalgolia.sh
+      - name: Build
+        uses: jerryjvl/jekyll-build-action@v1
       - name: Rsync Deployments Action
         uses: Burnett01/rsync-deployments@5.2
         with:
