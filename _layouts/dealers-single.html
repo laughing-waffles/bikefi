@@ -25,7 +25,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
           <p class="text-light mb-5 lead">{{ page.vicinity }}</p>
           <div class="d-grid gap-2 d-md-block">
             {% if page.website %}
-            <a href="{{page.website}}" class="btn btn-warning btn-lg">
+            <a href="{{ page.website | append: site.gtm-parameters }}" class="btn btn-warning btn-lg">
               Shop bike inventory
             </a>
             {% endif %}
@@ -50,7 +50,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
           <p>
             Visit {{ page.name }} in {{ page.neighborhood }} today{% if page.phone %}, or give them
             a quick call at {{ page.phone }}{% endif %}.{% if page.website %} Alternatively, see their inventory
-            of bikes and accessories on the web on their website at <a href="{{ page.website }}">{{ page.website }}</a>.{% endif %}
+            of bikes and accessories on the web on their website at <a href="{{ page.website | append: site.gtm-parameters }}">{{ page.website }}</a>.{% endif %}
           </p>
         </div>
 
@@ -128,7 +128,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
             </p>
             <p class="mb-0">
               <a
-                href="{{ page.website }}"
+                href="{{ page.website | append: site.gtm-parameters }}"
                 rel="nofollow"
                 title="{{ page.name }}"
                 >{{ page.website }}</a

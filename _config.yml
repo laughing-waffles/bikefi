@@ -125,8 +125,7 @@ algolia:
   application_id: 'UF8CKBPQYZ'
   index_name: 'financing.bike'
   search_only_api_key: '904e148249c3c17bb57ec463208cda93'
-
-
+gtm-parameters: "?utm_source=financing_dot_bike&utm_medium=url&utm_campaign=friendly_neighborhood_spiderman" # https://ga-dev-tools.web.app/campaign-url-builder/
 compress_html:
   clippings: all
   comments:
