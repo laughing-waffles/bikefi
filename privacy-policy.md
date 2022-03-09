@@ -3,7 +3,7 @@ layout: page
 title: Privacy Policy
 --- 
 
-This Privacy Policy describes how your personal information is collected, used, and shared when you visit or make a purchase from https://www.financing.bike (the “Site”).
+This Privacy Policy describes how your personal information is collected, used, and shared when you visit or make a purchase from https://bikefi.net (the “Site”).
 
 ## PERSONAL INFORMATION WE COLLECT
 
@@ -82,6 +82,6 @@ We may update this privacy policy from time to time in order to reflect, for exa
 
 ## CONTACT US
 
-For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us by e-mail at contact@financing.bike or by mail using the details provided below:
+For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us by e-mail at contact@bikefi.net or by mail using the details provided below:
 
 PO Box 6724, Austin, AL, 78762, United States

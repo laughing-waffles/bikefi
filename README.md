@@ -1,4 +1,4 @@
-# financing.bike
+# bikefi.net
 
 ### Pull data
 `.github/pulldata.sh airtablekeyhere`

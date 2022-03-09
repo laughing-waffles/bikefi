@@ -1,10 +1,10 @@
-title: "Financing Bike" # the name of your site, e.g. ACME Corp.
+title: "BikeFi" # the name of your site, e.g. ACME Corp.
 tagline: "Finance your next set of wheels"
-email: contact@financing.bike
+email: contact@bikefi.net
 description: >- # this means to ignore newlines until "baseurl:"
-  Add description here
+  BikeFi connects the best bikes on the market with the best financing terms available. 
 author: name
-url: "https://critical.financing.bike" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://bikefi.net" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 #twitter:
 #  username: 
@@ -83,7 +83,7 @@ cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
   cloud_name: judsonlmoore-com
   verbose: false
   only_prod: true
-  origin_url: https://cdn.financing.bike
+  origin_url: https://cdn.bikefi.net
   presets:
     default:
       min_width: 320
@@ -125,7 +125,7 @@ algolia:
   application_id: 'UF8CKBPQYZ'
   index_name: 'financing.bike'
   search_only_api_key: '904e148249c3c17bb57ec463208cda93'
-gtm-parameters: "?utm_source=financing_dot_bike&utm_medium=url&utm_campaign=friendly_neighborhood_spiderman" # https://ga-dev-tools.web.app/campaign-url-builder/
+gtm-parameters: "?utm_source=bikefi.net&utm_medium=url&utm_campaign=friendly_neighborhood_spiderman" # https://ga-dev-tools.web.app/campaign-url-builder/
 compress_html:
   clippings: all
   comments:

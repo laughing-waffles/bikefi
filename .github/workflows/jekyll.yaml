@@ -28,5 +28,5 @@ jobs:
           remote_host: 'edpad.com'
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }} 
           path: './_site/*'
-          remote_path: '/home/launchsociety/critical.financing.bike/'
+          remote_path: '/home/launchsociety/bikefi.net/'
           switches: '-avzr --delete'
