@@ -24,7 +24,7 @@ jobs:
       - name: Rsync Deployments Action
         uses: Burnett01/rsync-deployments@5.2
         with:
-          remote_user: 'launchsociety'
+          remote_user: 'dh_d468jd'
           remote_host: 'edpad.com'
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }} 
           path: './_site/*'
