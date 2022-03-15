@@ -16,8 +16,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            $GITHUB_WORKSPACE/_site
-          key: ${{ runner.os }}-${{ hashFiles('$GITHUB_WORKSPACE/_site') }}
+            ./_site
+          key: ${{ runner.os }}-${{ hashFiles('**/_site') }}
           restore-keys: ${{ runner.os }}-
       - name: ruby setup
         uses: ruby/setup-ruby@v1
