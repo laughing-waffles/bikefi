@@ -37,3 +37,4 @@ jobs:
           path: './_site/*'
           remote_path: '/home/dh_d468jd/bikefi.net/'
           switches: '-avzr --delete'
+          
