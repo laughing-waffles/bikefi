@@ -20,7 +20,7 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-target-blank"
   gem "jekyll-cloudinary"
-  gem "jekyll-paginate-v2"
+  gem 'jekyll-paginate-v2', git: 'https://github.com/jameshi16/jekyll-paginate-v2.git', branch: 'cache-mismatch-error'
   gem "jekyll-include-cache"
   gem "jekyll-algolia", '~> 1.0'
 end

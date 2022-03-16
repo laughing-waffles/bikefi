@@ -1,9 +1,9 @@
-name: Jekyll Deploy
+name: Jekyll - Fast no deploy
 
 on:
   push:
     branches:
-      - main 
+      - fast 
       
 jobs:
   build_and_deploy:
@@ -28,13 +28,3 @@ jobs:
           bundler-cache: true
       - name: Build
         uses: jerryjvl/jekyll-build-action@v1
-      - name: Rsync Deployments Action
-        uses: Burnett01/rsync-deployments@5.2
-        with:
-          remote_user: 'dh_d468jd'
-          remote_host: 'edpad.com'
-          remote_key: ${{ secrets.SSH_PRIVATE_KEY }} 
-          path: './_site/*'
-          remote_path: '/home/dh_d468jd/bikefi.net/'
-          switches: '-avzr --delete'
-          
