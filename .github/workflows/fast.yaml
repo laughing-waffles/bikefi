@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: GitHub Checkout
         uses: actions/checkout@v1
+      - name: troubleshoot
+        run: |
+          echo ls 
+          echo ls **/_posts/
       - name: Cache _site build
         uses: actions/cache@v2
         with:
@@ -25,6 +29,6 @@ jobs:
           ruby-version: 2.7.3
           bundler-cache: true
       - name: Get latest data from Airtable
-        run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }} fast
+        run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }} ${{ GITHUB_BASE_REF }}
       - name: Build
         uses: jerryjvl/jekyll-build-action@v1
