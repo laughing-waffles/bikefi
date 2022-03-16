@@ -13,10 +13,10 @@ jobs:
       - name: GitHub Checkout
         uses: actions/checkout@v1
       - name: Get latest data from Airtable
-        run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }} $GITHUB_BASE_REF 
+        run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }} $GITHUB_REF_NAME 
       - name: troubleshoot
         run: |
-          echo $GITHUB_BASE_REF
+          echo $GITHUB_REF_NAME
           echo ${{ hashFiles('**/_posts/*') }}
           ls 
           ls **/_posts/
