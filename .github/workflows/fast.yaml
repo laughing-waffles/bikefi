@@ -1,4 +1,4 @@
-name: Jekyll Deploy - Fast no deploy
+name: Jekyll - Fast no deploy
 
 on:
   push:
