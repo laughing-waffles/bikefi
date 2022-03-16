@@ -14,12 +14,6 @@ jobs:
         uses: actions/checkout@v1
       - name: Get latest data from Airtable
         run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }} $GITHUB_REF_NAME 
-      - name: troubleshoot
-        run: |
-          echo $GITHUB_REF_NAME
-          echo ${{ hashFiles('**/_posts/*') }}
-          ls 
-          ls **/_posts/
       - name: Cache _site build
         uses: actions/cache@v2
         with:
