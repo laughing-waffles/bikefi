@@ -1,4 +1,4 @@
-name: Jekyll Deploy
+name: Jekyll Deploy - Fast no deploy
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
         with:
           path: |
             ./_site
-          key: ${{ runner.os }}-${{ hashFiles('**/_site/*') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/_posts/*') }}
           restore-keys: ${{ runner.os }}-
       - name: ruby setup
         uses: ruby/setup-ruby@v1
