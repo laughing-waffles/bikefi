@@ -29,6 +29,6 @@ jobs:
           ruby-version: 2.7.3
           bundler-cache: true
       - name: Get latest data from Airtable
-        run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }} ${{ GITHUB_BASE_REF }}
+        run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }} $GITHUB_BASE_REF 
       - name: Build
         uses: jerryjvl/jekyll-build-action@v1
