@@ -16,9 +16,10 @@ jobs:
         run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }} $GITHUB_BASE_REF 
       - name: troubleshoot
         run: |
+          echo $GITHUB_BASE_REF
+          echo ${{ hashFiles('**/_posts/*') }}
           ls 
           ls **/_posts/
-          echo $GITHUB_BASE_REF
       - name: Cache _site build
         uses: actions/cache@v2
         with:
