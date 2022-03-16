@@ -14,8 +14,8 @@ jobs:
         uses: actions/checkout@v1
       - name: troubleshoot
         run: |
-          echo ls 
-          echo ls **/_posts/
+          ls 
+          ls **/_posts/
       - name: Cache _site build
         uses: actions/cache@v2
         with:
