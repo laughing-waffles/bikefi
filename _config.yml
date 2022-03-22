@@ -126,6 +126,7 @@ algolia:
   application_id: 'UF8CKBPQYZ'
   index_name: 'financing.bike'
   search_only_api_key: '904e148249c3c17bb57ec463208cda93'
+affiliate-parameters: "https://jenson.sjv.io/c/3294572/989438/13009?u=" #jensonbikesusa only 
 gtm-parameters: "?utm_source=bikefi.net&utm_medium=url&utm_campaign=friendly_neighborhood_spiderman" # https://ga-dev-tools.web.app/campaign-url-builder/
 compress_html:
   clippings: all

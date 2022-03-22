@@ -92,7 +92,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
           {% if page.price_current %}<span class="text-dark me-2">{{ page.price_current }}</span>{% endif %}
           {% if page.price_msrp %}<span class="text-muted"><s>{{ page.price_msrp }}</s></span>{% endif %}
         </div>
-        <a href="{{ page.affiliate_url | append: site.gtm-parameters }}" class="btn btn-outline-primary me-2">View Bike</a>
+        <a href="{{ site.affiliate-parameters }}{{ page.affiliate_url | url_encode }}" class="btn btn-outline-primary me-2">View Bike</a>
         <a href="#financing" class="btn btn-light">Get financing</a>
 
         {% if page.tags.size > 0 %}

@@ -6,7 +6,7 @@
 
 it has a new variable available, `./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }} fast`  (append fast after your key) and it will only load 1 row from each table (1 bike shop, 1 bike, presently).
 
-this is applied on the `fast` branch as well - so if you need to test something with shorter build times, merge into the fast branch. that branch does not push the site anywhere (it just builds and then finishes)
+This is applied on the `fast` branch as well - so if you need to test something with shorter build times, merge into the fast branch. that branch does not push the site anywhere (it just builds and then finishes)
 
 ### Build
 `bundle exec jekyll build`
