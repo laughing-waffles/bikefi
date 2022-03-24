@@ -82,8 +82,8 @@ layout: compress
         "telephone": "{{ page.phone }}",
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "{{ page.rating }}",
-          "reviewCount": "{{ page.rating_count }}"
+          "ratingValue": "{{ page.rating | default:0 }}",
+          "ratingCount": "{{ page.rating_count | default:0 }}"
         },
         "paymentAccepted": "Visa, Master Card, Discover, Amex, ApplePay, AndroidPay"
       }
@@ -103,14 +103,15 @@ layout: compress
         },
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "{{ page.star_rating }}"
+          "ratingValue": "{{ page.star_rating | default:0 }}"
         },
         "offers": {
           "@type": "Offer",
+          "url": "{{ page.url | absolute_url }}",
           "priceCurrency": "USD",
           "price": "{{ page.price_current }}",
           "itemCondition": "NewCondition",
-          "availability": "{{ page.availability }}",
+          "availability": "{{ page.availability | capitalize }}",
           "seller": {
             "@type": "Organization",
             "name": "{{ site.title }}"
