@@ -71,24 +71,28 @@ layout: compress
         "@type": "BikeStore",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "{{ page.city }}",
-          "addressRegion": "{{ page.state }}",
-          "postalCode": "{{ page.zip }}",
+          {% if page.city %}"addressLocality": "{{ page.city }}",{% endif %}
+          {% if page.state %}"addressRegion": "{{ page.state }}",{% endif %}
+          {% if page.zip %}"postalCode": "{{ page.zip }}",{% endif %}
           "streetAddress": "{{ page.street_address }}"
         },
-        "name": "{{ page.name }}",
-        "url": "{{ page.website }}",
-        "email": "{{ page.email }}",
-        "telephone": "{{ page.phone }}",
+        {% if page.name %}"name": "{{ page.name }}",{% endif %}
+        {% if page.website %}"url": "{{ page.website }}",{% endif %}
+        {% if page.email %}"email": "{{ page.email }}",{% endif %}
+        {% if page.phone %}"telephone": "{{ page.phone }}",{% endif %}
+        {% if page.rating > 0 %}
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "{{ page.rating | default:0 }}",
-          "ratingCount": "{{ page.rating_count | default:0 }}"
+          "ratingValue": "{{ page.rating }}",
+          "ratingCount": "{{ page.rating_count }}"
         },
+        {% endif %}
         "paymentAccepted": "Visa, Master Card, Discover, Amex, ApplePay, AndroidPay"
       }
     </script>
-    {% endif %} {% if page.layout == 'shop-single' %}
+    {% endif %} 
+    
+    {% if page.layout == 'shop-single' %}
     <!-- Bike Product Schema -->
     <script type="application/ld+json">
       {
@@ -99,12 +103,14 @@ layout: compress
         "description": "{{ page.description }}",
         "brand": {
           "@type": "Thing",
-          "name": "{{ page.make }}"
+          "name": "{{ page.title }}"
         },
+        {% if page.star_rating > 0 %}
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "{{ page.star_rating | default:0 }}"
+          "ratingValue": "{{ page.star_rating }}"
         },
+        {% endif %}
         "offers": {
           "@type": "Offer",
           "url": "{{ page.url | absolute_url }}",
