@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Privacy Policy
+sitemap: false
 --- 
 
 This Privacy Policy describes how your personal information is collected, used, and shared when you visit or make a purchase from https://bikefi.net (the “Site”).

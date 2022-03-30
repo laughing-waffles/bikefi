@@ -4,4 +4,5 @@ title: Bike Shops
 pagination: 
   enabled: true
   collection: posts
+sitemap: false
 ---

@@ -41,6 +41,14 @@ defaults:
       path: assets/*
     values:
       sitemap: false
+  - scope:
+      path: 'tag'
+    values:
+      sitemap: false
+  - scope:
+      path: 'collection'
+    values:
+      sitemap: false
 pagination:
   enabled: true
   per_page: 10
