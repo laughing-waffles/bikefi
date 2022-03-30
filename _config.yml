@@ -21,10 +21,6 @@ plugins:
 collections:
   bike-shops:
     output: true
-  category:
-    output: true
-  tag:
-    output: true
 sass:
   sass_dir: assets/css
 exclude: 
@@ -48,16 +44,6 @@ defaults:
       path: assets/*
     values:
       sitemap: false
-  - scope:
-      path: ""
-      type: category
-    values:
-      layout: "category"
-  - scope:
-      path: ""
-      type: tag
-    values:
-      layout: "tag"
 pagination:
   enabled: true
   per_page: 10
