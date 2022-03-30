@@ -81,7 +81,7 @@ autopages:
       mode: default
       case: true
 cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
-  cloud_name: judsonlmoore-com
+  cloud_name: bikefi
   verbose: false
   only_prod: true
   origin_url: https://cdn.bikefi.net
