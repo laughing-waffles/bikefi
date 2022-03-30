@@ -21,6 +21,10 @@ plugins:
 collections:
   bike-shops:
     output: true
+  category:
+    output: true
+  tag:
+    output: true
 sass:
   sass_dir: assets/css
 exclude: 
@@ -44,6 +48,16 @@ defaults:
       path: assets/*
     values:
       sitemap: false
+  - scope:
+      path: ""
+      type: category
+    values:
+      layout: "category"
+  - scope:
+      path: ""
+      type: tag
+    values:
+      layout: "tag"
 pagination:
   enabled: true
   per_page: 10
@@ -122,10 +136,6 @@ cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
       steps: 5
       attributes:
         class: mt-3 img-fluid
-algolia:
-  application_id: 'UF8CKBPQYZ'
-  index_name: 'financing.bike'
-  search_only_api_key: '904e148249c3c17bb57ec463208cda93'
 affiliate-parameters: "https://jenson.sjv.io/c/3294572/989438/13009?u=" #jensonbikesusa only 
 gtm-parameters: "?utm_source=bikefi.net&utm_medium=url&utm_campaign=friendly_neighborhood_spiderman" # https://ga-dev-tools.web.app/campaign-url-builder/
 compress_html:
