@@ -4,10 +4,4 @@ _site
 .jekyll-metadata
 .env
 .DS_Store
-collections
-_data/
-_posts/
-scrapy
-_data/financing.json
-_data/ebikes.json
 _data/financing.json
