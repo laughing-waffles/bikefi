@@ -22,5 +22,6 @@ group :jekyll_plugins do
   gem "jekyll-cloudinary"
   gem 'jekyll-paginate-v2', git: 'https://github.com/jameshi16/jekyll-paginate-v2.git', branch: 'cache-mismatch-error'
   gem "jekyll-include-cache"
+  gem 'jekyll-money'
   gem "jekyll-algolia", '~> 1.0'
 end

@@ -4,8 +4,8 @@ hero-image: /assets/images/home-hero.jpeg
 ---
 
 <!-- hero section -->
-<div 
-  class="py-lg-19 pt-14 pb-10 bg-cover" 
+<div
+  class="py-lg-19 pt-14 pb-10 bg-cover"
   style="
     background-image: linear-gradient(180deg, rgba(30, 24, 53, 0.4) 0%, rgba(30, 24, 53, 0.4) 90.16%), 
     {% if jekyll.environment == 'production' %}
@@ -13,23 +13,28 @@ hero-image: /assets/images/home-hero.jpeg
     {% else %}
     url({{ layout.hero-image | absolute_url }});
     {% endif %}
-    ">
+    "
+>
   <div class="container">
     <div class="row">
       <div class="col-xxl-5 col-lg-6 col-md-8 col-12">
         <div class="text-white">
-          <h1 class="text-white mb-3 display-3">
-            We’ll help you
-          </h1>
-          <h2 class="mb-3 text-white">
-            finance the purchase of a new ebike.
-          </h2>
+          <h1 class="text-white mb-3 display-3">We’ll help you</h1>
+          <h2 class="mb-3 text-white">finance the purchase of a new ebike.</h2>
           <p class="mb-3 pe-lg-12 pe-0">
             It’s like a car loan, but for a bike. And way less confusing.
           </p>
           <div class="d-grid gap-2 d-md-block">
-            <a href="{{ 'bikes' | absolute_url }}" class="btn btn-primary btn-lg">Search all bikes</a>
-            <a href="{{ 'bike-shops' | absolute_url }}" class="btn btn-outline-primary btn-lg">Find a bike shop</a>
+            <a
+              href="{{ 'bikes' | absolute_url }}"
+              class="btn btn-primary btn-lg"
+              >Search all bikes</a
+            >
+            <a
+              href="{{ 'bike-shops' | absolute_url }}"
+              class="btn btn-outline-primary btn-lg"
+              >Find a bike shop</a
+            >
           </div>
         </div>
       </div>
@@ -43,17 +48,67 @@ hero-image: /assets/images/home-hero.jpeg
       <div class="offset-lg-2 col-lg-8 col-md-12 col-12">
         <div class="text-center mb-12">
           {{content}}
-          <h2 class="text-white mb-3 h1">
-            What is an e-bike loan?
-          </h2>
+          <h2 class="text-white mb-3 h1">What is an e-bike loan?</h2>
           <p class="lead">
-            E-bike loans are an easy way to finance the purchase of your bike. Because a bike isn’t registered with the government like a car, the loan is typically considered an “unsecured personal loan”.
+            E-bike loans are an easy way to finance the purchase of your bike.
+            Because a bike isn’t registered with the government like a car, the
+            loan is typically considered an “unsecured personal loan”.
           </p>
           <p class="lead mb-5">
-            This means lenders can’t use the bike itself as collateral, so you’ll likely see higher interest rates than purchasing a car. The good news is that since most e-bikes are cheaper than cars, the actual dollar amount you’ll pay per month will be significantly lower.
+            This means lenders can’t use the bike itself as collateral, so
+            you’ll likely see higher interest rates than purchasing a car. The
+            good news is that since most e-bikes are cheaper than cars, the
+            actual dollar amount you’ll pay per month will be significantly
+            lower.
           </p>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="pt-lg-13 pb-lg-14 py-8">
+  <div class="container" >
+    <div class="row">
+      <h2>Featured deals</h2>
+
+        <!-- navbar scroll -->
+        <div class="row d-flex align-items-center mb-5">
+          <div class="col">
+            <div class="navbar-scroll">
+
+
+                  {% assign featured_products = site.posts | where: "vendor_id", "bikeberry" %} 
+                  {% for product in featured_products %} 
+                  <ul>
+                    <li class="col-4">
+                  {% include sr-tile.html 
+                    id=product.id 
+                    title=product.title 
+                  %} 
+                </li>
+              </ul>
+                  {% endfor %}
+            
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+    </div>
+    <div class="row">
+      <h2>Clothing</h2>
+      {% assign featured_products = site.posts | where: "category", "Clothing" %} 
+      {% for product in featured_products %} 
+      {% include sr-horizontal.html 
+        id=product.id 
+        title=product.title 
+      %} 
+      {% endfor %}
     </div>
   </div>
 </div>

@@ -13,6 +13,7 @@ incremental: true
 permalink: pretty
 gems:
   - jekyll-paginate-v2
+  - jekyll-money
 plugins:
   - jekyll-feed
   - jekyll-sitemap

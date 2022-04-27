@@ -289,7 +289,7 @@ layout: compress
     
     {% if page.url contains "bike-shops" %}
     <script src="{{ '/assets/libs/leaflet/dist/leaflet.js' | absolute_url }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@latest/dist/lazyload.min.js" async></script>
+    <script src="{{ '/assets/js/lazyload.min.js' | absolute_url }}" async></script>
     {% endif %}
 
     {% if page.url contains "bikes" %}
@@ -297,7 +297,7 @@ layout: compress
     {% endif %}
 
     {% if page.video %}
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@latest/dist/lazyload.min.js" async></script>
+    <script src="{{ '/assets/js/lazyload.min.js' | absolute_url }}" async></script>
     {% endif %}
 
   </body>

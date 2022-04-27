@@ -40,7 +40,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
       <div class="col-lg-7 col-md-8 col-12">
         <div id="productCarousel" class="carousel slide carousel-fade" data-bs-interval="false">
           <div class="carousel-inner">
-            {% for image in page.images_cached %}
+            {% for image in page.path.full %}
             <div class="carousel-item{% if forloop.first %} active{% endif %}">
               <a href="https://res.cloudinary.com/{{ site.cloudinary.cloud_name }}/image/fetch/c_limit,f_auto,q_auto,w_1250/{{ image }}" data-lightbox="productImage" data-title="{{ page.title }}" data-footer="Source: {{ site.title }}" disableScrolling="true">
                 {% cloudinary productImage {{ image }} alt="Photo of a {{ page.title }}" %}

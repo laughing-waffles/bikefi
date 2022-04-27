@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-12">
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-lg-4 col-md-12 col-12 text-center">
+            <div class="position-relative">
+              <div class="badge bg-primary-soft position-absolute start-00">
+                New
+              </div>
+            </div>
+            <a href="shop-single.html">
+              <img
+                src="../assets/images/book-3.png"
+                alt=""
+                class="mt-3"
+                height="190"
+            /></a>
+            <h2>Vendors</h2>
+            {% assign vendors = site.data.vendors.records | where: "id", product.vendor_id %}
+            {% for vendor in vendors %}
+            <p>This is a vendor: {{ vendor.title }}</p>
+            <img
+              src="{{ vendor.logo | prepend: '/assets/images/vendors/' }}"
+              alt="{{ vendor.name }}"
+              class="mt-3 img-fluid"
+            />
+            {% endfor %}
+          </div>
+          <div class="col-lg-4 col-md-12 col-12">
+            <div class="mt-3">
+              <a href="#">
+                <h4 class="mb-1">Executive Focus - Focused Success</h4>
+              </a>
+              <p class="font-12 mb-2">
+                Author<span class="text-danger ms-1">Rhianna Mcdougall</span>
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 col-12">
+            <span class="text-dark me-2">$16.99</span
+            ><span class="text-muted"><s>$20.99</s></span>
+            <div class="font-12 mb-3">
+              <i class="fas fa-star text-warning"></i
+              ><i class="fas fa-star text-warning"></i
+              ><i class="fas fa-star text-warning"></i
+              ><i class="fas fa-star text-warning"></i
+              ><i class="far fa-star text-warning"></i>
+              <span class="ms-1">6</span>
+            </div>
+            <a href="#" class="btn btn-outline-primary btn-sm me-2"
+              >Add to cart</a
+            >
+            <a href="#" class="btn-like d-inline-block">
+              <i class="fe fe-heart"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
