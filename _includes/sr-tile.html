@@ -37,9 +37,9 @@
         </p>
         <span class="text-dark me-2">
             <strong class="small">Starting at</strong><br />
-            {{ product.price_current | money }}
+            {{ product.price_current }}
         </span>
-        <span class="text-muted"><s>{{ product.price_msrp | money }}</s></span>
+        <span class="text-muted"><s>{{ product.price_msrp }}</s></span>
         <div class="font-12">
             {% assign stars = product.ratingvalue %}
             {% include star-ratings.html %}

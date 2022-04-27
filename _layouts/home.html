@@ -71,38 +71,18 @@ hero-image: /assets/images/home-hero.jpeg
   <div class="container" >
     <div class="row">
       <h2>Featured deals</h2>
-
-        <!-- navbar scroll -->
-        <div class="row d-flex align-items-center mb-5">
-          <div class="col">
-            <div class="navbar-scroll">
-
-
-                  {% assign featured_products = site.posts | where: "vendor_id", "bikeberry" %} 
-                  {% for product in featured_products %} 
-                  <ul>
-                    <li class="col-4">
-                  {% include sr-tile.html 
-                    id=product.id 
-                    title=product.title 
-                  %} 
-                </li>
-              </ul>
-                  {% endfor %}
-            
-
-
-            </div>
-          </div>
-        </div>
-
-
-
-
+      {% assign featured_products = site.posts | where: "vendor_id", "mellowjohnnys" %} 
+      {% for product in featured_products %} 
+      {% include sr-tile.html 
+        id=product.id 
+        title=product.title 
+      %} 
+      {% endfor %}
     </div>
     <div class="row">
       <h2>Clothing</h2>
-      {% assign featured_products = site.posts | where: "category", "Clothing" %} 
+      <img src="/assets/images/payment-and-carrier-icons-main/carriers/fedEx.svg" alt="">
+      {% assign featured_products = site.posts | where: "vendor_id", "chainreactioncycles" %} 
       {% for product in featured_products %} 
       {% include sr-horizontal.html 
         id=product.id 
