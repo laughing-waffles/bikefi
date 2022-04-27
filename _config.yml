@@ -21,8 +21,13 @@ plugins:
   - jekyll-include-cache
 sass:
   sass_dir: assets/css
+include: 
+  - pages
 exclude: 
   - scrapy
+collections:
+  pages:
+    output: true
 defaults:
   - scope:
       path: ''
@@ -52,16 +57,13 @@ defaults:
       sitemap: false
 pagination:
   enabled: true
-  per_page: 10
-  permalink: /page-:num/
-  title: :title
-  sort_field: title
+  per_page: 6
   sort_reverse: true
-  trail:
-    before: 2
-    after: 2
+  indexpage: page-1
+  permalink: page-:num
+  extension: json
 autopages:
-  enabled: true
+  enabled: false
   categories: 
     layouts: 
       - srp.html
