@@ -115,7 +115,7 @@ layout: compress
           "@type": "Offer",
           "url": "{{ page.url | absolute_url }}",
           "priceCurrency": "USD",
-          "price": "{{ page.price_current }}",
+          "price": "{{ page.price }}",
           "itemCondition": "NewCondition",
           "availability": "{{ page.availability | capitalize }}",
           "seller": {
@@ -215,7 +215,7 @@ layout: compress
               <li class="nav-item">
                 <a
                   class="nav-link"
-                  href="{{ 'bikes' | absolute_url }}"
+                  href="{{ 'products' | absolute_url }}"
                   id="menu-2"
                 >
                   Bikes

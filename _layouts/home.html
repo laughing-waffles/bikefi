@@ -26,9 +26,9 @@ hero-image: /assets/images/home-hero.jpeg
           </p>
           <div class="d-grid gap-2 d-md-block">
             <a
-              href="{{ 'bikes' | absolute_url }}"
+              href="{{ 'products' | absolute_url }}"
               class="btn btn-primary btn-lg"
-              >Search all bikes</a
+              >Search all products</a
             >
             <a
               href="{{ 'bike-shops' | absolute_url }}"
@@ -42,63 +42,74 @@ hero-image: /assets/images/home-hero.jpeg
   </div>
 </div>
 
-<div class="pt-lg-13 pb-lg-14 py-8 bg-dark">
+<!-- <div class="py-lg-13 bg-dark">
   <div class="container">
-    <div class="row">
-      <div class="offset-lg-2 col-lg-8 col-md-12 col-12">
-        <div class="text-center mb-12">
-          {{content}}
-          <h2 class="text-white mb-3 h1">What is an e-bike loan?</h2>
-          <p class="lead">
-            E-bike loans are an easy way to finance the purchase of your bike.
-            Because a bike isn’t registered with the government like a car, the
-            loan is typically considered an “unsecured personal loan”.
-          </p>
-          <p class="lead mb-5">
-            This means lenders can’t use the bike itself as collateral, so
-            you’ll likely see higher interest rates than purchasing a car. The
-            good news is that since most e-bikes are cheaper than cars, the
-            actual dollar amount you’ll pay per month will be significantly
-            lower.
-          </p>
+    <div class="col">
+      <div class="row">
+        <div class="offset-lg-2 col-lg-8 col-md-12 col-12">
+          <div class="text-center mb-12">
+            {{content}}
+            <h2 class="text-white mb-3 h1">What is an e-bike loan?</h2>
+            <p class="lead">
+              E-bike loans are an easy way to finance the purchase of your bike.
+              Because a bike isn’t registered with the government like a car,
+              the loan is typically considered an “unsecured personal loan”.
+            </p>
+            <p class="lead mb-5">
+              This means lenders can’t use the bike itself as collateral, so
+              you’ll likely see higher interest rates than purchasing a car. The
+              good news is that since most e-bikes are cheaper than cars, the
+              actual dollar amount you’ll pay per month will be significantly
+              lower.
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
-<div class="pt-lg-13 pb-lg-14 py-8">
-  <div class="container" >
-    <div class="row">
-      <h2>Featured deals</h2>
-      {% assign featured_products = site.posts | where: "vendor_id", "mellowjohnnys" %} 
-      {% for product in featured_products %} 
-      {% include sr-tile.html 
-        id=product.id 
-        title=product.title 
-      %} 
-      {% endfor %}
-    </div>
-    <div class="row">
-      <h2>Clothing</h2>
-      <img src="/assets/images/payment-and-carrier-icons-main/carriers/fedEx.svg" alt="">
-      {% assign featured_products = site.posts | where: "vendor_id", "chainreactioncycles" %} 
-      {% for product in featured_products %} 
-      {% include sr-horizontal.html 
-        id=product.id 
-        title=product.title 
-      %} 
-      {% endfor %}
-    </div>
-  </div>
-</div>
-
-<div class="pt-lg-13 pb-lg-14 py-8">
+<div class="pt-lg-13">
   <div class="container">
     <div class="row">
-      <div class="offset-lg-2 col-lg-8 col-md-12 col-12">
-        {% include financing.html %}
+      <div class="col-lg-9 col-12">
+
+        <div class="row">
+          <!-- navbar scroll -->
+          <div class="row d-flex align-items-center mb-5">
+            <div class="col">
+              <div class="navbar-scroll">
+                <ul>
+                  {% for category in site.categories %} {% assign cat_name =
+                  category[0] %}
+                  <li>
+                    <a href="{{ cat_name | slugify | absolute_url }}"
+                      >{{ cat_name | join: " " }}</a
+                    >
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {% assign featured_products = site.posts | where: "vendor_id", "bikeberry" %} 
+          {% for product in featured_products %} 
+          {% include sr-horizontal.html %} 
+          {% endfor %}
+
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-5 col-12 d-none d-lg-block">
+
+        <div style="position: -webkit-sticky; position: sticky; top: 100px;">
+          <a href="https://jenson.sjv.io/c/3294572/1330395/13009?subId1=earth%20day" target="_top" id="1330395">
+            <img src="//a.impactradius-go.com/display-ad/13009-1330395" border="0" alt="" width="160" height="600"/>
+          </a>
+          <img height="0" width="0" src="https://imp.pxf.io/i/3294572/1330395/13009" style="position:absolute;visibility:hidden;" border="0" />
+        </div>
+
       </div>
     </div>
   </div>
-</div>

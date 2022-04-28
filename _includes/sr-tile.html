@@ -1,51 +1,53 @@
-<div class="col-lg-4 col-md-6 col-12" >
-  <div class="card mb-4" id="{{ product.id }}">
-    <div class="card-body">
-      <div class="d-flex align-items-center justify-content-between">
+<div class="card mb-4">
+  <div class="card-body">
+    <div class="d-flex align-items-center justify-content-between">
 
-        <div>
-          <div class="badge bg-primary-soft">
-            {% assign msrp = product.price_msrp %}
-            {% assign current = product.price_current%}
-            {% assign my_integer = msrp %}
-            {% assign my_float = my_integer | times: 1.0 %}
-            {{ current | divided_by: my_float | times: 100 }}%
-          </div>
-        </div>
-
-        <div>
-          <a href="#" class="btn-like">
-            <i class="fe fe-heart"></i>
-          </a>
+      <div>
+        <div class="badge bg-primary-soft">
+          {% assign msrp = product.price_msrp %}
+          {% assign current = product.price%}
+          {% assign my_integer = msrp %}
+          {% assign my_float = my_integer | times: 1.0 %}
+          {{ current | divided_by: my_float | times: 100 }}%
         </div>
       </div>
 
-      <a href="{{ product.url | absolute_url }}">
-        <img src="{{ product.images[0]['path'] | prepend: '/assets/images/' }}" alt="{{ product.name }}" class="mt-3 img-fluid" />
-      </a>
-
-      <div class="mt-3">
-        <a href="{{ product.url | absolute_url }}">
-          <h4 class="mb-1">{{ include.title }}</h4>
+      <!-- 
+      <div>
+        <a href="#" class="btn-like">
+          <i class="fe fe-heart"></i>
         </a>
-        <p class="font-12 mb-2">
-            {% if product.make %}
-                {{ product.make }}
-            {% elsif product.vendor %}
-                {{ product.vendor }}
-            {% endif %}
-        </p>
-        <span class="text-dark me-2">
-            <strong class="small">Starting at</strong><br />
-            {{ product.price_current }}
-        </span>
-        <span class="text-muted"><s>{{ product.price_msrp }}</s></span>
-        <div class="font-12">
-            {% assign stars = product.ratingvalue %}
-            {% include star-ratings.html %}
-        </div>
-        <a href="{{ product.url | absolute_url }}" class="btn btn-outline-primary btn-sm mt-3">View item</a>
       </div>
+      -->
+
+    </div>
+
+    <a href="{{ product.url | absolute_url }}">
+      <img src="{{ product.images[0]['path'] | prepend: '/assets/images/' }}" alt="{{ product.name }}" class="mt-3 img-fluid" />
+    </a>
+
+    <div class="mt-3">
+      <a href="{{ product.url | absolute_url }}">
+        <h4 class="mb-1">{{ include.title }}</h4>
+      </a>
+      <p class="font-12 mb-2">
+          {% if product.make %}
+              {{ product.make }}
+          {% elsif product.vendor %}
+              {{ product.vendor }}
+          {% endif %}
+      </p>
+      <span class="text-dark me-2">
+          <strong class="small">Starting at</strong><br />
+          {{ product.price }}
+      </span>
+      <span class="text-muted"><s>{{ product.price_msrp }}</s></span>
+      <div class="font-12">
+      {% assign ratingvalue = product.ratingvalue %}
+      {% assign ratingcount = product.ratingcount %}
+      {% include star-ratings.html %}
+      </div>
+      <a href="{{ product.url | absolute_url }}" class="btn btn-outline-primary btn-sm mt-3">View item</a>
     </div>
   </div>
 </div>

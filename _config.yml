@@ -38,10 +38,10 @@ defaults:
       layout: dealers-single
       permalink: /bike-shops/:slug/
   - scope:
-      path: _posts/bikes
+      path: _posts/products
     values:
       layout: shop-single
-      permalink: /bikes/:slug/
+      permalink: /:slug/
   - scope:
       path: assets/*
     values:
@@ -56,13 +56,18 @@ defaults:
       sitemap: false
 pagination:
   enabled: true
-  per_page: 6
+  per_page: 30
+  indexpage: index
+  permalink: /page/:num
+  title: ':title - page :num'
+  sort_field: 'date'
   sort_reverse: true
-  indexpage: page-1
-  permalink: page-:num
-  extension: json
+  category: 'posts'
+  trail: 
+    before: 2
+    after: 2
 autopages:
-  enabled: false
+  enabled: true
   categories: 
     layouts: 
       - srp.html
@@ -83,7 +88,7 @@ cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
   cloud_name: bikefi
   verbose: false
   only_prod: true
-  origin_url: https://cdn.bikefi.net
+  # origin_url: https://cdn.bikefi.net
   presets:
     default:
       min_width: 320
@@ -121,7 +126,6 @@ cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
       steps: 5
       attributes:
         class: mt-3 img-fluid
-affiliate-parameters: "https://jenson.sjv.io/c/3294572/989438/13009?u=" #jensonbikesusa only 
 gtm-parameters: "?utm_source=bikefi.net&utm_medium=url&utm_campaign=friendly_neighborhood_spiderman" # https://ga-dev-tools.web.app/campaign-url-builder/
 compress_html:
   clippings: all

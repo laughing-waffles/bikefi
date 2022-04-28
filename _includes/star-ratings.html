@@ -1,18 +1,17 @@
 <!-- Star ratings -->
 <span class="font-12 mt-1">
-  {% assign num = stars %}
   {% assign range = (1..5) %}
-  {% if num == nill %}
+  {% if ratingvalue == nill %}
     Not yet rated
   {% else %}
-    {% for item in range limit: num %}
+    {% for item in range limit: ratingvalue %}
     <i class="fas fa-star text-warning"></i>
     {% endfor %}
-    {% for item in range offset: num %}
+    {% for item in range offset: ratingvalue %}
     <i class="far fa-star text-warning"></i>
     {% endfor %}
   {% endif %}
-  {% if product.reviewcount %}
-  <span class="ms-1">{{ product.reviewcount }}</span>
+  {% if ratingcount %}
+  <span class="ms-1">({{ ratingcount }}) reviews</span>
   {% endif %}
 </span>
