@@ -222,7 +222,7 @@
       "zip": "92878",
       "country": "USA",
       "payment_methods": ["visa", "masterCard", "discover", "americanExpress", "paypal"],
-      "shipping_partners": ["ups", "ontrac", "fedex", "usps"],
+      "shipping_partners": ["ups", "fedex", "usps"],
       "return_policy": {
         "url": "https://jensonusahelp.freshdesk.com/support/solutions/articles/48000849900-returns-policy",
         "email": "",
