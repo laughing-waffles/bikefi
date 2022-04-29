@@ -99,8 +99,8 @@ layout: compress
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": "{{ page.title }}",
-        "image": "{{ page.images_cached[0] }}",
-        "description": "{{ page.description }}",
+        "image": "{{ page.image.path[0] | absolute_url }}",
+        "description": "{{ content }}",
         "brand": {
           "@type": "Thing",
           "name": "{{ page.title }}"
@@ -108,7 +108,8 @@ layout: compress
         {% if page.star_rating > 0 %}
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "{{ page.star_rating }}"
+          "ratingValue": "{{ page.ratingvalue }}"
+          "ratingCount": "{{ page.ratingcount }}"
         },
         {% endif %}
         "offers": {
