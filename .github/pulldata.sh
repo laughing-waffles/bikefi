@@ -1,3 +1,5 @@
+#! /bin/bash
+
 curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Electric%20Bikes?maxRecords=100&view=Grid%20view" \
  -H "Authorization: Bearer $1" > _data/ebikes.json
 curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Lenders?maxRecords=100&view=Grid%20view" \
