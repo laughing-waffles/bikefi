@@ -34,6 +34,3 @@ unzip temp.zip
 mv temp/* _posts/products/
 rm -rf temp
 rm -rf temp.zip
-
-
-
