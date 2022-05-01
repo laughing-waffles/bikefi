@@ -12,9 +12,7 @@ curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Dealers?maxRecords=10
 
 if [$2 == 'staging']
 then
-	cat <<EOF >robots.txt
-	User-agent: * Disallow: /
-	EOF
+	echo "User-agent: * Disallow: /" > robots.txt
 	FAST=10
 fi
 
