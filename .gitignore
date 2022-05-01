@@ -5,3 +5,4 @@ _site
 .env
 .DS_Store
 _data/financing.json
+.vscode

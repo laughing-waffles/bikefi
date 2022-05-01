@@ -3,7 +3,7 @@ name: Jekyll Deploy
 on:
   push:
     branches:
-      - main 
+      - staging 
       
 jobs:
   build_and_deploy:
@@ -35,6 +35,6 @@ jobs:
           remote_host: 'edpad.com'
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }} 
           path: './_site/*'
-          remote_path: '/home/dh_d468jd/bikefi.net/'
+          remote_path: '/home/dh_d468jd/staging.bikefi.net/'
           switches: '-avzr --delete'
           
