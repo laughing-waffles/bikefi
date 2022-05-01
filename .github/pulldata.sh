@@ -12,7 +12,7 @@ curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Dealers?maxRecords=10
  -H "Authorization: Bearer $1" > _data/dealers.json
 
 
-if [ $2 == 'staging' ]
+if [ $2 == "staging" ]
 then
 	echo "\033[0;31mStaging environment!\033[0m"
 	echo "User-agent: * Disallow: /" > robots.txt
