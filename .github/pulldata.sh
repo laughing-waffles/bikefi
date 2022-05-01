@@ -27,7 +27,7 @@ mv temp/* _posts/
 rm -rf temp
 rm -rf temp.zip
 
-curl -X GET "http://process.bikefi.net/generate.php?json=output/data/inventory.jl&filename=name&title=title&content=description&date=last_modified&fast=$FAST" > temp.zip
+curl -X GET "http://process.bikefi.net/generate.php?json=output/data/inventory.jl&filename=title&title=title&content=description&date=updated_at&fast=$FAST" > temp.zip
 unzip temp.zip
 mv temp/* _posts/products/
 rm -rf temp

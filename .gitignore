@@ -4,5 +4,6 @@ _site
 .jekyll-metadata
 .env
 .DS_Store
-_data/financing.json
+_data
+_posts
 .vscode
