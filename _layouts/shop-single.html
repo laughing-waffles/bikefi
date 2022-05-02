@@ -46,7 +46,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
             {% for image in page.images %}
             <div class="carousel-item{% if forloop.first %} active{% endif %}">
               <a
-                href="{{ page.images[0]['path'] }}"
+                href="{{ page.images[0]['path'] | prepend: 'assets/images/'  }}"
                 data-lightbox="productImage"
                 data-title="{{ page.title }}"
                 data-footer="Source: {{ site.title }}"
@@ -55,9 +55,12 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
               
               
 
-              <!-- Code for "poor man's cdn" -->
+              <!-- Code for "poor man's cdn"
+            - the src needs to be the page.images[0].path, but with 'full/' removed - i.e. just the filename and extension.
+            
+             -->
               {% include responsive-image.html 
-                src="{{ page.images[0]['path'] | prepend: 'assets/images/' }}" 
+                src='4feebf174d4d0680816de2a3ffafded26f7b6024.jpg'
                 height="250" 
                 width="250" 
                 class="img-fluid" 
@@ -66,19 +69,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
 
 
 
-              <!-- 
-              {% assign path = page.images[0]['path'] | prepend: 'assets/images/' %}
-              {% assign alt = page.title %}
-              {% responsive_image_block %}
-                path: {{ path }}
-                alt: {{ alt }}
-                load: "lazy"
-                style: "width:125px; height:125px;"
-                {% if title %}
-                title: {{ title }}
-                {% endif %}
-              {% endresponsive_image_block %} 
-              -->
+
 
 
 
@@ -102,15 +93,6 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
 
                 {% assign path = page.images[0]['path'] | prepend: 'assets/images/' %}
                 {% assign alt = 'Thumbnail image {{ forloop.index }} of a {{ page.title }}' %}
-                {% responsive_image_block %}
-                  path: {{ path }}
-                  alt: {{ alt }}
-                  load: "lazy"
-                  style="width:125px; height:125px;"
-                  {% if title %}
-                  title: {{ title }}
-                  {% endif %}
-                {% endresponsive_image_block %}
 
               </li>
               {% endfor %}

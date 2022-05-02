@@ -4,8 +4,8 @@ email: contact@bikefi.net
 description: >- # this means to ignore newlines until "baseurl:"
   BikeFi connects the best bikes on the market with the best financing terms available. 
 author: name
-url: "https://bikefi.net" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/" # the subpath of your site, e.g. /blog
 incremental: true
 #twitter:
 #  username: 
