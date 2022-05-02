@@ -20,7 +20,7 @@ image_urls: ["https://www.jensonusa.com/globalassets/product-images---all-assets
 sku: "SP001738"
 published_at: "Thu Apr 28 16:49:04 2022"
 updated_at: "Thu Apr 28 16:49:04 2022"
-images: [{"url":"https://www.jensonusa.com/globalassets/product-images---all-assets/7mesh-2021/sp001738-black.jpg","path":"full/ad7479b14932a3f795aeea76c7a46a383074ac35.jpg","checksum":"d717c29d4b630bbb689f6048dda941a7","status":"downloaded"}]
+images: [{"url":"https://www.jensonusa.com/globalassets/product-images---all-assets/7mesh-2021/sp001738-black.jpg","path":"ad7479b14932a3f795aeea76c7a46a383074ac35.jpg","checksum":"d717c29d4b630bbb689f6048dda941a7","status":"downloaded"}]
 
 ---
 ## 7Mesh WK2 Short Women's

@@ -24,7 +24,7 @@ attributes: [[]]
 options: {"size":[],"color":["Black","Blue","Grey","Red"],"battery":[]}
 published_at: "Wed Apr 27 18:42:21 2022"
 updated_at: "Wed Apr 27 18:42:21 2022"
-images: [{"url":"http://cdn.shopify.com/s/files/1/0479/7893/8534/products/Pantera_7SP-M-BK.jpg?v=1612403207","path":"full/4feebf174d4d0680816de2a3ffafded26f7b6024.jpg","checksum":"59c663cef0a923b742ad0ad40bf3090b","status":"downloaded"}]
+images: [{"url":"http://cdn.shopify.com/s/files/1/0479/7893/8534/products/Pantera_7SP-M-BK.jpg?v=1612403207","path":"4feebf174d4d0680816de2a3ffafded26f7b6024.jpg","checksum":"59c663cef0a923b742ad0ad40bf3090b","status":"downloaded"}]
 
 ---
 Create a style statement and get ahead of others with the Micargi men’s pantera 7SP. The bike’s wide moon bars, comfy cruiser saddle and white wall tires make it class apart from the other competitive bikes available in the market. The v-brakes are easy to maintain, replace and do not strain the spokes promising a long life.
