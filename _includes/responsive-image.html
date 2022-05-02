@@ -1,0 +1,22 @@
+{% if jekyll.environment == "development" %}
+<img
+  src="{{ include.src }}"
+  srcset="
+  https://cdn.bikefi.net/image.php?hash={{ include.src }}&height={{ include.height }}&width={{ include.width }} {{ include.width }}w,
+  https://cdn.bikefi.net/image.php?hash={{ include.src }}&height={{ include.height }}&width={{ include.width }} {{ include.width }}w,
+  https://cdn.bikefi.net/image.php?hash={{ include.src }}&height={{ include.height }}&width={{ include.width }} {{ include.width }}w,
+  https://cdn.bikefi.net/image.php?hash={{ include.src }}&height={{ include.height }}&width={{ include.width }} {{ include.width }}w,
+  https://cdn.bikefi.net/image.php?hash={{ include.src }}&height={{ include.height }}&width={{ include.width }} {{ include.width }}w,
+  "
+  sizes="100vw"
+  class="{{ include.class }}"
+  loading="lazy"
+  width="{{ include.width }}"
+  height="{{ include.height }}"
+  crossorigin="anonymous"
+/>
+{% else %}
+<img src="{{ include.src }}" alt="{{ include.alt }}" class="{{ include.class }}" loading="lazy" width="{{ include.width }}px" height="{{ include.height }}px" />
+{% endif %}
+
+

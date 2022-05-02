@@ -6,30 +6,26 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
 <div class="py-6 py-lg-12 pt-8 pt-lg-12">
   <div class="container">
     <div class="row align-items-center">
-
       {% if page.categories.size > 0 %}
       <!-- breadcrumbs -->
       <div id="breadcrumbs" class="my-5">
         <div class="custom-breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item  text-primary">
+            <li class="breadcrumb-item text-primary">
               <a href="{{ '/' | absolute_url }}">Home</a>
             </li>
-            {% for item in page.category %}
-            {% if forloop.last %}
-            <li class="breadcrumb-item active text-primary">
-              {{ item }}
-            </li>
+            {% for item in page.category %} {% if forloop.last %}
+            <li class="breadcrumb-item active text-primary">{{ item }}</li>
             {% else %}
             <li class="breadcrumb-item text-primary">
-              <a 
-                href="{{ item | slugify | absolute_url }}" 
-                class="text-inherit ms-1">
+              <a
+                href="{{ item | slugify | absolute_url }}"
+                class="text-inherit ms-1"
+              >
                 {{ item }}
               </a>
             </li>
-            {% endif %}
-            {% endfor %}
+            {% endif %} {% endfor %}
             <li class="breadcrumb-item active text-primary">
               {{ page.title }}
             </li>
@@ -41,33 +37,88 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
 
       <!-- image -->
       <div class="col-lg-7 col-md-8 col-12">
-        <div id="productCarousel" class="carousel slide carousel-fade" data-bs-interval="false">
+        <div
+          id="productCarousel"
+          class="carousel slide carousel-fade"
+          data-bs-interval="false"
+        >
           <div class="carousel-inner">
             {% for image in page.images %}
             <div class="carousel-item{% if forloop.first %} active{% endif %}">
-              <a href="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" data-lightbox="productImage" data-title="{{ page.title }}" data-footer="Source: {{ site.title }}" disableScrolling="true">
-                <img src="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" alt="Photo of a {{ page.title }}" class="img-fluid" />
+              <a
+                href="{{ page.images[0]['path'] }}"
+                data-lightbox="productImage"
+                data-title="{{ page.title }}"
+                data-footer="Source: {{ site.title }}"
+                disableScrolling="true"
+              >
+              
+              
+
+              <!-- Code for "poor man's cdn" -->
+              {% include responsive-image.html 
+                src="{{ page.images[0]['path'] | prepend: 'assets/images/' }}" 
+                height="250" 
+                width="250" 
+                class="img-fluid" 
+                alt="alt" 
+              %}
+
+
+
+              <!-- 
+              {% assign path = page.images[0]['path'] | prepend: 'assets/images/' %}
+              {% assign alt = page.title %}
+              {% responsive_image_block %}
+                path: {{ path }}
+                alt: {{ alt }}
+                load: "lazy"
+                style: "width:125px; height:125px;"
+                {% if title %}
+                title: {{ title }}
+                {% endif %}
+              {% endresponsive_image_block %} 
+              -->
+
+
+
               </a>
             </div>
             {% endfor %}
           </div>
         </div>
- 
+
         {% if page.images > 1 %}
         <div class="row d-flex">
           <div class="navbar-scroll">
             <ul>
               {% for image in page.images %}
-              <li data-bs-target="#productCarousel" data-bs-slide-to="{{ forloop.index0 }}" class="shadow-sm m-3">
-                <img src="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" alt="Thumbnail image {{ forloop.index }} of a {{ page.title }}" style="width:125px; height:125px;" />
-                <!-- {% cloudinary productCarouselNavbar {{ page.images[0]['path'] | prepend: '/assets/images/' }} alt="Thumbnail image {{ forloop.index }} of a {{ page.title }}" %} -->
+              <li
+                data-bs-target="#productCarousel"
+                data-bs-slide-to="{{ forloop.index0 }}"
+                class="shadow-sm m-3"
+              >
+                <!-- <img src="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" alt="Thumbnail image {{ forloop.index }} of a {{ page.title }}" style="width:125px; height:125px;" /> -->
+
+                {% assign path = page.images[0]['path'] | prepend: 'assets/images/' %}
+                {% assign alt = 'Thumbnail image {{ forloop.index }} of a {{ page.title }}' %}
+                {% responsive_image_block %}
+                  path: {{ path }}
+                  alt: {{ alt }}
+                  load: "lazy"
+                  style="width:125px; height:125px;"
+                  {% if title %}
+                  title: {{ title }}
+                  {% endif %}
+                {% endresponsive_image_block %}
+
               </li>
               {% endfor %}
             </ul>
           </div>
         </div>
         {% endif %}
-              </div>
+      </div>
 
       <!-- description -->
       <div class="offset-lg-1 col-lg-4 col-md-4 col-12">
@@ -76,39 +127,73 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
         <p>by {{ page.brand.name }}</p>
         {% endif %}
         <div class="d-flex">
-
-          {% assign ratingvalue = page.ratingvalue %}
-          {% assign ratingcount = page.ratingcount %}
-          {% include star-ratings.html %}  
+          {% assign ratingvalue = page.ratingvalue %} {% assign ratingcount =
+          page.ratingcount %} {% include star-ratings.html %}
 
           <!-- rating -->
           <div>
             {% if page.star_rating.size >= 1 %}
-            <span class="ms-2 font-12 text-dark"> {{ page.star_rating }} of 5 stars</span>
-            {% endif %}
-            {% assign availability = page.availability %}
-            {% include availability-badge.html %}
+            <span class="ms-2 font-12 text-dark">
+              {{ page.star_rating }} of 5 stars</span
+            >
+            {% endif %} {% assign availability = page.availability %} {% include
+            availability-badge.html %}
           </div>
         </div>
         <hr class="my-4" />
         <div class="mb-3 font-20">
-          {% if page.price %}<span class="text-dark me-2">{{ page.price }}</span>{% endif %}
-          {% if page.price_msrp %}<span class="text-muted"><s>{{ page.price_msrp }}</s></span>{% endif %}
+          {% if page.price %}<span class="text-dark me-2">{{ page.price | money }}</span
+          >{% endif %} {% if page.price_msrp %}<span class="text-muted"
+            ><s>{{ page.price_msrp | money }}</s></span
+          >{% endif %}
         </div>
-        <a href="{{ page.affiliate_url }}" class="btn btn-outline-primary me-2">Visit Site</a>
+        <a href="{{ page.affiliate_url }}" class="btn btn-outline-primary me-2"
+          >Visit Site</a
+        >
         <!-- <a href="#financing" class="btn btn-light">Get financing</a> -->
 
         {% if page.tags.size > 0 %}
-        <p class="mt-4 font-14 mb-1"><span class="text-dark me-1">Tag{% if page.tags.size > 1 %}s{% endif %}:</span>
+        <p class="mt-4 font-14 mb-1">
+          <span class="text-dark me-1"
+            >Tag{% if page.tags.size > 1 %}s{% endif %}:</span
+          >
           {% for tag in page.tags %}
-          <a href="{{ tag | slugify | prepend: '/tag/' | absolute_url }}" class="text-inherit ms-1">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-          {% endfor %}
+          <a
+            href="{{ tag | slugify | prepend: '/tag/' | absolute_url }}"
+            class="text-inherit ms-1"
+            >{{ tag }}</a
+          >{% unless forloop.last %}, {% endunless %} {% endfor %}
         </p>
         {% endif %}
-
       </div>
     </div>
     <hr class="my-10" />
+
+    <div class="rect">
+      <h2>Realted products</h2>
+      {% assign maxRelated = 4 %} 
+      {% assign minCommonTags = 1 %} 
+      {% assign maxRelatedCounter = 0 %} 
+      {% for post in site.posts %} {% assign
+      sameTagCount = 0 %} {% assign commonTags = '' %} {% for tag in post.tags
+      %} {% if post.url != page.url %} {% if page.tags contains tag %} {% assign
+      sameTagCount = sameTagCount | plus: 1 %} {% capture tagmarkup %}
+      <span class="label label-default">{{ tag }}</span> {% endcapture %} {%
+      assign commonTags = commonTags | append: tagmarkup %} {% endif %} {% endif
+      %} {% endfor %} {% if sameTagCount >= minCommonTags %}
+
+      <a href="{{ site.baseurl }}{{ post.url }}">
+        <div class="rel">
+          <h5>{{ post.title }}</h5>
+          <img width="100%" src="/thumbs/{{post.image}}" />
+        </div>
+      </a>
+
+      {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %} {% if
+      maxRelatedCounter >= maxRelated %} {% break %} {% endif %} {% endif %} {%
+      endfor %}
+    </div>
+
     <!-- product detail list -->
     <div class="row">
       <div class="col-lg-4 col-md-5 col-12">
@@ -116,61 +201,63 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
           <h4 class="mb-3">Product details</h4>
 
           {% for item in page.attributes %}
-          <div class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1">
+          <div
+            class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1"
+          >
             <div class="col-5 text-dark"><b>{{ item.first }}</b></div>
             <div class="col-7">{{ item.last }}</div>
           </div>
           {% endfor %}
-          <div class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1">
+          <div
+            class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1"
+          >
             <div class="col-5 text-dark"><b>Updated</b></div>
             <div class="col-7">{{ page.updated_at | date: "%b %d, %Y" }}</div>
           </div>
-
         </div>
       </div>
       <!-- description -->
       <div class="col-lg-8 col-md-7 col-12">
         <h4 class="mb-3">Description</h4>
 
-        {{ content | markdownify }}
-
-        {% if page.video %}
+        {{ content | markdownify }} {% if page.video %}
         <!-- Embedded YouTube video Markup with the lazy class -->
         <iframe
-            class="lazy" 
-            data-src="{{ page.video }}" 
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+          class="lazy"
+          data-src="{{ page.video }}"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
         >
         </iframe>
         <script>
-        // Set the options globally
-        // to make LazyLoad self-initialize
-        window.lazyLoadOptions = {
+          // Set the options globally
+          // to make LazyLoad self-initialize
+          window.lazyLoadOptions = {
             // Your custom settings go here
-        };
+          };
 
-        // Listen to the initialization event
-        // and get the instance of LazyLoad
-        window.addEventListener("LazyLoad::Initialized", function (event) {
-            window.lazyLoadInstance = event.detail.instance;
-        }, false);
+          // Listen to the initialization event
+          // and get the instance of LazyLoad
+          window.addEventListener(
+            "LazyLoad::Initialized",
+            function (event) {
+              window.lazyLoadInstance = event.detail.instance;
+            },
+            false
+          );
         </script>
-        {% endif %}
-
-        {% if site.discounts %}
-        {% for discount in site.discounts %}
-        <p><strong>{{ discount.name }} - {{ discount.discount_name }}</strong></p>
+        {% endif %} {% if site.discounts %} {% for discount in site.discounts %}
+        <p>
+          <strong>{{ discount.name }} - {{ discount.discount_name }}</strong>
+        </p>
         <p>{{ discount.discount_notes }}</p>
-        {% endfor %}
-        {% endif %}
-
+        {% endfor %} {% endif %}
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  var discountData = '{{ site.discounts | jsonify }}';
+  var discountData = "{{ site.discounts | jsonify }}";
 </script>
