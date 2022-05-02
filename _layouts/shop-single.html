@@ -66,19 +66,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
 
 
 
-              <!-- 
-              {% assign path = page.images[0]['path'] | prepend: 'assets/images/' %}
-              {% assign alt = page.title %}
-              {% responsive_image_block %}
-                path: {{ path }}
-                alt: {{ alt }}
-                load: "lazy"
-                style: "width:125px; height:125px;"
-                {% if title %}
-                title: {{ title }}
-                {% endif %}
-              {% endresponsive_image_block %} 
-              -->
+
 
 
 
@@ -102,17 +90,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
 
                 {% assign path = page.images[0]['path'] | prepend: 'assets/images/' %}
                 {% assign alt = 'Thumbnail image {{ forloop.index }} of a {{ page.title }}' %}
-                <!--
-                {% responsive_image_block %}
-                  path: {{ path }}
-                  alt: {{ alt }}
-                  load: "lazy"
-                  style="width:125px; height:125px;"
-                  {% if title %}
-                  title: {{ title }}
-                  {% endif %}
-                {% endresponsive_image_block %}
--->
+
               </li>
               {% endfor %}
             </ul>
