@@ -102,6 +102,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
 
                 {% assign path = page.images[0]['path'] | prepend: 'assets/images/' %}
                 {% assign alt = 'Thumbnail image {{ forloop.index }} of a {{ page.title }}' %}
+                <!--
                 {% responsive_image_block %}
                   path: {{ path }}
                   alt: {{ alt }}
@@ -111,7 +112,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
                   title: {{ title }}
                   {% endif %}
                 {% endresponsive_image_block %}
-
+-->
               </li>
               {% endfor %}
             </ul>
