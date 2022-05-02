@@ -189,7 +189,7 @@
       "zip": "LongGang District Shenzhen",
       "country": "China",
       "payment_methods": ["visa", "masterCard", "discover", "paypal", "jcb"],
-      "shipping_partners": ["dhl", "China EMSdays"],
+      "shipping_partners": ["dhl", "china-emsdays"],
       "return_policy": {
         "url": "https://icancycling.com/pages/warranty-faq",
         "email": "info@icancycling.com",
