@@ -34,14 +34,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
       </div>
       <!-- breadcrumbs -->
       {% endif %}
-<pre>
-          site: {{ site | jsonify | escape }}
-          page: {{ page | jsonify | escape }}
-          layout: {{ layout | jsonify | escape }}
-          content: {{ content | jsonify | escape }}
-          paginator: {{ paginator | jsonify | escape }}
-          test: {{ page.images[0]['path'] | escape }}
-      </pre>
+
       <!-- image -->
       <div class="col-lg-7 col-md-8 col-12">
         <div
@@ -62,7 +55,10 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
               
               
 
-              <!-- Code for "poor man's cdn" -->
+              <!-- Code for "poor man's cdn"
+            - the src needs to be the page.images[0].path, but with 'full/' removed - i.e. just the filename and extension.
+            
+             -->
               {% include responsive-image.html 
                 src='4feebf174d4d0680816de2a3ffafded26f7b6024.jpg'
                 height="250" 
