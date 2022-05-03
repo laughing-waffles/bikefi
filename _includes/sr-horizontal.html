@@ -1,23 +1,27 @@
-<div class="row">
-  <div class="col-lg-12 col-md-12 col-12">
     <div class="card mb-4">
       <div class="card-body">
         <div class="row align-items-center">
           <div class="col-lg-4 col-md-12 col-12 text-center">
-            <!--
+            
             <div class="position-relative">
-              <div class="badge bg-primary-soft position-absolute start-00">
-                New
+              <div class="badge bg-primary-soft position-absolute start-0">
+                {% assign msrp = product.price_msrp %}
+                {% assign current = product.price%}
+                {% assign my_integer = msrp %}
+                {% assign my_float = my_integer | times: 1.0 %}
+                {{ current | divided_by: my_float | times: 100 }}%
               </div>
             </div>
-            -->
+           
             <a href="{{ product.url | absolute_url }}">
               <img
-                src="{{ product.images[0]['path'] | prepend: '/assets/images/' | absolute_url }}"
+                src="{{ product.images[0]['path'] | prepend: '/assets/images/'  }}"
                 alt="{{ product.title }}"
                 class="mt-3"
                 height="190"
-            /></a>
+                style="object-fit: cover; width:200px; height:190px;"
+              />
+            </a>
           </div>
           <div class="col-lg-4 col-md-12 col-12">
             <div class="mt-3">
@@ -32,16 +36,16 @@
               {% if product.category %}
               <p class="font-12 mb-2">
                 <span class="ms-1">
-                  {% for category in product.category %}{{ category }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+                  {% for category in product.category limit: 4 %}{{ category }}{% unless forloop.last %}, {% endunless %}{% endfor %}
                 </span>
               </p>
               {% endif %}
             </div>
           </div>
           <div class="col-lg-4 col-md-12 col-12">
-            <span class="text-dark me-2">${{ product.price }}</span>
+            <span class="text-dark me-2">{{ product.price | money}}</span>
             {% if product.price_msrp %}
-            <span class="text-muted"><s>${{ product.price_msrp }}</s></span>
+            <span class="text-muted"><s>{{ product.price_msrp | money }}</s></span>
             {% endif %}
             <div class="font-12 mb-3">
               {% assign ratingvalue = product.ratingvalue %}
@@ -67,15 +71,18 @@
 
           <!-- VENDOR NAME AND STATUS -->
           <div class="col-sm-12 col-md-6 col-lg-3">
-            {{ vendor.name }}<br />
             {% if vendor.affiliate_code != "" %}
-            <span class="font-weight-200" style="color:#18c5eb;"><img src="{{ '/assets/images/verified.svg' | absolute_url }}" /> <strong><i>Verified</i></strong> Seller</span>
+            <p class="font-12 mb-0 mt-1 font-weight-200 text-success">
+              <span><img src="{{ '/assets/images/verified.svg' | absolute_url }}" /> <strong><i>Verified</i></strong> Seller</span>
+            </p>
             {% endif %}
           </div>
 
           <!-- PAYMENT INFORMATION -->
           <div class="col-sm-12 col-md-6 col-lg-3">
             <div class="row">
+
+              <!-- 
               {% for payment in vendor.payment_methods limit:4 %}
               <div class="col-2 g-1">
                 <img src="{{ payment | prepend: 'assets/images/logos/payment-methods/' | append: '.svg' | absolute_url }}" alt="Logo for {{ payment }}" class="img-fluid"/>
@@ -86,12 +93,13 @@
                   +5
                 </span>
               </div>
+              -->
             </div>
             <div class="row">
               {% if vendor.return_policy.free == true %}
-                <p class="text-success font-12 p-0"><strong>FREE returns for {{ vendor.return_policy.days }} days</strong></p>
+                <p class="text-success font-12 mb-0 mt-1"><strong>FREE returns for {{ vendor.return_policy.days }} days</strong></p>
               {% elsif vendor.return_policy.free == false %}
-              <p class="font-12">Returns accepted for {{ vendor.return_policy.days }} days</p>
+                <p class="font-12 mb-0 mt-1">Returns accepted for {{ vendor.return_policy.days }} days</p>
               {% endif %}
             </div>
           </div>
@@ -99,6 +107,7 @@
           <!-- CARRIER INFORMATION -->
           <div class="col-sm-12 col-md-6 col-lg-3">
             <div class="row">
+              <!--               
               {% for carrier in vendor.shipping_partners limit:4 %}
               <div class="col-2 g-0">
                   <img src="{{ carrier | prepend: 'assets/images/logos/carriers/' | append: '.svg' | absolute_url }}" alt="Logo for {{ carrier }}" />
@@ -109,15 +118,13 @@
                   +5
                 </span>
               </div>
+              -->
             </div>
             <div class="row">
               {% if vendor.country == "USA" %}
-                <p class="text-success font-12 p-0 mb-0"><strong><img src="{{ 'flag-usa.svg' | prepend: 'assets/images/logos/' | absolute_url }}" class="img-fluid" style="max-height: 20px;"/> Mailed from the USA</strong></p>
+                <p class="text-success font-12 mb-0 mt-1"><strong><img src="{{ 'flag-usa.svg' | prepend: 'assets/images/logos/' | absolute_url }}" class="img-fluid" style="max-height: 20px;"/> Mailed from the USA</strong></p>
               {% elsif vendor.country != "" %}
-                <p class="font-12 p-0 mb-0">Mailed from {{ vendor.country }}</strong></p>
-              {% endif %}
-              {% if vendor.ships_within != "" %}
-                <p class="font-12 p-0 mb-0">Sent within {{ vendor.ships_within }}</p>
+                <p class="font-12 mb-0 mt-1">Mailed from {{ vendor.country }}</strong></p>
               {% endif %}
             </div>
           </div>
@@ -128,16 +135,16 @@
             {% assign ratingcount = vendor.reviews.ratingcount %}
             {% include star-ratings.html %}  
             {% if vendor.reviews.provider != "" %}
-            <p class="font-12 p-0 mb-0">
+            <!-- <p class="font-12 p-0 mb-0 mt-1">
               Reviews powered by
               <a href="{{ vendor.reviews.url }}" target="_blank">
                 {% if vendor.reviews.provider == "google" %}
-                <img src="{{ 'google_logo.svg' | prepend: 'assets/images/logos/' | absolute_url }}" alt="Verified Google review logo" class="img-fluid w-25" />
+                <img src="{{ 'logo-google.svg' | prepend: 'assets/images/logos/' | absolute_url }}" alt="Verified Google review logo" class="img-fluid w-25" />
                 {% elsif vendor.reviews.provider == "trustpilot" %}
-                <img src="{{ 'trustpilot_logo.svg' | prepend: 'assets/images/logos/' | absolute_url }}" alt="Verified Trust Pilot review logo" class="img-fluid w-25" />
+                <img src="{{ 'logo-trustpilot.svg' | prepend: 'assets/images/logos/' | absolute_url }}" alt="Verified Trust Pilot review logo" class="img-fluid w-25" />
                 {% endif %}
               </a>
-            </p>
+            </p> -->
             {% endif %}
           </div>
 
@@ -145,5 +152,3 @@
       </div>
       {% endfor %}
     </div>
-  </div>
-</div>

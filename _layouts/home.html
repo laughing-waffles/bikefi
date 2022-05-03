@@ -73,7 +73,6 @@ hero-image: /assets/images/home-hero.jpeg
   <div class="container">
     <div class="row">
       <div class="col-lg-9 col-12">
-
         <div class="row">
           <!-- navbar scroll -->
           <div class="row d-flex align-items-center mb-5">
@@ -92,24 +91,54 @@ hero-image: /assets/images/home-hero.jpeg
               </div>
             </div>
           </div>
-
-          {% assign featured_products = site.posts | where: "vendor_id", "bikeberry" %} 
-          {% for product in featured_products %} 
-          {% include sr-horizontal.html %} 
-          {% endfor %}
-
         </div>
+
+        {% assign products = site.posts | where: "vendor_id", "bikeberry" %}
+          <div class="row d-flex align-items-center mb-5">
+            <div class="col">
+            {% for product in products %} 
+            {% include sr-tile.html %} 
+            {% endfor %}
+            </div>
+          </div>
+
+
+        {% assign products = site.posts | where: "vendor_id", "bikeberry" %}
+        {% for product in products %} 
+        {% include sr-horizontal.html %} 
+        {% endfor %}
+  
+
+
       </div>
 
       <div class="col-lg-3 col-md-5 col-12 d-none d-lg-block">
-
-        <div style="position: -webkit-sticky; position: sticky; top: 100px;">
-          <a href="https://jenson.sjv.io/c/3294572/1330395/13009?subId1=earth%20day" target="_top" id="1330395">
-            <img src="//a.impactradius-go.com/display-ad/13009-1330395" border="0" alt="" width="160" height="600"/>
+        <div
+          style="position: -webkit-sticky; position: sticky; top: 100px"
+          class="pb-4"
+        >
+          <a
+            href="https://jenson.sjv.io/c/3294572/1330395/13009?subId1=earth%20day"
+            target="_top"
+            id="1330395"
+          >
+            <img
+              src="//a.impactradius-go.com/display-ad/13009-1330395"
+              border="0"
+              alt=""
+              width="160"
+              height="600"
+            />
           </a>
-          <img height="0" width="0" src="https://imp.pxf.io/i/3294572/1330395/13009" style="position:absolute;visibility:hidden;" border="0" />
+          <img
+            height="0"
+            width="0"
+            src="https://imp.pxf.io/i/3294572/1330395/13009"
+            style="position: absolute; visibility: hidden"
+            border="0"
+          />
         </div>
-
       </div>
     </div>
   </div>
+</div>
