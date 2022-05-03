@@ -11,13 +11,11 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
       <div id="breadcrumbs" class="my-5">
         <div class="custom-breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item text-primary">
+            <li class="breadcrumb-item">
               <a href="{{ '/' | absolute_url }}">Home</a>
             </li>
-            {% for item in page.category %} {% if forloop.last %}
-            <li class="breadcrumb-item active text-primary">{{ item }}</li>
-            {% else %}
-            <li class="breadcrumb-item text-primary">
+            {% for item in page.category %} 
+            <li class="breadcrumb-item">
               <a
                 href="{{ item | slugify | absolute_url }}"
                 class="text-inherit ms-1"
@@ -25,7 +23,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
                 {{ item }}
               </a>
             </li>
-            {% endif %} {% endfor %}
+            {% endfor %}
             <li class="breadcrumb-item active text-primary">
               {{ page.title }}
             </li>
@@ -46,7 +44,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
             {% for image in page.images %}
             <div class="carousel-item{% if forloop.first %} active{% endif %}">
               <a
-                href="{{ page.images[0]['path'] | prepend: 'assets/images/'  }}"
+                href="https://cdn.bikefi.net/images/{{ include.src }}"
                 data-lightbox="productImage"
                 data-title="{{ page.title }}"
                 data-footer="Source: {{ site.title }}"
@@ -55,17 +53,19 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
               
               
 
+              <img src="{{ page.images[0].path | prepend: '/assets/images/full/' | absolute_url }}" class="img-fluid" alt="{{ page.title }}">
+
               <!-- Code for "poor man's cdn"
             - the src needs to be the page.images[0].path, but with 'full/' removed - i.e. just the filename and extension.
             
              -->
-              {% include responsive-image.html 
-                src='4feebf174d4d0680816de2a3ffafded26f7b6024.jpg'
+              <!-- {% include responsive-image.html 
+                src="{{ page.images[0].path }}"
                 height="250" 
                 width="250" 
                 class="img-fluid" 
                 alt="alt" 
-              %}
+              %} -->
 
 
 
@@ -139,7 +139,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
           <span class="text-dark me-1"
             >Tag{% if page.tags.size > 1 %}s{% endif %}:</span
           >
-          {% for tag in page.tags %}
+          {% for tag in page.tags limit: 5 %}
           <a
             href="{{ tag | slugify | prepend: '/tag/' | absolute_url }}"
             class="text-inherit ms-1"
@@ -149,32 +149,10 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
         {% endif %}
       </div>
     </div>
+
     <hr class="my-10" />
-
-    <div class="rect">
-      <h2>Realted products</h2>
-      {% assign maxRelated = 4 %} 
-      {% assign minCommonTags = 1 %} 
-      {% assign maxRelatedCounter = 0 %} 
-      {% for post in site.posts %} {% assign
-      sameTagCount = 0 %} {% assign commonTags = '' %} {% for tag in post.tags
-      %} {% if post.url != page.url %} {% if page.tags contains tag %} {% assign
-      sameTagCount = sameTagCount | plus: 1 %} {% capture tagmarkup %}
-      <span class="label label-default">{{ tag }}</span> {% endcapture %} {%
-      assign commonTags = commonTags | append: tagmarkup %} {% endif %} {% endif
-      %} {% endfor %} {% if sameTagCount >= minCommonTags %}
-
-      <a href="{{ site.baseurl }}{{ post.url }}">
-        <div class="rel">
-          <h5>{{ post.title }}</h5>
-          <img width="100%" src="/thumbs/{{post.image}}" />
-        </div>
-      </a>
-
-      {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %} {% if
-      maxRelatedCounter >= maxRelated %} {% break %} {% endif %} {% endif %} {%
-      endfor %}
-    </div>
+    <!-- {% include related-products.html %} -->
+    <!-- <hr class="my-10" /> -->
 
     <!-- product detail list -->
     <div class="row">
@@ -235,6 +213,8 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
         </p>
         <p>{{ discount.discount_notes }}</p>
         {% endfor %} {% endif %}
+        <hr />
+        {% include financing.html %}
       </div>
     </div>
   </div>

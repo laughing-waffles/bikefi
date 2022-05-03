@@ -113,7 +113,7 @@
         "url": "https://www.bikeberry.com/pages/returns-policy",
         "email": "support@bikeberry.com",
         "phone": "1-800-317-0479",
-        "free": true,
+        "free": false,
         "days": 30
       },
       "reviews": {

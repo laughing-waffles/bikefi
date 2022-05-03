@@ -17,7 +17,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-target-blank
   - jekyll-include-cache
-  - jekyll-responsive-image
 sass:
   sass_dir: assets/css
 include: 
@@ -55,10 +54,10 @@ defaults:
     values:
       sitemap: false
 pagination:
-  enabled: false
-  per_page: 30
-  indexpage: index
-  permalink: /page/:num
+  enabled: true
+  per_page: 20
+  # indexpage: index
+  permalink: /page-:num/
   title: ':title - page :num'
   sort_field: 'date'
   sort_reverse: true
@@ -67,7 +66,7 @@ pagination:
     before: 2
     after: 2
 autopages:
-  enabled: false
+  enabled: true
   categories: 
     layouts: 
       - srp.html

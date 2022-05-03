@@ -3,10 +3,114 @@ layout: default
 sitemap: false
 ---
 
-{% if page.url contains "bike-shops" %}
-    {% include srp-bike-shops.html %}
-{% elsif page.url contains "tag" %}
-    {% include srp-tags.html %}
-{% else %}
-    {% include srp-categories.html %}
-{% endif %}
+<div class="bg-shape bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+        <div class="pt-lg-18 pb-lg-14 pt-14 pb-12">
+          <h1 class="h2 text-white">
+            {{ page.title | capitalize }}
+          </h1>
+          <!-- breadcrumbs -->
+          <div class="custom-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="{{ '/' | absolute_url }}">Home</a>
+              </li>
+              <li class="breadcrumb-item active">
+                {{ page.title | capitalize }}
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pt-lg-13">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-12">
+        <!-- navbar scroll -->
+        <div class="row d-flex align-items-center mb-5">
+          <div class="col">
+            <div class="navbar-scroll">
+              <ul>
+                {% for category in site.categories %} 
+                {% assign cat_name = category[0] %}
+                <a class="btn btn-outline-dark me-2" href="{{ cat_name | slugify | absolute_url }}" role="button" >{{ cat_name | join: " " | capitalize }}</button>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- result and filter -->
+          <div class="row align-items-center mb-4">
+            <div class="col-lg-6 col-md-4 col-7">
+              <h5 class="mb-0">
+                Showing Page {{ paginator.page }} of {{ paginator.total_pages }}
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        {% if page.url contains "bike-shops" %}
+          <!-- BIKE SHOPS -->
+          {% assign store = paginator.posts | where: "country", "United States" %}
+          {% for post in store %}
+          {% include sr-horizontal-vendor.html %} 
+          {% endfor %}
+        {% elsif page.url contains "tag" %}
+          <!-- TAGS -->
+          {% assign featured_products = paginator.posts %} 
+          {% for product in featured_products %} 
+          {% include sr-horizontal.html %} 
+          {% endfor %}
+        {% else %}
+          <!-- CATEGORIES -->
+          {% assign featured_products = paginator.posts %} 
+          {% for product in featured_products %} 
+          {% if product.vendor_id != nill %} 
+          {% include sr-horizontal.html %} 
+          {% endif %} 
+          {% endfor %}
+        {% endif %}
+
+        {% include pagination.html %}
+
+      </div>
+
+      <div class="col-lg-3 col-md-5 col-12 d-none d-lg-block">
+        <div
+          style="position: -webkit-sticky; position: sticky; top: 100px"
+          class="pb-4"
+        >
+          <a
+            href="https://jenson.sjv.io/c/3294572/1330395/13009?subId1=earth%20day"
+            target="_top"
+            id="1330395"
+          >
+            <img
+              src="//a.impactradius-go.com/display-ad/13009-1330395"
+              border="0"
+              alt=""
+              width="160"
+              height="600"
+            />
+          </a>
+          <img
+            height="0"
+            width="0"
+            src="https://imp.pxf.io/i/3294572/1330395/13009"
+            style="position: absolute; visibility: hidden"
+            border="0"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        

@@ -26,12 +26,12 @@ hero-image: /assets/images/home-hero.jpeg
           </p>
           <div class="d-grid gap-2 d-md-block">
             <a
-              href="{{ 'products' | absolute_url }}"
+              href="{{ 'all-products/' | absolute_url }}"
               class="btn btn-primary btn-lg"
               >Search all products</a
             >
             <a
-              href="{{ 'bike-shops' | absolute_url }}"
+              href="{{ 'bike-shops/' | absolute_url }}"
               class="btn btn-outline-primary btn-lg"
               >Find a bike shop</a
             >
@@ -73,43 +73,48 @@ hero-image: /assets/images/home-hero.jpeg
   <div class="container">
     <div class="row">
       <div class="col-lg-9 col-12">
-        <div class="row">
-          <!-- navbar scroll -->
-          <div class="row d-flex align-items-center mb-5">
-            <div class="col">
-              <div class="navbar-scroll">
-                <ul>
-                  {% for category in site.categories %} {% assign cat_name =
-                  category[0] %}
-                  <li>
-                    <a href="{{ cat_name | slugify | absolute_url }}"
-                      >{{ cat_name | join: " " }}</a
-                    >
-                  </li>
-                  {% endfor %}
-                </ul>
+
+        {% assign products = site.posts | where: "ratingvalue", "5" %}
+        <div class="row d-flex align-items-center mb-5">
+          <div class="col">
+            <h3>Top-rated deals</h3>
+            <div class="navbar-scroll">
+              {% for product in products limit: 20 %}
+              <div class="col-3 me-4">
+                {% include sr-tile.html %}
               </div>
+              {% endfor %}
             </div>
           </div>
         </div>
 
-        {% assign products = site.posts | where: "vendor_id", "bikeberry" %}
-          <div class="row d-flex align-items-center mb-5">
-            <div class="col">
-            {% for product in products %} 
-            {% include sr-tile.html %} 
-            {% endfor %}
+        {% assign products = site.posts | where: "category", "Apparel" %}
+        <div class="row d-flex align-items-center mb-5">
+          <div class="col">
+            <h3>Top deals in "Apparel"</h3>
+            <div class="navbar-scroll">
+              {% for product in products limit: 20 %}
+              <div class="col-3 me-4">
+                {% include sr-tile.html %}
+              </div>
+              {% endfor %}
             </div>
           </div>
+        </div>
 
-
-        {% assign products = site.posts | where: "vendor_id", "bikeberry" %}
-        {% for product in products %} 
-        {% include sr-horizontal.html %} 
-        {% endfor %}
-  
-
-
+        {% assign products = site.posts | where: "categories", "Bicycles" %}
+        <div class="row d-flex align-items-center mb-5">
+          <div class="col">
+            <h3>Top deals in "Bicycles"</h3>
+            <div class="navbar-scroll">
+              {% for product in products limit: 20 %}
+              <div class="col-3 me-4">
+                {% include sr-tile.html %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="col-lg-3 col-md-5 col-12 d-none d-lg-block">
