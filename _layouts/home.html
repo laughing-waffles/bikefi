@@ -80,7 +80,7 @@ hero-image: /assets/images/home-hero.jpeg
             <h3>Top-rated deals</h3>
             <div class="navbar-scroll">
               {% for product in products limit: 20 %}
-              <div class="col-3 me-4">
+              <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
                 {% include sr-tile.html %}
               </div>
               {% endfor %}
@@ -88,13 +88,13 @@ hero-image: /assets/images/home-hero.jpeg
           </div>
         </div>
 
-        {% assign products = site.posts | where: "category", "Apparel" %}
+        {% assign products = site.posts | where: "category", "Bikes" %}
         <div class="row d-flex align-items-center mb-5">
           <div class="col">
             <h3>Top deals in "Apparel"</h3>
             <div class="navbar-scroll">
               {% for product in products limit: 20 %}
-              <div class="col-3 me-4">
+              <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
                 {% include sr-tile.html %}
               </div>
               {% endfor %}
@@ -108,7 +108,7 @@ hero-image: /assets/images/home-hero.jpeg
             <h3>Top deals in "Bicycles"</h3>
             <div class="navbar-scroll">
               {% for product in products limit: 20 %}
-              <div class="col-3 me-4">
+              <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
                 {% include sr-tile.html %}
               </div>
               {% endfor %}

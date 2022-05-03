@@ -1,0 +1,42 @@
+{% assign similar_products = site.posts | where: "category", page.category %}
+<div class="table-responsive">
+  <table class="table align-middle">
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td><img src="{{ '6cde80d84f49130e658e48011c948d53271c6856.jpg' | prepend: '/assets/images/full/' }}" class="img-fluid"></td>
+        {% for product in similar_products limit:10 %}
+        <td><img src="{{ '6cde80d84f49130e658e48011c948d53271c6856.jpg' | prepend: '/assets/images/full/' }}" class="img-fluid"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th scope="row">Brand</th>
+        <td class="small table-light">{{ page.brand['name'] }}</td>
+        {% for product in similar_products limit:10 %}
+        <td class="small">{{ product.brand['name'] }}</td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th scope="row">Seller</th>
+        <td class="small table-light">{{ page.vendor }}</td>
+        {% for product in similar_products limit:10 %}
+        <td class="small">{{ product.vendor }}</td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th scope="row">Price</th>
+        <td class="small table-light">{{ page.price | money }}</td>
+        {% for product in similar_products limit:10 %}
+        <td class="small">{{ product.price | money }}</td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td class="table-light"><a class="btn btn-primary btn-sm mt-3 disabled" role="button" aria-disabled="true">Current</a></td>
+        {% for product in similar_products limit:10 %}
+        <td><a href="{{ product.url | absolute_url }}" class="btn btn-outline-primary btn-sm mt-3">View</a></td>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+</div>

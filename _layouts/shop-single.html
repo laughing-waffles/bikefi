@@ -52,8 +52,8 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
               >
               
               
-
-              <img src="{{ page.images[0].path | prepend: '/assets/images/full/' | absolute_url }}" class="img-fluid" alt="{{ page.title }}">
+              
+              <img src="{{ '6cde80d84f49130e658e48011c948d53271c6856.jpg' | prepend: '/assets/images/full/' }}" class="img-fluid" alt="{{ page.title }}">
 
               <!-- Code for "poor man's cdn"
             - the src needs to be the page.images[0].path, but with 'full/' removed - i.e. just the filename and extension.
@@ -89,10 +89,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
                 data-bs-slide-to="{{ forloop.index0 }}"
                 class="shadow-sm m-3"
               >
-                <!-- <img src="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" alt="Thumbnail image {{ forloop.index }} of a {{ page.title }}" style="width:125px; height:125px;" /> -->
-
-                {% assign path = page.images[0]['path'] | prepend: 'assets/images/' %}
-                {% assign alt = 'Thumbnail image {{ forloop.index }} of a {{ page.title }}' %}
+                <img src="{{ '6cde80d84f49130e658e48011c948d53271c6856.jpg' | prepend: '/assets/images/full/' }}" alt="Thumbnail image {{ forloop.index }} of a {{ page.title }}" style="width:125px; height:125px;" />
 
               </li>
               {% endfor %}
@@ -129,7 +126,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
             ><s>{{ page.price_msrp | money }}</s></span
           >{% endif %}
         </div>
-        <a href="{{ page.affiliate_url }}" class="btn btn-outline-primary me-2"
+        <a href="{{ page.affiliate_url }}" class="btn btn-primary"
           >Visit Site</a
         >
         <!-- <a href="#financing" class="btn btn-light">Get financing</a> -->
@@ -151,8 +148,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
     </div>
 
     <hr class="my-10" />
-    <!-- {% include related-products.html %} -->
-    <!-- <hr class="my-10" /> -->
+    {% include related-products.html %}
 
     <!-- product detail list -->
     <div class="row">
@@ -218,6 +214,9 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
       </div>
     </div>
   </div>
+  <hr class="my-10" />
+  {% include compare-products.html %}
+
 </div>
 
 <script>
