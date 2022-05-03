@@ -135,7 +135,7 @@ layout: compress
       href="{{'/assets/css/theme.min.css' | absolute_url }}"
     />
 
-    {% if page.url contains "bikes" %}
+    {% if page.layout == 'shop-single' %}
     <!-- Lightbox2 CSS https://lokeshdhakar.com/projects/lightbox2/ -->
     <link
       rel="stylesheet"
@@ -306,12 +306,12 @@ layout: compress
     <!-- Theme JS -->
     <script src="{{ '/assets/js/theme.min.js' | absolute_url }}"></script>
     
-    {% if page.url contains "bike-shops" %}
+    {% if page.layout == 'dealers-single' %}
     <script src="{{ '/assets/libs/leaflet/dist/leaflet.js' | absolute_url }}"></script>
     <script src="{{ '/assets/js/lazyload.min.js' | absolute_url }}" async></script>
     {% endif %}
 
-    {% if page.url contains "bikes" %}
+    {% if page.layout == 'shop-single' %}
     <script src="{{ '/assets/js/lightbox.min.js' | absolute_url }}"></script>
     {% endif %}
 

@@ -4,9 +4,12 @@
     <tbody>
       <tr>
         <th scope="row"></th>
-        <td><img src="{{ '6cde80d84f49130e658e48011c948d53271c6856.jpg' | prepend: '/assets/images/full/' }}" class="img-fluid"></td>
+        <td>
+          <img src="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" class="img-fluid" style="width:150px;">
+        </td>
         {% for product in similar_products limit:10 %}
-        <td><img src="{{ '6cde80d84f49130e658e48011c948d53271c6856.jpg' | prepend: '/assets/images/full/' }}" class="img-fluid"></td>
+        <td>
+          <img src="{{ product.images[0]['path'] | prepend: '/assets/images/' }}" class="img-fluid" style="width:150px;"></td>
         {% endfor %}
       </tr>
       <tr>

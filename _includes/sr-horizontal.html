@@ -16,12 +16,14 @@
             -->
            
             <a href="{{ product.url | absolute_url }}">
-              <img
-                src="{{ product.images[0]['path'] | prepend: '/assets/images/full/'  }}"
-                alt="{{ product.title }}"
-                class="mt-3 p-2"
-                height="190"
-              />
+              {% assign featured_image = product.images[0]['path'] | replace: 'full/', '' %}
+              {% include responsive-image.html 
+                src=featured_image
+                height="190" 
+                width="" 
+                class="mt-3 p-2" 
+                alt=product.title
+              %}
             </a>
 
           </div>

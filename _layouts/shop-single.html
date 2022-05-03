@@ -42,30 +42,22 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
         >
           <div class="carousel-inner">
             {% for image in page.images %}
+            {% assign featured_image = page.images[0]['path'] | replace: 'full/', '' %}
             <div class="carousel-item{% if forloop.first %} active{% endif %}">
               <a
-                href="https://cdn.bikefi.net/images/{{ include.src }}"
+                href="{{ featured_image | prepend: 'https://cdn.bikefi.net/images/' | absolute_url }}"
                 data-lightbox="productImage"
                 data-title="{{ page.title }}"
                 data-footer="Source: {{ site.title }}"
                 disableScrolling="true"
               >
-              
-              
-              
-              <img src="{{ '6cde80d84f49130e658e48011c948d53271c6856.jpg' | prepend: '/assets/images/full/' }}" class="img-fluid" alt="{{ page.title }}">
-
-              <!-- Code for "poor man's cdn"
-            - the src needs to be the page.images[0].path, but with 'full/' removed - i.e. just the filename and extension.
-            
-             -->
-              <!-- {% include responsive-image.html 
-                src="{{ page.images[0].path }}"
-                height="250" 
-                width="250" 
+              {% include responsive-image.html 
+                src=featured_image
+                height="500" 
+                width="500" 
                 class="img-fluid" 
-                alt="alt" 
-              %} -->
+                alt=page.title
+              %}
 
 
 
@@ -214,8 +206,10 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
       </div>
     </div>
   </div>
-  <hr class="my-10" />
-  {% include compare-products.html %}
+  <div class="container">
+    <hr class="my-10" />
+    {% include compare-products.html %}
+  </div>
 
 </div>
 
