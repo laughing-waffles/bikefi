@@ -32,7 +32,7 @@ rm -rf temp.zip
 
 
 echo "starting scraper import"
-curl -X GET "http://process.bikefi.net/generate.php?json=output/data/inventory.jl&filename=title&title=title&content=description&date=updated_at&fast=$FAST" > temp.zip
+curl -X GET "http://process.bikefi.net/generate.php?json=inventory.jl&filename=title&title=title&content=description&date=updated_at&fast=$FAST" > temp.zip
 unzip temp.zip
 mv temp/* _posts/products/
 echo "moved files"
