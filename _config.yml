@@ -19,6 +19,7 @@ plugins:
   - jekyll-include-cache
 sass:
   sass_dir: assets/css
+  style: compressed # possible values: nested expanded compact compressed
 include: 
   - pages
 exclude: 
@@ -154,67 +155,3 @@ compress_html:
   blanklines: false
   ignore:
     envs: []
-responsive_image:
-  # [Required]
-  # Path to the image template.
-  template: _includes/responsive-image.html #THIS ONE
-  # [Optional, Default: 85]
-  # Quality to use when resizing images.
-  default_quality: 85
-  # [Optional, Default: []]
-  # An array of resize configuration objects. Each object must contain at least
-  # a `width` value.
-  sizes:
-    - width: 150  # [Required] How wide the resized image will be.
-      height: 150
-      quality: 80 # [Optional] Overrides default_quality for this size.
-    - width: 300
-      height: 300
-      quality: 80
-    - width: 600
-      height: 600
-      quality: 80
-    - width: 850
-      height: 850
-      quality: 90
-    - width: 1200
-      height: 1200
-      quality: 90
-  # [Optional, Default: false]
-  # Rotate resized images depending on their EXIF rotation attribute. Useful for
-  # working with JPGs directly from digital cameras and smartphones
-  auto_rotate: true
-  # [Optional, Default: false]
-  # Strip EXIF and other JPEG profiles. Helps to minimize JPEG size and win friends
-  # at Google PageSpeed.
-  strip: true
-  # [Optional, Default: assets]
-  # The base directory where assets are stored. This is used to determine the
-  # `dirname` value in `output_path_format` below.
-  base_path: assets/images/full
-  # [Optional, Default: assets/resized/%{filename}-%{width}x%{height}.%{extension}]
-  # The template used when generating filenames for resized images. Must be a
-  # relative path.
-  #
-  # Parameters available are:
-  #   %{dirname}     Directory of the file relative to `base_path` (assets/sub/dir/some-file.jpg => sub/dir)
-  #   %{basename}    Basename of the file (assets/some-file.jpg => some-file.jpg)
-  #   %{filename}    Basename without the extension (assets/some-file.jpg => some-file)
-  #   %{extension}   Extension of the file (assets/some-file.jpg => jpg)
-  #   %{width}       Width of the resized image
-  #   %{height}      Height of the resized image
-  #
-  output_path_format: assets/images/resized/%{width}/%{basename}
-# [Optional, Default: true]
-  # Whether or not to save the generated assets into the source folder.
-  save_to_source: false
-# [Optional, Default: false]
-  # Cache the result of {% responsive_image %} and {% responsive_image_block %}
-  # tags. See the "Caching" section of the README for more information.
-  cache: true
-# [Optional, Default: []]
-  # By default, only images referenced by the responsive_image and responsive_image_block
-  # tags are resized. Here you can set a list of paths or path globs to resize other
-  # images. This is useful for resizing images which will be referenced from stylesheets.
-  extra_images:
-    - uploads/*/*/*/*.{jpeg,jpg}

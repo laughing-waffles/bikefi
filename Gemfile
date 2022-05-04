@@ -14,6 +14,7 @@ gem "jekyll"
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
+  gem 'bootstrap', '~> 5.1.3'
   gem "jekyll-feed"
   gem "webrick"
   gem "dotenv"

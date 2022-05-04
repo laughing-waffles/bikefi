@@ -1,11 +1,11 @@
 ---
 layout: default
-hero-image: /assets/images/home-hero.jpeg
+hero-image: /assets/images/XL-bargains-highres.png
 ---
 
 <!-- hero section -->
 <div
-  class="py-lg-19 pt-14 pb-10 bg-cover"
+  class="px-4 pt-16 pb-5 my-5 text-center bg-cover"
   style="
     background-image: linear-gradient(180deg, rgba(30, 24, 53, 0.4) 0%, rgba(30, 24, 53, 0.4) 90.16%), 
     {% if jekyll.environment == 'production' %}
@@ -15,31 +15,16 @@ hero-image: /assets/images/home-hero.jpeg
     {% endif %}
     "
 >
-  <div class="container">
-    <div class="row">
-      <div class="col-xxl-5 col-lg-6 col-md-8 col-12">
-        <div class="text-white">
-          <h1 class="text-white mb-3 display-3">We’ll help you</h1>
-          <h2 class="mb-3 text-white">finance the purchase of a new ebike.</h2>
-          <p class="mb-3 pe-lg-12 pe-0">
-            It’s like a car loan, but for a bike. And way less confusing.
-          </p>
-          <div class="d-grid gap-2 d-md-block">
-            <a
-              href="{{ 'all-products/' | absolute_url }}"
-              class="btn btn-primary btn-lg"
-              >Search all products</a
-            >
-            <a
-              href="{{ 'bike-shops/' | absolute_url }}"
-              class="btn btn-outline-primary btn-lg"
-              >Find a bike shop</a
-            >
-          </div>
-        </div>
-      </div>
+  <h1 class="display-5 fw-bold text-white">Find deals</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4 text-white">accross hundreds of online and local retailers of the world's best cycling products.</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="{{ 'all-products/' | absolute_url }}" class="btn btn-light btn-lg px-4 gap-3">Search all products</a>
+      <a href="{{ 'bike-shops/' | absolute_url }}" class="btn btn-outline-light btn-lg px-4">Find a bike shop</a>
     </div>
   </div>
+
+  
 </div>
 
 <!-- <div class="py-lg-13 bg-dark">

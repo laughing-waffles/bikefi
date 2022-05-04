@@ -51,55 +51,52 @@
     }
     .navbar {
         padding-bottom: 0rem;
-        @media (min-width:768px) {
-            padding-top: .5rem;
-
+        @media (min-width: 768px) {
+            padding-top: 0.5rem;
         }
-
     }
     .navbar-nav {
         min-width: 100%;
 
-
         .navbar-header {
-          margin-bottom: 1rem;
-          padding: 0rem 1.25rem;
-          margin-top: 1.5625rem;
-          font-size: 0.75rem;
-          .heading {
+            margin-bottom: 1rem;
+            padding: 0rem 1.25rem;
+            margin-top: 1.5625rem;
             font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            color: $gray-400;
-            margin-bottom: 0rem;
-          }
-          span {
-            color: $gray-600;
-          }
+            .heading {
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: 600;
+                color: $gray-400;
+                margin-bottom: 0rem;
+            }
+            span {
+                color: $gray-600;
+            }
         }
         .navbar-border {
-          border-bottom: 1px solid $gray-200;
-          margin: 1.25rem 0rem;
+            border-bottom: 1px solid $gray-200;
+            margin: 1.25rem 0rem;
         }
         .nav-item {
-          .nav-link {
-            color: $gray-800;
-            font-size: 0.875rem;
-            line-height: 1.25rem;
-            padding: 0.25rem 1.25rem;
-            font-family: $font-family-sans-serif;
-            font-weight: 500;
+            .nav-link {
+                color: $gray-800;
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+                padding: 0.25rem 1.25rem;
+                font-family: $font-family-sans-serif;
+                font-weight: 500;
 
-            &:hover {
-              color: $primary;
+                &:hover {
+                    color: $primary;
+                }
             }
-          }
-          .nav-link.active {
-            color: $primary;
-          }
+            .nav-link.active {
+                color: $primary;
+            }
         }
-      }
+    }
 }
 
 // Docs right sidebar
@@ -257,7 +254,7 @@
             .nav-link {
                 border-radius: 4px;
                 padding: 5px 15px;
-                color: #59536D;
+                color: #59536d;
                 margin-right: 5px;
                 font-size: 13px;
                 line-height: 21px;
@@ -271,7 +268,7 @@
                 border-color: $gray-700;
             }
             .show {
-                >.nav-link {
+                > .nav-link {
                     color: $white;
                     background-color: $gray-700;
                     border-color: $gray-700;
@@ -411,7 +408,7 @@
 }
 
 // breakpoints
-@media only screen and (max-width:768px) {
+@media only screen and (max-width: 768px) {
     .docs-content {
         padding: 40px 0px 140px 20px;
     }
@@ -454,4 +451,14 @@
     .docs-content {
         padding: 40px 0px 140px 60px;
     }
+}
+
+// ratio
+
+.ratio {
+    display: inline-block;
+    width: 10rem;
+    color: $gray-600;
+    background-color: $gray-100;
+    border: 1px solid $gray-300;
 }
