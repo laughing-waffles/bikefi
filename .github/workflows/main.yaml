@@ -5,8 +5,8 @@ on:
     branches:
       - main 
   workflow_dispatch:
-      branches: 
-        - staging
+    branches: 
+      - main
         
       
 jobs:
