@@ -35,6 +35,7 @@ echo "starting scraper import"
 curl -X GET "https://process.bikefi.net/generate.php?json=inventory.jl&filename=title&title=title&content=description&date=updated_at&fast=$FAST" -o temp.zip
 ls
 unzip temp.zip
+mkdir _posts/products/
 mv temp/* _posts/products/
 echo "moved files"
 rm -rf temp
