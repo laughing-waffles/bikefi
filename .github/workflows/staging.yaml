@@ -1,9 +1,12 @@
-name: Jekyll Deploy
+name: Deploy Staging
 
 on:
   push:
     branches:
       - staging 
+  workflow_dispatch:
+    branches: 
+      - staging
       
 jobs:
   build_and_deploy_staging:
