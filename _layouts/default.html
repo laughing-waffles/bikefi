@@ -90,41 +90,8 @@ layout: compress
         "paymentAccepted": "Visa, Master Card, Discover, Amex, ApplePay, AndroidPay"
       }
     </script>
-    {% endif %} {% if page.layout == 'shop-single' %}
-    <!-- Bike Product Schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "name": "{{ page.title }}",
-        "image": "{{ page.image.path[0] | absolute_url }}",
-        "description": "{{ content | strip_html | truncatewords: 50, "" }}",
-        "brand": {
-          "@type": "Thing",
-          "name": "{{ page.title }}"
-        },
-        {% if page.ratingvalue > 0 %}
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "{{ page.ratingvalue }}"
-          "ratingCount": "{{ page.ratingcount }}"
-        },
-        {% endif %}
-        "offers": {
-          "@type": "Offer",
-          "url": "{{ page.url | absolute_url }}",
-          "priceCurrency": "USD",
-          "price": "{{ page.price }}",
-          "itemCondition": "NewCondition",
-          "availability": "{{ page.availability | capitalize }}",
-          "seller": {
-            "@type": "Organization",
-            "name": "{{ site.title }}"
-          }
-        }
-      }
-    </script>
-    {% endif %}
+    {% endif %} 
+
 
     <!-- Libs CSS -->
     <!-- Theme CSS -->
@@ -179,7 +146,7 @@ layout: compress
 
 
 
-
+<!-- 
 
     <header class="navbar navbar-expand-md navbar-light bd-navbar bg-light">
       <nav
@@ -415,7 +382,7 @@ layout: compress
 
 
 
-
+ -->
 
 
 
