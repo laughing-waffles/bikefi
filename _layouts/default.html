@@ -98,7 +98,7 @@ layout: compress
         "@type": "Product",
         "name": "{{ page.title }}",
         "image": "{{ page.image.path[0] | absolute_url }}",
-        "description": "{{ content | strip_html | truncatewords: 50, "" }}",
+        "description": "{{ content }}",
         "brand": {
           "@type": "Thing",
           "name": "{{ page.title }}"
