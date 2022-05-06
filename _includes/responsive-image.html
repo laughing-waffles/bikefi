@@ -18,7 +18,7 @@
 />
 {% else %}
 <img 
-  src="{{ include.src | prepend: '/assets/images/full/' | absolute_url }}" 
+  src="{{ include.src | prepend: 'https://cdn.bikefi.net/images/' }}" 
   alt="{{ include.alt }} {{ forloop.index }}"
   class="{{ include.class }}" 
   loading="lazy" 

@@ -5,11 +5,27 @@
       <tr>
         <th scope="row"></th>
         <td>
-          <img src="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" class="img-fluid" style="width:150px;">
+          {% assign featured_image = page.images[0]['path'] | replace: 'full/', '' %}
+          {% include responsive-image.html 
+            src=featured_image
+            height="150" 
+            width="150" 
+            class="img-fluid" 
+            alt=product.title
+          %}
+          <!-- <img src="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" class="img-fluid" style="width:150px;"> -->
         </td>
         {% for product in similar_products limit:10 %}
         <td>
-          <img src="{{ product.images[0]['path'] | prepend: '/assets/images/' }}" class="img-fluid" style="width:150px;"></td>
+          {% assign featured_image = product.images[0]['path'] | replace: 'full/', '' %}
+          {% include responsive-image.html 
+            src=featured_image
+            height="150" 
+            width="150" 
+            class="img-fluid" 
+            alt=product.title
+          %}
+          <!-- <img src="{{ product.images[0]['path'] | prepend: '/assets/images/' }}" class="img-fluid" style="width:150px;"></td> -->
         {% endfor %}
       </tr>
       <tr>

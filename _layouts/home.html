@@ -8,11 +8,7 @@ hero-image: /assets/images/XL-bargains-highres.png
   class="px-4 pt-16 pb-5 my-5 text-center bg-cover"
   style="
     background-image: linear-gradient(180deg, rgba(30, 24, 53, 0.4) 0%, rgba(30, 24, 53, 0.4) 90.16%), 
-    {% if jekyll.environment == 'production' %}
-    url(https://res.cloudinary.com/{{ site.cloudinary.cloud_name }}/image/fetch/c_limit,f_auto,q_auto,w_1250/{{ layout.hero-image | absolute_url }});
-    {% else %}
     url({{ layout.hero-image | absolute_url }});
-    {% endif %}
     "
 >
   <h1 class="display-5 fw-bold text-white mt-18">Find deals</h1>
@@ -59,6 +55,19 @@ hero-image: /assets/images/XL-bargains-highres.png
     <div class="row">
       <div class="col-lg-9 col-12">
 
+        <div class="row d-flex align-items-center mb-5">
+          <div class="col">
+            <h3>All products</h3>
+            <div class="navbar-scroll">
+              {% for post in site.posts limit: 20 %}
+              <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
+                {% include sr-tile.html %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        
         {% assign posts = site.posts | where: "ratingvalue", "4" %}
         <div class="row d-flex align-items-center mb-5">
           <div class="col">
