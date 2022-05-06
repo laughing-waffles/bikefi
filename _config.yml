@@ -55,7 +55,7 @@ defaults:
     values:
       sitemap: false
 pagination:
-  enabled: true
+  enabled: false
   per_page: 20
   # indexpage: index
   permalink: /page-:num/
@@ -67,7 +67,7 @@ pagination:
     before: 2
     after: 2
 autopages:
-  enabled: true
+  enabled: false
   categories: 
     layouts: 
       - srp.html
