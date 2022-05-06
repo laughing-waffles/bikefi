@@ -127,9 +127,9 @@
             </div>
             <div class="row">
               {% if vendor.country == "USA" %}
-                <p class="text-success font-12 mb-0 mt-1"><strong>Mailed from the USA</strong> <img src="{{ 'flag-usa.svg' | prepend: 'assets/images/logos/' | absolute_url }}" class="img-fluid" style="max-height: 20px;"/></p>
+                <p class="text-success font-12 mb-0 mt-1"><strong>Shipped from the USA</strong> <img src="{{ 'flag-usa.svg' | prepend: 'assets/images/logos/' | absolute_url }}" class="img-fluid" style="max-height: 20px;"/></p>
               {% elsif vendor.country != "" %}
-                <p class="font-12 mb-0 mt-1">Mailed from {{ vendor.country }}</strong></p>
+                <p class="font-12 mb-0 mt-1">Shipped from {{ vendor.country }}</strong></p>
               {% endif %}
             </div>
           </div>

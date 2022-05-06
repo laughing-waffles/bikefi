@@ -118,6 +118,47 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
             ><s>{{ page.price_msrp | money }}</s></span
           >{% endif %}
         </div>
+        <div class="mb-3 small">
+          <img src="https://cdn-assets.affirm.com/images/black_logo-transparent_bg.png" class="me-2 mt-n2" style="width:40px">{{ page.price | divided_by: 36 | money }} per month for 36 months <a class="font-primary" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Apply</a>
+
+
+
+
+
+          <!-- Modal -->
+          <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Recipient:</label>
+                      <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                      <label for="message-text" class="col-form-label">Message:</label>
+                      <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+        </div>
         <a href="{{ page.affiliate_url }}" class="btn btn-primary"
           >Visit Site</a
         >
