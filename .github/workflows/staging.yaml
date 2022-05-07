@@ -37,7 +37,7 @@ jobs:
           remote_user: 'dh_d468jd'
           remote_host: 'edpad.com'
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }} 
-          path: './_site'
+          path: './_site/'
           remote_path: '/home/dh_d468jd/staging.bikefi.net/'
           switches: '-avzr --delete --checksum'
           
