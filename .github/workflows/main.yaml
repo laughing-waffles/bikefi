@@ -22,6 +22,7 @@ jobs:
         with:
           path: |
             ./_site
+            .jekyll-metadata
           key: ${{ runner.os }}-${{ hashFiles('**/_posts/*') }}
           restore-keys: ${{ runner.os }}-
       - name: ruby setup
@@ -40,4 +41,3 @@ jobs:
           path: './_site/*'
           remote_path: '/home/dh_d468jd/bikefi.net/'
           switches: '-avzr --delete'
-          
