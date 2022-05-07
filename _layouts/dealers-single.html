@@ -54,8 +54,6 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
           </p>
         </div>
 
-        {% include financing.html %}
-
         <div class="mb-8">
           <!-- <h3 class="mb-4">Event Video</h3> -->
           <!-- Embedded YouTube video Markup with the lazy class -->
@@ -84,6 +82,10 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
           </script>
         </div>
         <!-- event video -->
+
+        <hr />
+        {% include financing.html %}
+
       </div>
 
       <!-- event sidebar -->
@@ -93,7 +95,7 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
         <div class="card mb-4">
           <div class="card-body p-4">
             <div class="mb-4">
-              {% cloudinary productImage {{page.ogimage}} alt="{{ page.title }}" %}
+              <img src="{{page.ogimage}}" alt="{{ page.title }}" class="img-fluid" />
             </div>
           </div>
         </div>

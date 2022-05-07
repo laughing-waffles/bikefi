@@ -1,0 +1,27 @@
+{% if jekyll.environment == "production" %}
+<img
+  src="{{ include.src | prepend: 'https://cdn.bikefi.net/images/' }}"
+  srcset="
+  https://cdn.bikefi.net/image.php?hash={{ include.src }}&height=150&width=150 150w,
+  https://cdn.bikefi.net/image.php?hash={{ include.src }}&height=300&width=300 300w,
+  https://cdn.bikefi.net/image.php?hash={{ include.src }}&height=500&width=500 500w,
+  https://cdn.bikefi.net/image.php?hash={{ include.src }}&height=650&width=650 650w,
+  https://cdn.bikefi.net/image.php?hash={{ include.src }}&height=800&width=800 800w,
+  "
+  sizes="100vw"
+  alt="{{ include.alt }} {{ forloop.index }}"
+  class="{{ include.class }}"
+  loading="lazy"
+  height="{{ include.height }}px"
+  width="{{ include.width }}px"
+  crossorigin="anonymous"
+/>
+{% else %}
+<img 
+  src="{{ include.src | prepend: 'https://cdn.bikefi.net/images/' }}" 
+  alt="{{ include.alt }} {{ forloop.index }}"
+  class="{{ include.class }}" 
+  loading="lazy" 
+  width="{{ include.width }}px" 
+  height="{{ include.height }}px" />
+{% endif %}

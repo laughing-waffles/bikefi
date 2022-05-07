@@ -24,28 +24,30 @@
       </div>  
     </div>
 
-    <table class="table table-hover">
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Interest Rate</th>
-					<th scope="col">Eligability</th>
-					<th scope="col">Link</th>					
-				</tr>
-			</thead>
-			<tbody id="fintable">
-        {% assign eligibility = site.data.financing.records | where_exp: "item","item.fields['Eligibility State'] contains 'All'" %}
-        
-        {% for item in eligibility %}
-				<tr data-id="{{ item.id }}" >
-					<th scope="row">{{ item.fields["Name"] }}</th>
-					<td>{{ item.fields["Interest Rate"] }}</td>
-					<td><a href="{{ item.fields["Eligibility Link"] }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Read more eligibility information from {{ item.fields["Name"] }}" class="text-muted"><i class="fas fa-info-circle"></i></a></td>
-					<td><a href="{{ item.fields["Loan Link"] }}" target="_blank">Learn More</a></td>
-				</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Interest Rate</th>
+            <th scope="col">Eligability</th>
+            <th scope="col">Link</th>					
+          </tr>
+        </thead>
+        <tbody id="fintable">
+          {% assign eligibility = site.data.financing.records | where_exp: "item","item.fields['Eligibility State'] contains 'All'" %}
+          
+          {% for item in eligibility %}
+          <tr data-id="{{ item.id }}" >
+            <th scope="row">{{ item.fields["Name"] }}</th>
+            <td>{{ item.fields["Interest Rate"] }}</td>
+            <td><a href="{{ item.fields["Eligibility Link"] }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Read more eligibility information from {{ item.fields["Name"] }}" class="text-muted"><i class="fas fa-info-circle"></i></a></td>
+            <td><a href="{{ item.fields["Loan Link"] }}" target="_blank">Learn More</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
 
 	</div>
 </div>

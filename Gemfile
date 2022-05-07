@@ -14,6 +14,7 @@ gem "jekyll"
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
+  gem 'bootstrap', '~> 5.1.3'
   gem "jekyll-feed"
   gem "webrick"
   gem "dotenv"
@@ -23,4 +24,6 @@ group :jekyll_plugins do
   gem 'jekyll-paginate-v2', git: 'https://github.com/jameshi16/jekyll-paginate-v2.git', branch: 'cache-mismatch-error'
   gem "jekyll-include-cache"
   gem "jekyll-algolia", '~> 1.0'
+  gem "money"
+  gem "kramdown-parser-gfm", '~> 1.1'
 end

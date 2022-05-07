@@ -6,30 +6,27 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
 <div class="py-6 py-lg-12 pt-8 pt-lg-12">
   <div class="container">
     <div class="row align-items-center">
-
       {% if page.categories.size > 0 %}
       <!-- breadcrumbs -->
       <div id="breadcrumbs" class="my-5">
         <div class="custom-breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item  text-primary">
+            <li class="breadcrumb-item">
               <a href="{{ '/' | absolute_url }}">Home</a>
             </li>
-            {% for item in page.categories %}
-            {% if forloop.last %}
-            <li class="breadcrumb-item active text-primary">
-              {{ item }}
-            </li>
-            {% else %}
-            <li class="breadcrumb-item text-primary">
-              <a 
-                href="{{ item | slugify | absolute_url }}" 
-                class="text-inherit ms-1">
+            {% for item in page.category %} 
+            <li class="breadcrumb-item">
+              <a
+                href="{{ item | slugify | absolute_url }}"
+                class="text-inherit ms-1"
+              >
                 {{ item }}
               </a>
             </li>
-            {% endif %}
             {% endfor %}
+            <li class="breadcrumb-item active text-primary">
+              {{ page.title }}
+            </li>
           </ol>
         </div>
       </div>
@@ -38,74 +35,154 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
 
       <!-- image -->
       <div class="col-lg-7 col-md-8 col-12">
-        <div id="productCarousel" class="carousel slide carousel-fade" data-bs-interval="false">
+        <div
+          id="productCarousel"
+          class="carousel slide carousel-fade"
+          data-bs-interval="false"
+        >
           <div class="carousel-inner">
-            {% for image in page.images_cached %}
+            {% for image in page.images %}
+            {% assign featured_image = page.images[0]['path'] | replace: 'full/', '' %}
             <div class="carousel-item{% if forloop.first %} active{% endif %}">
-              <a href="https://res.cloudinary.com/{{ site.cloudinary.cloud_name }}/image/fetch/c_limit,f_auto,q_auto,w_1250/{{ image }}" data-lightbox="productImage" data-title="{{ page.title }}" data-footer="Source: {{ site.title }}" disableScrolling="true">
-                {% cloudinary productImage {{ image }} alt="Photo of a {{ page.title }}" %}
+              <a
+                href="{{ featured_image | prepend: 'https://cdn.bikefi.net/images/' | absolute_url }}"
+                data-lightbox="productImage"
+                data-title="{{ page.title }}"
+                data-footer="Source: {{ site.title }}"
+                disableScrolling="true"
+              >
+              {% include responsive-image.html 
+                src=featured_image
+                height="500" 
+                width="500" 
+                class="img-fluid" 
+                alt=page.title
+              %}
+
+
+
+
+
+
+
               </a>
             </div>
             {% endfor %}
           </div>
         </div>
- 
-        {% if page.images_cached.size > 1 %}
+
+        {% if page.images > 1 %}
         <div class="row d-flex">
           <div class="navbar-scroll">
             <ul>
-              {% for image in page.images_cached %}
-              <li data-bs-target="#productCarousel" data-bs-slide-to="{{ forloop.index0 }}" class="shadow-sm m-3">
-                {% cloudinary productCarouselNavbar {{ image }} alt="Thumbnail image {{ forloop.index }} of a {{ page.title }}" %}
+              {% for image in page.images %}
+              <li
+                data-bs-target="#productCarousel"
+                data-bs-slide-to="{{ forloop.index0 }}"
+                class="shadow-sm m-3"
+              >
+                <img src="{{ '6cde80d84f49130e658e48011c948d53271c6856.jpg' | prepend: '/assets/images/full/' }}" alt="Thumbnail image {{ forloop.index }} of a {{ page.title }}" style="width:125px; height:125px;" />
+
               </li>
               {% endfor %}
             </ul>
           </div>
         </div>
         {% endif %}
-        
-
       </div>
 
       <!-- description -->
       <div class="offset-lg-1 col-lg-4 col-md-4 col-12">
         <h2>{{ page.title }}</h2>
-        {% if page.make %}
-        <p>by {{ page.make }}</p>
+        {% if page.brand.name %}
+        <p>by {{ page.brand.name }}</p>
         {% endif %}
         <div class="d-flex">
-
-          {% assign stars = page.star_rating %}
-          {% include star-ratings.html %}
+          {% assign ratingvalue = page.ratingvalue %} {% assign ratingcount =
+          page.ratingcount %} {% include star-ratings.html %}
 
           <!-- rating -->
           <div>
             {% if page.star_rating.size >= 1 %}
-            <span class="ms-2 font-12 text-dark"> {{ page.star_rating }} of 5 stars</span>
-            {% endif %}
-            {% assign availability = page.availability %}
-            {% include availability-badge.html %}
+            <span class="ms-2 font-12 text-dark">
+              {{ page.star_rating }} of 5 stars</span
+            >
+            {% endif %} {% assign availability = page.availability %} {% include
+            availability-badge.html %}
           </div>
         </div>
         <hr class="my-4" />
         <div class="mb-3 font-20">
-          {% if page.price_current %}<span class="text-dark me-2">{{ page.price_current }}</span>{% endif %}
-          {% if page.price_msrp %}<span class="text-muted"><s>{{ page.price_msrp }}</s></span>{% endif %}
+          {% if page.price %}<span class="text-dark me-2">{{ page.price | money }}</span
+          >{% endif %} {% if page.price_msrp %}<span class="text-muted"
+            ><s>{{ page.price_msrp | money }}</s></span
+          >{% endif %}
         </div>
-        <a href="{{ site.affiliate-parameters }}{{ page.affiliate_url | url_encode }}" class="btn btn-outline-primary me-2">View Bike</a>
-        <a href="#financing" class="btn btn-light">Get financing</a>
+        <div class="mb-3 small">
+          <img src="https://cdn-assets.affirm.com/images/black_logo-transparent_bg.png" class="me-2 mt-n2" style="width:40px">{{ page.price | divided_by: 36 | money }} per month for 36 months <a class="font-primary" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Apply</a>
+
+
+
+
+
+          <!-- Modal -->
+          <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Recipient:</label>
+                      <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                      <label for="message-text" class="col-form-label">Message:</label>
+                      <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+        </div>
+        <a href="{{ page.affiliate_url }}" class="btn btn-primary"
+          >Visit Site</a
+        >
+        <!-- <a href="#financing" class="btn btn-light">Get financing</a> -->
 
         {% if page.tags.size > 0 %}
-        <p class="mt-4 font-14 mb-1"><span class="text-dark me-1">Tag{% if page.tags.size > 1 %}s{% endif %}:</span>
-          {% for tag in page.tags %}
-          <a href="{{ tag | slugify | prepend: '/tag/' | absolute_url }}" class="text-inherit ms-1">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-          {% endfor %}
+        <p class="mt-4 font-14 mb-1">
+          <span class="text-dark me-1"
+            >Tag{% if page.tags.size > 1 %}s{% endif %}:</span
+          >
+          {% for tag in page.tags limit: 5 %}
+          <a
+            href="{{ tag | slugify | prepend: '/tag/' | absolute_url }}"
+            class="text-inherit ms-1"
+            >{{ tag }}</a
+          >{% unless forloop.last %}, {% endunless %} {% endfor %}
         </p>
         {% endif %}
-
       </div>
     </div>
+
     <hr class="my-10" />
+    {% include related-products.html %}
+
     <!-- product detail list -->
     <div class="row">
       <div class="col-lg-4 col-md-5 col-12">
@@ -113,63 +190,70 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
           <h4 class="mb-3">Product details</h4>
 
           {% for item in page.attributes %}
-          <div class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1">
+          <div
+            class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1"
+          >
             <div class="col-5 text-dark"><b>{{ item.first }}</b></div>
             <div class="col-7">{{ item.last }}</div>
           </div>
           {% endfor %}
-          <div class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1">
+          <div
+            class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1"
+          >
             <div class="col-5 text-dark"><b>Updated</b></div>
-            <div class="col-7">{{ post.date | date: "%b %d, %Y" }}</div>
+            <div class="col-7">{{ page.updated_at | date: "%b %d, %Y" }}</div>
           </div>
-
         </div>
       </div>
       <!-- description -->
       <div class="col-lg-8 col-md-7 col-12">
         <h4 class="mb-3">Description</h4>
 
-        {{ content | markdownify }}
-
-        {% if page.video %}
+        {{ content | markdownify }} {% if page.video %}
         <!-- Embedded YouTube video Markup with the lazy class -->
         <iframe
-            class="lazy" 
-            data-src="{{ page.video }}" 
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+          class="lazy"
+          data-src="{{ page.video }}"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
         >
         </iframe>
         <script>
-        // Set the options globally
-        // to make LazyLoad self-initialize
-        window.lazyLoadOptions = {
+          // Set the options globally
+          // to make LazyLoad self-initialize
+          window.lazyLoadOptions = {
             // Your custom settings go here
-        };
+          };
 
-        // Listen to the initialization event
-        // and get the instance of LazyLoad
-        window.addEventListener("LazyLoad::Initialized", function (event) {
-            window.lazyLoadInstance = event.detail.instance;
-        }, false);
+          // Listen to the initialization event
+          // and get the instance of LazyLoad
+          window.addEventListener(
+            "LazyLoad::Initialized",
+            function (event) {
+              window.lazyLoadInstance = event.detail.instance;
+            },
+            false
+          );
         </script>
-        {% endif %}
-
-        {% if site.discounts %}
-        {% for discount in site.discounts %}
-        <p><strong>{{ discount.name }} - {{ discount.discount_name }}</strong></p>
+        {% endif %} {% if site.discounts %} {% for discount in site.discounts %}
+        <p>
+          <strong>{{ discount.name }} - {{ discount.discount_name }}</strong>
+        </p>
         <p>{{ discount.discount_notes }}</p>
-        {% endfor %}
-        {% endif %}
-
+        {% endfor %} {% endif %}
+        <hr />
         {% include financing.html %}
-
       </div>
     </div>
   </div>
+  <div class="container">
+    <hr class="my-10" />
+    {% include compare-products.html %}
+  </div>
+
 </div>
 
 <script>
-  var discountData = '{{ site.discounts | jsonify }}';
+  var discountData = "{{ site.discounts | jsonify }}";
 </script>

@@ -1,7 +1,7 @@
 {% if availability contains 'Only' %}
-<span class="badge bg-warning-soft text-uppercase ms-3">{{ availability }}</span>
+<span class="badge bg-warning-soft text-uppercase ms-3">Limited Availability</span>
 {% elsif availability contains 'In' %}
-<span class="badge bg-success-soft text-uppercase ms-3">{{ availability }}</span>
+<span class="badge bg-success-soft text-uppercase ms-3">In Stock</span>
 {% else %}
-<span class="badge bg-danger-soft text-uppercase ms-3">{{ availability }}</span>
+<!-- <span class="badge bg-danger-soft text-uppercase ms-3">Currently Unavailable</span> -->
 {% endif %}

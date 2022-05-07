@@ -4,27 +4,29 @@ email: contact@bikefi.net
 description: >- # this means to ignore newlines until "baseurl:"
   BikeFi connects the best bikes on the market with the best financing terms available. 
 author: name
-url: "https://bikefi.net" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/" # the subpath of your site, e.g. /blog
 incremental: true
 #twitter:
 #  username: 
 #  card: summary #keep this to generate a twitter share card
 permalink: pretty
-gems:
-  - jekyll-paginate-v2
 plugins:
+  - jekyll-paginate-v2
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-target-blank
   - jekyll-include-cache
-collections:
-  bike-shops:
-    output: true
 sass:
   sass_dir: assets/css
+  style: compressed # possible values: nested expanded compact compressed
+include: 
+  - pages
 exclude: 
   - scrapy
+collections:
+  pages:
+    output: true
 defaults:
   - scope:
       path: ''
@@ -36,22 +38,32 @@ defaults:
       layout: dealers-single
       permalink: /bike-shops/:slug/
   - scope:
-      path: _posts/bikes
+      path: _posts/products
     values:
       layout: shop-single
-      permalink: /bikes/:slug/
+      permalink: /:slug/
   - scope:
       path: assets/*
     values:
       sitemap: false
+  - scope:
+      path: 'tag'
+    values:
+      sitemap: false
+  - scope:
+      path: 'collection'
+    values:
+      sitemap: false
 pagination:
   enabled: true
-  per_page: 10
+  per_page: 20
+  # indexpage: index
   permalink: /page-:num/
-  title: :title
-  sort_field: title
+  title: ':title - page :num'
+  sort_field: 'date'
   sort_reverse: true
-  trail:
+  category: 'posts'
+  trail: 
     before: 2
     after: 2
 autopages:
@@ -72,19 +84,11 @@ autopages:
     slugify:
       mode: default
       case: true
-  collections:
-    layouts:
-      - srp.html
-    title: :coll
-    permalink: /:coll/
-    slugify:
-      mode: default
-      case: true
 cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
-  cloud_name: judsonlmoore-com
+  cloud_name: bikefi
   verbose: false
   only_prod: true
-  origin_url: https://cdn.bikefi.net
+  # origin_url: https://cdn.bikefi.net
   presets:
     default:
       min_width: 320
@@ -122,11 +126,6 @@ cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
       steps: 5
       attributes:
         class: mt-3 img-fluid
-algolia:
-  application_id: 'UF8CKBPQYZ'
-  index_name: 'financing.bike'
-  search_only_api_key: '904e148249c3c17bb57ec463208cda93'
-affiliate-parameters: "https://jenson.sjv.io/c/3294572/989438/13009?u=" #jensonbikesusa only 
 gtm-parameters: "?utm_source=bikefi.net&utm_medium=url&utm_campaign=friendly_neighborhood_spiderman" # https://ga-dev-tools.web.app/campaign-url-builder/
 compress_html:
   clippings: all
