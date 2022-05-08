@@ -3,7 +3,7 @@ tagline: "Find deals across hundreds of online and local retailers of the world'
 email: contact@bikefi.net
 description: "BikeFi makes it easy for you to find the best deals on cycling products online and in your neighborhood."
 author: BikeFi
-url: "https://bikefi.net" # the base hostname & protocol for your site, e.g. http://example.com
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "/" # the subpath of your site, e.g. /blog
 incremental: true
 #twitter:
@@ -16,9 +16,10 @@ plugins:
 sass:
   sass_dir: assets/css
   style: compressed # possible values: nested expanded compact compressed
-include: 
-  - _product_tags
-  - _product_categories
+collections:
+  categories:
+    output: true
+    permalink: /:path/:name
 defaults:
   - scope:
       path: ''
@@ -38,44 +39,13 @@ defaults:
       path: assets/*
     values:
       sitemap: false
-  - scope:
-      path: _product_tags
-    values:
-      layout: srp
-      sitemap: true
-  - scope:
-      path: _product_categories
-    values:
-      layout: srp
-      sitemap: true
 pagination:
   enabled: true
-  per_page: 10
+  per_page: 25
   permalink: "/page:num/"
   title: ':title - page :num'
   sort_field: 'date'
   sort_reverse: true
-  trail: 
-    before: 2
-    after: 2
-# autopages:
-#   enabled: false
-#   categories: 
-#     layouts: 
-#       - srp.html
-#     title: :cat
-#     permalink: /:cat/
-#     slugify:
-#       mode: default
-#       case: true
-#   tags:
-#     layouts: 
-#       - srp.html
-#     title: :tag
-#     permalink: /tag/:tag/
-#     slugify:
-#       mode: default
-#       case: true
 gtm-parameters: "?utm_source=bikefi.net&utm_medium=url&utm_campaign=friendly_neighborhood_spiderman" # https://ga-dev-tools.web.app/campaign-url-builder/
 compress_html:
   clippings: all

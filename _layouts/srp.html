@@ -28,7 +28,7 @@ sitemap: false
   </div>
 </div>
 
-<div class="pt-lg-13">
+<div class="pt-3 pt-lg-13">
   <div class="container">
     <div class="row">
       <div class="col-lg-9 col-12">
@@ -61,9 +61,8 @@ sitemap: false
         <div class="infinite-container" data-infinite-scroll='{ "path": ".next", "append": ".card", "history": false }'>
           {% if page.url contains "bike-shops" %}
             <!-- BIKE SHOPS -->
-            {% assign store = paginator.posts | where: "ratingvalue", "4" %}
+            {% assign store = paginator.posts %}
             {% for post in store %}
-            <p>1</p>
             {% include sr-horizontal-vendor.html %} 
             {% endfor %}
           {% elsif page.url contains "tag" %}
@@ -84,7 +83,7 @@ sitemap: false
 
           {% if paginator.total_pages > 1 %}
           {% if paginator.next_page %}
-          <a class="next" href="{{ paginator.next_page_path | absolute_url }}">&raquo;</a>
+          <a class="next" href="{{ paginator.next_page_path | absolute_url }}"></a>
           {% endif %}
           {% endif %}
 

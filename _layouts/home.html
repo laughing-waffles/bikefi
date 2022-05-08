@@ -5,7 +5,7 @@ hero-image: /assets/images/XL-bargains-highres.png
 
 <!-- hero section -->
 <div
-  class="px-4 pt-16 pb-5 my-5 text-center bg-cover"
+  class="px-4 pt-16 pb-5 my-4 text-center bg-cover"
   style="
     background-image: linear-gradient(180deg, rgba(30, 24, 53, 0.4) 0%, rgba(30, 24, 53, 0.4) 90.16%), 
     url({{ layout.hero-image | absolute_url }});
@@ -55,44 +55,6 @@ hero-image: /assets/images/XL-bargains-highres.png
     <div class="row">
       <div class="col-lg-9 col-12">
 
-
-
-
-        <div class="row d-flex align-items-center mb-5">
-          <div class="col">
-            <h3>All products</h3>
-
-            <h1>Flickity - groupCells</h1>
-
-            <!-- Flickity HTML init -->
-            <div class="carousel" data-flickity='{ "groupCells": true }'>
-
-
-              {% for post in site.posts limit: 20 %}
-              <div class="carousel-cell col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
-                {% include sr-tile.html %}
-              </div>
-              {% endfor %}
-
-              <div class="carousel-cell"></div>
-              <div class="carousel-cell"></div>
-              <div class="carousel-cell"></div>
-              <div class="carousel-cell"></div>
-              <div class="carousel-cell"></div>
-              <div class="carousel-cell"></div>
-              <div class="carousel-cell"></div>
-              <div class="carousel-cell"></div>
-              <div class="carousel-cell"></div>
-              <div class="carousel-cell"></div>
-              <div class="carousel-cell"></div>
-            </div>
-
-
-            
-          </div>
-        </div>
-
-
         <div class="row d-flex align-items-center mb-5">
           <div class="col">
             <h3>All products</h3>
@@ -106,7 +68,7 @@ hero-image: /assets/images/XL-bargains-highres.png
           </div>
         </div>
         
-        {% assign posts = site.posts | where: "ratingvalue", "4" %}
+        {% assign posts = site.posts | where: "ratingvalue", "5" %}
         <div class="row d-flex align-items-center mb-5">
           <div class="col">
             <h3>Top-rated deals</h3>
@@ -120,33 +82,6 @@ hero-image: /assets/images/XL-bargains-highres.png
           </div>
         </div>
 
-        {% assign posts = site.posts | where: "category", "Bicycles" %}
-        <div class="row d-flex align-items-center mb-5">
-          <div class="col">
-            <h3>Top deals in "Bicycles"</h3>
-            <div class="navbar-scroll">
-              {% for post in posts limit: 20 %}
-              <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
-                {% include sr-tile.html %}
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-
-        {% assign posts = site.posts | where: "category", "Electric Bikes" %}
-        <div class="row d-flex align-items-center mb-5">
-          <div class="col">
-            <h3>Top deals in "Bicycles"</h3>
-            <div class="navbar-scroll">
-              {% for post in posts limit: 2000 %}
-              <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
-                {% include sr-tile.html %}
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
       </div>
 
       <div class="col-lg-3 col-md-5 col-12 d-none d-lg-block">

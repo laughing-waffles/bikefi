@@ -170,11 +170,8 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
             >Tag{% if page.tags.size > 1 %}s{% endif %}:</span
           >
           {% for tag in page.tags limit: 5 %}
-          <a
-            href="{{ tag | slugify | prepend: '/tag/' | absolute_url }}"
-            class="text-inherit ms-1"
-            >{{ tag }}</a
-          >{% unless forloop.last %}, {% endunless %} {% endfor %}
+          {{ tag }}
+          {% unless forloop.last %}, {% endunless %} {% endfor %}
         </p>
         {% endif %}
       </div>
@@ -243,7 +240,6 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
         <p>{{ discount.discount_notes }}</p>
         {% endfor %} {% endif %}
         <hr />
-        {% include financing.html %}
       </div>
     </div>
   </div>
