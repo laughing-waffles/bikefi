@@ -1,10 +1,9 @@
 title: "BikeFi" # the name of your site, e.g. ACME Corp.
-tagline: "Finance your next set of wheels"
+tagline: "Find deals across hundreds of online and local retailers of the world's best cycling products."
 email: contact@bikefi.net
-description: >- # this means to ignore newlines until "baseurl:"
-  BikeFi connects the best bikes on the market with the best financing terms available. 
-author: name
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+description: "BikeFi makes it easy for you to find the best deals on cycling products online and in your neighborhood."
+author: BikeFi
+url: "https://bikefi.net" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "/" # the subpath of your site, e.g. /blog
 incremental: true
 #twitter:
@@ -12,21 +11,14 @@ incremental: true
 #  card: summary #keep this to generate a twitter share card
 permalink: pretty
 plugins:
-  - jekyll-paginate-v2
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-target-blank
   - jekyll-include-cache
+  - jekyll-paginate-v2
 sass:
   sass_dir: assets/css
   style: compressed # possible values: nested expanded compact compressed
 include: 
-  - pages
-exclude: 
-  - scrapy
-collections:
-  pages:
-    output: true
+  - _product_tags
+  - _product_categories
 defaults:
   - scope:
       path: ''
@@ -47,85 +39,43 @@ defaults:
     values:
       sitemap: false
   - scope:
-      path: 'tag'
+      path: _product_tags
     values:
-      sitemap: false
+      layout: srp
+      sitemap: true
   - scope:
-      path: 'collection'
+      path: _product_categories
     values:
-      sitemap: false
+      layout: srp
+      sitemap: true
 pagination:
   enabled: true
-  per_page: 20
-  # indexpage: index
-  permalink: /page-:num/
+  per_page: 10
+  permalink: "/page:num/"
   title: ':title - page :num'
   sort_field: 'date'
   sort_reverse: true
-  category: 'posts'
   trail: 
     before: 2
     after: 2
-autopages:
-  enabled: true
-  categories: 
-    layouts: 
-      - srp.html
-    title: :cat
-    permalink: /:cat/
-    slugify:
-      mode: default
-      case: true
-  tags:
-    layouts: 
-      - srp.html
-    title: :tag
-    permalink: /tag/:tag/
-    slugify:
-      mode: default
-      case: true
-cloudinary: # https://nhoizey.github.io/jekyll-cloudinary/
-  cloud_name: bikefi
-  verbose: false
-  only_prod: true
-  # origin_url: https://cdn.bikefi.net
-  presets:
-    default:
-      min_width: 320
-      max_width: 1600
-      fallback_max_width: 1600
-      steps: 5
-      loading: lazy
-    productImage:
-      min_width: 343
-      max_width: 738
-      fallback_max_width: 738
-      steps: 5
-      attributes:
-        class: d-block img-fluid
-    productCarouselNavbar: 
-      min_width: 125
-      max_width: 250
-      fallback_max_width: 250
-      steps: 5
-      attributes:
-        class: nav-link d-block p-1 img-fluid
-        width: 125px
-    srpProductImageVertical: 
-      min_width: 125
-      max_width: 250
-      fallback_max_width: 250
-      steps: 5
-      attributes:
-        class: mt-5 img-fluid
-        width: 190px
-    srpProductImageHorizontal: 
-      min_width: 125
-      max_width: 250
-      fallback_max_width: 250
-      steps: 5
-      attributes:
-        class: mt-3 img-fluid
+# autopages:
+#   enabled: false
+#   categories: 
+#     layouts: 
+#       - srp.html
+#     title: :cat
+#     permalink: /:cat/
+#     slugify:
+#       mode: default
+#       case: true
+#   tags:
+#     layouts: 
+#       - srp.html
+#     title: :tag
+#     permalink: /tag/:tag/
+#     slugify:
+#       mode: default
+#       case: true
 gtm-parameters: "?utm_source=bikefi.net&utm_medium=url&utm_campaign=friendly_neighborhood_spiderman" # https://ga-dev-tools.web.app/campaign-url-builder/
 compress_html:
   clippings: all

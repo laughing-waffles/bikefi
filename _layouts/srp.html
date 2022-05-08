@@ -33,53 +33,62 @@ sitemap: false
     <div class="row">
       <div class="col-lg-9 col-12">
         <!-- navbar scroll -->
-        <div class="row d-flex align-items-center mb-5">
+
+        <!-- <div class="row d-flex align-items-center mb-5">
           <div class="col">
             <div class="navbar-scroll">
               <ul>
-                {% for category in site.categories %} 
+                {% for category in site.tags %} 
                 {% assign cat_name = category[0] %}
                 <a class="btn btn-outline-dark me-2" href="{{ cat_name | slugify | absolute_url }}" role="button" >{{ cat_name | join: " " | capitalize }}</button>
                 {% endfor %}
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="row">
           <!-- result and filter -->
           <div class="row align-items-center mb-4">
             <div class="col-lg-6 col-md-4 col-7">
               <h5 class="mb-0">
-                Showing Page {{ paginator.page }} of {{ paginator.total_pages }}
+                Showing {{ paginator.total_posts }} items
               </h5>
             </div>
           </div>
         </div>
 
-        {% if page.url contains "bike-shops" %}
-          <!-- BIKE SHOPS -->
-          {% assign store = paginator.posts | where: "country", "United States" %}
-          {% for post in store %}
-          {% include sr-horizontal-vendor.html %} 
-          {% endfor %}
-        {% elsif page.url contains "tag" %}
-          <!-- TAGS -->
-          {% assign featured_products = paginator.posts %} 
-          {% for product in featured_products %} 
-          {% include sr-horizontal.html %} 
-          {% endfor %}
-        {% else %}
-          <!-- CATEGORIES -->
-          {% assign featured_products = paginator.posts %} 
-          {% for product in featured_products %} 
-          {% if product.vendor_id != nill %} 
-          {% include sr-horizontal.html %} 
-          {% endif %} 
-          {% endfor %}
-        {% endif %}
+        <div class="infinite-container" data-infinite-scroll='{ "path": ".next", "append": ".card", "history": false }'>
+          {% if page.url contains "bike-shops" %}
+            <!-- BIKE SHOPS -->
+            {% assign store = paginator.posts | where: "ratingvalue", "4" %}
+            {% for post in store %}
+            <p>1</p>
+            {% include sr-horizontal-vendor.html %} 
+            {% endfor %}
+          {% elsif page.url contains "tag" %}
+            <!-- TAGS -->
+            {% assign featured_products = paginator.posts %} 
+            {% for product in featured_products %} 
+            {% include sr-horizontal.html %} 
+            {% endfor %}
+          {% else %}
+            <!-- CATEGORIES -->
+            {% assign featured_products = paginator.posts %} 
+            {% for product in featured_products %} 
+            {% if product.vendor_id != nill %} 
+            {% include sr-horizontal.html %} 
+            {% endif %} 
+            {% endfor %}
+          {% endif %}
 
-        {% include pagination.html %}
+          {% if paginator.total_pages > 1 %}
+          {% if paginator.next_page %}
+          <a class="next" href="{{ paginator.next_page_path | absolute_url }}">&raquo;</a>
+          {% endif %}
+          {% endif %}
+
+        </div>
 
       </div>
 

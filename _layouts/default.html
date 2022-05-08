@@ -45,6 +45,7 @@ layout: compress
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="{{ page.title }}" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap2.xml" />
 
     <script type="application/ld+json">
       {
@@ -92,14 +93,12 @@ layout: compress
     </script>
     {% endif %} 
 
-
-    <!-- Libs CSS -->
     <!-- Theme CSS -->
     <link
       rel="stylesheet"
       href="{{'/assets/css/styles.min.css' | absolute_url }}"
     />
-
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     {% if page.layout == 'shop-single' %}
     <!-- Lightbox2 CSS https://lokeshdhakar.com/projects/lightbox2/ -->
     <link
@@ -134,7 +133,7 @@ layout: compress
     <!-- End Google Tag Manager (noscript) -->
     {% endif %}
 
-    <script src="{{ '/assets/libs/jquery/dist/jquery.min.js' | absolute_url }}"></script>
+    <!-- <script src="{{ '/assets/libs/jquery/dist/jquery.min.js' | absolute_url }}"></script> -->
 
     <a
       href="https://getbootstrap.com/"
@@ -392,7 +391,7 @@ layout: compress
 
     <!-- header -->
     <div
-      class="d-none header fixed-top border-top-3 border-top border-primary bg-dark"
+      class="d-block header fixed-top border-top-3 border-top border-primary bg-dark"
     >
       <!-- navigation start -->
       <div class="container-lg">
@@ -526,8 +525,11 @@ layout: compress
     </div>
 
     <!-- Libs JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="{{ '/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' | absolute_url }}"></script>
     <script src="{{ '/assets/libs/jquery-slimscroll/jquery.slimscroll.min.js' | absolute_url }}"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
 
     <!-- Theme JS -->
     <script src="{{ '/assets/js/theme.min.js' | absolute_url }}"></script>
@@ -538,13 +540,22 @@ layout: compress
       src="{{ '/assets/js/lazyload.min.js' | absolute_url }}"
       async
     ></script>
-    {% endif %} {% if page.layout == 'shop-single' %}
+    {% endif %} 
+    
+    {% if page.layout == 'shop-single' %}
     <script src="{{ '/assets/js/lightbox.min.js' | absolute_url }}"></script>
-    {% endif %} {% if page.video %}
+    {% endif %} 
+    
+    {% if page.video %}
     <script
       src="{{ '/assets/js/lazyload.min.js' | absolute_url }}"
       async
     ></script>
     {% endif %}
+    
+    <!-- Add _blank to all pdfs and external links -->
+    {% include new-window-fix.html %}
+
   </body>
+
 </html>
