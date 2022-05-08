@@ -55,6 +55,44 @@ hero-image: /assets/images/XL-bargains-highres.png
     <div class="row">
       <div class="col-lg-9 col-12">
 
+
+
+
+        <div class="row d-flex align-items-center mb-5">
+          <div class="col">
+            <h3>All products</h3>
+
+            <h1>Flickity - groupCells</h1>
+
+            <!-- Flickity HTML init -->
+            <div class="carousel" data-flickity='{ "groupCells": true }'>
+
+
+              {% for post in site.posts limit: 20 %}
+              <div class="carousel-cell col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
+                {% include sr-tile.html %}
+              </div>
+              {% endfor %}
+
+              <div class="carousel-cell"></div>
+              <div class="carousel-cell"></div>
+              <div class="carousel-cell"></div>
+              <div class="carousel-cell"></div>
+              <div class="carousel-cell"></div>
+              <div class="carousel-cell"></div>
+              <div class="carousel-cell"></div>
+              <div class="carousel-cell"></div>
+              <div class="carousel-cell"></div>
+              <div class="carousel-cell"></div>
+              <div class="carousel-cell"></div>
+            </div>
+
+
+            
+          </div>
+        </div>
+
+
         <div class="row d-flex align-items-center mb-5">
           <div class="col">
             <h3>All products</h3>
