@@ -5,8 +5,8 @@
       {% assign featured_image = post.images[0]['path'] | replace: 'full/', '' %}
       {% include responsive-image.html 
         src=featured_image
-        height="205" 
-        width="205" 
+        height="172" 
+        width="172" 
         class="mt-3 img-fluid" 
         alt=post.title
       %}
@@ -32,7 +32,7 @@
       </span>
  
       {% if post.price_msrp %}
-      <span class="text-muted"><s>{{ post.price_msrp | money }}</s></span>
+      <span class="badge bg-danger-soft">Sale</span>
       {% endif %}
       <div class="font-12">
       {% assign ratingvalue = post.ratingvalue %}

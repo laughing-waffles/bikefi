@@ -59,7 +59,7 @@ hero-image: /assets/images/XL-bargains-highres.png
           <div class="col">
             <h3>All products</h3>
             <div class="navbar-scroll">
-              {% for post in site.posts limit: 20 %}
+              {% for post in site.posts limit: 2000 %}
               <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
                 {% include sr-tile.html %}
               </div>
@@ -100,6 +100,7 @@ hero-image: /assets/images/XL-bargains-highres.png
               alt=""
               width="160"
               height="600"
+              loading="lazy"
             />
           </a>
           <img

@@ -8,8 +8,8 @@
           {% assign featured_image = page.images[0]['path'] | replace: 'full/', '' %}
           {% include responsive-image.html 
             src=featured_image
-            height="150" 
-            width="150" 
+            height="82" 
+            width="82" 
             class="img-fluid" 
             alt=product.title
           %}
@@ -20,8 +20,8 @@
           {% assign featured_image = product.images[0]['path'] | replace: 'full/', '' %}
           {% include responsive-image.html 
             src=featured_image
-            height="150" 
-            width="150" 
+            height="82" 
+            width="82" 
             class="img-fluid" 
             alt=product.title
           %}
@@ -30,16 +30,16 @@
       </tr>
       <tr>
         <th scope="row">Brand</th>
-        <td class="small table-light">{{ page.brand['name'] }}</td>
+        <td class="small table-light">{{ page.title }}</td>
         {% for product in similar_products limit:10 %}
-        <td class="small">{{ product.brand['name'] }}</td>
+        <td class="small">{{ product.title }}</td>
         {% endfor %}
       </tr>
       <tr>
-        <th scope="row">Seller</th>
-        <td class="small table-light">{{ page.vendor }}</td>
+        <th scope="row">Category</th>
+        <td class="small table-light">{{ page.category[1] }}</td>
         {% for product in similar_products limit:10 %}
-        <td class="small">{{ product.vendor }}</td>
+        <td class="small">{{ product.category[1] }}</td>
         {% endfor %}
       </tr>
       <tr>

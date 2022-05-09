@@ -1,6 +1,5 @@
 ---
 layout: default
-hero-image: /assets/images/shop-single-hero-default.jpeg
 ---
 
 <div class="py-6 py-lg-12 pt-8 pt-lg-12">
@@ -35,59 +34,24 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
 
       <!-- image -->
       <div class="col-lg-7 col-md-8 col-12">
-        <div
-          id="productCarousel"
-          class="carousel slide carousel-fade"
-          data-bs-interval="false"
+        {% if page.images %}
+        {% for image in page.images limit:1 %}
+        {% assign featured_image = page.images[0]['path'] | replace: 'full/', '' %}
+        <a
+          href="{{ featured_image | prepend: 'https://cdn.bikefi.net/images/' | absolute_url }}"
+          data-title="{{ page.title }}"
+          data-footer="Source: {{ site.title }}"
+          disableScrolling="true"
         >
-          <div class="carousel-inner">
-            {% for image in page.images %}
-            {% assign featured_image = page.images[0]['path'] | replace: 'full/', '' %}
-            <div class="carousel-item{% if forloop.first %} active{% endif %}">
-              <a
-                href="{{ featured_image | prepend: 'https://cdn.bikefi.net/images/' | absolute_url }}"
-                data-lightbox="productImage"
-                data-title="{{ page.title }}"
-                data-footer="Source: {{ site.title }}"
-                disableScrolling="true"
-              >
-              {% include responsive-image.html 
-                src=featured_image
-                height="500" 
-                width="500" 
-                class="img-fluid" 
-                alt=page.title
-              %}
-
-
-
-
-
-
-
-              </a>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-
-        {% if page.images > 1 %}
-        <div class="row d-flex">
-          <div class="navbar-scroll">
-            <ul>
-              {% for image in page.images %}
-              <li
-                data-bs-target="#productCarousel"
-                data-bs-slide-to="{{ forloop.index0 }}"
-                class="shadow-sm m-3"
-              >
-                <img src="{{ '6cde80d84f49130e658e48011c948d53271c6856.jpg' | prepend: '/assets/images/full/' }}" alt="Thumbnail image {{ forloop.index }} of a {{ page.title }}" style="width:125px; height:125px;" />
-
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
+        {% include responsive-image.html 
+          src=featured_image
+          height="500" 
+          width="500"   
+          class="img-fluid productImage" 
+          alt=page.title
+        %}
+        </a>
+        {% endfor %}
         {% endif %}
       </div>
 
@@ -114,16 +78,12 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
         <hr class="my-4" />
         <div class="mb-3 font-20">
           {% if page.price %}<span class="text-dark me-2">{{ page.price | money }}</span
-          >{% endif %} {% if page.price_msrp %}<span class="text-muted"
-            ><s>{{ page.price_msrp | money }}</s></span
-          >{% endif %}
+          >{% endif %} {% if page.price_msrp %}<span class="text-muted font-14 text-danger"
+            ><s class="text-danger">{{ page.price_msrp | money }}</s></span
+          > <span class="badge bg-danger-soft">Sale</span>{% endif %}
         </div>
         <div class="mb-3 small">
           <img src="https://cdn-assets.affirm.com/images/black_logo-transparent_bg.png" class="me-2 mt-n2" style="width:40px">{{ page.price | divided_by: 36 | money }} per month for 36 months <a class="font-primary" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Apply</a>
-
-
-
-
 
           <!-- Modal -->
           <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -152,16 +112,15 @@ hero-image: /assets/images/shop-single-hero-default.jpeg
               </div>
             </div>
           </div>
-
-
-
-
-
-
         </div>
-        <a href="{{ page.affiliate_url }}" class="btn btn-primary"
-          >Visit Site</a
-        >
+
+        <div class="d-grid gap-2">
+          <a href="{{ page.affiliate_url }}" class="btn btn-primary" target="_blank">Visit Site</a>
+        </div>
+        {% if page.vendor %}
+        <p class="font-12 text-end">Sold by {{ page.vendor }}</p>
+        {% endif %}
+
         <!-- <a href="#financing" class="btn btn-light">Get financing</a> -->
 
         {% if page.tags.size > 0 %}
