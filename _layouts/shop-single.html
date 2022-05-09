@@ -13,7 +13,7 @@ layout: default
             <li class="breadcrumb-item">
               <a href="{{ '/' | absolute_url }}">Home</a>
             </li>
-            {% for item in page.category %} 
+            {% for item in page.categories %} 
             <li class="breadcrumb-item">
               <a
                 href="{{ item | slugify | absolute_url }}"

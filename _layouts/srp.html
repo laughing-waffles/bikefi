@@ -63,20 +63,26 @@ sitemap: false
             <!-- BIKE SHOPS -->
             {% assign store = paginator.posts %}
             {% for post in store %}
+            {% if post.image %}
             {% include sr-horizontal-vendor.html %} 
+            {% endif %}
             {% endfor %}
           {% elsif page.url contains "tag" %}
             <!-- TAGS -->
             {% assign featured_products = paginator.posts %} 
             {% for product in featured_products %} 
+            {% if product.image %}
             {% include sr-horizontal.html %} 
+            {% endif %}
             {% endfor %}
           {% else %}
             <!-- CATEGORIES -->
             {% assign featured_products = paginator.posts %} 
             {% for product in featured_products %} 
             {% if product.vendor_id != nill %} 
+            {% if product.image %}
             {% include sr-horizontal.html %} 
+            {% endif %}
             {% endif %} 
             {% endfor %}
           {% endif %}

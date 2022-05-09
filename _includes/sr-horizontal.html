@@ -37,10 +37,10 @@
                 <span class="ms-1">{{ product.brand.name }}</span>
               </p>
               {% endif %}
-              {% if product.category %}
+              {% if product.categories %}
               <p class="font-12 mb-2">
                 <span class="ms-1">
-                  {% for category in product.category limit: 4 %}{{ category }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+                  {% for category in product.categories limit: 4 %}{{ category }}{% unless forloop.last %}, {% endunless %}{% endfor %}
                 </span>
               </p>
               {% endif %}

@@ -1,4 +1,4 @@
-{% assign similar_products = site.posts | where: "category", page.category %}
+{% assign similar_products = site.posts | where: "category", page.categories %}
 <div class="table-responsive">
   <table class="table align-middle">
     <tbody>
@@ -15,7 +15,7 @@
           %}
           <!-- <img src="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" class="img-fluid" style="width:150px;"> -->
         </td>
-        {% for product in similar_products limit:10 %}
+        {% for product in similar_products limit:15 %}
         <td>
           {% assign featured_image = product.images[0]['path'] | replace: 'full/', '' %}
           {% include responsive-image.html 
@@ -31,28 +31,28 @@
       <tr>
         <th scope="row">Name</th>
         <td class="small table-light">{{ page.title }}</td>
-        {% for product in similar_products limit:10 %}
+        {% for product in similar_products limit:15 %}
         <td class="small">{{ product.title }}</td>
         {% endfor %}
       </tr>
       <tr>
         <th scope="row">Sold by</th>
         <td class="small table-light">{{ page.vendor] }}</td>
-        {% for product in similar_products limit:10 %}
+        {% for product in similar_products limit:15 %}
         <td class="small">{{ product.vendor] }}</td>
         {% endfor %}
       </tr>
       <tr>
         <th scope="row">Price</th>
         <td class="small table-light">{{ page.price | money }}</td>
-        {% for product in similar_products limit:10 %}
+        {% for product in similar_products limit:15 %}
         <td class="small">{{ product.price | money }}</td>
         {% endfor %}
       </tr>
       <tr>
         <th scope="row"></th>
         <td class="table-light"><a class="btn btn-primary btn-sm mt-3 disabled" role="button" aria-disabled="true">Current</a></td>
-        {% for product in similar_products limit:10 %}
+        {% for product in similar_products limit:15 %}
         <td><a href="{{ product.url | absolute_url }}" class="btn btn-outline-primary btn-sm mt-3">View</a></td>
         {% endfor %}
       </tr>
