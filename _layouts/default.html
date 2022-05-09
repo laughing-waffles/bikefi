@@ -112,6 +112,49 @@ layout: compress
     </script>
     {% endif %}
 
+    <!-- Bike Product Schema -->
+    {% if page.layout == 'shop-single' %}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "{{ page.title }}",
+        "image": "{{ page.image.path[0] | absolute_url }}",
+        {% if page.sku %}
+        "sku": "{{ page.sku }}",
+        {% endif %}
+        {% if page.gtin12 %}
+        "gtin12": "{{ page.gtin12 }}",
+        {% endif %}
+        {% if brand.name %}
+        "brand": {
+          "@type": "Thing",
+          "name": "{{ page.brand.name }}"
+        },
+        {% endif %}
+        {% if page.star_rating > 0 %}
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "{{ page.ratingvalue }}"
+          "ratingCount": "{{ page.ratingcount }}"
+        },
+        {% endif %}
+        "offers": {
+          "@type": "Offer",
+          "url": "{{ page.url | absolute_url }}",
+          "priceCurrency": "USD",
+          "price": "{{ page.price }}",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "Organization",
+            "name": "{{ page.vendor }}"
+          }
+        }
+      }
+    </script>
+    {% endif %}
+
     <!-- CSS -->
     <link
       rel="stylesheet"
