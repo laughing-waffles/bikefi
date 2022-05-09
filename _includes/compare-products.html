@@ -29,17 +29,17 @@
         {% endfor %}
       </tr>
       <tr>
-        <th scope="row">Brand</th>
+        <th scope="row">Name</th>
         <td class="small table-light">{{ page.title }}</td>
         {% for product in similar_products limit:10 %}
         <td class="small">{{ product.title }}</td>
         {% endfor %}
       </tr>
       <tr>
-        <th scope="row">Category</th>
-        <td class="small table-light">{{ page.category[1] }}</td>
+        <th scope="row">Sold by</th>
+        <td class="small table-light">{{ page.vendor] }}</td>
         {% for product in similar_products limit:10 %}
-        <td class="small">{{ product.category[1] }}</td>
+        <td class="small">{{ product.vendor] }}</td>
         {% endfor %}
       </tr>
       <tr>

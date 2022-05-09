@@ -49,14 +49,14 @@
           <div class="col-lg-4 col-md-12 col-12">
             <span class="text-dark me-2">{{ product.price | money}}</span>
             {% if product.price_msrp %}
-            <span class="badge bg-danger-soft">Sale</span>
+            <span class="badge bg-success-soft">Sale</span>
             {% endif %}
             <div class="font-12 mb-3">
               {% assign ratingvalue = product.ratingvalue %}
               {% assign ratingcount = product.ratingcount %}
               {% include star-ratings.html %}  
             </div>
-            <a href="{{ product.url | absolute_url }}" class="btn btn-outline-primary btn-sm me-2">
+            <a href="{{ product.url | absolute_url }}" class="btn btn-primary btn-sm me-2">
               View item
             </a>
             <!-- 
@@ -139,8 +139,8 @@
             {% assign ratingvalue = vendor.reviews.ratingvalue %}
             {% assign ratingcount = vendor.reviews.ratingcount %}
             {% include star-ratings.html %}  
-            {% if vendor.reviews.provider != "" %}
-            <!-- <p class="font-12 p-0 mb-0 mt-1">
+            <!-- {% if vendor.reviews.provider != "" %}
+            <p class="font-12 p-0 mb-0 mt-1">
               Reviews powered by
               <a href="{{ vendor.reviews.url }}" target="_blank">
                 {% if vendor.reviews.provider == "google" %}

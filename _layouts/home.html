@@ -5,14 +5,14 @@ hero-image: /assets/images/XL-bargains-highres.png
 
 <!-- hero section -->
 <div
-  class="px-4 pt-16 pb-5 my-4 text-center bg-cover"
+  class="pt-16 pb-5 text-center bg-cover"
   style="
     background-image: linear-gradient(180deg, rgba(30, 24, 53, 0.4) 0%, rgba(30, 24, 53, 0.4) 90.16%), 
     url({{ layout.hero-image | absolute_url }});
     "
 >
-  <h1 class="display-5 fw-bold text-white mt-18">Find deals</h1>
   <div class="col-lg-6 mx-auto mb-5">
+    <h1 class="display-5 fw-bold text-white">Find deals</h1>
     <p class="lead mb-4 text-white">across hundreds of online and local retailers of the world's best cycling products.</p>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
       <a href="{{ 'all-products/' | absolute_url }}" class="btn btn-light btn-lg px-4 gap-3">Search all products</a>
@@ -23,43 +23,45 @@ hero-image: /assets/images/XL-bargains-highres.png
   
 </div>
 
-<!-- <div class="py-lg-13 bg-dark">
-  <div class="container">
-    <div class="col">
-      <div class="row">
-        <div class="offset-lg-2 col-lg-8 col-md-12 col-12">
-          <div class="text-center mb-12">
-            {{content}}
-            <h2 class="text-white mb-3 h1">What is an e-bike loan?</h2>
-            <p class="lead">
-              E-bike loans are an easy way to finance the purchase of your bike.
-              Because a bike isn’t registered with the government like a car,
-              the loan is typically considered an “unsecured personal loan”.
-            </p>
-            <p class="lead mb-5">
-              This means lenders can’t use the bike itself as collateral, so
-              you’ll likely see higher interest rates than purchasing a car. The
-              good news is that since most e-bikes are cheaper than cars, the
-              actual dollar amount you’ll pay per month will be significantly
-              lower.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="pt-lg-13">
   <div class="container">
     <div class="row">
       <div class="col-lg-9 col-12">
 
+        {% assign posts = site.posts %}
         <div class="row d-flex align-items-center mb-5">
           <div class="col">
             <h3>All products</h3>
             <div class="navbar-scroll">
-              {% for post in site.posts limit: 2000 %}
+              {% for post in posts limit: 20 %}
+              <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
+                {% include sr-tile.html %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        
+        {% assign posts = site.posts | where: "categories", "ebikes" %}
+        <div class="row d-flex align-items-center mb-5">
+          <div class="col">
+            <h3>E-Bikes</h3>
+            <div class="navbar-scroll">
+              {% for post in posts limit: 20 %}
+              <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
+                {% include sr-tile.html %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        {% assign posts = site.posts | where: "categories", "apparel" %}
+        <div class="row d-flex align-items-center mb-5">
+          <div class="col">
+            <h3>Cycling apparel</h3>
+            <div class="navbar-scroll">
+              {% for post in posts limit: 20 %}
               <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
                 {% include sr-tile.html %}
               </div>
@@ -114,4 +116,31 @@ hero-image: /assets/images/XL-bargains-highres.png
       </div>
     </div>
   </div>
+
+  <div class="row">
+
+    <div class="py-6 py-lg-13 bg-light">
+      <div class="container">
+        <div class="col">
+          <div class="row">
+            <div class="offset-lg-2 col-lg-8 col-md-12 col-12">
+              <div class="text-center">
+                {{content}}
+                <h2 class="text-dark mb-3 h1">BikeFi is mission-driven</h2>
+                <p class="lead">
+                  E-bike loans are an easy way to finance the purchase of your bike.
+                  Because a bike isn’t registered with the government like a car,
+                  the loan is typically considered an “unsecured personal loan”.
+                </p>
+              </div>
+              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{{ 'partners' | absolute_url }}" class="btn btn-outline-primary btn-lg px-4 gap-3">Become a partner</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
