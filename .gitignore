@@ -4,6 +4,5 @@ _site
 .jekyll-metadata
 .env
 .DS_Store
-_data
 _posts
 .vscode
