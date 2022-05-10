@@ -1,46 +1,42 @@
-<div class="card card-block h-100 mb-4 shadow-sm border-light">
-  <div class="card-body d-flex flex-column">
-
-    <a href="{{ post.url | absolute_url }}">
-      {% assign featured_image = post.images[0]['path'] | replace: 'full/', '' %}
-      {% include responsive-image.html 
-        src=featured_image
-        height="172" 
-        width="172" 
-        class="mt-3 img-fluid" 
-        alt=post.title
-      %}
-    </a>
-
-    <div class="mt-3">
-
-      <a href="{{ post.url | absolute_url }}">
-        <h4 class="mb-1">{{ post.title }}</h4>
-      </a>
-
-      <p class="font-12 mb-2">
-        {% if post.make %}
-          {{ post.make }}
-        {% elsif post.vendor %}
-          {{ post.vendor }}
-        {% endif %}
-      </p>
-
-      <span class="text-dark me-2">
-        <small>From</small>
-        {{ post.price | money }}
-      </span>
- 
-      {% if post.price_msrp %}
-      <span class="badge bg-success-soft">Sale</span>
-      {% endif %}
-      <div class="font-12">
-      {% assign ratingvalue = post.ratingvalue %}
-      {% assign ratingcount = post.ratingcount %}
-      {% include star-ratings.html %}
+<div
+  class="main-carousel"
+  data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "prevNextButtons": true, "pageDots": false, "wrapAround": true }'
+>
+  {% for post in posts limit: 20 %}
+  <div class="col-lg-3 col-md-6 col-12 me-5">
+    <div class="mb-4">
+      <div class="mb-3">
+        <a href="{{ post.url | absolute_url }}" class="stretched-link">
+          {% assign featured_image = post.images[0]['path'] | replace: 'full/',
+          '' %} {% include responsive-image.html src=featured_image height="182"
+          width="182" class="img-fluid w-100 w-100 rounded" alt=post.title
+          style="height:182px; width:182px; object-fit:cover;" %}
+        </a>
       </div>
- 
-      <a href="{{ post.url | absolute_url }}" class="btn btn-primary btn-sm mt-3">View item</a>
+      <span class="mb-3 text-secondary fw-bold d-block"
+        >{% if post.categories %}{{ post.categories[0] | capitalize }}{% else
+        %}New on BikeFi{% endif %}</span
+      >
+      <a href="{{ post.url | absolute_url }}" class="stretched-link">
+        <h3 class="h4 mb-3" style="min-height: 52px">
+          {{ post.title | truncate: 45 }}
+        </h3>
+      </a>
+      <p class="mb-4 font-12 fw-bold">
+        <span class="me-1">
+          {% if post.make %} {{ post.make }} {% elsif post.vendor %} {{
+          post.vendor }} {% endif %}
+        </span>
+        <span>
+          {% if post.vendor_id != nill %} {% assign vendors =
+          site.data.vendors.records | where: "id", post.vendor_id %} {% for
+          vendor in vendors %} {% assign ratingvalue =
+          vendor.reviews.ratingvalue %} {% assign ratingcount =
+          vendor.reviews.ratingcount %} {% include star-ratings.html %} {%
+          endfor %} {% endif %}
+        </span>
+      </p>
     </div>
   </div>
+  {% endfor %}
 </div>

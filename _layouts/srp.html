@@ -32,20 +32,6 @@ sitemap: false
   <div class="container">
     <div class="row">
       <div class="col-lg-9 col-12">
-        <!-- navbar scroll -->
-
-        <!-- <div class="row d-flex align-items-center mb-5">
-          <div class="col">
-            <div class="navbar-scroll">
-              <ul>
-                {% for category in site.tags %} 
-                {% assign cat_name = category[0] %}
-                <a class="btn btn-outline-dark me-2" href="{{ cat_name | slugify | absolute_url }}" role="button" >{{ cat_name | join: " " | capitalize }}</button>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-        </div> -->
 
         <div class="row">
           <!-- result and filter -->
@@ -63,16 +49,16 @@ sitemap: false
             <!-- BIKE SHOPS -->
             {% assign store = paginator.posts %}
             {% for post in store %}
-            {% if post.image %}
             {% include sr-horizontal-vendor.html %} 
-            {% endif %}
             {% endfor %}
           {% elsif page.url contains "tag" %}
             <!-- TAGS -->
             {% assign featured_products = paginator.posts %} 
             {% for product in featured_products %} 
-            {% if product.image %}
+            {% if product.vendor_id != nill %} 
+            {% if product.images != nil %}
             {% include sr-horizontal.html %} 
+            {% endif %}
             {% endif %}
             {% endfor %}
           {% else %}
@@ -80,7 +66,7 @@ sitemap: false
             {% assign featured_products = paginator.posts %} 
             {% for product in featured_products %} 
             {% if product.vendor_id != nill %} 
-            {% if product.image %}
+            {% if product.images != nil %}
             {% include sr-horizontal.html %} 
             {% endif %}
             {% endif %} 
@@ -122,32 +108,7 @@ sitemap: false
       </div>
 
       <div class="col-lg-3 col-md-5 col-12 d-none d-lg-block">
-        <div
-          style="position: -webkit-sticky; position: sticky; top: 100px"
-          class="pb-4"
-        >
-          <a
-            href="https://jenson.sjv.io/c/3294572/1330395/13009?subId1=earth%20day"
-            target="_top"
-            id="1330395"
-          >
-            <img
-              src="//a.impactradius-go.com/display-ad/13009-1330395"
-              border="0"
-              alt=""
-              width="160"
-              height="600"
-              loading="lazy"
-            />
-          </a>
-          <img
-            height="0"
-            width="0"
-            src="https://imp.pxf.io/i/3294572/1330395/13009"
-            style="position: absolute; visibility: hidden"
-            border="0"
-          />
-        </div>
+        {% include sidebar-ad.html %}
       </div>
     </div>
   </div>

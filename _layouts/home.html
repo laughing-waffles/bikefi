@@ -11,120 +11,66 @@ hero-image: /assets/images/XL-bargains-highres.png
     url({{ layout.hero-image | absolute_url }});
     "
 >
-  <div class="col-lg-6 mx-auto mb-5">
-    <h1 class="display-5 fw-bold text-white">Find deals</h1>
-    <p class="lead mb-4 text-white">across hundreds of online and local retailers of the world's best cycling products.</p>
-    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-      <a href="{{ 'all-products/' | absolute_url }}" class="btn btn-light btn-lg px-4 gap-3">Search all products</a>
-      <a href="{{ 'bike-shops/' | absolute_url }}" class="btn btn-outline-light btn-lg px-4">Find a bike shop</a>
+  <div class="container">
+    <div class="col-lg-6 mx-auto mb-5">
+      <h1 class="display-5 fw-bold text-white">Find deals</h1>
+      <p class="lead mb-4 text-white">across hundreds of online and local retailers of the world's best cycling products.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="{{ 'all-products/' | absolute_url }}" class="btn btn-light btn-lg px-4 gap-3">Search all products</a>
+        <a href="{{ 'bike-shops/' | absolute_url }}" class="btn btn-outline-light btn-lg px-4">Find a bike shop</a>
+      </div>
     </div>
   </div>
-
   
 </div>
 
-<div class="pt-lg-13">
+<div class="pt-6 pt-lg-13">
   <div class="container">
     <div class="row">
       <div class="col-lg-9 col-12">
 
-        {% assign posts = site.posts %}
         <div class="row d-flex align-items-center mb-5">
           <div class="col">
             <h3>All products</h3>
-            <div class="navbar-scroll">
-              {% for post in posts limit: 20 %}
-              {% if post.images %}
-              <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
-                {% include sr-tile.html %}
-              </div>
-              {% endif %}
-              {% endfor %}
-            </div>
+            {% assign posts = site.posts | where: "pricecurrency", "USD" %}
+            {% include sr-tile.html %}
           </div>
         </div>
         
-        {% assign posts = site.posts | where: "categories", "ebikes" %}
         <div class="row d-flex align-items-center mb-5">
           <div class="col">
             <h3>E-Bikes</h3>
-            <div class="navbar-scroll">
-              {% for post in posts limit: 20 %}
-              {% if post.images %}
-              <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
-                {% include sr-tile.html %}
-              </div>
-              {% endif %}
-              {% endfor %}
-            </div>
+            {% assign posts = site.posts | where: "pricecurrency", "USD" %}
+            {% include sr-tile.html %}
           </div>
         </div>
 
-        {% assign posts = site.posts | where: "categories", "apparel" %}
         <div class="row d-flex align-items-center mb-5">
           <div class="col">
             <h3>Cycling apparel</h3>
-            <div class="navbar-scroll">
-              {% for post in posts limit: 20 %}
-              {% if post.images %}
-              <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
-                {% include sr-tile.html %}
-              </div>
-              {% endif %}
-              {% endfor %}
-            </div>
+            {% assign posts = site.posts | where: "pricecurrency", "USD" %}
+            {% include sr-tile.html %}
           </div>
         </div>
         
-        {% assign posts = site.posts | where: "ratingvalue", "5" %}
         <div class="row d-flex align-items-center mb-5">
           <div class="col">
             <h3>Top-rated deals</h3>
-            <div class="navbar-scroll">
-              {% for post in posts limit: 20 %}
-              {% if post.images %}
-              <div class="col-10 col-xs-6 col-sm-5 col-md-3 mx-2">
-                {% include sr-tile.html %}
-              </div>
-              {% endif %}
-              {% endfor %}
-            </div>
+            {% assign posts = site.posts | where: "pricecurrency", "USD" %}
+            {% include sr-tile.html %}
           </div>
         </div>
 
       </div>
 
       <div class="col-lg-3 col-md-5 col-12 d-none d-lg-block">
-        <div
-          style="position: -webkit-sticky; position: sticky; top: 100px"
-          class="pb-4"
-        >
-          <a
-            href="https://jenson.sjv.io/c/3294572/1330395/13009?subId1=earth%20day"
-            target="_top"
-            id="1330395"
-          >
-            <img
-              src="//a.impactradius-go.com/display-ad/13009-1330395"
-              border="0"
-              alt=""
-              width="160"
-              height="600"
-              loading="lazy"
-            />
-          </a>
-          <img
-            height="0"
-            width="0"
-            src="https://imp.pxf.io/i/3294572/1330395/13009"
-            style="position: absolute; visibility: hidden"
-            border="0"
-          />
-        </div>
+
+        {% include sidebar-ad.html %}
+      
       </div>
     </div>
   </div>
-
+</div>
   <div class="row">
 
     <div class="py-6 py-lg-13 bg-light">

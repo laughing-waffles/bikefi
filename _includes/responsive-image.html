@@ -11,9 +11,10 @@
   sizes="100vw"
   alt="{{ include.alt }} {{ forloop.index }}"
   class="{{ include.class }}"
-  loading="{% if forloop.index > 3 %}lazy{% else %}eager{% endif %}"
+  loading="{% if forloop.index > 5 %}lazy{% else %}eager{% endif %}"
   height="{{ include.height }}px"
   width="{{ include.width }}px"
+  style="{{ include.style }}"
   crossorigin="anonymous"
 />
 {% else %}
@@ -21,8 +22,9 @@
   src="{{ include.src | prepend: 'https://cdn.bikefi.net/images/' }}" 
   alt="{{ include.alt }} {{ forloop.index }}"
   class="{{ include.class }}" 
-  loading="{% if forloop.index > 3 %}lazy{% else %}eager{% endif %}" 
-  width="{{ include.width }}px" 
+  loading="{% if forloop.index > 5 %}lazy{% else %}eager{% endif %}" 
   height="{{ include.height }}px"
+  width="{{ include.width }}px" 
+  style="{{ include.style }}"
  />
 {% endif %}
