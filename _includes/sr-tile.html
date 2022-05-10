@@ -1,41 +1,35 @@
 <div
   class="main-carousel"
-  data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "prevNextButtons": true, "pageDots": false, "wrapAround": true }'
+  data-flickity='{ "cellAlign": "left", "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
 >
-  {% for post in posts limit: 20 %}
-  <div class="col-lg-3 col-md-6 col-12 me-5">
-    <div class="mb-4">
+  {% for product in products limit: 20 %}
+  <div class="col-11 col-sm-5 col-md-4 col-lg-3 col-xl-2 me-1 me-sm-3 bg-white p-3 rounded">
+    <div class="mb-0">
       <div class="mb-3">
-        <a href="{{ post.url | absolute_url }}" class="stretched-link">
-          {% assign featured_image = post.images[0]['path'] | replace: 'full/',
-          '' %} {% include responsive-image.html src=featured_image height="182"
-          width="182" class="img-fluid w-100 w-100 rounded" alt=post.title
-          style="height:182px; width:182px; object-fit:cover;" %}
+        <a href="{{ product.url | absolute_url }}" class="stretched-link">
+          {% assign featured_image = product.images[0]['path'] | replace: 'full/','' %} 
+          {% include responsive-image.html 
+            src=featured_image 
+            height="182"
+            width="182" 
+            class="img-fluid w-100 w-100 rounded" 
+            alt=product.title
+            style="height:182px; width:182px; object-fit:cover;" 
+          %}
         </a>
       </div>
       <span class="mb-3 text-secondary fw-bold d-block"
-        >{% if post.categories %}{{ post.categories[0] | capitalize }}{% else
+        >{% if product.categories %}{{ product.categories[0] | capitalize | truncate: 16, "" }}{% else
         %}New on BikeFi{% endif %}</span
       >
-      <a href="{{ post.url | absolute_url }}" class="stretched-link">
-        <h3 class="h4 mb-3" style="min-height: 52px">
-          {{ post.title | truncate: 45 }}
-        </h3>
-      </a>
-      <p class="mb-4 font-12 fw-bold">
-        <span class="me-1">
-          {% if post.make %} {{ post.make }} {% elsif post.vendor %} {{
-          post.vendor }} {% endif %}
-        </span>
-        <span>
-          {% if post.vendor_id != nill %} {% assign vendors =
-          site.data.vendors.records | where: "id", post.vendor_id %} {% for
-          vendor in vendors %} {% assign ratingvalue =
-          vendor.reviews.ratingvalue %} {% assign ratingcount =
-          vendor.reviews.ratingcount %} {% include star-ratings.html %} {%
-          endfor %} {% endif %}
-        </span>
-      </p>
+      <h3 class="h5 mb-3" style="min-height: 52px">
+        {{ product.title | truncate: 30, "" }}
+      </h3>
+
+      <div style="height:55px;">
+        {% include highlight-badges.html %}
+      </div>
+
     </div>
   </div>
   {% endfor %}

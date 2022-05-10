@@ -64,8 +64,9 @@ layout: default
             <span class="ms-2 font-12 text-dark">
               {{ page.star_rating }} of 5 stars</span
             >
-            {% endif %} {% assign availability = page.availability %} {% include
-            availability-badge.html %}
+            {% endif %} 
+            {% assign availability = page.availability %} 
+            {% include availability-badge.html %}
           </div>
         </div>
         <hr class="my-4" />
@@ -175,7 +176,7 @@ layout: default
     </div>
 
     <hr class="my-10" />
-    {% if page.tags.size > 4 %}
+    {% if page.tags.size > 1 %}
     {% include related-products.html %}
     {% endif %}
 
