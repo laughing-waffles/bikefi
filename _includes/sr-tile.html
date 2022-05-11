@@ -3,34 +3,34 @@
   data-flickity='{ "cellAlign": "left", "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
 >
   {% for product in products limit: 20 %}
-  <div class="col-11 col-sm-5 col-md-4 col-lg-3 col-xl-2 me-1 me-sm-3 bg-white p-3 rounded">
-    <div class="mb-0">
-      <div class="mb-3">
-        <a href="{{ product.url | absolute_url }}" class="stretched-link">
-          {% assign featured_image = product.images[0]['path'] | replace: 'full/','' %} 
-          {% include responsive-image.html 
-            src=featured_image 
-            height="182"
-            width="182" 
-            class="img-fluid w-100 w-100 rounded" 
-            alt=product.title
-            style="height:182px; width:182px; object-fit:cover;" 
-          %}
-        </a>
-      </div>
-      <span class="mb-3 text-secondary fw-bold d-block"
-        >{% if product.categories %}{{ product.categories[0] | capitalize | truncate: 16, "" }}{% else
-        %}New on BikeFi{% endif %}</span
-      >
-      <h3 class="h5 mb-3" style="min-height: 52px">
-        {{ product.title | truncate: 30, "" }}
-      </h3>
-
-      <div style="height:55px;">
-        {% include highlight-badges.html %}
-      </div>
-
+  <div class="col-11 col-sm-5 col-md-4 col-lg-3 col-xl-2 me-3 bg-white p-3 rounded">
+    
+    <div class="mb-3">
+      <a href="{{ product.url | absolute_url }}" class="stretched-link">
+        {% assign featured_image = product.images[0]['path'] | replace: 'full/','' %} 
+        {% include responsive-image.html 
+          src=featured_image 
+          height="182"
+          width="182" 
+          class="img-fluid mx-auto d-block" 
+          alt=product.title
+          style="height:182px; object-fit:cover;" 
+        %}
+      </a>
     </div>
+
+    <span class="mb-3 text-secondary fw-bold d-block"
+      >{% if product.categories %}{{ product.categories[0] | capitalize | truncate: 16, "" }}{% else
+      %}New on BikeFi{% endif %}</span
+    >
+    <span class="h5 mb-3 w-100 d-inline-block text-truncate">
+      {{ product.title | truncate: 30, "" }}
+    </span>
+
+    <div class="w-100 d-inline-block text-truncate" style="min-height:55px;">
+      {% include highlight-badges.html %}
+    </div>
+
   </div>
   {% endfor %}
 </div>

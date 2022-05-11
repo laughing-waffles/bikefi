@@ -16,20 +16,11 @@
       %}
       </a>
     </div>
-
-    <div class="col-md-9 ps-0 ps-sm-9">
+    <div class="col-md-9 ps-md-9">
       <div class="row p-3 p-md-0">
         <div class="card-body">
-
-
-
-
-
-
-
           <div class="row">
-
-            <div class="col-8">
+            <div class="col-7">
               {% if vendor.affiliate_code != nill %}
               <span class="font-12 text-muted">Promoted</span>
               {% endif %}
@@ -41,37 +32,18 @@
               {% endif %}
               {% include highlight-badges.html %}
             </div>
-
-            <div class="col-4 pe-5">
+            <div class="col-5 pe-3 pe-md-7">
               <p class="text-end">
-                {% if product.price_msrp %}
-                <span class="font-14 text-muted me-1"><s>{{ product.price_msrp | money }}</s></span>
-                {% endif %}
                 <span class="h2">{{ product.price | money}}</span>
+                {% if product.price_msrp %}
+                <br /><span class="font-14 text-muted me-1"><s>{{ product.price_msrp | money }}</s><span class="badge bg-danger-soft ms-1">Sale</span></span>
+                {% endif %}
               </p>
-              {% if product.price_msrp %}
-              <p class="text-end">
-                <span class="badge bg-danger-soft">Sale</span>
-              </p>
-              {% endif %}
             </div>
-
           </div>
-
-
-
-
-
-
-
-
-
         {% for vendor in vendors %}
-
         <div class="row mt-3">
-
           <div class="col-6 font-14">
-
             <!-- VENDOR NAME AND STATUS -->
             {% if vendor.affiliate_code != "" %}
             <p class="font-weight-200 text-success">
@@ -81,48 +53,31 @@
               Seller: {{ vendor.name}}
             </p>
             {% endif %}
-
             <!-- VENDOR RATING INFORMATION -->
             <p>
               {% assign ratingvalue = vendor.reviews.ratingvalue %}
               {% assign ratingcount = vendor.reviews.ratingcount %}
               {% include star-ratings.html %}  
             </p>
-
           </div>
-
           <div class="col-6 font-14">
-
             <!-- CARRIER INFORMATION -->
             {% if vendor.country == "USA" %}
               <p class="text-success"><strong>Shipped from the USA</strong> <img src="{{ 'flag-usa.svg' | prepend: 'assets/images/logos/' | absolute_url }}" class="img-fluid d-none d-sm-inline" style="max-height: 20px;"/></p>
             {% elsif vendor.country != "" %}
               <p>Shipped from {{ vendor.country }}</strong></p>
             {% endif %}
-
             <!-- PAYMENT INFORMATION -->
             {% if vendor.return_policy.free == true %}
               <p class="text-success "><strong>FREE returns for {{ vendor.return_policy.days }} days</strong></p>
             {% elsif vendor.return_policy.free == false %}
               <p>Returns for {{ vendor.return_policy.days }} days</p>
             {% endif %}
-
           </div>
-
-
-
-
-      
-
-
         </div>
-
         {% endfor %}
-
         </div>
       </div>
     </div>
-
   </div>
 </div>
-
