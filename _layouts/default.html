@@ -42,7 +42,7 @@ layout: compress
     <meta property="locale" content="en_US" />
     <meta
       name="description"
-      content="{% if page.description %}{{ page.excerpt | strip_html | normalize_whitespace | truncate: 160 | escape }}{% else %}{{ site.description }}{% endif %}"
+      content="{% if page.excerpt %}{{ page.excerpt | strip_html | normalize_whitespace | truncate: 200 | escape }}{% else %}{{ site.description }}{% endif %}"
     />
     <link rel="canonical" href="{{ page.url | absolute_url }}" />
 
@@ -51,7 +51,7 @@ layout: compress
     <meta property="og:locale" content="en_US" />
     <meta
       property="og:description"
-      content="{% if page.description %}{{ page.excerpt | strip_html | normalize_whitespace | truncate: 160 | escape }}{% else %}{{ site.description }}{% endif %}"
+      content="{% if page.excerpt %}{{ page.excerpt | strip_html | normalize_whitespace | truncate: 200 | escape }}{% else %}{{ site.description }}{% endif %}"
     />
     <meta property="og:url" content="{{ page.url | absolute_url }}" />
 
@@ -245,23 +245,11 @@ layout: compress
               <p>Made in Austin &amp; Berlin.</p>
             </div>
           </div>
-          <div class="col-lg-2 col-md-4 col-6">
+          <div class="col-lg-4 col-md-4 col-6">
             <div class="mb-4">
               <h4 class="mb-4 text-white">Popular</h4>
               <ul class="list-unstyled list-group">
                 {% for item in site.data.nav.footer.col1 %}
-                <li class="list-group-item">
-                  <a href="{{ item.href }}" class="list-group-item-link">{{ item.title }}</a>
-                </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-6">
-            <div class="mb-4">
-              <h4 class="mb-4 text-white">XXX</h4>
-              <ul class="list-unstyled list-group">
-                {% for item in site.data.nav.footer.col2 %}
                 <li class="list-group-item">
                   <a href="{{ item.href }}" class="list-group-item-link">{{ item.title }}</a>
                 </li>
@@ -335,15 +323,15 @@ layout: compress
     </div>
 
     <!-- Libs JS -->
-    <script
+    <!-- <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
     <script src="{{ '/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' | absolute_url }}"></script>
-    <script src="{{ '/assets/libs/jquery-slimscroll/jquery.slimscroll.min.js' | absolute_url }}"></script>
+    <!-- <script src="{{ '/assets/libs/jquery-slimscroll/jquery.slimscroll.min.js' | absolute_url }}"></script> -->
     <script src="{{ '/assets/js/flickity.pkgd.min.js' | absolute_url }}"></script>
-    <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
+    <script src="{{ '/assets/js/infinite-scroll.pkgd.min.js' | absolute_url }}"></script>
 
     <!-- Theme JS -->
     <script src="{{ '/assets/js/theme.min.js' | absolute_url }}"></script>
@@ -355,9 +343,6 @@ layout: compress
       async
     ></script>
     {% endif %} 
-    {% if page.layout == 'shop-single' %}
-    <script src="{{ '/assets/js/lightbox.min.js' | absolute_url }}"></script>
-    {% endif %} 
     {% if page.video %}
     <script
       src="{{ '/assets/js/lazyload.min.js' | absolute_url }}"
@@ -365,7 +350,5 @@ layout: compress
     ></script>
     {% endif %}
 
-    <!-- Add _blank to all pdfs and external links -->
-    {% include new-window-fix.html %}
   </body>
 </html>
