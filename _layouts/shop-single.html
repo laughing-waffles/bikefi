@@ -33,10 +33,31 @@ layout: default
         <div class="d-flex">
 
           <!-- star ratings -->
-          <span class="font-14 text-dark">
+          {% if page.ratingvalue %} 
+          <span class="font-14 text-dark" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+            <span 
+              itemprop="ratingValue"
+              value="{{ page.ratingvalue | default: 0 }}"
+              min=0
+              max=5
+              class="d-none">{{ page.ratingvalue | default: 0 }}
+            </span>
+            <span itemprop="ratingCount" class="d-none">
+              {{ page.ratingcount | default: 0 }}
+            </span>
+            <span itemprop="bestRating" class="d-none">
+              {{ page.ratingvalue | default: 0 }}
+            </span>
             {% assign ratingvalue = page.ratingvalue %} 
             {% assign ratingcount = page.ratingcount %} 
             {% include star-ratings.html %}
+          </span>
+          {% else %}
+          <span class="font-14 text-dark">
+          {% assign ratingvalue = page.ratingvalue %} 
+          {% assign ratingcount = page.ratingcount %} 
+          {% include star-ratings.html %}
+          {% endif %}
           </span>
 
           <!-- availability -->
@@ -51,11 +72,11 @@ layout: default
 
         <div class="mb-3 font-20">
           {% if page.price %}
-          <span class="text-dark me-2" itemprop="priceCurrent">{{ page.price | money: "USD" }}</span>
+          <span class="text-dark me-2">{{ page.price | money: "USD" }}</span>
           {% endif %}
           {% if page.pricemsrp %}
           <span class="text-muted font-14 text-danger">
-            <s class="text-danger" itemprop="priceMsrp">{{ page.pricemsrp | money: "USD" }}</s>
+            <s class="text-danger">{{ page.pricemsrp | money: "USD" }}</s>
           </span>
           <span class="badge bg-success-soft">Sale</span>
           {% endif %}

@@ -103,8 +103,10 @@ layout: compress
         {% if page.rating > 0 %}
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingvalue": "{{ page.rating }}",
-          "ratingcount": "{{ page.ratingcount }}"
+          "ratingValue": "{{ page.ratingvalue }}",
+          "ratingCount": "{{ page.ratingcount }}"
+          "bestRating": "5",
+          "worstRating": "1"
         },
         {% endif %}
         "paymentAccepted": "Visa, Master Card, Discover, Amex, ApplePay, AndroidPay"
@@ -132,11 +134,11 @@ layout: compress
           "name": "{{ page.brand.name }}"
         },
         {% endif %}
-        {% if page.star_rating > 0 %}
+        {% if page.ratingvalue != nil %}
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingvalue": "{{ page.ratingvalue }}"
-          "ratingcount": "{{ page.ratingcount }}"
+          "ratingValue": "{{ page.ratingvalue | default:0 }}",
+          "ratingCount": "{{ page.ratingcount | default:0 }}"
         },
         {% endif %}
         "offers": {
