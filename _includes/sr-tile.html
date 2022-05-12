@@ -3,6 +3,7 @@
   
   <div class="mb-3">
     <a href="{{ product.url | absolute_url }}" class="stretched-link">
+      {% if product.images[0]['path'] != nil %}
       {% assign featured_image = product.images[0]['path'] | replace: 'full/','' %} 
       {% include responsive-image.html 
         src=featured_image 
@@ -12,6 +13,7 @@
         alt=product.title
         style="height:182px; object-fit:cover;" 
       %}
+      {% endif %}
     </a>
   </div>
 

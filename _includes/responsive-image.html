@@ -14,7 +14,8 @@
   loading="{% if forloop.index > 7 %}lazy{% else %}eager{% endif %}"
   height="{{ include.height }}px"
   width="{{ include.width }}px"
-  style="{{ include.style }}"
+  {% if include.style %}style="{{ include.style }}"{% endif %}
+  itemprop="img"
   crossorigin="anonymous"
 />
 {% else %}
@@ -25,6 +26,7 @@
   loading="{% if forloop.index > 7 %}lazy{% else %}eager{% endif %}" 
   height="{{ include.height }}px"
   width="{{ include.width }}px" 
-  style="{{ include.style }}"
+  {% if include.style %}style="{{ include.style }}"{% endif %}
+  itemprop="img"
  />
 {% endif %}

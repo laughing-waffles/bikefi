@@ -43,7 +43,7 @@ hero-image: /assets/images/XL-bargains-highres.png
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
     {% for product in products %}
-    {% if product.vendor_id == "mellowjohnnys" %}
+    {% if product.vendorid == "mellowjohnnys" %}
     {% include sr-tile.html %}
     {% endif %}
     {% endfor %}
@@ -56,7 +56,7 @@ hero-image: /assets/images/XL-bargains-highres.png
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
     {% for product in products limit: 20 %}
-    {% if product.vendor_id == "chainreactioncycles" %}
+    {% if product.vendorid == "chainreactioncycles" %}
     {% include sr-tile.html %}
     {% endif %}
     {% endfor %}

@@ -1,4 +1,4 @@
-{% assign vendors = site.data.vendors.records | where: "id", product.vendor_id %}
+{% assign vendors = site.data.vendors.records | where: "id", product.vendorid %}
 
 <!-- Make -->
 {% if product.make %}
@@ -11,7 +11,7 @@
 {% endif %}
 
 <!-- On Sale -->
-{% if product.priceMsrp %}
+{% if product.pricemsrp %}
 <span class="badge bg-white text-dark border border-dark mb-1">Discounted</span>
 {% endif %}
 

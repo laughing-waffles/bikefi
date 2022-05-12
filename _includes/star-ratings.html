@@ -1,6 +1,6 @@
 <!-- Star ratings -->
 {% assign range = (1..5) %}
-{% if ratingValue == nill %}
+{% if ratingvalue == nill %}
 <i class="far fa-star text-warning"></i>
 <i class="far fa-star text-warning"></i>
 <i class="far fa-star text-warning"></i>
@@ -8,13 +8,24 @@
 <i class="far fa-star text-warning"></i>
 <span class="ms-1">(0)</span>
 {% else %}
-  {% for item in range limit: ratingValue %}
-  <i class="fas fa-star text-warning"></i>
-  {% endfor %}
-  {% for item in range offset: ratingValue %}
-  <i class="far fa-star text-warning"></i>
-  {% endfor %}
-{% endif %}
-{% if ratingCount %}
-<span class="ms-1">({{ ratingCount }})</span>
-{% endif %}
+
+<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+  <span 
+    itemprop="ratingValue"
+    {% if page.worstrating %} min="{{ page.worstrating }}"{% endif %}
+    {% if page.ratingvalue %} value="{{ page.ratingvalue }}"{% endif %}
+    {% if page.bestrating %} max="{{ page.bestrating }}"{% endif %} 
+    class="d-none">{{ page.ratingvalue | default:0 }}
+  </span>
+    {% for item in range limit: ratingvalue %}
+    <i class="fas fa-star text-warning"></i>
+    {% endfor %}
+    {% for item in range offset: ratingvalue %}
+    <i class="far fa-star text-warning"></i>
+    {% endfor %}
+  {% endif %}
+  {% if ratingcount %}
+  <span class="ms-1" itemprop="reviewCount">({{ ratingcount }})</span>
+  {% endif %}
+
+</span>

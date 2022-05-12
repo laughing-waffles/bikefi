@@ -103,8 +103,8 @@ layout: compress
         {% if page.rating > 0 %}
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "{{ page.rating }}",
-          "ratingCount": "{{ page.rating_count }}"
+          "ratingvalue": "{{ page.rating }}",
+          "ratingcount": "{{ page.ratingcount }}"
         },
         {% endif %}
         "paymentAccepted": "Visa, Master Card, Discover, Amex, ApplePay, AndroidPay"
@@ -135,14 +135,14 @@ layout: compress
         {% if page.star_rating > 0 %}
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "{{ page.ratingvalue }}"
-          "ratingCount": "{{ page.ratingcount }}"
+          "ratingvalue": "{{ page.ratingvalue }}"
+          "ratingcount": "{{ page.ratingcount }}"
         },
         {% endif %}
         "offers": {
           "@type": "Offer",
           "url": "{{ page.url | absolute_url }}",
-          "priceCurrency": "USD",
+          "pricecurrency": "USD",
           "price": "{{ page.price }}",
           "itemCondition": "https://schema.org/NewCondition",
           "availability": "https://schema.org/InStock",

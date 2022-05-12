@@ -2,21 +2,11 @@
 layout: default
 ---
 
-<div class="py-6">
-  <div class="container">
+<div class="container py-6">
+  <div itemscope itemtype="http://schema.org/Product">
     <div class="row align-items-center">
-      {% if page.categories.size > 0 %}
-      <!-- breadcrumbs -->
-      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ '/' | absolute_url }}">Home</a></li>
-          {% for item in page.categories limit:3 %} 
-          <li class="breadcrumb-item">{{ item | capitalize }}</li>
-          {% endfor %}
-          <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
-        </ol>
-      </nav>
-      {% endif %}
+
+      {% include breadcrumbs.html %}
 
       <!-- image -->
       <div class="col-lg-7 col-md-8 col-12">
@@ -25,8 +15,8 @@ layout: default
         {% assign featured_image = page.images[0]['path'] | replace: 'full/', '' %}
         {% include responsive-image.html 
           src=featured_image
-          height="500" 
-          width="500"   
+          height="700" 
+          width="700"   
           class="img-fluid productImage" 
           alt=page.title
         %}
@@ -36,40 +26,46 @@ layout: default
 
       <!-- description -->
       <div class="offset-lg-1 col-lg-4 col-md-4 col-12">
-        <h2>{{ page.title }}</h2>
+        <h2 itemprop="name">{{ page.title }}</h2>
         {% if page.make %}
         <p>by {{ page.make }}</p>
         {% endif %}
         <div class="d-flex">
 
-          <span class="ms-2 font-12 text-dark">
-            {% assign ratingValue = page.ratingvalue %} 
-            {% assign ratingCount = page.ratingcount %} 
+          <!-- star ratings -->
+          <span class="font-14 text-dark">
+            {% assign ratingvalue = page.ratingvalue %} 
+            {% assign ratingcount = page.ratingcount %} 
             {% include star-ratings.html %}
           </span>
 
           <!-- availability -->
-          <div>
+          <span class="font-14 text-dark">
             {% assign availability = page.availability %} 
             {% include availability-badge.html %}
-          </div>
+          </span>
 
         </div>
 
         <hr class="my-4" />
 
         <div class="mb-3 font-20">
-          {% if page.price %}<span class="text-dark me-2">{{ page.price | money: "USD" }}</span
-          >{% endif %} {% if page.priceMsrp %}<span class="text-muted font-14 text-danger"
-            ><s class="text-danger">{{ page.priceMsrp | money: "USD" }}</s></span
-          > <span class="badge bg-success-soft">Sale</span>{% endif %}
+          {% if page.price %}
+          <span class="text-dark me-2" itemprop="priceCurrent">{{ page.price | money: "USD" }}</span>
+          {% endif %}
+          {% if page.pricemsrp %}
+          <span class="text-muted font-14 text-danger">
+            <s class="text-danger" itemprop="priceMsrp">{{ page.pricemsrp | money: "USD" }}</s>
+          </span>
+          <span class="badge bg-success-soft">Sale</span>
+          {% endif %}
         </div>
         <div class="mb-3 small">
           <img src="https://cdn-assets.affirm.com/images/black_logo-transparent_bg.png" class="me-2 mt-n2" style="width:40px">{{ page.price | divided_by: 36 | money: "USD" }} per month for 36 months 
         </div>
 
         <div class="d-grid gap-2 mb-2">
-          <a href="{{ page.affiliate_url }}" class="btn btn-primary" target="_blank">Visit Site</a>
+          <a href="{{ page.affiliateurl }}" class="btn btn-primary" target="_blank">Visit Site</a>
         </div>
 
         <!-- <a href="#financing" class="btn btn-light">Get financing</a> -->
@@ -85,8 +81,8 @@ layout: default
         </p>
         {% endif %}
         
-        {% if page.vendor_id != nill %}
-        {% assign vendors = site.data.vendors.records | where: "id", page.vendor_id %}
+        {% if page.vendorid != nill %}
+        {% assign vendors = site.data.vendors.records | where: "id", page.vendorid %}
         {% for vendor in vendors %}
 
         <div class="mt-3 p-3 border-1 border-soft-primary rounded-sm btn-light">
@@ -103,8 +99,8 @@ layout: default
                   <span class="text-success font-weight-200"><strong><i>Verified</i></strong> Seller <img src="{{ '/assets/images/verified.svg' | absolute_url }}" /></span>
                 {% endif %}
   
-                {% assign ratingValue = vendor.reviews.ratingValue %}
-                {% assign ratingCount = vendor.reviews.ratingCount %}
+                {% assign ratingvalue = vendor.reviews.ratingvalue %}
+                {% assign ratingcount = vendor.reviews.ratingcount %}
                 {% include star-ratings.html %}
                 by
                 <a href="{{ vendor.reviews.url }}" target="_blank">
@@ -137,7 +133,6 @@ layout: default
                 <p class="font-12 mb-1">Shipped from {{ vendor.country }}</strong></p>
               {% endif %}
 
-  
               {% if vendor.return_policy.free == true %}
                 <p class="text-success mb-1"><strong>FREE returns for {{ vendor.return_policy.days }} days</strong></p>
               {% elsif vendor.return_policy.free == false %}
@@ -155,87 +150,79 @@ layout: default
 
             </div>
           </div>
+        </div>
 
         {% endfor %}
         {% endif %}
 
       </div>
     </div>
+  </div>
 
-    <hr class="my-10" />
-    <!-- {% if page.tags.size > 1 %}
-    {% include related-products.html %}
-    {% endif %} -->
+  <hr class="my-10" />
 
-    <!-- product detail list -->
-    <!-- <div class="row">
-      <div class="col-lg-4 col-md-5 col-12">
-        <div class="mb-6 mb-md-0">
-          <h4 class="mb-3">Product details</h4>
+  <!-- product detail list -->
+  <div class="row">
+    <div class="col-lg-4 col-md-5 col-12">
+      <div class="mb-6 mb-md-0">
+        <h4 class="mb-3">Product details</h4>
 
-          {% for item in page.attributes %}
-          <div
-            class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1"
-          >
-            <div class="col-5 text-dark"><b>{{ item.first }}</b></div>
-            <div class="col-7">{{ item.last }}</div>
-          </div>
-          {% endfor %}
-          <div
-            class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1"
-          >
-            <div class="col-5 text-dark"><b>Updated</b></div>
-            <div class="col-7">{{ page.updated_at | date: "%b %d, %Y" }}</div>
-          </div>
-        </div>
-      </div> -->
-
-      <!-- description -->
-      <!-- <div class="col-lg-8 col-md-7 col-12">
-        <h4 class="mb-3">Description</h4>
-
-        {{ content | markdownify }} {% if page.video %}
-
-        <iframe
-          class="lazy"
-          data-src="{{ page.video }}"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+        {% for item in page.attributes %}
+        <div
+          class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1"
         >
-        </iframe>
-        <script>
-          // Set the options globally
-          // to make LazyLoad self-initialize
-          window.lazyLoadOptions = {
-            // Your custom settings go here
-          };
-
-          // Listen to the initialization event
-          // and get the instance of LazyLoad
-          window.addEventListener(
-            "LazyLoad::Initialized",
-            function (event) {
-              window.lazyLoadInstance = event.detail.instance;
-            },
-            false
-          );
-        </script>
-        {% endif %} {% if site.discounts %} {% for discount in site.discounts %}
-        <p>
-          <strong>{{ discount.name }} - {{ discount.discount_name }}</strong>
-        </p>
-        <p>{{ discount.discount_notes }}</p>
-        {% endfor %} {% endif %}
-      </div> -->
+          <div class="col-5 text-dark"><b>{{ item.first }}</b></div>
+          <div class="col-7">{{ item.last }}</div>
+        </div>
+        {% endfor %}
+        <div
+          class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1"
+        >
+          <div class="col-5 text-dark"><b>Updated</b></div>
+          <div class="col-7">{{ page.updated_at | date: "%b %d, %Y" }}</div>
+        </div>
+      </div>
     </div>
-    <div class="container">
-      <!-- <hr class="my-10" /> -->
-      {% include compare-products.html %}
+
+    <!-- description -->
+    <div class="col-lg-8 col-md-7 col-12">
+      <h4 class="mb-3">Description</h4>
+
+      {{ content }} 
+      
+      {% if page.video %}
+
+      <iframe
+        class="lazy"
+        data-src="{{ page.video }}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      >
+      </iframe>
+      <script>
+        // Set the options globally
+        // to make LazyLoad self-initialize
+        window.lazyLoadOptions = {
+          // Your custom settings go here
+        };
+
+        // Listen to the initialization event
+        // and get the instance of LazyLoad
+        window.addEventListener(
+          "LazyLoad::Initialized",
+          function (event) {
+            window.lazyLoadInstance = event.detail.instance;
+          },
+          false
+        );
+      </script>
+      {% endif %} 
     </div>
   </div>
+  {% include compare-products.html %}
+  </div>
 </div>
-
 <!-- Product Feedback Modal -->
 <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -266,7 +253,6 @@ layout: default
     </div>
   </div>
 </div>
-
 <script>
   var discountData = "{{ site.discounts | jsonify }}";
 </script>

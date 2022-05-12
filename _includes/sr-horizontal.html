@@ -1,5 +1,5 @@
 {% assign featured_image = product.images[0]['path'] | replace: 'full/', '' %}
-{% assign vendors = site.data.vendors.records | where: "id", product.vendor_id %}
+{% assign vendors = site.data.vendors.records | where: "id", product.vendorid %}
 {% assign availability = product.availability %} 
 
 <div class="card mb-5 shadow-sm">
@@ -35,8 +35,8 @@
             <div class="col-5 pe-3 pe-md-7">
               <p class="text-end">
                 <span class="h2">{{ product.price | money: "USD"}}</span>
-                {% if product.priceMsrp %}
-                <br /><span class="font-14 text-muted me-1"><s>{{ product.priceMsrp | money: "USD" }}</s><span class="badge bg-danger-soft ms-1">Sale</span></span>
+                {% if product.pricemsrp %}
+                <br /><span class="font-14 text-muted me-1"><s>{{ product.pricemsrp | money: "USD" }}</s><span class="badge bg-danger-soft ms-1">Sale</span></span>
                 {% endif %}
               </p>
             </div>
@@ -55,8 +55,8 @@
             {% endif %}
             <!-- VENDOR RATING INFORMATION -->
             <p>
-              {% assign ratingValue = vendor.reviews.ratingvalue %}
-              {% assign ratingCount = vendor.reviews.ratingcount %}
+              {% assign ratingvalue = vendor.reviews.ratingvalue %}
+              {% assign ratingcount = vendor.reviews.ratingcount %}
               {% include star-ratings.html %}  
             </p>
           </div>
