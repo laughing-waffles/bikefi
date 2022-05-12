@@ -6,3 +6,8 @@ _site
 .DS_Store
 _posts
 .vscode
+_data/dealers.json
+_data/discounts.json
+_data/ebikes.json
+_data/financing.json
+_data/locations.json
