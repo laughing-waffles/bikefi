@@ -13,6 +13,7 @@ permalink: pretty
 plugins:
   - jekyll-include-cache
   - jekyll-paginate-v2
+  - jekyll-money
 sass:
   sass_dir: assets/css
   style: compressed # possible values: nested expanded compact compressed

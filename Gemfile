@@ -23,6 +23,6 @@ group :jekyll_plugins do
   gem 'jekyll-paginate-v2', git: 'https://github.com/jameshi16/jekyll-paginate-v2.git', branch: 'cache-mismatch-error'
   gem "jekyll-include-cache"
   gem "jekyll-algolia", '~> 1.0'
-  gem 'money'
+  gem 'jekyll-money', git: 'https://github.com/laughing-waffles/jekyll-money.git', branch: 'master'
   gem "kramdown-parser-gfm", '~> 1.1'
 end

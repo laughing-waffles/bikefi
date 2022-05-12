@@ -1,116 +1,79 @@
 ---
-layout: default
+layout: page
 sitemap: false
 ---
 
-<div class="bg-shape bg-dark">
-  <div class="container">
-    <div class="row">
-      <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-        <div class="pt-lg-18 pb-lg-14 pt-14 pb-12">
-          <h1 class="h2 text-white">
-            {{ page.title | capitalize }}
-          </h1>
-          <!-- breadcrumbs -->
-          <div class="custom-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a href="{{ '/' | absolute_url }}">Home</a>
-              </li>
-              <li class="breadcrumb-item active">
-                {{ page.title | capitalize }}
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="row">
+  <div class="col-lg-9 col-12">
 
-<div class="pt-3 pt-lg-13">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9 col-12">
+    <h5 class="mb-3 mb-md-5">
+      Showing {{ paginator.total_posts }} items
+    </h5>
 
-        <div class="row">
-          <!-- result and filter -->
-          <div class="row align-items-center mb-4">
-            <div class="col-lg-6 col-md-4 col-7">
-              <h5 class="mb-0">
-                Showing {{ paginator.total_posts }} items
-              </h5>
-            </div>
-          </div>
-        </div>
+    <div class="infinite-container" data-infinite-scroll='{ "path": ".next", "append": ".card", "history": false }'>
+      {% if page.url contains "bike-shops" %}
+        <!-- BIKE SHOPS -->
+        {% assign store = paginator.posts %}
+        {% for post in store %}
+        {% include sr-horizontal-vendor.html %} 
+        {% endfor %}
+      {% elsif page.url contains "tag" %}
+        <!-- TAGS -->
+        {% assign featured_products = paginator.posts %} 
+        {% for product in featured_products %} 
+        {% if product.vendor_id != nill %} 
+        {% if product.images != nil %}
+        {% include sr-horizontal.html %} 
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+      {% else %}
+        <!-- CATEGORIES -->
+        {% assign featured_products = paginator.posts %} 
+        {% for product in featured_products %} 
+        {% if product.vendor_id != nill %} 
+        {% if product.images != nil %}
+        {% include sr-horizontal.html %} 
+        {% endif %}
+        {% endif %} 
+        {% endfor %}
+      {% endif %}
 
-        <div class="infinite-container" data-infinite-scroll='{ "path": ".next", "append": ".card", "history": false }'>
-          {% if page.url contains "bike-shops" %}
-            <!-- BIKE SHOPS -->
-            {% assign store = paginator.posts %}
-            {% for post in store %}
-            {% include sr-horizontal-vendor.html %} 
-            {% endfor %}
-          {% elsif page.url contains "tag" %}
-            <!-- TAGS -->
-            {% assign featured_products = paginator.posts %} 
-            {% for product in featured_products %} 
-            {% if product.vendor_id != nill %} 
-            {% if product.images != nil %}
-            {% include sr-horizontal.html %} 
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-          {% else %}
-            <!-- CATEGORIES -->
-            {% assign featured_products = paginator.posts %} 
-            {% for product in featured_products %} 
-            {% if product.vendor_id != nill %} 
-            {% if product.images != nil %}
-            {% include sr-horizontal.html %} 
-            {% endif %}
-            {% endif %} 
-            {% endfor %}
-          {% endif %}
-
-          <div class="d-none d-xl-flex justify-content-center pb-3">
-            <a href="https://jenson.sjv.io/c/3294572/1330397/13009" 
-              target="_top" 
-              id="1330397">
-                <img src="//a.impactradius-go.com/display-ad/13009-1330397" 
-                  border="0" 
-                  alt="" 
-                  width="728" 
-                  height="90"
-                />
-            </a>
-            <img 
-              height="0" 
-              width="0" 
-              src="https://imp.pxf.io/i/3294572/1330397/13009" 
-              style="position:absolute;visibility:hidden;" 
+      <div class="d-none d-xl-flex justify-content-center pb-3">
+        <a href="https://jenson.sjv.io/c/3294572/1330397/13009" 
+          target="_top" 
+          id="1330397">
+            <img src="//a.impactradius-go.com/display-ad/13009-1330397" 
               border="0" 
+              alt="" 
+              width="728" 
+              height="90"
             />
-          </div>
-
-          <div class="d-flex d-xl-none justify-content-center pb-3">
-            <a href="https://jenson.sjv.io/c/3294572/1330396/13009?subId1=earth%20day" target="_top" id="1330396"><img src="//a.impactradius-go.com/display-ad/13009-1330396" border="0" alt="" width="300" height="50"/></a><img height="0" width="0" src="https://imp.pxf.io/i/3294572/1330396/13009" style="position:absolute;visibility:hidden;" border="0" />
-          </div>
-
-          {% if paginator.total_pages > 1 %}
-          {% if paginator.next_page %}
-          <a class="next" href="{{ paginator.next_page_path | absolute_url }}"></a>
-          {% endif %}
-          {% endif %}
-
-        </div>
-
+        </a>
+        <img 
+          height="0" 
+          width="0" 
+          src="https://imp.pxf.io/i/3294572/1330397/13009" 
+          style="position:absolute;visibility:hidden;" 
+          border="0" 
+        />
       </div>
 
-      <div class="col-lg-3 col-md-5 col-12 d-none d-lg-block">
-        {% include sidebar-ad.html %}
+      <div class="d-flex d-xl-none justify-content-center pb-3">
+        <a href="https://jenson.sjv.io/c/3294572/1330396/13009?subId1=earth%20day" target="_top" id="1330396"><img src="//a.impactradius-go.com/display-ad/13009-1330396" border="0" alt="" width="300" height="50"/></a><img height="0" width="0" src="https://imp.pxf.io/i/3294572/1330396/13009" style="position:absolute;visibility:hidden;" border="0" />
       </div>
+
+      {% if paginator.total_pages > 1 %}
+      {% if paginator.next_page %}
+      <a class="next" href="{{ paginator.next_page_path | absolute_url }}"></a>
+      {% endif %}
+      {% endif %}
+
     </div>
+
+  </div>
+
+  <div class="col-lg-3 col-md-5 col-12 d-none d-lg-block">
+    {% include sidebar-ad.html %}
   </div>
 </div>
-        

@@ -28,7 +28,7 @@ hero-image: /assets/images/XL-bargains-highres.png
     <h3 class="ps-3 p-sm-0">Top products</h3>
     <div
       class="main-carousel"
-      data-flickity='{ "cellAlign": "left", "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
+      data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
     {% for product in products limit: 20 %}
     {% include sr-tile.html %}
@@ -40,7 +40,7 @@ hero-image: /assets/images/XL-bargains-highres.png
     <h3 class="ps-3 p-sm-0">Mellow Johnny's</h3>
     <div
       class="main-carousel"
-      data-flickity='{ "cellAlign": "left", "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
+      data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
     {% for product in products %}
     {% if product.vendor_id == "mellowjohnnys" %}
@@ -53,7 +53,7 @@ hero-image: /assets/images/XL-bargains-highres.png
     <h3 class="ps-3 p-sm-0">Chain Reaction Cycles</h3>
     <div
       class="main-carousel"
-      data-flickity='{ "cellAlign": "left", "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
+      data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
     {% for product in products limit: 20 %}
     {% if product.vendor_id == "chainreactioncycles" %}

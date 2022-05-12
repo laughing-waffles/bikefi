@@ -1,4 +1,4 @@
-{% assign similar_products = site.posts | where: "category", page.categories %}
+{% assign similar_products = site.posts | where: "vendor_id", page.vendor_id %}
 <div class="table-responsive">
   <table class="table align-middle">
     <tbody>
@@ -44,9 +44,9 @@
       </tr>
       <tr>
         <th scope="row">Price</th>
-        <td class="small table-light">{{ page.price | money }}</td>
+        <td class="small table-light">{{ page.price | money: "USD" }}</td>
         {% for product in similar_products limit:15 %}
-        <td class="small">{{ product.price | money }}</td>
+        <td class="small">{{ product.price | money: "USD" }}</td>
         {% endfor %}
       </tr>
       <tr>

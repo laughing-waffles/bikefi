@@ -34,9 +34,9 @@
             </div>
             <div class="col-5 pe-3 pe-md-7">
               <p class="text-end">
-                <span class="h2">{{ product.price | money}}</span>
-                {% if product.price_msrp %}
-                <br /><span class="font-14 text-muted me-1"><s>{{ product.price_msrp | money }}</s><span class="badge bg-danger-soft ms-1">Sale</span></span>
+                <span class="h2">{{ product.price | money: "USD"}}</span>
+                {% if product.priceMsrp %}
+                <br /><span class="font-14 text-muted me-1"><s>{{ product.priceMsrp | money: "USD" }}</s><span class="badge bg-danger-soft ms-1">Sale</span></span>
                 {% endif %}
               </p>
             </div>
@@ -55,8 +55,8 @@
             {% endif %}
             <!-- VENDOR RATING INFORMATION -->
             <p>
-              {% assign ratingvalue = vendor.reviews.ratingvalue %}
-              {% assign ratingcount = vendor.reviews.ratingcount %}
+              {% assign ratingValue = vendor.reviews.ratingvalue %}
+              {% assign ratingCount = vendor.reviews.ratingcount %}
               {% include star-ratings.html %}  
             </p>
           </div>

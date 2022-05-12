@@ -2,35 +2,18 @@
 layout: default
 ---
 
-<div class="bg-shape bg-dark">
+<div class="py-6">
   <div class="container">
-    <div class="row">
-      <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-        <div class="pt-lg-18 pb-lg-14 pt-14 pb-12">
-          <h1 class="h2 text-white">{{ page.title | capitalize }}</h1>
-          <!-- breadcrumbs -->
-          <div class="custom-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a href="{{ '/' | absolute_url }}">Home</a>
-              </li>
-              <li class="breadcrumb-item active">{{ page.title | capitalize }}</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    <h1 class="h2">{{ page.title | capitalize }}</h1>
+    <!-- breadcrumbs -->
+    <nav class="mb-5 mb-md-8" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ '/' | absolute_url }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+      </ol>
+    </nav>
 
-<div class="py-6 py-lg-12">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-
-        {{ content }}
+    {{ content }}
         
-      </div>
-    </div>
   </div>
 </div>
