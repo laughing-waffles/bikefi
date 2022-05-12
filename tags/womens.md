@@ -1,8 +1,6 @@
 ---
 title: Women's
-category: women's
-permalink: "/womens/"
-layout: srp
+permalink: "/tag/womens/"
 pagination: 
   enabled: true
   tag: womens

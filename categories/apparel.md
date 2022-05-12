@@ -1,8 +1,6 @@
 ---
 title: Apparel
-category: apparel
-permalink: "/apparel/"
-layout: srp
+permalink: /apparel/
 pagination: 
   enabled: true
   category: apparel

@@ -20,7 +20,8 @@ sass:
 collections:
   categories:
     output: true
-    permalink: /:path/:name
+  tags:
+    output: true
 defaults:
   - scope:
       path: ''
@@ -40,6 +41,14 @@ defaults:
       path: assets/*
     values:
       sitemap: false
+  - scope:
+      path: categories
+    values:
+      layout: "srp"
+  - scope:
+      path: tags
+    values:
+      layout: "srp"
 pagination:
   enabled: true
   per_page: 25
