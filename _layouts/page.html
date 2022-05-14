@@ -2,35 +2,13 @@
 layout: default
 ---
 
-<div class="bg-shape bg-dark">
+<div class="py-6">
   <div class="container">
-    <div class="row">
-      <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-        <div class="pt-lg-18 pb-lg-14 pt-14 pb-12">
-          <h1 class="h2 text-white">{{ page.title | capitalize }}</h1>
-          <!-- breadcrumbs -->
-          <div class="custom-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a href="{{ '/' | absolute_url }}">Home</a>
-              </li>
-              <li class="breadcrumb-item active">{{ page.title | capitalize }}</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    <h1 class="h2">{{ page.title | capitalize }}</h1>
 
-<div class="py-6 py-lg-12">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-
-        {{ content }}
+    {% include breadcrumbs.html %}
+    
+    {{ content }}
         
-      </div>
-    </div>
   </div>
 </div>

@@ -28,24 +28,44 @@ layout: compress
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <link rel="preconnect" href="https://cdn.bikefi.net" />
 
-    <title>{{ page.title }} | {{ site.title }}</title>
-    <meta name="generator" content="Jekyll v4.2.1" />
-    <meta property="og:title" content="{{ page.title }}" />
-    <meta name="author" content="{{ site.title }}" />
-    <meta property="og:locale" content="en_US" />
-    <meta name="description" content="{{ page.description }}" />
-    <meta property="og:description" content="{{ page.description }}" />
-    <link rel="canonical" href="{{ page.url | absolute_url }}" />
-    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <!-- Meta Tags -->
     <meta property="og:site_name" content="{{ site.title }}" />
+    <meta name="generator" content="Jekyll v4.2.1" />
+    <meta name="author" content="{{ site.title }}" />
     <meta
       property="article:published_time"
       content="{{ site.time | date_to_string }}"
     />
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta property="locale" content="en_US" />
+    <meta
+      name="description"
+      content="{% if page.excerpt %}{{ page.excerpt | strip_html | normalize_whitespace | truncate: 200 | escape }}{% else %}{{ site.description }}{% endif %}"
+    />
+    <link rel="canonical" href="{{ page.url | absolute_url }}" />
+
+    <!-- OG Tags -->
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:description"
+      content="{% if page.excerpt %}{{ page.excerpt | strip_html | normalize_whitespace | truncate: 200 | escape }}{% else %}{{ site.description }}{% endif %}"
+    />
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+
+    <!-- Twitter Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="{{ page.title }}" />
+    <link
+      rel="sitemap"
+      type="application/xml"
+      title="Sitemap"
+      href="/sitemap2.xml"
+    />
 
+    <!-- Schema site -->
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
@@ -63,8 +83,8 @@ layout: compress
       }
     </script>
 
+    <!-- Schema bikestore -->
     {% if page.layout == 'dealers-single' %}
-    <!-- BikeStore Schema -->
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
@@ -83,66 +103,74 @@ layout: compress
         {% if page.rating > 0 %}
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "{{ page.rating }}",
-          "ratingCount": "{{ page.rating_count }}"
+          "ratingValue": "{{ page.ratingvalue }}",
+          "ratingCount": "{{ page.ratingcount }}"
+          "bestRating": "5",
+          "worstRating": "1"
         },
         {% endif %}
         "paymentAccepted": "Visa, Master Card, Discover, Amex, ApplePay, AndroidPay"
       }
     </script>
-    {% endif %} 
-    
-    {% if page.layout == 'shop-single' %}
+    {% endif %}
+
     <!-- Bike Product Schema -->
+    {% if page.layout == 'shop-single' %}
     <script type="application/ld+json">
       {
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": "{{ page.title }}",
         "image": "{{ page.image.path[0] | absolute_url }}",
-        "description": "{{ content }}",
+        {% if page.sku %}
+        "sku": "{{ page.sku }}",
+        {% endif %}
+        {% if page.gtin12 %}
+        "gtin12": "{{ page.gtin12 }}",
+        {% endif %}
+        {% if brand.name %}
         "brand": {
           "@type": "Thing",
-          "name": "{{ page.title }}"
+          "name": "{{ page.brand.name }}"
         },
-        {% if page.star_rating > 0 %}
+        {% endif %}
+        {% if page.ratingvalue != nil %}
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "{{ page.ratingvalue }}"
-          "ratingCount": "{{ page.ratingcount }}"
+          "ratingValue": "{{ page.ratingvalue | default:0 }}",
+          "ratingCount": "{{ page.ratingcount | default:0 }}"
         },
         {% endif %}
         "offers": {
           "@type": "Offer",
           "url": "{{ page.url | absolute_url }}",
-          "priceCurrency": "USD",
+          "pricecurrency": "USD",
           "price": "{{ page.price }}",
-          "itemCondition": "NewCondition",
-          "availability": "{{ page.availability | capitalize }}",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
           "seller": {
             "@type": "Organization",
-            "name": "{{ site.title }}"
+            "name": "{{ page.vendor }}"
           }
         }
       }
     </script>
     {% endif %}
 
-    <!-- Libs CSS -->
-    <!-- Theme CSS -->
+    <!-- CSS -->
     <link
       rel="stylesheet"
-      href="{{'/assets/css/theme.min.css' | absolute_url }}"
+      href="{{'/assets/css/styles.min.css' | absolute_url }}"
     />
 
-    {% if page.url contains "bikes" %}
-    <!-- Lightbox2 CSS https://lokeshdhakar.com/projects/lightbox2/ -->
-    <link
-      rel="stylesheet"
-      href="{{'/assets/css/lightbox.min.css' | absolute_url }}"
-    />
-    {% endif %}
-
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff6600" />
+    <meta name="msapplication-TileColor" content="#ff6600" />
+    <meta name="theme-color" content="#ffffff" />
   </head>
 
   {% capture layout %} {% if page.layout %}layout-{{ page.layout }} {% endif %}
@@ -162,88 +190,103 @@ layout: compress
     <!-- End Google Tag Manager (noscript) -->
     {% endif %}
 
-    <script src="{{ '/assets/libs/jquery/dist/jquery.min.js' | absolute_url }}"></script>
+    <a
+      href="#"
+      class="d-block px-3 py-2 text-center text-bold text-white bg-dark"
+      >Summer sales are on fire! 🔥🔥</a
+    >
 
     <!-- header -->
-    <div
-      class="header fixed-top border-top-3 border-top border-primary bg-dark"
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-secondary border-top-3 border-top border-primary"
     >
       <!-- navigation start -->
       <div class="container-lg">
-        <nav class="navbar navbar-expand-lg navbar-default">
-          <a class="navbar-brand" href="{{ '/' | absolute_url }}">
-            <h1 class="font-weight-bolder d-block text-white h4 m-0">
-              {{ site.title }}
-            </h1>
-            <p class="font-weight-light h6 text-white m-0">
-              {{ site.subtitle }}
-            </p>
-          </a>
-          <button
-            class="navbar-toggler collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbar-default"
-            aria-controls="navbar-default"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="icon-bar top-bar mt-0"></span>
-            <span class="icon-bar middle-bar"></span>
-            <span class="icon-bar bottom-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbar-default">
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbar-default"
-              aria-controls="navbar-default"
-              aria-expanded="true"
-              aria-label="Toggle navigation"
-            >
-              <i class="fas fa-times"></i>
-            </button>
-            <ul class="navbar-nav ms-auto mr-lg-3">
-              <li class="nav-item dropdown">
-                <a class="nav-link d-lg-none" href="#"> Menu </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ '/' | absolute_url }}" id="menu-1">
-                  Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="{{ 'products' | absolute_url }}"
-                  id="menu-2"
-                >
-                  Bikes
-                </a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="{{ 'bike-shops' | absolute_url }}"
-                  id="menu-1"
-                >
-                  Bike Shops
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <a class="navbar-brand" href="{{ '/' | absolute_url }}">
+          {{ site.title }}
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            {% for item in site.data.nav.main %}
+            <li class="nav-item">
+              <a href="{{ item.href | absolute_url }}" class="nav-link text-white fw-bolder">{{ item.icon }} {{ item.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
       </div>
       <!-- navigation close -->
-    </div>
+    </nav>
 
     {{ content }}
 
     <!-- footer -->
-    <div class="footer pb-3 bg-dark text-body">
+    <div class="footer pt-11 pb-3 bg-dark text-body">
       <div class="container">
         <div class="row">
+          <div class="col-lg-4 col-md-4 col-6">
+            <div class="mb-4">
+              <h4 class="mb-4 text-white">BikeFi</h4>
+              <p>
+                BikeFi helps cycling enthusiasts find the best deals 
+                across hundreds of online and local retailers 
+                of the world's best cycling products.
+              </p>
+              <p>Made in Austin &amp; Berlin.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-6">
+            <div class="mb-4">
+              <h4 class="mb-4 text-white">Popular</h4>
+              <ul class="list-unstyled list-group">
+                {% for item in site.data.nav.footer.col1 %}
+                <li class="list-group-item">
+                  <a href="{{ item.href }}" class="list-group-item-link">{{ item.title }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-8 col-12">
+            <div class="mb-4">
+              <h4 class="mb-4 text-white">Subscribe to our newsletter</h4>
+              <div>
+                <p>
+                  Subscribe to get notified about deals and 
+                  promotions from BikeFi and our partners.
+                </p>
+                <form
+                  action="https://formspree.io/f/xgedrvee"
+                  method="POST"
+                >
+                  <div class="mb-3">
+                    <input
+                      type="email"
+                      name="email"
+                      class="form-control border-white"
+                      placeholder="Email Address"
+                      required=""
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
           <div class="col-md-12">
             <div class="mt-8">
               <ul class="list-inline">
@@ -282,23 +325,31 @@ layout: compress
     </div>
 
     <!-- Libs JS -->
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script> -->
     <script src="{{ '/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' | absolute_url }}"></script>
-    <script src="{{ '/assets/libs/jquery-slimscroll/jquery.slimscroll.min.js' | absolute_url }}"></script>
+    <!-- <script src="{{ '/assets/libs/jquery-slimscroll/jquery.slimscroll.min.js' | absolute_url }}"></script> -->
+    <script src="{{ '/assets/js/flickity.pkgd.min.js' | absolute_url }}"></script>
+    <script src="{{ '/assets/js/infinite-scroll.pkgd.min.js' | absolute_url }}"></script>
 
     <!-- Theme JS -->
     <script src="{{ '/assets/js/theme.min.js' | absolute_url }}"></script>
-    
-    {% if page.url contains "bike-shops" %}
+
+    {% if page.layout == 'dealers-single' %}
     <script src="{{ '/assets/libs/leaflet/dist/leaflet.js' | absolute_url }}"></script>
-    <script src="{{ '/assets/js/lazyload.min.js' | absolute_url }}" async></script>
-    {% endif %}
-
-    {% if page.url contains "bikes" %}
-    <script src="{{ '/assets/js/lightbox.min.js' | absolute_url }}"></script>
-    {% endif %}
-
+    <script
+      src="{{ '/assets/js/lazyload.min.js' | absolute_url }}"
+      async
+    ></script>
+    {% endif %} 
     {% if page.video %}
-    <script src="{{ '/assets/js/lazyload.min.js' | absolute_url }}" async></script>
+    <script
+      src="{{ '/assets/js/lazyload.min.js' | absolute_url }}"
+      async
+    ></script>
     {% endif %}
 
   </body>

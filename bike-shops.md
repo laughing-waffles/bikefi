@@ -1,8 +1,12 @@
 ---
-layout: srp
 title: Bike Shops
+layout: srp
+permalink: "/bike-shops/"
 pagination: 
   enabled: true
-  collection: posts
-sitemap: false
+  category: bikeshop
+  sort_field: 'title'
+  sort_reverse: false
 ---
+
+

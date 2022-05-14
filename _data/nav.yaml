@@ -1,0 +1,32 @@
+main:
+  - title: E-Bikes
+    href: /ebikes
+    icon: ⚡
+  - title: Gravel Bikes
+    href: /gravel-bikes
+    icon: ⛰️
+  - title: Apparel
+    href: /apparel
+    icon: 👕
+  - title: Bike Shops
+    href: /bike-shops
+    icon: 🏢
+footer:
+  col1:
+    - title: E-Bikes
+      href: /ebikes
+    - title: Gravel Bikes
+      href: /gravel-bikes
+    - title: Apparel
+      href: /apparel
+    - title: Bike Shops
+      href: /bike-shops
+  col2:
+    - title: One2
+      href: /
+    - title: Two2
+      href: /
+    - title: Three2
+      href: /
+    - title: Four2
+      href: /

@@ -1,0 +1,61 @@
+{% assign similar_products = site.posts | where: "vendorid", page.vendorid %}
+<div class="table-responsive">
+  <table class="table align-middle">
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td>
+          {% assign featured_image = page.images[0]['path'] | replace: 'full/', '' %}
+          {% include responsive-image.html 
+            src=featured_image
+            height="82" 
+            width="82" 
+            class="img-fluid" 
+            alt=product.title
+          %}
+          <!-- <img src="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" class="img-fluid" style="width:150px;"> -->
+        </td>
+        {% for product in similar_products limit:15 %}
+        <td>
+          {% assign featured_image = product.images[0]['path'] | replace: 'full/', '' %}
+          {% include responsive-image.html 
+            src=featured_image
+            height="82" 
+            width="82" 
+            class="img-fluid" 
+            alt=product.title
+          %}
+          <!-- <img src="{{ product.images[0]['path'] | prepend: '/assets/images/' }}" class="img-fluid" style="width:150px;"></td> -->
+        {% endfor %}
+      </tr>
+      <tr>
+        <th scope="row">Name</th>
+        <td class="small table-light">{{ page.title }}</td>
+        {% for product in similar_products limit:15 %}
+        <td class="small">{{ product.title }}</td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th scope="row">Sold by</th>
+        <td class="small table-light">{{ page.vendor] }}</td>
+        {% for product in similar_products limit:15 %}
+        <td class="small">{{ product.vendor] }}</td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th scope="row">Price</th>
+        <td class="small table-light">{{ page.price | money: "USD" }}</td>
+        {% for product in similar_products limit:15 %}
+        <td class="small">{{ product.price | money: "USD" }}</td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td class="table-light"><a class="btn btn-primary btn-sm mt-3 disabled" role="button" aria-disabled="true">Current</a></td>
+        {% for product in similar_products limit:15 %}
+        <td><a href="{{ product.url | absolute_url }}" class="btn btn-outline-primary btn-sm mt-3">View</a></td>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+</div>

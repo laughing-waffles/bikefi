@@ -1,0 +1,51 @@
+{% assign vendors = site.data.vendors.records | where: "id", product.vendorid %}
+
+<!-- Make -->
+{% if product.make %}
+<span class="badge bg-white text-dark border border-dark mb-1">{{ product.make }}</span>
+{% endif %}
+
+<!-- Top Rated -->
+{% if product.ratingvalue > "3" %}
+<span class="badge bg-white text-dark border border-dark mb-1">Top Rated</span>
+{% endif %}
+
+<!-- On Sale -->
+{% if product.pricemsrp %}
+<span class="badge bg-white text-dark border border-dark mb-1">Discounted</span>
+{% endif %}
+
+<!-- Verified Seller -->
+{% for vendor in vendors %}
+{% if vendor.affiliate_code != nill %}
+<span class="badge bg-white text-dark border border-dark mb-1">Verified seller</span>
+{% endif %}
+{% endfor %}
+
+<!-- Seller -->
+{% for vendor in vendors %}
+{% if vendor.affiliate_code != nill %}
+<span class="badge bg-white text-dark border border-dark mb-1">{{ vendor.name }}</span>
+{% endif %}
+{% endfor %}
+
+<!-- Availability -->
+{% if product.availability contains 'Only' %}
+<span class="badge bg-white text-dark border border-dark mb-1">Limited Availability</span>
+{% elsif product.availability contains 'In' %}
+<span class="badge bg-white text-dark border border-dark mb-1">In Stock</span>
+{% endif %}
+
+<!-- American seller -->
+{% for vendor in vendors %}
+{% if vendor.country == "USA" %}
+<span class="badge bg-white text-dark border border-dark mb-1">USA</span>
+{% endif %}
+{% endfor %}
+
+<!-- Free Shipping -->
+{% for vendor in vendors %}
+{% if vendor.return_policy.free == true %}
+<span class="badge bg-white text-dark border border-dark mb-1">Free returns</span>
+{% endif %}
+{% endfor %}

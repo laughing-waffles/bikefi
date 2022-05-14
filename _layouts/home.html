@@ -1,115 +1,76 @@
 ---
 layout: default
-hero-image: /assets/images/home-hero.jpeg
+hero-image: /assets/images/XL-bargains-highres.png
 ---
 
 <!-- hero section -->
 <div
-  class="py-lg-19 pt-14 pb-10 bg-cover"
+  class="pt-16 pb-5 text-center bg-cover"
   style="
     background-image: linear-gradient(180deg, rgba(30, 24, 53, 0.4) 0%, rgba(30, 24, 53, 0.4) 90.16%), 
-    {% if jekyll.environment == 'production' %}
-    url(https://res.cloudinary.com/{{ site.cloudinary.cloud_name }}/image/fetch/c_limit,f_auto,q_auto,w_1250/{{ layout.hero-image | absolute_url }});
-    {% else %}
-    url({{ layout.hero-image | absolute_url }});
-    {% endif %}
-    "
->
+    url({{ layout.hero-image | absolute_url }});"
+  >
   <div class="container">
-    <div class="row">
-      <div class="col-xxl-5 col-lg-6 col-md-8 col-12">
-        <div class="text-white">
-          <h1 class="text-white mb-3 display-3">We’ll help you</h1>
-          <h2 class="mb-3 text-white">finance the purchase of a new ebike.</h2>
-          <p class="mb-3 pe-lg-12 pe-0">
-            It’s like a car loan, but for a bike. And way less confusing.
-          </p>
-          <div class="d-grid gap-2 d-md-block">
-            <a
-              href="{{ 'products' | absolute_url }}"
-              class="btn btn-primary btn-lg"
-              >Search all products</a
-            >
-            <a
-              href="{{ 'bike-shops' | absolute_url }}"
-              class="btn btn-outline-primary btn-lg"
-              >Find a bike shop</a
-            >
-          </div>
-        </div>
+    <div class="col-lg-6 mx-auto mb-5">
+      <h1 class="display-5 fw-bold text-white">Find deals</h1>
+      <p class="lead mb-4 text-white">across hundreds of online and local retailers of the world's best cycling products.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="{{ 'all-products/' | absolute_url }}" class="btn btn-light btn-lg">Search all products</a>
+        <!-- <a href="{{ 'bike-shops/' | absolute_url }}" class="btn btn-outline-light btn-lg">Find a bike shop</a> -->
       </div>
     </div>
   </div>
 </div>
 
-<!-- <div class="py-lg-13 bg-dark">
-  <div class="container">
-    <div class="col">
-      <div class="row">
-        <div class="offset-lg-2 col-lg-8 col-md-12 col-12">
-          <div class="text-center mb-12">
-            {{content}}
-            <h2 class="text-white mb-3 h1">What is an e-bike loan?</h2>
-            <p class="lead">
-              E-bike loans are an easy way to finance the purchase of your bike.
-              Because a bike isn’t registered with the government like a car,
-              the loan is typically considered an “unsecured personal loan”.
-            </p>
-            <p class="lead mb-5">
-              This means lenders can’t use the bike itself as collateral, so
-              you’ll likely see higher interest rates than purchasing a car. The
-              good news is that since most e-bikes are cheaper than cars, the
-              actual dollar amount you’ll pay per month will be significantly
-              lower.
-            </p>
-          </div>
-        </div>
-      </div>
+{% assign products = site.posts | where: "pricecurrency", "USD" %}
+<div class="container-fluid bg-light py-3 px-0 px-md-10 ">
+  <div class="container py-3 px-0">
+    <h3 class="ps-3 p-sm-0">Top products</h3>
+    <div
+      class="main-carousel"
+      data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
+    >
+    {% for product in products limit: 20 %}
+    {% include sr-tile.html %}
+    {% endfor %}
+    </div>
+  </div>
+
+  <div class="container py-3 px-0 my-3 mt-md-10">
+    <h3 class="ps-3 p-sm-0">Mellow Johnny's</h3>
+    <div
+      class="main-carousel"
+      data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
+    >
+    {% for product in products %}
+    {% if product.vendorid == "mellowjohnnys" %}
+    {% include sr-tile.html %}
+    {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+  <div class="container py-3 px-0 my-3 my-md-10">
+    <h3 class="ps-3 p-sm-0">Chain Reaction Cycles</h3>
+    <div
+      class="main-carousel"
+      data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
+    >
+    {% for product in products limit: 20 %}
+    {% if product.vendorid == "chainreactioncycles" %}
+    {% include sr-tile.html %}
+    {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="container py-4">
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Join BikeFi</h1>
+      <p class="col-md-8 fs-4">BikeFi helps cycling enthusiasts find the best deals across hundreds of online and local retailers of the world's best cycling products.</p>
+      <a href="{{ 'partners' | absolute_url }}" class="btn btn-primary btn-lg">Become a partner</a>
     </div>
   </div>
 </div> -->
-
-<div class="pt-lg-13">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9 col-12">
-
-        <div class="row">
-          <!-- navbar scroll -->
-          <div class="row d-flex align-items-center mb-5">
-            <div class="col">
-              <div class="navbar-scroll">
-                <ul>
-                  {% for category in site.categories %} {% assign cat_name =
-                  category[0] %}
-                  <li>
-                    <a href="{{ cat_name | slugify | absolute_url }}"
-                      >{{ cat_name | join: " " }}</a
-                    >
-                  </li>
-                  {% endfor %}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {% assign featured_products = site.posts | where: "vendor_id", "bikeberry" %} 
-          {% for product in featured_products %} 
-          {% include sr-horizontal.html %} 
-          {% endfor %}
-
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-5 col-12 d-none d-lg-block">
-
-        <div style="position: -webkit-sticky; position: sticky; top: 100px;">
-          <a href="https://jenson.sjv.io/c/3294572/1330395/13009?subId1=earth%20day" target="_top" id="1330395">
-            <img src="//a.impactradius-go.com/display-ad/13009-1330395" border="0" alt="" width="160" height="600"/>
-          </a>
-          <img height="0" width="0" src="https://imp.pxf.io/i/3294572/1330395/13009" style="position:absolute;visibility:hidden;" border="0" />
-        </div>
-
-      </div>
-    </div>
-  </div>

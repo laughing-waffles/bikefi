@@ -1,12 +1,79 @@
 ---
-layout: default
+layout: page
 sitemap: false
 ---
 
-{% if page.url contains "bike-shops" %}
-    {% include srp-bike-shops.html %}
-{% elsif page.url contains "tag" %}
-    {% include srp-tags.html %}
-{% else %}
-    {% include srp-categories.html %}
-{% endif %}
+<div class="row">
+  <div class="col-lg-9 col-12">
+
+    <h5 class="mb-3 mb-md-5">
+      Showing {{ paginator.total_posts }} items
+    </h5>
+
+    <div class="infinite-container" data-infinite-scroll='{ "path": ".next", "append": ".card", "history": false }'>
+      {% if page.url contains "bike-shops" %}
+        <!-- BIKE SHOPS -->
+        {% assign store = paginator.posts %}
+        {% for post in store %}
+        {% include sr-horizontal-vendor.html %} 
+        {% endfor %}
+      {% elsif page.url contains "tag" %}
+        <!-- TAGS -->
+        {% assign featured_products = paginator.posts %} 
+        {% for product in featured_products %} 
+        {% if product.vendorid != nill %} 
+        {% if product.images != nil %}
+        {% include sr-horizontal.html %} 
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+      {% else %}
+        <!-- CATEGORIES -->
+        {% assign featured_products = paginator.posts %} 
+        {% for product in featured_products %} 
+        {% if product.vendorid != nill %} 
+        {% if product.images != nil %}
+        {% include sr-horizontal.html %} 
+        {% endif %}
+        {% endif %} 
+        {% endfor %}
+      {% endif %}
+
+      <div class="d-none d-xl-flex justify-content-center pb-3">
+        <a href="https://jenson.sjv.io/c/3294572/1330397/13009" 
+          target="_top" 
+          id="1330397">
+            <img src="//a.impactradius-go.com/display-ad/13009-1330397" 
+              border="0" 
+              alt="" 
+              width="728" 
+              height="90"
+            />
+        </a>
+        <img 
+          height="0" 
+          width="0" 
+          src="https://imp.pxf.io/i/3294572/1330397/13009" 
+          style="position:absolute;visibility:hidden;" 
+          border="0" 
+        />
+      </div>
+
+      <div class="d-flex d-xl-none justify-content-center pb-3">
+        <a href="https://jenson.sjv.io/c/3294572/1330396/13009?subId1=earth%20day" target="_top" id="1330396"><img src="//a.impactradius-go.com/display-ad/13009-1330396" border="0" alt="" width="300" height="50"/></a><img height="0" width="0" src="https://imp.pxf.io/i/3294572/1330396/13009" style="position:absolute;visibility:hidden;" border="0" />
+      </div>
+
+      {% if paginator.total_pages > 1 %}
+      {% if paginator.next_page %}
+      <a class="next" href="{{ paginator.next_page_path | absolute_url }}"></a>
+      {% endif %}
+      {% endif %}
+
+    </div>
+
+  </div>
+
+  <div class="col-lg-3 col-md-5 col-12 d-none d-lg-block">
+    {% include sidebar-ad.html %}
+  </div>
+</div>

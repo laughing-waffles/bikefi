@@ -1,176 +1,279 @@
 ---
 layout: default
-hero-image: /assets/images/shop-single-hero-default.jpeg
 ---
 
-<div class="py-6 py-lg-12 pt-8 pt-lg-12">
-  <div class="container">
+<div class="container py-6">
+  <div itemscope itemtype="http://schema.org/Product">
     <div class="row align-items-center">
 
-      {% if page.categories.size > 0 %}
-      <!-- breadcrumbs -->
-      <div id="breadcrumbs" class="my-5">
-        <div class="custom-breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item  text-primary">
-              <a href="{{ '/' | absolute_url }}">Home</a>
-            </li>
-            {% for item in page.category %}
-            {% if forloop.last %}
-            <li class="breadcrumb-item active text-primary">
-              {{ item }}
-            </li>
-            {% else %}
-            <li class="breadcrumb-item text-primary">
-              <a 
-                href="{{ item | slugify | absolute_url }}" 
-                class="text-inherit ms-1">
-                {{ item }}
-              </a>
-            </li>
-            {% endif %}
-            {% endfor %}
-            <li class="breadcrumb-item active text-primary">
-              {{ page.title }}
-            </li>
-          </ol>
-        </div>
-      </div>
-      <!-- breadcrumbs -->
-      {% endif %}
+      {% include breadcrumbs.html %}
 
       <!-- image -->
       <div class="col-lg-7 col-md-8 col-12">
-        <div id="productCarousel" class="carousel slide carousel-fade" data-bs-interval="false">
-          <div class="carousel-inner">
-            {% for image in page.images %}
-            <div class="carousel-item{% if forloop.first %} active{% endif %}">
-              <a href="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" data-lightbox="productImage" data-title="{{ page.title }}" data-footer="Source: {{ site.title }}" disableScrolling="true">
-                <img src="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" alt="Photo of a {{ page.title }}" class="img-fluid" />
-              </a>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
- 
-        {% if page.images > 1 %}
-        <div class="row d-flex">
-          <div class="navbar-scroll">
-            <ul>
-              {% for image in page.images %}
-              <li data-bs-target="#productCarousel" data-bs-slide-to="{{ forloop.index0 }}" class="shadow-sm m-3">
-                <img src="{{ page.images[0]['path'] | prepend: '/assets/images/' }}" alt="Thumbnail image {{ forloop.index }} of a {{ page.title }}" style="width:125px; height:125px;" />
-                <!-- {% cloudinary productCarouselNavbar {{ page.images[0]['path'] | prepend: '/assets/images/' }} alt="Thumbnail image {{ forloop.index }} of a {{ page.title }}" %} -->
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
+        {% if page.images %}
+        {% for image in page.images limit:1 %}
+        {% assign featured_image = page.images[0]['path'] | replace: 'full/', '' %}
+        {% include responsive-image.html 
+          src=featured_image
+          height="700" 
+          width="700"   
+          class="img-fluid productImage" 
+          alt=page.title
+        %}
+        {% endfor %}
         {% endif %}
-              </div>
+      </div>
 
       <!-- description -->
       <div class="offset-lg-1 col-lg-4 col-md-4 col-12">
-        <h2>{{ page.title }}</h2>
-        {% if page.brand.name %}
-        <p>by {{ page.brand.name }}</p>
+        <h2 itemprop="name">{{ page.title }}</h2>
+        {% if page.make %}
+        <p>by {{ page.make }}</p>
         {% endif %}
         <div class="d-flex">
 
-          {% assign ratingvalue = page.ratingvalue %}
-          {% assign ratingcount = page.ratingcount %}
-          {% include star-ratings.html %}  
+          <!-- star ratings -->
+          {% if page.ratingvalue %} 
+          <span class="font-14 text-dark" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+            <span 
+              itemprop="ratingValue"
+              value="{{ page.ratingvalue | default: 0 }}"
+              min=0
+              max=5
+              class="d-none">{{ page.ratingvalue | default: 0 }}
+            </span>
+            <span itemprop="ratingCount" class="d-none">
+              {{ page.ratingcount | default: 0 }}
+            </span>
+            <span itemprop="bestRating" class="d-none">
+              {{ page.ratingvalue | default: 0 }}
+            </span>
+            {% assign ratingvalue = page.ratingvalue %} 
+            {% assign ratingcount = page.ratingcount %} 
+            {% include star-ratings.html %}
+          </span>
+          {% else %}
+          <span class="font-14 text-dark">
+          {% assign ratingvalue = page.ratingvalue %} 
+          {% assign ratingcount = page.ratingcount %} 
+          {% include star-ratings.html %}
+          {% endif %}
+          </span>
 
-          <!-- rating -->
-          <div>
-            {% if page.star_rating.size >= 1 %}
-            <span class="ms-2 font-12 text-dark"> {{ page.star_rating }} of 5 stars</span>
-            {% endif %}
-            {% assign availability = page.availability %}
+          <!-- availability -->
+          <span class="font-14 text-dark">
+            {% assign availability = page.availability %} 
             {% include availability-badge.html %}
-          </div>
+          </span>
+
         </div>
+
         <hr class="my-4" />
+
         <div class="mb-3 font-20">
-          {% if page.price %}<span class="text-dark me-2">{{ page.price }}</span>{% endif %}
-          {% if page.price_msrp %}<span class="text-muted"><s>{{ page.price_msrp }}</s></span>{% endif %}
+          {% if page.price %}
+          <span class="text-dark me-2">{{ page.price | money: "USD" }}</span>
+          {% endif %}
+          {% if page.pricemsrp %}
+          <span class="text-muted font-14 text-danger">
+            <s class="text-danger">{{ page.pricemsrp | money: "USD" }}</s>
+          </span>
+          <span class="badge bg-success-soft">Sale</span>
+          {% endif %}
         </div>
-        <a href="{{ page.affiliate_url }}" class="btn btn-outline-primary me-2">Visit Site</a>
+        <div class="mb-3 small">
+          <img src="https://cdn-assets.affirm.com/images/black_logo-transparent_bg.png" class="me-2 mt-n2" style="width:40px">{{ page.price | divided_by: 36 | money: "USD" }} per month for 36 months 
+        </div>
+
+        <div class="d-grid gap-2 mb-2">
+          <a href="{{ page.affiliateurl }}" class="btn btn-primary" target="_blank">Visit Site</a>
+        </div>
+
         <!-- <a href="#financing" class="btn btn-light">Get financing</a> -->
 
         {% if page.tags.size > 0 %}
-        <p class="mt-4 font-14 mb-1"><span class="text-dark me-1">Tag{% if page.tags.size > 1 %}s{% endif %}:</span>
-          {% for tag in page.tags %}
-          <a href="{{ tag | slugify | prepend: '/tag/' | absolute_url }}" class="text-inherit ms-1">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-          {% endfor %}
+        <p class="font-12">
+          <span class="text-dark me-1"
+            >Tag{% if page.tags.size > 1 %}s{% endif %}:</span
+          >
+          {% for tag in page.tags limit: 5 %}
+          {{ tag | lowercase }}
+          {% unless forloop.last %}, {% endunless %} {% endfor %}
         </p>
         {% endif %}
+        
+        {% if page.vendorid != nill %}
+        {% assign vendors = site.data.vendors.records | where: "id", page.vendorid %}
+        {% for vendor in vendors %}
 
-      </div>
-    </div>
-    <hr class="my-10" />
-    <!-- product detail list -->
-    <div class="row">
-      <div class="col-lg-4 col-md-5 col-12">
-        <div class="mb-6 mb-md-0">
-          <h4 class="mb-3">Product details</h4>
+        <div class="mt-3 p-3 border-1 border-soft-primary rounded-sm btn-light">
+          <div class="row">
+            <div class="col-12 font-14">
 
-          {% for item in page.attributes %}
-          <div class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1">
-            <div class="col-5 text-dark"><b>{{ item.first }}</b></div>
-            <div class="col-7">{{ item.last }}</div>
+              <p class="mb-0">
+                <strong>Sold by {{ vendor.name }}</strong><br />
+                in {{ vendor.city }}, {{ vendor.state }}, {{ vendor.country }}
+              </p>
+
+              <p class="mb-3">
+                {% if vendor.affiliate_code != nill %}
+                  <span class="text-success font-weight-200"><strong><i>Verified</i></strong> Seller <img src="{{ '/assets/images/verified.svg' | absolute_url }}" /></span>
+                {% endif %}
+  
+                {% assign ratingvalue = vendor.reviews.ratingvalue %}
+                {% assign ratingcount = vendor.reviews.ratingcount %}
+                {% include star-ratings.html %}
+                by
+                <a href="{{ vendor.reviews.url }}" target="_blank">
+                  {% if vendor.reviews.provider == "google" %}
+                  <img src="{{ 'logo-google.svg' | prepend: 'assets/images/logos/' | absolute_url }}" alt="Verified Google review logo" class="img-fluid" style="width:14%;" />
+                  {% elsif vendor.reviews.provider == "trustpilot" %}
+                  <img src="{{ 'logo-trustpilot.svg' | prepend: 'assets/images/logos/' | absolute_url }}" alt="Verified Trust Pilot review logo" class="img-fluid" style="width:14%;" />
+                  {% endif %}
+                </a>
+  
+              </p>
+
+              <p class="mb-0">
+                <strong>Accepted payment methods</strong>
+              </p>
+              {% for payment in vendor.payment_methods limit:400 %}
+                <img src="{{ payment | prepend: 'assets/images/logos/payment-methods/' | append: '.svg' | absolute_url }}" alt="Logo for {{ payment }}" class="img-fluid pe-1 mb-1" style="width:14%;"/>
+              {% endfor %}
+    
+              <p class="mt-3 mb-0">
+                <strong>Ships with</strong>
+              </p>
+              {% for carrier in vendor.shipping_partners limit:4 %}
+                <img src="{{ carrier | prepend: 'assets/images/logos/carriers/' | append: '.svg' | absolute_url }}" alt="Logo for {{ carrier }}" class="img-fluid pe-1 mb-1" style="width:14%;" />
+              {% endfor %}
+
+              {% if vendor.country == "USA" %}
+                <p class="text-success font-12 mb-1"><strong>Ships from the USA</strong> <img src="{{ 'flag-usa.svg' | prepend: 'assets/images/logos/' | absolute_url }}" class="img-fluid pe-1 mb-1" style="width:25px;"/></p>
+              {% elsif vendor.country != "" %}
+                <p class="font-12 mb-1">Shipped from {{ vendor.country }}</strong></p>
+              {% endif %}
+
+              {% if vendor.return_policy.free == true %}
+                <p class="text-success mb-1"><strong>FREE returns for {{ vendor.return_policy.days }} days</strong></p>
+              {% elsif vendor.return_policy.free == false %}
+                <p class="font-12 mb-1">Returns for {{ vendor.return_policy.days }} days</p>
+              {% endif %}
+              
+              <a class="text-end" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Provide feeback about this information</a>
+
+              <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Thank you!</strong> Your feedback has been sent.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div> -->
+
+            </div>
           </div>
-          {% endfor %}
-          <div class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1">
-            <div class="col-5 text-dark"><b>Updated</b></div>
-            <div class="col-7">{{ page.updated_at | date: "%b %d, %Y" }}</div>
-          </div>
-
         </div>
-      </div>
-      <!-- description -->
-      <div class="col-lg-8 col-md-7 col-12">
-        <h4 class="mb-3">Description</h4>
 
-        {{ content | markdownify }}
-
-        {% if page.video %}
-        <!-- Embedded YouTube video Markup with the lazy class -->
-        <iframe
-            class="lazy" 
-            data-src="{{ page.video }}" 
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-        >
-        </iframe>
-        <script>
-        // Set the options globally
-        // to make LazyLoad self-initialize
-        window.lazyLoadOptions = {
-            // Your custom settings go here
-        };
-
-        // Listen to the initialization event
-        // and get the instance of LazyLoad
-        window.addEventListener("LazyLoad::Initialized", function (event) {
-            window.lazyLoadInstance = event.detail.instance;
-        }, false);
-        </script>
-        {% endif %}
-
-        {% if site.discounts %}
-        {% for discount in site.discounts %}
-        <p><strong>{{ discount.name }} - {{ discount.discount_name }}</strong></p>
-        <p>{{ discount.discount_notes }}</p>
         {% endfor %}
         {% endif %}
 
       </div>
     </div>
   </div>
-</div>
 
+  <hr class="my-10" />
+
+  <!-- product detail list -->
+  <div class="row">
+    <div class="col-lg-4 col-md-5 col-12">
+      <div class="mb-6 mb-md-0">
+        <h4 class="mb-3">Product details</h4>
+
+        {% for item in page.attributes %}
+        <div
+          class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1"
+        >
+          <div class="col-5 text-dark"><b>{{ item.first }}</b></div>
+          <div class="col-7">{{ item.last }}</div>
+        </div>
+        {% endfor %}
+        <div
+          class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1"
+        >
+          <div class="col-5 text-dark"><b>Updated</b></div>
+          <div class="col-7">{{ page.updated_at | date: "%b %d, %Y" }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- description -->
+    <div class="col-lg-8 col-md-7 col-12">
+      <h4 class="mb-3">Description</h4>
+
+      {{ content }} 
+      
+      {% if page.video %}
+
+      <iframe
+        class="lazy"
+        data-src="{{ page.video }}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      >
+      </iframe>
+      <script>
+        // Set the options globally
+        // to make LazyLoad self-initialize
+        window.lazyLoadOptions = {
+          // Your custom settings go here
+        };
+
+        // Listen to the initialization event
+        // and get the instance of LazyLoad
+        window.addEventListener(
+          "LazyLoad::Initialized",
+          function (event) {
+            window.lazyLoadInstance = event.detail.instance;
+          },
+          false
+        );
+      </script>
+      {% endif %} 
+    </div>
+  </div>
+  {% include compare-products.html %}
+  </div>
+</div>
+<!-- Product Feedback Modal -->
+<div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form
+          action="https://formspree.io/f/xeqnvojy"
+          method="POST"
+        >
+          <div class="mb-3">
+            <label for="disabledTextInput" class="form-label">Product name:</label>
+            <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ page.title }}" name="Product name" disabled >
+          </div>
+          <div class="mb-3">
+            <label for="disabledTextInput" class="form-label">Product link::</label>
+            <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ page.url | absolute_url }}" name="Product url" disabled >
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Feedback:</label>
+            <textarea class="form-control" name="message" id="message-text" rows="4" ></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Send feedback</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
-  var discountData = '{{ site.discounts | jsonify }}';
+  var discountData = "{{ site.discounts | jsonify }}";
 </script>

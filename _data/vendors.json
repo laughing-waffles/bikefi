@@ -21,8 +21,6 @@
         "afterPay2",
         "alipay",
         "amazon",
-        "amazon2",
-        "amazonPay",
         "americanExpress",
         "applePay",
         "bancontact",
@@ -52,7 +50,6 @@
         "mobilePay",
         "paymorrow",
         "paypal",
-        "paypal2",
         "paysafecard",
         "payU",
         "postFinance",
@@ -113,7 +110,7 @@
         "url": "https://www.bikeberry.com/pages/returns-policy",
         "email": "support@bikeberry.com",
         "phone": "1-800-317-0479",
-        "free": true,
+        "free": false,
         "days": 30
       },
       "reviews": {
@@ -189,7 +186,7 @@
       "zip": "LongGang District Shenzhen",
       "country": "China",
       "payment_methods": ["visa", "masterCard", "discover", "paypal", "jcb"],
-      "shipping_partners": ["dhl", "China EMSdays"],
+      "shipping_partners": ["dhl", "china-emsdays"],
       "return_policy": {
         "url": "https://icancycling.com/pages/warranty-faq",
         "email": "info@icancycling.com",
@@ -285,38 +282,43 @@
       "url": "https://shop.mellowjohnnys.com/",
       "affiliate_code": "",
       "email": "",
-      "phone": "",
-      "logo": "",
-      "open_hours": "",
-      "address1": "",
+      "phone": "+15124730222",
+      "logo": "mellowjohnnys.jpg",
+      "open_hours": "8:00am - 5:00pm",
+      "address1": "400 Nueces St",
       "address2": "",
       "city": "Austin",
       "state": "Texas",
-      "zip": "",
+      "zip": "78701",
       "country": "USA",
       "payment_methods": [
-        "googlepay",
-        "visa",
-        "masterCard",
-        "discover",
+        "amazon",
         "americanExpress",
-        "paypal"
+        "applePay",
+        "discover",
+        "jcb",
+        "masterCard",
+        "paypal",
+        "visa"
       ],
-      "shipping_partners": [],
+      "shipping_partners": [
+        "fedex",
+        "usps"
+      ],
       "return_policy": {
-        "url": "",
-        "email": "",
-        "phone": "",
+        "url": "https://shop.mellowjohnnys.com/pages/returns-exchanges",
+        "email": "sales@mellowjohnnys.com",
+        "phone": "+15124730222",
         "free": false,
-        "days": 30
+        "days": 14
       },
       "reviews": {
-        "provider": "trustpilot",
-        "url": "https://www.trustpilot.com/review/st3ike.com",
-        "ratingvalue": 0.0,
-        "ratingcount": 0,
+        "provider": "google",
+        "url": "https://www.google.com/maps/place/Juan+Pelota+Cafe/@30.2680187,-97.7514563,17z/data=!4m14!1m6!3m5!1s0x8644b50ef2500255:0xedebd9fbf47788e9!2sMellow+Johnny's!8m2!3d30.2680187!4d-97.7492676!3m6!1s0x8644b50ef2500255:0x2ca2263d08f9b64d!8m2!3d30.2679697!4d-97.7493793!9m1!1b1",
+        "ratingvalue": 4.5,
+        "ratingcount": 310,
         "verified": true,
-        "review_date_last_updated": "2022-04-25"
+        "review_date_last_updated": "2022-05-09"
       }
     }
   ]

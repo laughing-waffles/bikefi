@@ -1,3 +1,5 @@
+#! /bin/bash
+
 curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Electric%20Bikes?maxRecords=100&view=Grid%20view" \
  -H "Authorization: Bearer $1" > _data/ebikes.json
 curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Lenders?maxRecords=100&view=Grid%20view" \
@@ -10,6 +12,14 @@ curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Dealers?maxRecords=10
  -H "Authorization: Bearer $1" > _data/dealers.json
 
 
+if [ $2 = "staging" ]
+then
+	echo "\033[0;31mStaging environment!\033[0m"
+	echo "User-agent: * Disallow: /" > robots.txt
+	FAST=10
+fi
+
+
 rm -rf temp
 rm -rf _posts/bikes/
 rm -rf _posts/bike-shops/
@@ -17,5 +27,16 @@ curl -X GET "https://objectif.app/ebike/generatemd.php?type=$2" > temp.zip
 unzip temp.zip
 mkdir _posts/
 mv temp/* _posts/
+rm -rf temp
+rm -rf temp.zip
+
+
+echo "starting scraper import"
+curl -X GET "https://process.bikefi.net/pull.php" -o temp.zip
+ls
+unzip temp.zip
+mkdir _posts/products/
+mv temp/* _posts/products/
+echo "moved files"
 rm -rf temp
 rm -rf temp.zip
