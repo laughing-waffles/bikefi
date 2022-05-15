@@ -16,7 +16,7 @@ plugins:
   - jekyll-money
   - jekyll-sitemap
 algolia:
-  application_id: 'YJP7H2HHZU'
+  application_id: 'RDZP0XC8YF'
   index_name: 'products'
   files_to_exclude: []
   nodes_to_index: 'posts'
