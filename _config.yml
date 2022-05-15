@@ -3,7 +3,7 @@ tagline: "Find deals across hundreds of online and local retailers of the world'
 email: contact@bikefi.net
 description: "BikeFi makes it easy for you to find the best deals on cycling products online and in your neighborhood."
 author: BikeFi
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://bikefi.net" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "/" # the subpath of your site, e.g. /blog
 incremental: true
 #twitter:
@@ -14,6 +14,12 @@ plugins:
   - jekyll-include-cache
   - jekyll-paginate-v2
   - jekyll-money
+  - jekyll-sitemap
+algolia:
+  application_id: 'YJP7H2HHZU'
+  index_name: 'products'
+  files_to_exclude: []
+  nodes_to_index: 'posts'
 sass:
   sass_dir: assets/css
   style: compressed # possible values: nested expanded compact compressed
@@ -45,10 +51,12 @@ defaults:
       path: categories
     values:
       layout: "srp"
+      sitemap: false
   - scope:
       path: tags
     values:
       layout: "srp"
+      sitemap: false
 pagination:
   enabled: true
   per_page: 25
