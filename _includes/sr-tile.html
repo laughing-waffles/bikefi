@@ -1,31 +1,45 @@
 
-<div class="col-11 col-sm-5 col-md-4 col-lg-3 col-xl-2 me-3 bg-white p-3 rounded">
-  
-  <div class="mb-3">
-    <a href="{{ product.url | absolute_url }}" class="stretched-link">
-      {% if product.images[0]['path'] != nil %}
-      {% assign featured_image = product.images[0]['path'] | replace: 'full/','' %} 
-      {% include responsive-image.html 
-        src=featured_image 
-        height="182"
-        width="182" 
-        class="img-fluid mx-auto d-block rounded bg-light" 
-        alt=product.title
-        style="height:182px; object-fit:cover;" 
-      %}
-      {% endif %}
-    </a>
+<div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 me-3 p-3 bg-white rounded">
+
+  <a href="{{ product.url | absolute_url }}" class="stretched-link"></a>
+
+  <div class="ratio ratio-1x1 w-100 bg-white  border-0" 
+    style="
+      background-image: url('{{ product.images[0]['path'] | replace: 'full/','' | prepend: 'https://cdn.bikefi.net/images/' }}');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: contain;
+    ">
   </div>
 
-  <span class="mb-3 text-secondary fw-bold d-block"
-    >{% if product.categories %}{{ product.categories[0] | capitalize }}{% else
-    %}New on BikeFi{% endif %}</span
-  >
-  <span class="h5 mb-3 w-100 d-inline-block text-truncate">
+  {% if product.price > product.pricemsrp %}
+  <span class="badge badge-pill bg-danger position-absolute top-0 end-0 m-1">
+    Sale 
+    <!--
+    {% assign discount_amount = product.pricemsrp | minus: product.price %}
+    {% assign discount_percent = discount_amount | divided_by: product.pricemsrp %}
+    {{ discount_percent | times: 100 }}%
+    -->
+  </span>
+  {% endif %}
+
+  <span class="text-secondary small fw-bold d-inline">
+    {% if product.categories %}
+      {{ product.categories[0] | capitalize }}
+    {% else%}
+      New on BikeFi
+    {% endif %}
+  </span>
+  <span class="d-inline">
+    {{ product.price | money }}
+  </span>
+
+  <span class="h5 w-100 d-inline-block text-truncate">
     {{ product.title }}
   </span>
 
-  <div class="w-100 d-inline-block text-truncate" style="min-height:55px;">
+  <div class="w-100 d-none d-sm-inline-block text-truncate" >
     {% include highlight-badges.html %}
   </div>
 
