@@ -69,7 +69,7 @@ hero-image: /assets/images/XL-bargains-highres.png
       class="main-carousel my-3"
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
-    {% assign ebikes = products | where: "categories", "ebikes" %}
+    {% assign ebikes = products | where: "category", "ebikes" %}
     {% for product in ebikes limit: 20 %}
     {% include sr-tile.html %}
     {% endfor %}
