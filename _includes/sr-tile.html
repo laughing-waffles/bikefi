@@ -16,11 +16,6 @@
   {% if product.price > product.pricemsrp %}
   <span class="badge badge-pill bg-danger position-absolute top-0 end-0 m-1">
     Sale 
-    <!--
-    {% assign discount_amount = product.pricemsrp | minus: product.price %}
-    {% assign discount_percent = discount_amount | divided_by: product.pricemsrp %}
-    {{ discount_percent | times: 100 }}%
-    -->
   </span>
   {% endif %}
 
