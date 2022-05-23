@@ -24,7 +24,7 @@ sass:
   sass_dir: assets/css
   style: compressed # possible values: nested expanded compact compressed
 collections:
-  categories:
+  categories_pages:
     output: true
   pages:
     output: true
@@ -48,14 +48,15 @@ defaults:
     values:
       sitemap: false
   - scope:
-      path: categories
+      path: _categories_pages
     values:
-      layout: "srp"
-      sitemap: false
+      layout: srp
+      permalink: /:name/
+      sitemap: true
   - scope:
       path: pages
     values:
-      layout: "page"
+      layout: page
       sitemap: false
       permalink: :title
 pagination:
