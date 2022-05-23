@@ -84,7 +84,7 @@ layout: compress
   {% capture layout %} {% if page.layout %}layout-{{ page.layout }} {% endif %}
   {% endcapture %}
 
-  <body class="{{layout}}">
+  <body class="{{layout}}" style="background:#fbfbfb;">
     {% if jekyll.environment == 'production' %}
     <!-- Google Tag Manager (noscript) -->
     <noscript
@@ -106,12 +106,12 @@ layout: compress
 
     <!-- header -->
     <nav
-      class="navbar navbar-expand-lg navbar-dark bg-secondary border-top-3 border-top border-primary"
+      class="navbar navbar-expand-lg navbar-light border-bottom-1 border-bottom border-grey"
     >
       <!-- navigation start -->
       <div class="container-lg">
         <a class="navbar-brand" href="{{ '/' | absolute_url }}">
-          <img src="{{ '/assets/images/logos/logo-bikefi-light.svg' | absolute_url }}" alt="{{ site.title }}" class="img-fluid" width="100px" height="26px" />
+          <img src="{{ '/assets/images/logos/logo-bikefi-dark.svg' | absolute_url }}" alt="{{ site.title }}" class="img-fluid" width="100px" height="26px" />
         </a>
         <button
           class="navbar-toggler"
@@ -129,7 +129,7 @@ layout: compress
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             {% for item in site.data.nav.main %}
             <li class="nav-item">
-              <a href="{{ item.href | absolute_url }}" class="nav-link text-white fw-bolder">{{ item.icon }} {{ item.title }}</a>
+              <a href="{{ item.href | absolute_url }}" class="nav-link text-black">{{ item.title }}</a>
             </li>
             {% endfor %}
           </ul>
@@ -141,7 +141,7 @@ layout: compress
     {{ content }}
 
     <!-- footer -->
-    <div class="footer pt-11 pb-3 bg-dark text-body">
+    <div class="footer pt-11 pb-3 bg-dark text-light">
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-4 col-6">
@@ -163,7 +163,7 @@ layout: compress
               <ul class="list-unstyled list-group">
                 {% for item in site.data.nav.footer.col1 %}
                 <li class="list-group-item">
-                  <a href="{{ item.href }}" class="list-group-item-link">{{ item.title }}</a>
+                  <a href="{{ item.href }}" class="list-group-item-link text-white">{{ item.title }}</a>
                 </li>
                 {% endfor %}
               </ul>

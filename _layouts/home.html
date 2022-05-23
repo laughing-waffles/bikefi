@@ -6,37 +6,52 @@ hero-image: /assets/images/XL-bargains-highres.png
 {% assign products = site.posts | where: "pricecurrency", "USD" %}
 
 <!-- hero section -->
-<div
-  class="pt-16 pb-5 text-center bg-cover"
-  style="
-    background-image: linear-gradient(180deg, rgba(30, 24, 53, 0.4) 0%, rgba(30, 24, 53, 0.4) 90.16%), 
-    url({{ layout.hero-image | absolute_url }});"
-  >
-  <div class="container">
-    <div class="col-lg-6 mx-auto mb-5">
-      <h1 class="display-5 fw-bold text-white">Find deals</h1>
-      <p class="lead mb-4 text-white">across hundreds of online and local retailers of the world's best cycling products.</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <a href="{{ 'all-products/' | absolute_url }}" class="btn btn-light btn-lg">Search all products</a>
-        <!-- <a href="{{ 'bike-shops/' | absolute_url }}" class="btn btn-outline-light btn-lg">Find a bike shop</a> -->
+<div id="myCarousel" class="carousel carousel slide carousel-fade bg-dark" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    {% for item in site.categories_pages %}
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ forloop.index0 }}" class="{% if forloop.index == 1 %}active{% endif %}" aria-label="Slide {{ forloop.index }}" aria-current="{% if forloop.index == 1 %}true{% else %}false{% endif %}"></button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner">
+    {% for item in site.categories_pages %}
+    <div 
+      class="carousel-item h-25 d-inline-block {% if forloop.index == 1 %} active{% endif %} carousel-item-start" 
+      style="min-height: 500px; background-image:linear-gradient(180deg, rgba(78, 78, 78, 0.4) 0%, rgba(0, 0, 0, 0.7) 90.16%),
+      url({{ item.image }}); background-size: cover; background-repeat: no-repeat; background-position: center;"
+      >
+      <!-- <img src="{{ item.image }}" class="d-block w-100" alt="{{ Featured image for item.title }}"> -->
+      <div class="container">
+        <div class="carousel-caption text-center">
+          <h1 class="text-white">{{ item.title }}</h1>
+          <p>{{ item.content | truncate:180 }}</p>
+          <p><a class="btn btn-lg btn-primary" href="{{ item.url }}">View {{ item.title }}</a></p>
+        </div>
       </div>
     </div>
+    {% endfor %}
   </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
 
 <div class="container-fluid py-3 px-0 px-md-10 bg-light">
   <div class="container py-3 px-0 my-3">
-    <div class="row mb-3 ps-3 p-sm-0">
+    <div class="mb-3 ps-3 p-sm-0">
       <div class="col-8">
         <h3>Verified sellers</h3>
         <span>From our trusted partners</span>
       </div>
-      <div class="col-4">
-        <!-- <p class="text-end">
+      <!-- <div class="col-4">
+        <p class="text-end">
           <a href="{{ 'ebikes' | absolute_url }}" class="btn btn-link">See all</a>
-        </p> -->
         </p>
-      </div>
+      </div> -->
     </div>
     <div
       class="main-carousel my-3"
@@ -53,17 +68,16 @@ hero-image: /assets/images/XL-bargains-highres.png
 
 <div class="container-fluid py-3 px-0 px-md-10">
   <div class="container py-3 px-0 my-3 border-1 border-top border-light">
-    <div class="row mb-3 ps-3 p-sm-0">
+    <div class="mb-3 ps-3 p-sm-0">
       <div class="col-8">
         <h3>eBikes</h3>
         <span>Better for the environment</span>
       </div>
-      <div class="col-4">
-        <!-- <p class="text-end">
+      <!-- <div class="col-4">
+        <p class="text-end">
           <a href="{{ 'ebikes' | absolute_url }}" class="btn btn-link">See all</a>
-        </p> -->
         </p>
-      </div>
+      </div> -->
     </div>
     <div
       class="main-carousel my-3"
@@ -79,17 +93,16 @@ hero-image: /assets/images/XL-bargains-highres.png
 
 <div class="container-fluid py-3 px-0 px-md-10">
   <div class="container py-3 px-0 my-3 border-1 border-top border-light">
-    <div class="row mb-3 ps-3 p-sm-0">
+    <div class="mb-3 ps-3 p-sm-0">
       <div class="col-8">
         <h3>Best Bikes</h3>
         <span>Editor's pick of the best bikes</span>
       </div>
-      <div class="col-4">
-        <!-- <p class="text-end">
+      <!-- <div class="col-4">
+        <p class="text-end">
           <a href="{{ 'ebikes' | absolute_url }}" class="btn btn-link">See all</a>
-        </p> -->
         </p>
-      </div>
+      </div> -->
     </div>
     <div
       class="main-carousel my-3"
@@ -105,17 +118,16 @@ hero-image: /assets/images/XL-bargains-highres.png
 
 <div class="container-fluid py-3 px-0 px-md-10">
   <div class="container py-3 px-0 my-3 border-1 border-top border-light">
-    <div class="row mb-3 ps-3 p-sm-0">
+    <div class="mb-3 ps-3 p-sm-0">
       <div class="col-8">
         <h3>5-star products</h3>
         <span>Rating from customers like you</span>
       </div>
-      <div class="col-4">
-        <!-- <p class="text-end">
+      <!-- <div class="col-4">
+        <p class="text-end">
           <a href="{{ 'ebikes' | absolute_url }}" class="btn btn-link">See all</a>
-        </p> -->
         </p>
-      </div>
+      </div> -->
     </div>
     <div
       class="main-carousel my-3"
@@ -131,17 +143,16 @@ hero-image: /assets/images/XL-bargains-highres.png
 
 <div class="container-fluid py-3 px-0 px-md-10">
   <div class="container py-3 px-0 my-3 border-1 border-top border-light">
-    <div class="row mb-3 ps-3 p-sm-0">
+    <div class="mb-3 ps-3 p-sm-0">
       <div class="col-8">
         <h3>Apparel</h3>
         <span>Look good while having fun</span>
       </div>
-      <div class="col-4">
-        <!-- <p class="text-end">
+      <!-- <div class="col-4">
+        <p class="text-end">
           <a href="{{ 'ebikes' | absolute_url }}" class="btn btn-link">See all</a>
-        </p> -->
         </p>
-      </div>
+      </div> -->
     </div>
     <div
       class="main-carousel my-3"
