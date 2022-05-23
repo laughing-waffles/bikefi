@@ -1,8 +1,7 @@
 ---
 title: All Products
 permalink: "/all-products/"
-layout: srp
-sitemap: false
+# image: /assets/images/cat-apparel.jpg
 pagination: 
   enabled: true
 ---

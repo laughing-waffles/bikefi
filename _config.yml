@@ -1,7 +1,7 @@
 title: "BikeFi" # the name of your site, e.g. ACME Corp.
 tagline: "Find deals across hundreds of online and local retailers of the world's best cycling products."
 email: contact@bikefi.net
-description: "BikeFi makes it easy for you to find the best deals on cycling products online and in your neighborhood."
+description: "Find the best cycling deals online and in your neighborhood."
 author: BikeFi
 url: "https://bikefi.net" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "/" # the subpath of your site, e.g. /blog
@@ -26,7 +26,7 @@ sass:
 collections:
   categories:
     output: true
-  tags:
+  pages:
     output: true
 defaults:
   - scope:
@@ -53,10 +53,11 @@ defaults:
       layout: "srp"
       sitemap: false
   - scope:
-      path: tags
+      path: pages
     values:
-      layout: "srp"
+      layout: "page"
       sitemap: false
+      permalink: :title
 pagination:
   enabled: true
   per_page: 25

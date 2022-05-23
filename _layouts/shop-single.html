@@ -42,7 +42,11 @@ layout: default
               max=5
               class="d-none">{{ page.ratingvalue | default: 0 }}
             </span>
+            {% if page.ratingcount != 0 %}
             <span itemprop="ratingCount" class="d-none">
+            {% else %}
+            <span class="d-none">
+            {% endif %}
               {{ page.ratingcount | default: 0 }}
             </span>
             <span itemprop="bestRating" class="d-none">

@@ -65,6 +65,206 @@ layout: compress
       href="/sitemap2.xml"
     />
 
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="{{'/assets/css/styles.min.css' | absolute_url }}"
+    />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff6600" />
+    <meta name="msapplication-TileColor" content="#ff6600" />
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+
+  {% capture layout %} {% if page.layout %}layout-{{ page.layout }} {% endif %}
+  {% endcapture %}
+
+  <body class="{{layout}}">
+    {% if jekyll.environment == 'production' %}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WS46NNR"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {% endif %}
+
+    <a
+      href="#"
+      class="d-block px-3 py-2 text-center text-bold text-white bg-dark"
+      >Summer sales are on fire! 🔥🔥</a
+    >
+
+    <!-- header -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-secondary border-top-3 border-top border-primary"
+    >
+      <!-- navigation start -->
+      <div class="container-lg">
+        <a class="navbar-brand" href="{{ '/' | absolute_url }}">
+          <img src="{{ '/assets/images/logos/logo-bikefi-light.svg' | absolute_url }}" alt="{{ site.title }}" class="img-fluid" width="100px" height="26px" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            {% for item in site.data.nav.main %}
+            <li class="nav-item">
+              <a href="{{ item.href | absolute_url }}" class="nav-link text-white fw-bolder">{{ item.icon }} {{ item.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <!-- navigation close -->
+    </nav>
+
+    {{ content }}
+
+    <!-- footer -->
+    <div class="footer pt-11 pb-3 bg-dark text-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-6">
+            <div class="mb-4">
+              <h4 class="mb-4 text-white">
+                <img src="{{ '/assets/images/logos/logo-bikefi-light.svg' }}" alt="{{ site.title }}" class="img-fluid" width="100px" height="26px" />
+              </h4>
+              <p>
+                BikeFi helps cycling enthusiasts find the best deals 
+                across hundreds of online and local retailers 
+                of the world's best cycling products.
+              </p>
+              <p>Made in Austin &amp; Berlin.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-6">
+            <div class="mb-4">
+              <h4 class="mb-4 text-white">Popular</h4>
+              <ul class="list-unstyled list-group">
+                {% for item in site.data.nav.footer.col1 %}
+                <li class="list-group-item">
+                  <a href="{{ item.href }}" class="list-group-item-link">{{ item.title }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-8 col-12">
+            <div class="mb-4">
+              <h4 class="mb-4 text-white">Subscribe to our newsletter</h4>
+              <div>
+                <p>
+                  Subscribe to get notified about deals and 
+                  promotions from BikeFi and our partners.
+                </p>
+                <form
+                  action="https://formspree.io/f/xgedrvee"
+                  method="POST"
+                >
+                  <div class="mb-3">
+                    <input
+                      type="email"
+                      name="email"
+                      class="form-control border-white"
+                      placeholder="Email Address"
+                      required=""
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="mt-8">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  © {{ site.time | date: '%Y' }} {{ site.title }}
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="{{ 'privacy-policy' | absolute_url }}"
+                    class="text-reset"
+                    rel=”nofollow”
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="{{ 'terms-of-service' | absolute_url }}"
+                    class="text-reset"
+                    rel=”nofollow”
+                  >
+                    Terms</a
+                  >
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="{{ 'sitemap.xml' | absolute_url }}"
+                    class="text-reset"
+                    rel=”nofollow”
+                  >
+                    Sitemap</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Libs JS -->
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script> -->
+    <script src="{{ '/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' | absolute_url }}"></script>
+    <!-- <script src="{{ '/assets/libs/jquery-slimscroll/jquery.slimscroll.min.js' | absolute_url }}"></script> -->
+    <script src="{{ '/assets/js/flickity.pkgd.min.js' | absolute_url }}"></script>
+    <script src="{{ '/assets/js/infinite-scroll.pkgd.min.js' | absolute_url }}"></script>
+
+    <!-- Theme JS -->
+    <script src="{{ '/assets/js/theme.min.js' | absolute_url }}"></script>
+
+    {% if page.layout == 'dealers-single' %}
+    <script src="{{ '/assets/libs/leaflet/dist/leaflet.js' | absolute_url }}"></script>
+    <script
+      src="{{ '/assets/js/lazyload.min.js' | absolute_url }}"
+      async
+    ></script>
+    {% endif %} 
+    {% if page.video %}
+    <script
+      src="{{ '/assets/js/lazyload.min.js' | absolute_url }}"
+      async
+    ></script>
+    {% endif %}
+
     <!-- Schema site -->
     <script type="application/ld+json">
       {
@@ -157,202 +357,6 @@ layout: compress
     </script>
     {% endif %}
 
-    <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="{{'/assets/css/styles.min.css' | absolute_url }}"
-    />
-
-    <!-- Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff6600" />
-    <meta name="msapplication-TileColor" content="#ff6600" />
-    <meta name="theme-color" content="#ffffff" />
-  </head>
-
-  {% capture layout %} {% if page.layout %}layout-{{ page.layout }} {% endif %}
-  {% endcapture %}
-
-  <body class="{{layout}}">
-    {% if jekyll.environment == 'production' %}
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-WS46NNR"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    {% endif %}
-
-    <a
-      href="#"
-      class="d-block px-3 py-2 text-center text-bold text-white bg-dark"
-      >Summer sales are on fire! 🔥🔥</a
-    >
-
-    <!-- header -->
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-secondary border-top-3 border-top border-primary"
-    >
-      <!-- navigation start -->
-      <div class="container-lg">
-        <a class="navbar-brand" href="{{ '/' | absolute_url }}">
-          <img src="{{ 'assets/images/logos/logo-bikefi-light.svg' | absolute_url }}" alt="{{ site.title }}" class="img-fluid" width="100px" height="26px" />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            {% for item in site.data.nav.main %}
-            <li class="nav-item">
-              <a href="{{ item.href | absolute_url }}" class="nav-link text-white fw-bolder">{{ item.icon }} {{ item.title }}</a>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-      <!-- navigation close -->
-    </nav>
-
-    {{ content }}
-
-    <!-- footer -->
-    <div class="footer pt-11 pb-3 bg-dark text-body">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-4 col-6">
-            <div class="mb-4">
-              <h4 class="mb-4 text-white">
-                <img src="{{ 'assets/images/logos/logo-bikefi-light.svg' }}" alt="{{ site.title }}" class="img-fluid" width="100px" height="26px" />
-              </h4>
-              <p>
-                BikeFi helps cycling enthusiasts find the best deals 
-                across hundreds of online and local retailers 
-                of the world's best cycling products.
-              </p>
-              <p>Made in Austin &amp; Berlin.</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4 col-6">
-            <div class="mb-4">
-              <h4 class="mb-4 text-white">Popular</h4>
-              <ul class="list-unstyled list-group">
-                {% for item in site.data.nav.footer.col1 %}
-                <li class="list-group-item">
-                  <a href="{{ item.href }}" class="list-group-item-link">{{ item.title }}</a>
-                </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-8 col-12">
-            <div class="mb-4">
-              <h4 class="mb-4 text-white">Subscribe to our newsletter</h4>
-              <div>
-                <p>
-                  Subscribe to get notified about deals and 
-                  promotions from BikeFi and our partners.
-                </p>
-                <form
-                  action="https://formspree.io/f/xgedrvee"
-                  method="POST"
-                >
-                  <div class="mb-3">
-                    <input
-                      type="email"
-                      name="email"
-                      class="form-control border-white"
-                      placeholder="Email Address"
-                      required=""
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Subscribe
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="mt-8">
-              <ul class="list-inline">
-                <li class="list-inline-item">
-                  © {{ site.time | date: '%Y' }} {{ site.title }}
-                </li>
-                <li class="list-inline-item">
-                  <a
-                    href="{{ 'privacy-policy' | absolute_url }}"
-                    class="text-reset"
-                  >
-                    Privacy Policy
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a
-                    href="{{ 'terms-of-service' | absolute_url }}"
-                    class="text-reset"
-                  >
-                    Terms</a
-                  >
-                </li>
-                <li class="list-inline-item">
-                  <a
-                    href="{{ 'sitemap.xml' | absolute_url }}"
-                    class="text-reset"
-                  >
-                    Sitemap</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Libs JS -->
-    <!-- <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script> -->
-    <script src="{{ '/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' | absolute_url }}"></script>
-    <!-- <script src="{{ '/assets/libs/jquery-slimscroll/jquery.slimscroll.min.js' | absolute_url }}"></script> -->
-    <script src="{{ '/assets/js/flickity.pkgd.min.js' | absolute_url }}"></script>
-    <script src="{{ '/assets/js/infinite-scroll.pkgd.min.js' | absolute_url }}"></script>
-
-    <!-- Theme JS -->
-    <script src="{{ '/assets/js/theme.min.js' | absolute_url }}"></script>
-
-    {% if page.layout == 'dealers-single' %}
-    <script src="{{ '/assets/libs/leaflet/dist/leaflet.js' | absolute_url }}"></script>
-    <script
-      src="{{ '/assets/js/lazyload.min.js' | absolute_url }}"
-      async
-    ></script>
-    {% endif %} 
-    {% if page.video %}
-    <script
-      src="{{ '/assets/js/lazyload.min.js' | absolute_url }}"
-      async
-    ></script>
-    {% endif %}
 
   </body>
 </html>
