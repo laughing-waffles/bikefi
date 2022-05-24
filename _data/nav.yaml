@@ -5,8 +5,8 @@ main:
     href: /gravel-bikes
   - title: Apparel
     href: /apparel
-  - title: All Categories
-    href: /categories
+  # - title: All Categories
+  #   href: /categories
   - title: Bike Shops
     href: /bike-shops
 footer:

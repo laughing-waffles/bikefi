@@ -26,6 +26,7 @@ sass:
 collections:
   pages:
     output: true
+category-list: [apparel, ebikes, cyclocross]
 defaults:
   - scope:
       path: ''
