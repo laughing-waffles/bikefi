@@ -4,27 +4,27 @@ hero-image: /assets/images/XL-bargains-highres.png
 ---
 
 {% assign products = site.posts | where: "pricecurrency", "USD" %}
+{% assign featured = site.categories_pages | where: "featured", "true" %}
 
 <!-- hero section -->
 <div id="myCarousel" class="carousel carousel slide carousel-fade bg-dark" data-bs-ride="carousel">
   <div class="carousel-indicators">
-    {% for item in site.categories_pages %}
+    {% for item in featured %}
     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ forloop.index0 }}" class="{% if forloop.index == 1 %}active{% endif %}" aria-label="Slide {{ forloop.index }}" aria-current="{% if forloop.index == 1 %}true{% else %}false{% endif %}"></button>
     {% endfor %}
   </div>
   <div class="carousel-inner">
-    {% for item in site.categories_pages %}
+    {% for item in featured %}
     <div 
-      class="carousel-item h-25 d-inline-block {% if forloop.index == 1 %} active{% endif %} carousel-item-start" 
-      style="min-height: 500px; background-image:linear-gradient(180deg, rgba(78, 78, 78, 0.4) 0%, rgba(0, 0, 0, 0.7) 90.16%),
-      url({{ item.image }}); background-size: cover; background-repeat: no-repeat; background-position: center;"
-      >
-      <!-- <img src="{{ item.image }}" class="d-block w-100" alt="{{ Featured image for item.title }}"> -->
-      <div class="container">
+      class="carousel-item d-inline-block {% if forloop.index == 1 %} active{% endif %} carousel-item-start" 
+      style="background-image:linear-gradient(180deg, rgba(78, 78, 78, 0.4) 0%, rgba(0, 0, 0, 0.7) 90.16%),
+      url({{ item.image }}); background-size: cover; background-repeat: no-repeat; background-position: center; height:300px; width:100%;">
+      <div class="container" >
+        <!-- <img src="{{ item.image }}" class="d-block w-100" alt="{{ Featured image for item.title }}" > -->
         <div class="carousel-caption text-center">
           <h1 class="text-white">{{ item.title }}</h1>
-          <p>{{ item.content | truncate:180 }}</p>
-          <p><a class="btn btn-lg btn-primary" href="{{ item.url }}">View {{ item.title }}</a></p>
+          <p>{{ item.content | truncate:150 }}</p>
+          <p><a class="btn btn-lg btn-primary" href="{{ item.url }}" style="filter: blur(0px); -webkit-filter: blur(0px); z-index: 10;">View {{ item.title }}</a></p>
         </div>
       </div>
     </div>

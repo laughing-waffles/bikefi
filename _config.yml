@@ -51,7 +51,7 @@ defaults:
       path: _categories_pages
     values:
       layout: srp
-      permalink: /:name/
+      permalink: /:slug/
       sitemap: true
   - scope:
       path: pages

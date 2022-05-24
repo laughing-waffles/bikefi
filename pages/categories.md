@@ -9,12 +9,12 @@ permalink: categories
   <div class="col-sm-6 mb-3">
     <div class="card bg-light text-white">
       <img src="{{ item.image }}" class="card-img" alt="...">
-      <div class="card-img-overlay" style="background:linear-gradient(180deg, rgb(0 0 0 / 40%) 0%, rgb(149 149 149 / 40%) 90.16%);">
+      <div class="card-img-overlay" style="background:linear-gradient(180deg, rgba(78, 78, 78, 0.4) 0%, rgba(0, 0, 0, 0.7) 90.16%)">
         <h2 class="card-title text-white">{{ item.title }}</h2>
-        <p class="card-text text-white">{{ item.content }}</p>
-        <a href="{{ item.permalink | absolute_url }}" class="btn btn-outline-light">View products</a>
+        <p class="card-text text-white lead">{{ item.content | truncate: 150 }}</p>
+        <a href="{{ item.url | absolute_url }}" class="btn btn-outline-light">View products</a>
       </div>
     </div>
   </div>
-  {% endfor %}
+  {% endfor %} 
 </div>

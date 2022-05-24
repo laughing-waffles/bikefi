@@ -1,6 +1,7 @@
 ---
 title: e-Bikes
 image: /assets/images/categories/cat-bikes-ebikes.jpg
+featured: true
 pagination: 
   enabled: true
   category: ebikes
