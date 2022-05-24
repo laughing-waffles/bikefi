@@ -55,8 +55,7 @@ defaults:
       path: pages/category
     values:
       layout: srp
-      isCat: true
-      # permalink: /bike-shops/:slug/
+      sitemap: false
 pagination:
   enabled: true
   per_page: 25
