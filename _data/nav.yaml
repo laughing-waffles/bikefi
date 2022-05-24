@@ -28,3 +28,11 @@ footer:
       href: /
     - title: Four2
       href: /
+bottom-bar:
+  - title: Privacy Policy
+    href: /privacy-policy
+  - title: Terms of Service
+    href: /terms-of-service
+  - title: Sitemap
+    href: /sitemap.xml
+  

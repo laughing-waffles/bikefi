@@ -4,7 +4,7 @@ hero-image: /assets/images/XL-bargains-highres.png
 ---
 
 {% assign products = site.posts | where: "pricecurrency", "USD" %}
-{% assign featured = site.categories_pages | where: "featured", "true" %}
+{% assign featured = site.posts | where: "featured", "true" %}
 
 <!-- hero section -->
 <div id="myCarousel" class="carousel carousel slide carousel-fade bg-dark" data-bs-ride="carousel">

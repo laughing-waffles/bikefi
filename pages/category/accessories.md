@@ -2,6 +2,7 @@
 title: Accessories
 image: /assets/images/categories/cat-accessories.jpg
 featured: true
+permalink: accessories
 pagination: 
   enabled: true
   category: accessories

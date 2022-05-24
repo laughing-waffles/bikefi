@@ -1,6 +1,7 @@
 ---
 title: Cyclocross bikes
 image: /assets/images/categories/cat-bikes-cyclocross.jpg
+permalink: cyclocross-bikes
 pagination: 
   enabled: true
   category: cyclocross

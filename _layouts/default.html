@@ -106,7 +106,7 @@ layout: compress
 
     <!-- header -->
     <nav
-      class="navbar navbar-expand-lg navbar-light border-bottom-1 border-bottom border-grey"
+      class="navbar navbar-expand-lg navbar-light border-bottom-1 border-bottom border-grey bg-white"
     >
       <!-- navigation start -->
       <div class="container-lg">
@@ -157,7 +157,7 @@ layout: compress
               <p>Made in Austin &amp; Berlin.</p>
             </div>
           </div>
-          <div class="col-lg-4 col-md-4 col-6">
+          <div class="col-lg-2 col-md-2 col-6">
             <div class="mb-4">
               <h4 class="mb-4 text-white">Popular</h4>
               <ul class="list-unstyled list-group">
@@ -169,6 +169,25 @@ layout: compress
               </ul>
             </div>
           </div>
+          <div class="col-lg-2 col-md-2 col-6">
+            <div class="mb-4">
+              <h4 class="mb-4 text-white">Top</h4>
+              <ul class="list-unstyled list-group">
+                {% for item in site.categories_pages offset: 5 limit:4 %}
+                <li class="list-group-item">
+                  <a href="{{ item.href }}" class="list-group-item-link text-white">{{ item.title }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+
+
+          
+
+
+
           <div class="col-lg-4 col-md-8 col-12">
             <div class="mb-4">
               <h4 class="mb-4 text-white">Subscribe to our newsletter</h4>
@@ -203,33 +222,11 @@ layout: compress
                 <li class="list-inline-item">
                   © {{ site.time | date: '%Y' }} {{ site.title }}
                 </li>
+                {% for item in site.data.nav.bottom-bar %}
                 <li class="list-inline-item">
-                  <a
-                    href="{{ 'privacy-policy' | absolute_url }}"
-                    class="text-reset"
-                    rel=”nofollow”
-                  >
-                    Privacy Policy
-                  </a>
+                  <a href="{{ item.href | absolute_url }}" class="text-reset" rel=”nofollow”>{{ item.title }}</a>
                 </li>
-                <li class="list-inline-item">
-                  <a
-                    href="{{ 'terms-of-service' | absolute_url }}"
-                    class="text-reset"
-                    rel=”nofollow”
-                  >
-                    Terms</a
-                  >
-                </li>
-                <li class="list-inline-item">
-                  <a
-                    href="{{ 'sitemap.xml' | absolute_url }}"
-                    class="text-reset"
-                    rel=”nofollow”
-                  >
-                    Sitemap</a
-                  >
-                </li>
+                {% endfor %}
               </ul>
             </div>
           </div>

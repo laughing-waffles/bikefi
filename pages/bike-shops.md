@@ -2,7 +2,7 @@
 title: Bike Shops
 layout: srp
 permalink: bike-shops
-sitemap: false
+sitemap: true
 pagination: 
   enabled: true
   category: bikeshop

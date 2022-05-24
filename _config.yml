@@ -24,8 +24,6 @@ sass:
   sass_dir: assets/css
   style: compressed # possible values: nested expanded compact compressed
 collections:
-  categories_pages:
-    output: true
   pages:
     output: true
 defaults:
@@ -48,17 +46,16 @@ defaults:
     values:
       sitemap: false
   - scope:
-      path: _categories_pages
-    values:
-      layout: srp
-      permalink: /:slug/
-      sitemap: true
-  - scope:
       path: pages
     values:
       layout: page
-      sitemap: false
-      permalink: :title
+      permalink: /:slug/
+  - scope:
+      path: pages/category
+    values:
+      layout: srp
+      isCat: true
+      # permalink: /bike-shops/:slug/
 pagination:
   enabled: true
   per_page: 25
