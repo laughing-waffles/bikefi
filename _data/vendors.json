@@ -38,7 +38,7 @@
         "discover",
         "ethereum",
         "giropay",
-        "googlePay",
+        "googlepay",
         "iDeal",
         "jcb",
         "klarna-1",
@@ -186,7 +186,7 @@
       "zip": "LongGang District Shenzhen",
       "country": "China",
       "payment_methods": ["visa", "masterCard", "discover", "paypal", "jcb"],
-      "shipping_partners": ["dhl", "china-emsdays"],
+      "shipping_partners": ["dhl"],
       "return_policy": {
         "url": "https://icancycling.com/pages/warranty-faq",
         "email": "info@icancycling.com",
@@ -219,7 +219,7 @@
       "zip": "92878",
       "country": "USA",
       "payment_methods": ["visa", "masterCard", "discover", "americanExpress", "paypal"],
-      "shipping_partners": ["ups", "fedex", "usps"],
+      "shipping_partners": ["ups", "fedEx", "usps"],
       "return_policy": {
         "url": "https://jensonusahelp.freshdesk.com/support/solutions/articles/48000849900-returns-policy",
         "email": "",
@@ -302,7 +302,7 @@
         "visa"
       ],
       "shipping_partners": [
-        "fedex",
+        "fedEx",
         "usps"
       ],
       "return_policy": {

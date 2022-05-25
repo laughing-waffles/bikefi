@@ -1,5 +1,6 @@
 ---
 title: Partners
+permalink: partners
 sitemap: false
 --- 
 

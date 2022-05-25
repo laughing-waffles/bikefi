@@ -1,10 +1,10 @@
 title: "BikeFi" # the name of your site, e.g. ACME Corp.
 tagline: "Find deals across hundreds of online and local retailers of the world's best cycling products."
 email: contact@bikefi.net
-description: "BikeFi makes it easy for you to find the best deals on cycling products online and in your neighborhood."
+description: "Find the best cycling deals online and in your neighborhood."
 author: BikeFi
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 incremental: true
 #twitter:
 #  username: 
@@ -14,14 +14,19 @@ plugins:
   - jekyll-include-cache
   - jekyll-paginate-v2
   - jekyll-money
+  - jekyll-sitemap
+algolia:
+  application_id: 'RDZP0XC8YF'
+  index_name: 'products'
+  files_to_exclude: []
+  nodes_to_index: 'posts'
 sass:
   sass_dir: assets/css
   style: compressed # possible values: nested expanded compact compressed
 collections:
-  categories:
+  pages:
     output: true
-  tags:
-    output: true
+category-list: [apparel, ebikes, cyclocross]
 defaults:
   - scope:
       path: ''
@@ -31,28 +36,30 @@ defaults:
       path: _posts/bike-shops
     values:
       layout: dealers-single
-      permalink: /bike-shops/:slug/
+      permalink: /bike-shops/:slug
   - scope:
       path: _posts/products
     values:
       layout: shop-single
-      permalink: /:slug/
+      permalink: /:slug
   - scope:
       path: assets/*
     values:
       sitemap: false
   - scope:
-      path: categories
+      path: pages
     values:
-      layout: "srp"
+      layout: page
+      permalink: /:slug
   - scope:
-      path: tags
+      path: pages/category
     values:
-      layout: "srp"
+      layout: srp
+      sitemap: false
 pagination:
   enabled: true
   per_page: 25
-  permalink: "/page:num/"
+  permalink: "/page:num"
   title: ':title - page :num'
   sort_field: 'date'
   sort_reverse: true

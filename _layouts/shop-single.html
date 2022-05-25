@@ -42,7 +42,11 @@ layout: default
               max=5
               class="d-none">{{ page.ratingvalue | default: 0 }}
             </span>
+            {% if page.ratingcount != 0 %}
             <span itemprop="ratingCount" class="d-none">
+            {% else %}
+            <span class="d-none">
+            {% endif %}
               {{ page.ratingcount | default: 0 }}
             </span>
             <span itemprop="bestRating" class="d-none">
@@ -78,18 +82,18 @@ layout: default
           <span class="text-muted font-14 text-danger">
             <s class="text-danger">{{ page.pricemsrp | money: "USD" }}</s>
           </span>
-          <span class="badge bg-success-soft">Sale</span>
+          <span class="badge badge-pill bg-danger small">Sale</span>
           {% endif %}
         </div>
         <div class="mb-3 small">
-          <img src="https://cdn-assets.affirm.com/images/black_logo-transparent_bg.png" class="me-2 mt-n2" style="width:40px">{{ page.price | divided_by: 36 | money: "USD" }} per month for 36 months 
+          <div class="alert alert-secondary" role="alert">
+            <img src="https://cdn-assets.affirm.com/images/black_logo-transparent_bg.png" class="me-2 mt-n2" style="width:40px">{{ page.price | divided_by: 36 | money: "USD" }} per month for 36 months 
+          </div>
         </div>
-
         <div class="d-grid gap-2 mb-2">
+          <!-- <a data-bs-toggle="modal" data-bs-target="#modalFinancing" class="btn btn-outline-secondary financingModalButton" target="_blank">Apply For Financing</a> -->
           <a href="{{ page.affiliateurl }}" class="btn btn-primary" target="_blank">Visit Site</a>
         </div>
-
-        <!-- <a href="#financing" class="btn btn-light">Get financing</a> -->
 
         {% if page.tags.size > 0 %}
         <p class="font-12">
@@ -106,7 +110,7 @@ layout: default
         {% assign vendors = site.data.vendors.records | where: "id", page.vendorid %}
         {% for vendor in vendors %}
 
-        <div class="mt-3 p-3 border-1 border-soft-primary rounded-sm btn-light">
+        <div class="mt-3">
           <div class="row">
             <div class="col-12 font-14">
 
@@ -131,7 +135,6 @@ layout: default
                   <img src="{{ 'logo-trustpilot.svg' | prepend: 'assets/images/logos/' | absolute_url }}" alt="Verified Trust Pilot review logo" class="img-fluid" style="width:14%;" />
                   {% endif %}
                 </a>
-  
               </p>
 
               <p class="mb-0">
@@ -161,13 +164,6 @@ layout: default
               {% endif %}
               
               <a class="text-end" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Provide feeback about this information</a>
-
-              <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Thank you!</strong> Your feedback has been sent.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div> -->
 
             </div>
           </div>
@@ -274,6 +270,42 @@ layout: default
     </div>
   </div>
 </div>
+
+<!-- Financing Modal -->
+<div class="modal" id="modalFinancing" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalFinancingLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form
+          action="https://formspree.io/f/xeqnvojy"
+          method="POST"
+        >
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Apply now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var buttons = document.getElementsByClassName("financingModalButton");
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function handleOutboundLinkClicks(event) {
+      ga("send", "event", {
+        eventCategory: "Outbound Link",
+        eventAction: "click",
+        eventLabel: event.target.href,
+        transport: "beacon"
+      });
+    });
+  }
+</script>
+
+
 <script>
   var discountData = "{{ site.discounts | jsonify }}";
 </script>

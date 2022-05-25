@@ -1,0 +1,14 @@
+---
+permalink: tagscats
+sitemap: false
+---
+
+<h1>Tags</h1>
+{% for post in site.posts %}
+<p><a href="{{ post.sourceurl }}">{{ post.tags }}</a></p>
+{% endfor %}
+
+<h1>Categories</h1>
+{% for post in site.posts %}
+<p><a href="{{ post.sourceurl }}">{{ post.categories }}</a></p>
+{% endfor %}

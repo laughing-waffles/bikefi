@@ -5,20 +5,36 @@ sitemap: false
 ---
 
 
-            <div id="search-box">
-              <!-- SearchBox widget will appear here -->
-            </div>
-            <div id="hits">
-              <!-- Hits widget will appear here -->
-            </div>
-            
-            <!-- algolia search -->
-            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.min.css">
-            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch-theme-algolia.min.css">
-            
-<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script>
-            
-            <script src="{{ '/assets/js/search.js' | absolute_url }}"></script>
-            <!-- end of algolia search --> 
-          
+<!-- {% for post in site.posts limit:100 %}
+  <article>
+    <a href="{{ post.url | absolute_url }}">
+      {% assign featured_image = post.images[0]['path'] | replace: 'full/', '' %}
+      {% include responsive-image.html 
+        src=featured_image
+        height="100" 
+        width="100" 
+        class="img-fluid" 
+        alt=post.title
+      %}
+      <p>{{ post.title }}</p>
+    </a>
+  </article>
+{% endfor %} -->
+
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<!-- algolia search -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch-theme-algolia.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js"></script>
+
+<script src="{{ '/assets/js/search.js' | absolute_url }}"></script>
+
+<!-- end of algolia search --> 

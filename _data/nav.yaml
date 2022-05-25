@@ -1,32 +1,38 @@
 main:
   - title: E-Bikes
-    href: /ebikes
-    icon: ⚡
+    href: /ebikes/
   - title: Gravel Bikes
-    href: /gravel-bikes
-    icon: ⛰️
+    href: /gravel-bikes/
   - title: Apparel
-    href: /apparel
-    icon: 👕
+    href: /apparel/
+  # - title: All Categories
+  #   href: /categories/
   - title: Bike Shops
-    href: /bike-shops
-    icon: 🏢
+    href: /bike-shops/
 footer:
   col1:
     - title: E-Bikes
-      href: /ebikes
+      href: /ebikes/
     - title: Gravel Bikes
-      href: /gravel-bikes
+      href: /gravel-bikes/
     - title: Apparel
-      href: /apparel
+      href: /apparel/
     - title: Bike Shops
-      href: /bike-shops
+      href: /bike-shops/
   col2:
     - title: One2
-      href: /
+      href: //
     - title: Two2
-      href: /
+      href: //
     - title: Three2
-      href: /
+      href: //
     - title: Four2
-      href: /
+      href: //
+bottom-bar:
+  - title: Privacy Policy
+    href: /privacy-policy
+  - title: Terms of Service
+    href: /terms-of-service
+  - title: Sitemap
+    href: /sitemap.xml
+  
