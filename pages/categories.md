@@ -2,7 +2,7 @@
 title: Categories
 layout: page
 sitemap: true
-permalink: categories
+permalink: /categories/
 ---
 
 <div class="row">

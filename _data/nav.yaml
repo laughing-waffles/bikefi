@@ -30,9 +30,9 @@ footer:
       href: //
 bottom-bar:
   - title: Privacy Policy
-    href: /privacy-policy
+    href: /privacy-policy/
   - title: Terms of Service
-    href: /terms-of-service
+    href: /terms-of-service/
   - title: Sitemap
     href: /sitemap.xml
   

@@ -1,7 +1,7 @@
 ---
 title: Mountain bikes
 image: /assets/images/categories/cat-bikes-mountain.jpg
-permalink: mountain-bikes
+permalink: /mountain-bikes/
 pagination: 
   enabled: true
   category: mountain

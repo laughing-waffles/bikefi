@@ -1,7 +1,7 @@
 ---
 title: Bike shoes
 image: /assets/images/categories/cat-shoes.jpg
-permalink: bikes-shoes
+permalink: /bikes-shoes/
 pagination: 
   enabled: true
   category: shoes

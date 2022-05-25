@@ -1,7 +1,7 @@
 ---
 title: Women's bikes
 image: /assets/images/categories/cat-bikes-womens.jpg
-permalink: womens-bikes
+permalink: /womens-bikes/
 pagination: 
   enabled: true
   category: womens-bikes

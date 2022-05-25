@@ -1,7 +1,7 @@
 ---
 title: Gravel Bikes
 image: /assets/images/categories/cat-bikes-gravel.jpg
-permalink: gravel-bikes
+permalink: /gravel-bikes/
 pagination: 
   enabled: true
   category: gravel

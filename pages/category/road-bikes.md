@@ -1,7 +1,7 @@
 ---
 title: Road bikes
 image: /assets/images/categories/cat-bikes-road.jpg
-permalink: road-bikes
+permalink: /road-bikes/
 pagination: 
   enabled: true
   category: road
