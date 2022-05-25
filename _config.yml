@@ -36,12 +36,12 @@ defaults:
       path: _posts/bike-shops
     values:
       layout: dealers-single
-      permalink: /bike-shops/:slug/
+      permalink: /bike-shops/:slug
   - scope:
       path: _posts/products
     values:
       layout: shop-single
-      permalink: /:slug/
+      permalink: /:slug
   - scope:
       path: assets/*
     values:
@@ -50,7 +50,7 @@ defaults:
       path: pages
     values:
       layout: page
-      permalink: /:slug/
+      permalink: /:slug
   - scope:
       path: pages/category
     values:
@@ -59,7 +59,7 @@ defaults:
 pagination:
   enabled: true
   per_page: 25
-  permalink: "/page:num/"
+  permalink: "/page:num"
   title: ':title - page :num'
   sort_field: 'date'
   sort_reverse: true
