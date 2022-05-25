@@ -3,7 +3,7 @@ tagline: "Find deals across hundreds of online and local retailers of the world'
 email: contact@bikefi.net
 description: "Find the best cycling deals online and in your neighborhood."
 author: BikeFi
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://bikefi.net" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 incremental: true
 #twitter:
