@@ -1,7 +1,7 @@
 ---
 title: Bike parts
 image: /assets/images/categories/cat-bike-parts.jpg
-permalink: bike-parts
+permalink: /bike-parts/
 pagination: 
   enabled: true
   category: parts

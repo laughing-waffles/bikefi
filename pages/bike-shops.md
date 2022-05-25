@@ -1,7 +1,7 @@
 ---
 title: Bike Shops
 layout: srp
-permalink: bike-shops
+permalink: /bike-shops/
 sitemap: true
 pagination: 
   enabled: true

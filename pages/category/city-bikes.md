@@ -1,7 +1,7 @@
 ---
 title: City bikes
 image: /assets/images/categories/cat-bikes-city.jpg
-permalink: city-bikes
+permalink: /city-bikes/
 pagination: 
   enabled: true
   category: city-bikes

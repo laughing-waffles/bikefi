@@ -1,7 +1,7 @@
 ---
 title: Kid's bikes
 image: /assets/images/categories/cat-bikes-kids.jpg
-permalink: kids-bikes
+permalink: /kids-bikes/
 pagination: 
   enabled: true
   category: kids

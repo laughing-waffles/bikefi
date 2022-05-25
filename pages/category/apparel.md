@@ -1,7 +1,7 @@
 ---
 title: Apparel
 image: /assets/images/categories/cat-apparel.jpg
-permalink: apparel
+permalink: /apparel/
 featured: true
 pagination: 
   enabled: true

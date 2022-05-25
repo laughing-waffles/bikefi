@@ -1,12 +1,12 @@
 - title: Apparel
   image: /assets/images/categories/cat-apparel.jpg
-  url: apparel
+  url: /apparel/
   content: Welcome to your one-stop bike apparel shop, where you'll only find gear that fits, feels, and looks great. Explore road, city, and mountain bike apparel made for comfort, style, and performance in our collection of bike shorts, cycling jerseys, and more! 
 - title: e-Bikes
   image: /assets/images/categories/cat-bikes-ebikes.jpg
-  url: ebikes
+  url: /ebikes/
   content: Whether you're looking to commute by bike, enjoy a fun family ride around the neighborhood, pedal to get some exercise, or just want to enjoy the fun and freedom of being on two wheels, there’s an electric city bike for you. And, it’ll add more speed, distance, and fun to any ride.
 - title: Road bikes
   image: /assets/images/categories/cat-bikes-road.jpg
-  url: road-bikes
+  url: /road-bikes/
   content: These are the lightweight, road-smoothing, aerodynamic road bikes that will carry you over the steepest climbs and keep you smiling on the descents. You'll feel the difference, from the first ride all the way to the podium.

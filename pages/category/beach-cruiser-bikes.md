@@ -1,7 +1,7 @@
 ---
 title: Beach Cruiser Bikes
 image: /assets/images/categories/cat-bikes-cruiser.jpg
-permalink: beach-cruiser-bikes
+permalink: /beach-cruiser-bikes/
 pagination: 
   enabled: true
   category: cruiser

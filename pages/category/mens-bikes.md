@@ -1,7 +1,7 @@
 ---
 title: Men's bikes
 image: /assets/images/categories/cat-bikes-mens.jpg
-permalink: mens-bikes
+permalink: /mens-bikes/
 pagination: 
   enabled: true
   category: mens
