@@ -29,8 +29,10 @@ jobs:
         with:
           ruby-version: 2.7.3
           bundler-cache: true
-      - name: Build
-        uses: jerryjvl/jekyll-build-action@v1
+      # - name: Build
+      #   uses: jerryjvl/jekyll-build-action@v1
+      - name: Build Jekyll site
+        run:  bundle exec jekyll build --config _config.yml,_config-staging.yml
       - name: Rsync Deployments Action
         uses: Burnett01/rsync-deployments@5.2
         with:
