@@ -87,11 +87,11 @@ layout: default
         </div>
         <div class="mb-3 small">
           <div class="alert alert-secondary" role="alert">
-            <img src="https://cdn-assets.affirm.com/images/black_logo-transparent_bg.png" class="me-2 mt-n2" style="width:40px">{{ page.price | divided_by: 36 | money: "USD" }} per month for 36 months 
+            {{ page.price | times: 1.07 | divided_by: 36 | money: "USD" }} per month for 36 months 
           </div>
         </div>
         <div class="d-grid gap-2 mb-2">
-          <!-- <a data-bs-toggle="modal" data-bs-target="#modalFinancing" class="btn btn-outline-secondary financingModalButton" target="_blank">Apply For Financing</a> -->
+          <a data-bs-toggle="modal" data-bs-target="#modalFinancing" class="btn btn-outline-secondary financingModalButton" target="_blank">Apply For Financing</a>
           <a href="{{ page.affiliateurl }}" class="btn btn-primary" target="_blank">Visit Site</a>
         </div>
 
@@ -106,6 +106,18 @@ layout: default
         </p>
         {% endif %}
         
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-10" />
+
+  <!-- product detail list -->
+  <div class="row">
+    <div class="col-lg-4 col-md-5 col-12">
+      <div class="mb-6 mb-md-0">
+        <h4 class="mb-3">Seller details</h4>
+
         {% if page.vendorid != nill %}
         {% assign vendors = site.data.vendors.records | where: "id", page.vendorid %}
         {% for vendor in vendors %}
@@ -171,33 +183,6 @@ layout: default
 
         {% endfor %}
         {% endif %}
-
-      </div>
-    </div>
-  </div>
-
-  <hr class="my-10" />
-
-  <!-- product detail list -->
-  <div class="row">
-    <div class="col-lg-4 col-md-5 col-12">
-      <div class="mb-6 mb-md-0">
-        <h4 class="mb-3">Product details</h4>
-
-        {% for item in page.attributes %}
-        <div
-          class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1"
-        >
-          <div class="col-5 text-dark"><b>{{ item.first }}</b></div>
-          <div class="col-7">{{ item.last }}</div>
-        </div>
-        {% endfor %}
-        <div
-          class="row g-0 py-1 font-14 border-bottom border-1 border-light py-1"
-        >
-          <div class="col-5 text-dark"><b>Updated</b></div>
-          <div class="col-7">{{ page.updated_at | date: "%b %d, %Y" }}</div>
-        </div>
       </div>
     </div>
 
@@ -273,19 +258,46 @@ layout: default
 
 <!-- Financing Modal -->
 <div class="modal" id="modalFinancing" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalFinancingLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-body">
-        <form
-          action="https://formspree.io/f/xeqnvojy"
-          method="POST"
-        >
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content rounded-0">
+      <div class="modal-body p-0">
+        <div class="row g-0">
+          <div class="col-md-5"
+            style="
+              background-image: url('{{ 'assets/images/bg-modal-financing.png' | absolute_url }}');
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+              background-position: center;
+              background-size: cover;
+            ">
+          </div>
 
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Apply now</button>
+          <div class="col-md-7 p-3">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+            <h3>Finance the purchase of your new bike with BikeFi</h3>
+            <p class="lead">Our Visa debit card is accepted at all bike retailers, so you can shop at your favorite local bike shop - or order online from that unique manufacturer that has just what you want.</p>
+            <p>BikeFi is not a credit card, it’s an unsecured personal loan to help you purchase your bike and related accessories.</p>
+            <p>Financing starting at 7% APR. Includes 1 year of bike insurance coverage free.</p>
+            <div class="alert alert-danger" role="alert">
+              We’ve had such great demand for our financing that we’ve started a waitlist. Enter your email address to be notified when we’re ready to accept applications again.
+            </div>
+            <form
+            action="https://formspree.io/f/xeqnvojy"
+            method="POST"
+            >
+              <div class="mb-3">
+                <label for="email" class="form-label">E-Mail Address:</label>
+                <input type="email" id="email" class="form-control" placeholder="Email Address" name="E-Mail Address" pattern=".+@globex\.com" size="30" required>
+              </div>
+            </form>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Join Waitlist</button>
+              <p class="small">(Your email won’t be used for anything else. We hate spam just as much as you do!)</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

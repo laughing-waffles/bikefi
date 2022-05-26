@@ -40,4 +40,4 @@ jobs:
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }} 
           path: './_site/*'
           remote_path: '/home/dh_d468jd/bikefi.net/'
-          switches: '-avzr --delete'
+          switches: '-avzr --delete --checksum'
