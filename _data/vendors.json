@@ -6,9 +6,9 @@
       "url": "https://www.bikeberry.com",
       "affiliate_code": "?rfsn=6482684.8a9816&utm_source=refersion&utm_medium=affiliate&utm_campaign=6482684.8a9816",
       "email": "support@bikeberry.com",
-      "phone": "1.800.317.0479",
+      "phone": "+1 800 317 0479",
       "logo": "bike-berry.jpeg",
-      "open_hours": "Monday - Friday 8:30 - 5:00",
+      "open_hours": "Monday - Friday 8:30am - 5:00pm",
       "address1": "735 Challenger St.",
       "address2": "",
       "city": "Brea",
@@ -16,109 +16,41 @@
       "zip": "92821",
       "country": "USA",
       "payment_methods": [
-        "klarna",
-        "afterpay",
-        "afterPay2",
-        "alipay",
-        "amazon",
         "americanExpress",
         "applePay",
-        "bancontact",
-        "binance",
-        "bitcoin-1",
-        "bitcoin-2",
-        "bitcoin-3",
-        "bitcoin-4",
-        "bitcoin",
-        "cardano",
-        "cb",
-        "cirrus",
-        "delta",
-        "direct-debit",
         "discover",
-        "ethereum",
-        "giropay",
-        "googlepay",
-        "iDeal",
         "jcb",
-        "klarna-1",
-        "klarna-2",
-        "maestro",
         "masterCard",
-        "mastercardVisa",
-        "mbWay",
-        "mobilePay",
-        "paymorrow",
         "paypal",
-        "paysafecard",
-        "payU",
-        "postFinance",
-        "przelewy24",
-        "ratepay",
-        "ripple",
-        "sepaDirectDebit",
-        "skrill",
-        "solana",
-        "solo",
-        "stellar",
-        "switch",
-        "visa-electron",
-        "visa",
-        "weChatPay",
-        "western-union",
-        "xrp"
+        "visa"
       ],
       "shipping_partners": [
-        "fastwayCouriers",
-        "colissimo",
-        "ctt",
-        "dhl",
-        "dpd",
-        "econt",
-        "fanCourier",
         "fedEx",
-        "gls",
-        "hermes",
-        "omniva",
-        "postAt",
-        "postAt2",
-        "postBe",
-        "postCa",
-        "postChDe",
-        "postChFr",
-        "postChIt",
-        "postCz",
-        "postDe",
-        "postDe2",
-        "postEs",
-        "postEs2",
-        "postFi",
-        "postFr",
-        "postHu",
-        "postIt",
-        "postNl",
-        "postnord",
-        "postSi",
-        "postSk",
         "postUs",
-        "ppl",
-        "sda",
-        "ups",
-        "zasilkovna"
+        "ups"
       ],
+      "shipping_policy": {
+        "url": "https://www.bikeberry.com/pages/shipping-policy",
+        "email": "support@bikeberry.com",
+        "phone": "+1 800 317 0479",
+        "free": true,
+        "minimumspend": 99,
+        "minimumspendcurrency": "USD"
+      },
       "return_policy": {
         "url": "https://www.bikeberry.com/pages/returns-policy",
         "email": "support@bikeberry.com",
-        "phone": "1-800-317-0479",
+        "phone": "+1 800 317 0479",
         "free": false,
+        "cost": "15%",
         "days": 30
       },
       "reviews": {
         "provider": "google",
         "url": "https://www.google.com/search?q=bike%20berry&sxsrf=APq-WBvAuPpv9ZafiL8d4f115W0bRZpeJQ:1650904743777&ei=n85mYpHoLIuVkgWy_bXgBw&ved=2ahUKEwiX9r2206_3AhUP76QKHQv_DuIQvS56BAhKEAE&uact=5&oq=bike+berry&gs_lcp=Cgdnd3Mtd2l6EAMyBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgUIABCABDIHCAAQgAQQCjIHCAAQgAQQCjIHCAAQgAQQCjIFCAAQgAQ6BwgAEEcQsAM6BwgAELADEEM6CggAEOQCELADGAE6FQguEMcBENEDENQCEMgDELADEEMYAjoSCC4QxwEQ0QMQyAMQsAMQQxgCOgwILhDIAxCwAxBDGAJKBQg8EgExSgQIQRgASgQIRhgBUBNYE2CZBGgBcAF4AIABrQGIAa0BkgEDMC4xmAEAoAEByAETwAEB2gEGCAEQARgJ2gEGCAIQARgI&sclient=gws-wiz&tbs=lf:1,lf_ui:10&tbm=lcl&rflfq=1&num=10&rldimm=3157060851238352723&lqi=CgpiaWtlIGJlcnJ5SNCFseacq4CACFoUEAAQARgAGAEiCmJpa2UgYmVycnmSAQ1iaWN5Y2xlX3N0b3JlqgESEAEqDiIKYmlrZSBiZXJyeSgA&phdesc=YLBplbLjHRQ&sa=X&rlst=f#",
         "ratingvalue": 4.2,
-        "ratingcount": 480,
-        "review_date_last_updated": "2022-04-25"
+        "ratingcount": 521,
+        "review_date_last_updated": "2022-05-29"
       }
     },
     {
@@ -126,16 +58,16 @@
       "name": "Chain Reaction Cycles",
       "url": "https://www.chainreactioncycles.com/",
       "affiliate_code": "",
-      "email": "",
+      "email": "belfast_store@chainreactioncycles.com",
       "phone": "",
         "logo": "chainreactioncycles.svg",
-      "open_hours": "",
-      "address1": "1000 Lakeside",
-      "address2": "Suite 310, Third Floor, N E Wing",
-      "city": "Portsmouth",
-      "state": "Hampshire",
-      "zip": "PO6 3EN",
-      "country": "United Kingdom",
+      "open_hours": "Monday - Friday 10:00am - 6:00pm",
+      "address1": "1 Balmoral Plaza",
+      "address2": "Boucher Road",
+      "city": "Belfast",
+      "state": "County Antrim",
+      "zip": "BT12 6HR",
+      "country": "Northern Ireland",
       "payment_methods": [
         "visa",
         "masterCard",
@@ -145,29 +77,83 @@
         "jcb"
       ],
       "shipping_partners": [
-        "fedEx",
-        "gls",
-        "hermes",
-        "omniva",
-        "postAt",
-        "postAt2",
-        "postBe"
+        "dhl",
+        "postUs"
       ],
       "ships_within": "3-5 days",
+      "shipping_policy": {
+        "url": "https://www.chainreactioncycles.com/staticcontent/postageInfoPage.jsp",
+        "email": "",
+        "phone": "+44 28 9068 2703",
+        "free": true,
+        "minimumspend": 99,
+        "minimumspendcurrency": "USD"
+      },
       "return_policy": {
         "url": "https://www.chainreactioncycles.com/us/en/customer-service/returning-an-item",
         "email": "",
-        "phone": "1-800-317-0479",
-        "free": true,
+        "phone": "+442890682703",
+        "free": false,
         "days": 365
       },
       "reviews": {
         "provider": "trustpilot",
         "url": "https://www.trustpilot.com/review/www.chainreactioncycles.com",
-        "ratingvalue": 4,
-        "ratingcount": 141325,
+        "ratingvalue": 4.5,
+        "ratingcount": 142115,
         "verified": true,
-        "review_date_last_updated": "2022-04-25"
+        "review_date_last_updated": "2022-05-29"
+      }
+    },
+    {
+      "id": "fiido",
+      "name": "Fiido Electric Bikes",
+      "url": "https://www.fiido.com/",
+      "affiliate_code": "",
+      "email": "service@fiido.com",
+      "phone": "+852 2110 3153",
+      "logo": "fiido.png",
+      "open_hours": "",
+      "address1": "Unit 917B, 9/F., Tower A, New Mandarin Plaza, NO.14",
+      "address2": "Science Museum Road",
+      "city": "Hong Kong",
+      "state": "Tsimshatsui, Kowloon",
+      "zip": "",
+      "country": "China",
+      "payment_methods": [
+        "americanExpress",
+        "discover",
+        "klarna",
+        "maestro",
+        "masterCard",
+        "paypal",
+        "visa"
+      ],
+      "shipping_partners": [
+        "dpd"
+      ],
+      "shipping_policy": {
+        "url": "https://www.fiido.com/pages/shipping-delivery",
+        "email": "service@fiido.com",
+        "phone": "+852 2110 3153",
+        "free": true,
+        "minimumspend": 0,
+        "minimumspendcurrency": "USD"
+      },
+      "return_policy": {
+        "url": "https://www.fiido.com/pages/return-policy",
+        "email": "service@fiido.com",
+        "phone": "+852 2110 3153",
+        "free": false,
+        "cost": "$100-350",
+        "days": 15
+      },
+      "reviews": {
+        "provider": "trustpilot",
+        "url": "https://www.trustpilot.com/review/fiido.com",
+        "ratingvalue": 3.1,
+        "ratingcount": 32,
+        "review_date_last_updated": "2022-05-29"
       }
     },
     {
@@ -176,7 +162,7 @@
       "url": "https://icancycling.com/",
       "affiliate_code": "?ref=2e66N1DAXy8s&utm_source=affiliate",
       "email": "info@icancycling.com",
-      "phone": "+86-75585212199",
+      "phone": "+86 181 2981 4220",
       "logo": "ican.png",
       "open_hours": "",
       "address1": "B6 Building",
@@ -187,20 +173,28 @@
       "country": "China",
       "payment_methods": ["visa", "masterCard", "discover", "paypal", "jcb"],
       "shipping_partners": ["dhl"],
+      "shipping_policy": {
+        "url": "https://icancycling.com/pages/shipping-delivery",
+        "email": "info@icancycling.com",
+        "phone": "+86 181 2981 4220",
+        "free": true,
+        "minimumspend": 0,
+        "minimumspendcurrency": "USD"
+      },
       "return_policy": {
         "url": "https://icancycling.com/pages/warranty-faq",
         "email": "info@icancycling.com",
         "phone": "+86 181 2981 4220",
         "free": true,
-        "days": 45
+        "days": 7
       },
       "reviews": {
         "provider": "trustpilot",
         "url": "https://www.trustpilot.com/review/www.icancycling.com",
         "ratingvalue": 4.1,
-        "ratingcount": 455,
+        "ratingcount": 457,
         "verified": false,
-        "review_date_last_updated": "2022-04-25"
+        "review_date_last_updated": "2022-05-29"
       }
     },
     {
@@ -208,7 +202,7 @@
       "name": "Jenson USA",
       "url": "https://www.jensonusa.com/",
       "affiliate_code": "https://jenson.sjv.io/c/3294572/989438/13009?u=",
-      "email": "info@icancycling.com",
+      "email": "",
       "phone": "+1 951-234-7554",
       "logo": "jensonusa.png",
       "open_hours": "",
@@ -220,60 +214,29 @@
       "country": "USA",
       "payment_methods": ["visa", "masterCard", "discover", "americanExpress", "paypal"],
       "shipping_partners": ["ups", "fedEx", "usps"],
+      "shipping_policy": {
+        "url": "https://jensonusahelp.freshdesk.com/support/solutions/48000447667",
+        "email": "",
+        "phone": "",
+        "free": true,
+        "minimumspend": 60,
+        "minimumspendcurrency": "USD"
+      },
       "return_policy": {
         "url": "https://jensonusahelp.freshdesk.com/support/solutions/articles/48000849900-returns-policy",
         "email": "",
         "phone": "+1 951 234 7554",
         "free": false,
+        "cost": "$8.99",
         "days": 90
       },
       "reviews": {
         "provider": "trustpilot",
         "url": "https://www.trustpilot.com/review/www.jensonusa.com",
         "ratingvalue": 4.6,
-        "ratingcount": 32489,
+        "ratingcount": 33010,
         "verified": true,
-        "review_date_last_updated": "2022-04-25"
-      }
-    },
-    {
-      "id": "st3ike",
-      "name": "ST3IKE",
-      "url": "https://st3ike.com/",
-      "affiliate_code": "",
-      "email": "info@st3ike.com",
-      "phone": "+44 (0)2 036857556",
-      "logo": "st3ike.png",
-      "open_hours": "24 hours",
-      "address1": "40, Skyline house, Longfield avenue",
-      "address2": "",
-      "city": "London",
-      "state": "",
-      "zip": "W5 2BJ",
-      "country": "UK",
-      "payment_methods": [
-        "googlepay",
-        "visa",
-        "masterCard",
-        "discover",
-        "americanExpress",
-        "paypal"
-      ],
-      "shipping_partners": [],
-      "return_policy": {
-        "url": "https://st3ike.com/terms-of-use/",
-        "email": "help@st3ike.com",
-        "phone": "+44 (0)2 036857556",
-        "free": false,
-        "days": 30
-      },
-      "reviews": {
-        "provider": "trustpilot",
-        "url": "https://www.trustpilot.com/review/st3ike.com",
-        "ratingvalue": 0.0,
-        "ratingcount": 0,
-        "verified": true,
-        "review_date_last_updated": "2022-04-25"
+        "review_date_last_updated": "2022-05-29"
       }
     },
     {
@@ -281,10 +244,258 @@
       "name": "Mellow Johnnys",
       "url": "https://shop.mellowjohnnys.com/",
       "affiliate_code": "",
-      "email": "",
-      "phone": "+15124730222",
+      "email": "sales@mellowjohnnys.com",
+      "phone": "+1 512 473 0222",
       "logo": "mellowjohnnys.jpg",
-      "open_hours": "8:00am - 5:00pm",
+      "open_hours": "Monday - Friday 10:00am - 5:00pm",
+      "address1": "400 Nueces St",
+      "address2": "",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78701",
+      "country": "USA",
+      "payment_methods": [
+        "amazon",
+        "americanExpress",
+        "applePay",
+        "discover",
+        "jcb",
+        "masterCard",
+        "paypal",
+        "visa"
+      ],
+      "shipping_partners": [
+        "fedEx"
+      ],
+      "shipping_policy": {
+        "url": "https://shop.mellowjohnnys.com/pages/shipping-deliveries",
+        "email": "sales@mellowjohnnys.com",
+        "phone": "+1 512 473 0222",
+        "free": true,
+        "minimumspend": 140,
+        "minimumspendcurrency": "USD"
+      },
+      "return_policy": {
+        "url": "https://shop.mellowjohnnys.com/pages/returns-exchanges",
+        "email": "sales@mellowjohnnys.com",
+        "phone": "+1 512 473 0222",
+        "free": true,
+        "cost": 0,
+        "days": 14
+      },
+      "reviews": {
+        "provider": "google",
+        "url": "https://www.google.com/maps/place/Mellow+Johnny's/@30.2680187,-97.7514563,17z/data=!4m7!3m6!1s0x8644b50ef2500255:0xedebd9fbf47788e9!8m2!3d30.2680187!4d-97.7492676!9m1!1b1",
+        "ratingvalue": 4.1,
+        "ratingcount": 432,
+        "review_date_last_updated": "2022-05-29"
+      }
+    },
+    {
+      "id": "publicbikes",
+      "name": "Public Bikes",
+      "url": "https://publicbikes.com/",
+      "affiliate_code": "",
+      "email": "customerservice@publicbikes.com",
+      "phone": "+1 888 450 0123",
+      "logo": "public.png",
+      "open_hours": "",
+      "address1": "55 Leveroni Court",
+      "address2": "",
+      "city": "Novato",
+      "state": "CA",
+      "zip": "94949",
+      "country": "USA",
+      "payment_methods": [
+        "americanExpress",
+        "discover",
+        "masterCard",
+        "paypal",
+        "visa"
+      ],
+      "shipping_partners": [
+        "postUs",
+        "ups"
+      ],
+      "shipping_policy": {
+        "url": "https://publicbikes.zendesk.com/hc/en-us/categories/5104176792083-Shipping",
+        "email": "customerservice@publicbikes.com",
+        "phone": "+1 888 450 0123",
+        "free": true,
+        "minimumspend": 50,
+        "minimumspendcurrency": "USD"
+      },
+      "return_policy": {
+        "url": "https://publicbikes.zendesk.com/hc/en-us/categories/5104193885203-Returns",
+        "email": "customerservice@publicbikes.com",
+        "phone": "+1 888 450 0123",
+        "free": false,
+        "cost": "",
+        "days": 0
+      },
+      "reviews": {
+        "provider": "",
+        "url": "",
+        "ratingvalue": "",
+        "ratingcount": "",
+        "review_date_last_updated": "2022-05-29"
+      }
+    },
+    {
+      "id": "ribblecycles",
+      "name": "Ribble Cycles",
+      "url": "https://www.ribblecycles.co.uk/",
+      "affiliate_code": "",
+      "email": "",
+      "phone": "+44 (0) 1772 963400",
+      "logo": "ribblecycles.svg",
+      "open_hours": "Monday - Friday 9:30am - 6:30pm",
+      "address1": "363 Leach Place, Walton Summit Centre",
+      "address2": "Bamber Bridge, Preston",
+      "city": "Lancashire",
+      "state": "",
+      "zip": "PR5 8AS",
+      "country": "United Kingdom",
+      "payment_methods": [
+        "masterCard",
+        "mastero",
+        "paypal",
+        "visa"
+      ],
+      "shipping_partners": [],
+      "shipping_policy": {
+        "url": "https://www.ribblecycles.co.uk/delivery/#VA",
+        "email": "",
+        "phone": "+44 (0) 1772 963400",
+        "free": true,
+        "minimumspend": 99,
+        "minimumspendcurrency": "USD"
+      },
+      "return_policy": {
+        "url": "https://www.ribblecycles.co.uk/returns/",
+        "email": "returns@ribblecycles.co.uk",
+        "phone": "+44 (0) 1772 963400",
+        "free": false,
+        "cost": "£80.00",
+        "days": 90
+      },
+      "reviews": {
+        "provider": "trustpilot",
+        "url": "https://www.trustpilot.com/review/ribblecycles.co.uk",
+        "ratingvalue": 4.1,
+        "ratingcount": 29529,
+        "verified": true,
+        "review_date_last_updated": "2022-05-29"
+      }
+    },
+    {
+      "id": "solebicycles",
+      "name": "Solé Bicycles",
+      "url": "https://www.solebicycles.com/",
+      "affiliate_code": "",
+      "email": "customerservice@solebicycles.com",
+      "phone": "+1 844 336 7653",
+      "logo": "solebicycles.svg",
+      "open_hours": "Monday - Sunday 10:00am - 06:00pm",
+      "address1": "835 W. Jefferson Blvd.",
+      "address2": "Ste. 1750",
+      "city": "Los Angeles",
+      "state": "CA",
+      "zip": "90089",
+      "country": "USA",
+      "payment_methods": [
+        "amazon",
+        "americanExpress",
+        "bitcoin-1",
+        "masterCard",
+        "paypal",
+        "visa"
+      ],
+      "shipping_partners": [
+        "fedEx"
+      ],
+      "shipping_policy": {
+        "url": "https://www.solebicycles.com/pages/faq",
+        "email": "customerservice@solebicycles.com",
+        "phone": "+1 844 336 7653",
+        "free": false,
+        "minimumspend": 0,
+        "minimumspendcurrency": "USD"
+      },
+      "return_policy": {
+        "url": "https://www.solebicycles.com/pages/return-policy",
+        "email": "customerservice@solebicycles.com",
+        "phone": "+1 844 336 7653",
+        "free": false,
+        "cost": "$45",
+        "days": 14
+      },
+      "reviews": {
+        "provider": "google",
+        "url": "https://www.google.com/maps/place/Sol%C3%A9+Bicycles/@34.006882,-118.5185264,11z/data=!4m11!1m2!2m1!1ssole+bicycles!3m7!1s0x80c2c7e455703d15:0x207f22f2b754ce1d!8m2!3d34.0242779!4d-118.2847681!9m1!1b1!15sCg1zb2xlIGJpY3ljbGVzWg8iDXNvbGUgYmljeWNsZXOSAQ1iaWN5Y2xlX3N0b3Jl",
+        "ratingvalue": 4.8,
+        "ratingcount": 87,
+        "review_date_last_updated": "2022-05-29"
+      }
+    },
+    {
+      "id": "st3ike",
+      "name": "ST3IKE",
+      "url": "https://www.st3ike.com",
+      "affiliate_code": "",
+      "email": "info@st3ike.com",
+      "phone": "+44 (0) 2 0368 57556",
+      "logo": "st3ike.png",
+      "open_hours": "",
+      "address1": "40, Skyline house, Longfield avenue",
+      "address2": "",
+      "city": "London",
+      "state": "",
+      "zip": "W5 2BJ",
+      "country": "UK",
+      "payment_methods": [
+        "americanExpress",
+        "applePay",
+        "googlepay",
+        "jcb",
+        "masterCard",
+        "paypal",
+        "visa"
+      ],
+      "shipping_partners": [],
+      "shipping_policy": {
+        "url": "https://st3ike.com/terms-of-use/",
+        "email": "help@st3ike.com",
+        "phone": "+1 800 317 0479",
+        "free": true,
+        "minimumspend": 0,
+        "minimumspendcurrency": "USD"
+      },
+      "return_policy": {
+        "url": "https://st3ike.com/terms-of-use/",
+        "email": "help@st3ike.com",
+        "phone": "+1 800 317 0479",
+        "free": false,
+        "cost": "25%",
+        "days": 30
+      },
+      "reviews": {
+        "provider": "trustpilot",
+        "url": "https://www.trustpilot.com/review/st3ike.com",
+        "ratingvalue": 0,
+        "ratingcount": 0,
+        "review_date_last_updated": "2022-05-29"
+      }
+    },
+    {
+      "id": "sunandski",
+      "name": "Sun And Ski",
+      "url": "https://www.sunandski.com/",
+      "affiliate_code": "",
+      "email": "customersupport@sunandski.com",
+      "phone": "+1 866 786 3869",
+      "logo": "sunandski.png",
+      "open_hours": "Monday - Sunday 10:00am - 5:00pm",
       "address1": "400 Nueces St",
       "address2": "",
       "city": "Austin",
@@ -302,23 +513,30 @@
         "visa"
       ],
       "shipping_partners": [
-        "fedEx",
-        "usps"
+        "fedEx"
       ],
+      "shipping_policy": {
+        "url": "https://www.sunandski.com/shipping",
+        "email": "customersupport@sunandski.com",
+        "phone": "+1 866 786 3869",
+        "free": true,
+        "minimumspend": 50,
+        "minimumspendcurrency": "USD"
+      },
       "return_policy": {
-        "url": "https://shop.mellowjohnnys.com/pages/returns-exchanges",
-        "email": "sales@mellowjohnnys.com",
-        "phone": "+15124730222",
+        "url": "https://www.sunandski.com/returns",
+        "email": "customersupport@sunandski.com",
+        "phone": "+1 866 786 3869",
         "free": false,
-        "days": 14
+        "days": 30
       },
       "reviews": {
-        "provider": "google",
-        "url": "https://www.google.com/maps/place/Juan+Pelota+Cafe/@30.2680187,-97.7514563,17z/data=!4m14!1m6!3m5!1s0x8644b50ef2500255:0xedebd9fbf47788e9!2sMellow+Johnny's!8m2!3d30.2680187!4d-97.7492676!3m6!1s0x8644b50ef2500255:0x2ca2263d08f9b64d!8m2!3d30.2679697!4d-97.7493793!9m1!1b1",
-        "ratingvalue": 4.5,
-        "ratingcount": 310,
+        "provider": "trustpilot",
+        "url": "https://www.trustpilot.com/review/sunandski.com",
+        "ratingvalue": 4.1,
+        "ratingcount": 5673,
         "verified": true,
-        "review_date_last_updated": "2022-05-09"
+        "review_date_last_updated": "2022-05-29"
       }
     }
   ]
