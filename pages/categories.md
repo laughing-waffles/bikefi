@@ -5,7 +5,18 @@ permalink: categories
 ---
 
 <div class="row">
+<<<<<<< Updated upstream
   {% for item in site.categories_pages %}
+=======
+{% for post in site.posts | where: "slug", "/gravel-bikes/" %}
+<p>1</p>
+{% endfor %}
+
+
+
+  {% assign cat_pages = site.pages %}
+  {% for item in cat_pages %}
+>>>>>>> Stashed changes
   <div class="col-sm-6 mb-3">
     <div class="card bg-light text-white">
       <img src="{{ item.image }}" class="card-img" alt="...">

@@ -56,9 +56,15 @@ defaults:
   - scope:
       path: pages
     values:
+<<<<<<< Updated upstream
       layout: page
       sitemap: false
       permalink: :title
+=======
+      layout: srp
+      isCat: "true"
+      # sitemap: false
+>>>>>>> Stashed changes
 pagination:
   enabled: true
   per_page: 25
