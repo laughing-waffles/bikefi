@@ -304,20 +304,5 @@ layout: default
 </div>
 
 <script>
-  var buttons = document.getElementsByClassName("financingModalButton");
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", function handleOutboundLinkClicks(event) {
-      ga("send", "event", {
-        eventCategory: "Outbound Link",
-        eventAction: "click",
-        eventLabel: event.target.href,
-        transport: "beacon"
-      });
-    });
-  }
-</script>
-
-
-<script>
   var discountData = "{{ site.discounts | jsonify }}";
 </script>
