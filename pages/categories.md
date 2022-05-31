@@ -6,7 +6,6 @@ permalink: /categories/
 ---
 
 <div class="row">
-  {% assign cat_pages = site.pages | where: "isCat", "true" %}
   {% for item in cat_pages %}
   <div class="col-sm-6 mb-3">
     <div class="card bg-light text-white">
