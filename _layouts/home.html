@@ -82,7 +82,7 @@ hero-image: /assets/images/XL-bargains-highres.png
       class="main-carousel my-3"
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
-    {% assign ebikes = products | where: "categories", "ebikes" %}
+    {% assign ebikes = products | where: "category", "ebikes" %}
     {% for product in ebikes limit: 20 %}
     {% include sr-tile.html %}
     {% endfor %}
@@ -107,7 +107,7 @@ hero-image: /assets/images/XL-bargains-highres.png
       class="main-carousel my-3"
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
-    {% assign bikes = products | where: "categories", "Bikes" %}
+    {% assign bikes = products | where: "category", "Bikes" %}
     {% for product in bikes limit: 20 %}
     {% include sr-tile.html %}
     {% endfor %}
@@ -157,7 +157,7 @@ hero-image: /assets/images/XL-bargains-highres.png
       class="main-carousel my-3"
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
-    {% assign apparel = products | where: "categories", "APPAREL" %}
+    {% assign apparel = products | where: "category", "APPAREL" %}
     {% for product in apparel limit: 20 %}
     {% include sr-tile.html %}
     {% endfor %}

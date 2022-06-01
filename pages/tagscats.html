@@ -3,12 +3,92 @@ permalink: /tagscats/
 sitemap: false
 ---
 
-<h1>Tags</h1>
-{% for post in site.posts %}
-<p><a href="{{ post.sourceurl }}">{{ post.tags }}</a></p>
-{% endfor %}
 
-<h1>Categories</h1>
-{% for post in site.posts %}
-<p><a href="{{ post.sourceurl }}">{{ post.categories }}</a></p>
-{% endfor %}
+
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+          All Tags
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <ol>
+            {% capture posts %}
+            {% for post in site.posts %}
+              |{{ post.tags }}#{{ post.url }}#{{ post.sourceurl }}#{{ post.vendor }}
+            {% endfor %}
+            {% endcapture %}
+            {% assign sortedposts = posts | split: '|' | sort %}
+            <ol>
+            {% for post in sortedposts %}
+              {% assign postitems = post | split: '#' %}
+              <li>
+                <div class="row">
+                  <div class="col-md-6">
+                    <a href="{{ postitems[1] }}">{{ postitems[0] }}</a>
+                  </div>
+                  <div class="col-md-6">
+                    <a href="{{ postitems[2] }}">{{ postitems[3] }}</a>
+                  </div>
+                </div>
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+          All Categories
+        </button>
+      </h2>
+      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <ol>
+            {% capture posts %}
+            {% for post in site.posts %}
+              |{{ post.category }}#{{ post.url }}#{{ post.sourceurl }}#{{ post.vendor }}
+            {% endfor %}
+            {% endcapture %}
+            {% assign sortedposts = posts | split: '|' | sort %}
+            <ol>
+            {% for post in sortedposts %}
+              {% assign postitems = post | split: '#' %}
+              <li>
+                <div class="row">
+                  <div class="col-md-6">
+                    <a href="{{ postitems[1] }}">{{ postitems[0] }}</a>
+                  </div>
+                  <div class="col-md-6">
+                    <a href="{{ postitems[2] }}">{{ postitems[3] }}</a>
+                  </div>
+                </div>
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+          Unique Categories
+        </button>
+      </h2>
+      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+            <ol>
+                {% for category in site.categories %}
+                {% unless category == 'index'%}
+                <li>{{category|first}}</li>
+                {% endunless %}
+                {% endfor %}
+            </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
