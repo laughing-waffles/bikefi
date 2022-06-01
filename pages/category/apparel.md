@@ -2,7 +2,6 @@
 title: Apparel
 image: /assets/images/categories/cat-apparel.jpg
 permalink: /apparel/
-featured: true
 pagination: 
   enabled: true
   category: apparel

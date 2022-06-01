@@ -16,7 +16,7 @@ hero-image: /assets/images/XL-bargains-highres.png
   <div class="carousel-inner">
     {% for item in featured %}
     <div 
-      class="carousel-item d-inline-block {% if forloop.index == 1 %} active{% endif %} carousel-item-start" 
+      class="carousel-item d-inline-block {% if forloop.index == 1 %}active{% endif %} carousel-item-start" 
       style="background-image:linear-gradient(180deg, rgba(78, 78, 78, 0.4) 0%, rgba(0, 0, 0, 0.7) 90.16%),
       url({{ item.image }}); background-size: cover; background-repeat: no-repeat; background-position: center; height:300px; width:100%;">
       <div class="container" >
@@ -82,7 +82,7 @@ hero-image: /assets/images/XL-bargains-highres.png
       class="main-carousel my-3"
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
-    {% assign ebikes = products | where: "category", "ebikes" %}
+    {% assign ebikes = products | where: "category", "Electric Bikes" %}
     {% for product in ebikes limit: 20 %}
     {% include sr-tile.html %}
     {% endfor %}
@@ -107,7 +107,7 @@ hero-image: /assets/images/XL-bargains-highres.png
       class="main-carousel my-3"
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
-    {% assign bikes = products | where: "category", "Bikes" %}
+    {% assign bikes = products | where: "category", "Road Bikes" %}
     {% for product in bikes limit: 20 %}
     {% include sr-tile.html %}
     {% endfor %}
@@ -157,7 +157,7 @@ hero-image: /assets/images/XL-bargains-highres.png
       class="main-carousel my-3"
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
-    {% assign apparel = products | where: "category", "APPAREL" %}
+    {% assign apparel = products | where: "category", "MJ's Cycling Apparel" %}
     {% for product in apparel limit: 20 %}
     {% include sr-tile.html %}
     {% endfor %}
