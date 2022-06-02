@@ -10,7 +10,7 @@ sitemap: true
       Showing {{ paginator.total_posts }} items
     </h5>
 
-    <div class="infinite-container" data-infinite-scroll='{ "path": ".next", "append": ".card", "history": false }'>
+    <div class="infinite-container" data-infinite-scroll='{ "path": ".next", "append": ".cards", "history": false }'>
       {% if page.url contains "bike-shops" %}
         <!-- BIKE SHOPS -->
         {% assign store = paginator.posts %}
@@ -29,6 +29,7 @@ sitemap: true
         {% endfor %}
       {% else %}
         <!-- CATEGORIES -->
+        <div class="cards">
         {% assign featured_products = paginator.posts %} 
         {% for product in featured_products %} 
         {% if product.vendorid != nill %} 
@@ -37,6 +38,7 @@ sitemap: true
         {% endif %}
         {% endif %} 
         {% endfor %}
+        </div> 
       {% endif %}
 
       <div class="d-none d-xl-flex justify-content-center pb-3">
