@@ -3,14 +3,16 @@
 
   <a href="{{ product.url | absolute_url }}" class="stretched-link"></a>
 
-  <div class="ratio ratio-1x1 w-100 bg-white  border-0" 
-    style="
-      background-image: url('{{ product.images[0]['path'] | replace: 'full/','' | prepend: 'https://cdn.bikefi.net/images/' }}');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-position: center;
-      background-size: contain;
-    ">
+  <div class="ratio ratio-1x1 w-100 bg-white  border-0">
+    {% assign featured_image = product.images[0]['path'] | replace: 'full/', '' %}
+    {% include responsive-image.html 
+      src=featured_image
+      height="200" 
+      width="200" 
+      class="mx-auto d-block"
+      alt=product.title
+      style="height:200; width:200; object-fit:cover;" 
+    %}
   </div>
 
   {% if product.price > product.pricemsrp %}
