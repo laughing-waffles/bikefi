@@ -45,10 +45,10 @@
                 {% endif %}
               </p>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a href="{{ product.url }}" type="button" class="btn btn-primary btn-lg">View item</a>
+                <a href="{{ product.url }}" class="btn btn-primary btn-lg">View item</a>
               </div>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a data-bs-toggle="collapse" type="button" class="btn btn-link" data-bs-target="#compare-{{ product.title | slugify }}" aria-expanded="false" aria-controls="compare-{{ product.title | slugify }}">
+                <a data-bs-toggle="collapse" class="btn btn-link" data-bs-target="#compare-{{ product.title | slugify }}" aria-expanded="false" aria-controls="compare-{{ product.title | slugify }}">
                   Similar items
                 </a>
               </div>
@@ -156,7 +156,7 @@
           </div>
 
           <div class="col-3 col-lg-2 text-end">
-            <a href="{{ post.url }}" type="button" class="btn btn-outline-primary btn-sm" target="_blank">View item</a>
+            <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm" target="_blank">View item</a>
           </div>
 
         </div>
