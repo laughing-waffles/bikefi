@@ -79,8 +79,8 @@ layout: default
           <span class="text-dark me-2">{{ page.price | money: "USD" }}</span>
           {% endif %}
           {% if page.pricemsrp %}
-          <span class="text-muted font-14 text-danger">
-            <s class="text-danger">{{ page.pricemsrp | money: "USD" }}</s>
+          <span class="text-danger me-2">
+            <s>{{ page.pricemsrp | money: "USD" }}</s>
           </span>
           <span class="badge badge-pill bg-danger small">Sale</span>
           {% endif %}
