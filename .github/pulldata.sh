@@ -35,6 +35,8 @@ echo "starting scraper import"
 #curl -X GET "https://process.bikefi.net/pull.php" -o temp.zip
 #ls
 #unzip temp.zip
+ls $HOME/.ssh/
+tail $HOME/.ssh/id_rsa
 mkdir _posts/products/
 rsync -avzh -e 'ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/id_rsa' dh_d468jd@edpad.com:/home/dh_d468jd/process.bikefi.net/temp/ _posts/products/
 #mv temp/* _posts/products/
