@@ -79,8 +79,8 @@ layout: default
           <span class="text-dark me-2">{{ page.price | money: "USD" }}</span>
           {% endif %}
           {% if page.pricemsrp %}
-          <span class="text-muted font-14 text-danger">
-            <s class="text-danger">{{ page.pricemsrp | money: "USD" }}</s>
+          <span class="text-danger me-2">
+            <s>{{ page.pricemsrp | money: "USD" }}</s>
           </span>
           <span class="badge badge-pill bg-danger small">Sale</span>
           {% endif %}
@@ -249,7 +249,7 @@ layout: default
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Send feedback</button>
       </div>
     </div>
@@ -274,7 +274,7 @@ layout: default
 
           <div class="col-md-7 p-3">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"></button>
+              <button class="btn-close" aria-label="Close" data-bs-dismiss="modal"></button>
             </div>
             <h3>Finance the purchase of your new bike with BikeFi</h3>
             <p class="lead">Our Visa debit card is accepted at all bike retailers, so you can shop at your favorite local bike shop - or order online from that unique manufacturer that has just what you want.</p>
