@@ -36,7 +36,7 @@ echo "starting scraper import"
 #ls
 #unzip temp.zip
 mkdir _posts/products/
-rsync -avzh dh_d468jd@edpad.com:/home/dh_d468jd/process.bikefi.net/temp/ _posts/products/
+rsync -avzh -e 'ssh -o StrictHostKeyChecking=no' dh_d468jd@edpad.com:/home/dh_d468jd/process.bikefi.net/temp/ _posts/products/
 #mv temp/* _posts/products/
 ls _posts/products/
 echo "moved files"
