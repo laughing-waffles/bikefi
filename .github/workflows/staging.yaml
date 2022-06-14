@@ -23,6 +23,8 @@ jobs:
           name: id_rsa
       - name: Get latest data from Airtable
         run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }} $GITHUB_REF_NAME 
+        env:
+          HSS: ${ { secrets.SSH_PRIVATE_KEY } }
       - name: Cache _site build
         uses: actions/cache@v2
         with:
