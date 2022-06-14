@@ -32,11 +32,13 @@ rm -rf temp.zip
 
 
 echo "starting scraper import"
-curl -X GET "https://process.bikefi.net/pull.php" -o temp.zip
-ls
-unzip temp.zip
+#curl -X GET "https://process.bikefi.net/pull.php" -o temp.zip
+#ls
+#unzip temp.zip
 mkdir _posts/products/
-mv temp/* _posts/products/
+rsync -avzh dh_d468jd@edpad.com:/home/dh_d468jd/process.bikefi.net/temp/ _posts/products/
+#mv temp/* _posts/products/
+ls _posts/products/
 echo "moved files"
-rm -rf temp
-rm -rf temp.zip
+#rm -rf temp
+#rm -rf temp.zip
