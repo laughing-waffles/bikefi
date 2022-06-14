@@ -36,7 +36,7 @@ echo "starting scraper import"
 #ls
 #unzip temp.zip
 ls $HOME/.ssh/
-tail ~/.ssh/id_rsa
+echo $SSH_PRIVATE_KEY
 mkdir _posts/products/
 rsync -avzh -e 'ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa' dh_d468jd@edpad.com:/home/dh_d468jd/process.bikefi.net/temp/ _posts/products/
 #mv temp/* _posts/products/
