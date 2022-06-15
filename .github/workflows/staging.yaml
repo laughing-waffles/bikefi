@@ -15,8 +15,16 @@ jobs:
     steps:
       - name: GitHub Checkout
         uses: actions/checkout@v1
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2.1.0
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }} 
+          name: id_rsa2
       - name: Get latest data from Airtable
         run: sh ./.github/pulldata.sh ${{ secrets.AIRTABLE_KEY }} $GITHUB_REF_NAME 
+        env:
+          HSS: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Cache _site build
         uses: actions/cache@v2
         with:
