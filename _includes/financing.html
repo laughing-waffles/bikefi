@@ -64,42 +64,33 @@
   
   var financingData = {{ site.data.financing | jsonify }};
   function findLocal(state) {
-    $('.inserteddyn').remove();
+
     for (var i = 0; i < Object.keys(financingData['records']).length; i++) { 
         if (financingData['records'][i]['fields']["Eligibility State"].includes(state)) {
           $( "#fintable" ).append( '<tr class="inserteddyn"><th scope="row">' +  financingData['records'][i]['fields']['Name'] + '</th><td>' + financingData['records'][i]['fields']['Interest Rate'] + '</td><td><a href="' + financingData['records'][i]['fields']['Eligibility Link'] + '" data-bs-toggle="tooltip" data-bs-placement="top" alt="Read more eligability information from ' + financingData['records'][i]['fields']['Name'] + '" class="text-muted"><i class="fas fa-info-circle"></i></a></td><td><a href="' + financingData['records'][i]['fields']['Loan Link'] + '" target="_blank">Learn More</a></td></tr>' );
           
         }
       }
-      $('#searchlocal').hide();
-      $('#changelocal').show();
-      $('#localname').text(Cookies.get('zip')); 
       runTooltip();
     }
 
 
 
   $( document ).ready(function() {
-    $('#changelocal').hide();
     runTooltip();
     if (Cookies.get('state')) {
       $('#searchlocal').hide();
       findLocal(Cookies.get('state'));
+      console.log('finding ' + Cookies.get('state') );
     }
-    $( "#changelocal" ).click(function() {
-      $('#searchlocal').show();
-      $('#changelocal').hide();
-    });
-    $( "#findfinance" ).click(function() {
-      var zipval = $('#zip').val();
-      Cookies.set('zip', zipval, { expires: 356 });
-      $.getJSON( "https://objectif.app/ebike/zipsearch.php?1=" + zipval, function( data ) {
-        Cookies.set('state', data.state, { expires: 356 });
+    else {
+      $.getJSON( "https://cdn.bikefi.net/state.php", function( data ) {
+        Cookies.set('state', data.region, { expires: 356 });
         findLocal(Cookies.get('state'));
-        console.log('running');
+        console.log('storing ' + Cookies.get('state') );
       });
-     
-    });
+    }
+    
   });
   
 </script>
