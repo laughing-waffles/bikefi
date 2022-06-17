@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/laughing-waffles/jekyll-money.git
-  revision: 5f1b0de34b779284945670175755fe969a1c5ac0
+  revision: 08ce011bfa76af8c2518c3dad9e3777423fc57cb
   branch: master
   specs:
     jekyll-money (0.1.1)
@@ -101,7 +101,7 @@ GEM
       jekyll (>= 3.7, < 5.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    json (2.6.1)
+    json (2.6.2)
     kramdown (2.4.0)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -116,7 +116,7 @@ GEM
     mercenary (0.3.6)
     method_source (1.0.0)
     mini_portile2 (2.8.0)
-    minitest (5.15.0)
+    minitest (5.16.0)
     money (6.16.0)
       i18n (>= 0.6.4, <= 2)
     nokogiri (1.13.6)
@@ -132,13 +132,13 @@ GEM
     progressbar (1.11.0)
     public_suffix (4.0.7)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.2)
+    rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
     railties (6.0.5)
       actionpack (= 6.0.5)
@@ -151,7 +151,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rexml (3.2.5)
-    rouge (3.28.0)
+    rouge (3.29.0)
     safe_yaml (1.0.5)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -180,7 +180,7 @@ GEM
       thread_safe (~> 0.1)
     verbal_expressions (0.1.5)
     webrick (1.7.0)
-    zeitwerk (2.5.4)
+    zeitwerk (2.6.0)
 
 PLATFORMS
   ruby

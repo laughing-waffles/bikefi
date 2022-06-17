@@ -2,35 +2,13 @@
 <div class="mb-5" id="financing">
 	<h4 class="mb-3">Finance your new eBike</h4>
 	<div class="mb-5">
-
-    <div class="alert alert-info" role="alert">
-      <h4 class="alert-heading">Search for local savings</h4>
-      <p>Some cities offer special rebates or discounts for bike financing</p>
-      <hr>
-      <!-- @Ed check out validation rules https://getbootstrap.com/docs/5.1/forms/validation/ -->
-      <form id="searchlocal">
-        <label for="zip" class="form-label">Zip Code</label>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" id="zip" name="zip" placeholder="Enter your zip code" aria-label="Enter your zip code" aria-describedby="zipHelpBlock">
-          <button class="btn btn-secondary" id="findfinance">Search</button>
-        </div>
-        <div id="zipHelpBlock" class="form-text">
-          We do not store your personal information. 
-        </div>
-      </form>
-      <div id="changelocal">
-        <p>Showing offers from zip code <span id="localname" class="fw-bold"></span></p>
-        <span role="button" tabindex="0"><u class="text-primary">Change location</u></span>
-      </div>  
-    </div>
-
     <div class="table-responsive">
       <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Interest Rate</th>
-            <th scope="col">Eligability</th>
+            <th scope="col">Eligibility</th>
             <th scope="col">Link</th>					
           </tr>
         </thead>
@@ -64,42 +42,33 @@
   
   var financingData = {{ site.data.financing | jsonify }};
   function findLocal(state) {
-    $('.inserteddyn').remove();
+
     for (var i = 0; i < Object.keys(financingData['records']).length; i++) { 
         if (financingData['records'][i]['fields']["Eligibility State"].includes(state)) {
-          $( "#fintable" ).append( '<tr class="inserteddyn"><th scope="row">' +  financingData['records'][i]['fields']['Name'] + '</th><td>' + financingData['records'][i]['fields']['Interest Rate'] + '</td><td><a href="' + financingData['records'][i]['fields']['Eligibility Link'] + '" data-bs-toggle="tooltip" data-bs-placement="top" alt="Read more eligability information from ' + financingData['records'][i]['fields']['Name'] + '" class="text-muted"><i class="fas fa-info-circle"></i></a></td><td><a href="' + financingData['records'][i]['fields']['Loan Link'] + '" target="_blank">Learn More</a></td></tr>' );
+          $( "#fintable" ).prepend( '<tr class="inserteddyn"><th scope="row">' +  financingData['records'][i]['fields']['Name'] + '</th><td>' + financingData['records'][i]['fields']['Interest Rate'] + '</td><td><a href="' + financingData['records'][i]['fields']['Eligibility Link'] + '" data-bs-toggle="tooltip" data-bs-placement="top" alt="' + financingData['records'][i]['fields']['Eligibility Notes'] + '" class="text-muted"><i class="fas fa-info-circle"></i></a></td><td><a href="' + financingData['records'][i]['fields']['Loan Link'] + '" target="_blank">Learn More</a></td></tr>' );
           
         }
       }
-      $('#searchlocal').hide();
-      $('#changelocal').show();
-      $('#localname').text(Cookies.get('zip')); 
       runTooltip();
-    }
+  }
 
 
 
   $( document ).ready(function() {
-    $('#changelocal').hide();
     runTooltip();
     if (Cookies.get('state')) {
       $('#searchlocal').hide();
       findLocal(Cookies.get('state'));
+      console.log('finding ' + Cookies.get('state') );
     }
-    $( "#changelocal" ).click(function() {
-      $('#searchlocal').show();
-      $('#changelocal').hide();
-    });
-    $( "#findfinance" ).click(function() {
-      var zipval = $('#zip').val();
-      Cookies.set('zip', zipval, { expires: 356 });
-      $.getJSON( "https://objectif.app/ebike/zipsearch.php?1=" + zipval, function( data ) {
-        Cookies.set('state', data.state, { expires: 356 });
+    else {
+      $.getJSON( "https://cdn.bikefi.net/state.php", function( data ) {
+        Cookies.set('state', data.region, { expires: 356 });
         findLocal(Cookies.get('state'));
-        console.log('running');
+        console.log('storing ' + Cookies.get('state') );
       });
-     
-    });
+    }
+    
   });
   
 </script>
