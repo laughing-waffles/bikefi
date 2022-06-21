@@ -94,8 +94,8 @@ hero-image: /assets/images/XL-bargains-highres.png
   <div class="container py-3 px-0 my-3 border-1 border-top border-light">
     <div class="mb-3 ps-3 p-sm-0">
       <div class="col-8">
-        <h3>Best Bikes</h3>
-        <span>Editor's pick of the best bikes</span>
+        <h3>Helmets</h3>
+        <span>Stay safe out there</span>
       </div>
       <!-- <div class="col-4">
         <p class="text-end">
@@ -107,7 +107,7 @@ hero-image: /assets/images/XL-bargains-highres.png
       class="main-carousel my-3"
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
-    {% assign gravel = products | where: "category", "gravel" %}
+    {% assign helmet = products | where: "category", "Helmets" %}
     {% for product in gravel limit: 20 %}
     {% include sr-tile.html %}
     {% endfor %}
@@ -119,8 +119,8 @@ hero-image: /assets/images/XL-bargains-highres.png
   <div class="container py-3 px-0 my-3 border-1 border-top border-light">
     <div class="mb-3 ps-3 p-sm-0">
       <div class="col-8">
-        <h3>5-star products</h3>
-        <span>Rating from customers like you</span>
+        <h3>Gravel Bikes</h3>
+        <span>Handle trails at speed with breeze</span>
       </div>
       <!-- <div class="col-4">
         <p class="text-end">
@@ -132,8 +132,8 @@ hero-image: /assets/images/XL-bargains-highres.png
       class="main-carousel my-3"
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
-    {% assign top-rated-products = products | where: "ratingvalue", "5" %}
-    {% for product in top-rated-products limit: 20 %}
+    {% assign gravel = products | where: "category", "Gravel Bikes" %}
+    {% for product in gravel limit: 20 %}
     {% include sr-tile.html %}
     {% endfor %}
     </div>
@@ -157,7 +157,7 @@ hero-image: /assets/images/XL-bargains-highres.png
       class="main-carousel my-3"
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
-    {% assign apparel = products | where: "category", "apparel" %}
+    {% assign apparel = products | where: "category", "MJ's T-Shirts" %}
     {% for product in apparel limit: 20 %}
     {% include sr-tile.html %}
     {% endfor %}
