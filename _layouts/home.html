@@ -108,7 +108,7 @@ hero-image: /assets/images/XL-bargains-highres.png
       data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
     >
     {% assign helmet = products | where: "category", "Helmets" %}
-    {% for product in gravel limit: 20 %}
+    {% for product in helmet limit: 20 %}
     {% include sr-tile.html %}
     {% endfor %}
     </div>
