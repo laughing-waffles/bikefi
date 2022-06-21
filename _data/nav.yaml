@@ -1,6 +1,8 @@
 main:
   - title: E-Bikes
     href: /ebikes/
+  - title: Helmets
+    href: /helmets/
   - title: Gravel Bikes
     href: /gravel-bikes/
   - title: Apparel
