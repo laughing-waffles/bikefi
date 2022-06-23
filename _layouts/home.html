@@ -6,37 +6,29 @@ hero-image: /assets/images/XL-bargains-highres.png
 {% assign products = site.posts | where: "pricecurrency", "USD" %}
 {% assign featured = site.data.featured %}
 
-<!-- hero section -->
-<div id="myCarousel" class="carousel carousel slide carousel-fade bg-dark" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    {% for item in featured %}
-    <button data-bs-target="#myCarousel" data-bs-slide-to="{{ forloop.index0 }}" class="{% if forloop.index == 1 %}active{% endif %}" aria-label="Slide {{ forloop.index }}" aria-current="{% if forloop.index == 1 %}true{% else %}false{% endif %}"></button>
-    {% endfor %}
-  </div>
-  <div class="carousel-inner">
-    {% for item in featured %}
-    <div 
-      class="carousel-item d-inline-block {% if forloop.index == 1 %}active{% endif %} carousel-item-start" 
-      style="background-image:linear-gradient(180deg, rgba(78, 78, 78, 0.4) 0%, rgba(0, 0, 0, 0.7) 90.16%),
-      url({{ item.image }}); background-size: cover; background-repeat: no-repeat; background-position: center; height:300px; width:100%;">
-      <div class="container" >
-        <div class="carousel-caption text-center">
-          <h1 class="text-white">{{ item.title }}</h1>
-          <p>{{ item.content | truncate:150 }}</p>
-          <p><a class="btn btn-lg btn-primary" href="{{ item.url }}" style="filter: blur(0px); -webkit-filter: blur(0px); z-index: 10;">View {{ item.title }}</a></p>
-        </div>
+<div class="container-fluid py-3 px-0 px-md-10 bg-light">
+  <div class="container py-3 px-0 my-3 border-1 border-top border-light">
+    <div class="mb-3 ps-3 p-sm-0">
+      <div class="col-8">
+        <h3>eBikes</h3>
+        <span>Better for the environment</span>
       </div>
+      <!-- <div class="col-4">
+        <p class="text-end">
+          <a href="{{ 'ebikes' | absolute_url }}" class="btn btn-link">See all</a>
+        </p>
+      </div> -->
     </div>
+    <div
+      class="main-carousel my-3"
+      data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
+    >
+    {% assign ebikes = products | where: "category", "Electric Bikes" %}
+    {% for product in ebikes limit: 20 %}
+    {% include sr-tile.html %}
     {% endfor %}
+    </div>
   </div>
-  <button class="carousel-control-prev" data-bs-target="#myCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" data-bs-target="#myCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>
 
 <div class="container-fluid py-3 px-0 px-md-10 bg-light">
@@ -59,31 +51,6 @@ hero-image: /assets/images/XL-bargains-highres.png
     {% assign vendor = site.data.vendors.records | where: "id", products.vendorid %}
     {% assign verified = products | where: "vendorid", vendor.id %}
     {% for product in verified limit: 20 %}
-    {% include sr-tile.html %}
-    {% endfor %}
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid py-3 px-0 px-md-10 bg-light">
-  <div class="container py-3 px-0 my-3 border-1 border-top border-light">
-    <div class="mb-3 ps-3 p-sm-0">
-      <div class="col-8">
-        <h3>eBikes</h3>
-        <span>Better for the environment</span>
-      </div>
-      <!-- <div class="col-4">
-        <p class="text-end">
-          <a href="{{ 'ebikes' | absolute_url }}" class="btn btn-link">See all</a>
-        </p>
-      </div> -->
-    </div>
-    <div
-      class="main-carousel my-3"
-      data-flickity='{ "groupCells": true, "prevNextButtons": true, "pageDots": true, "wrapAround": true }'
-    >
-    {% assign ebikes = products | where: "category", "Electric Bikes" %}
-    {% for product in ebikes limit: 20 %}
     {% include sr-tile.html %}
     {% endfor %}
     </div>
