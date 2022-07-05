@@ -219,7 +219,7 @@
         "email": "",
         "phone": "",
         "free": true,
-        "minimumspend": 60,
+        "minimumspend": 50,
         "minimumspendcurrency": "USD"
       },
       "return_policy": {
