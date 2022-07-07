@@ -30,7 +30,7 @@ mv temp/* _posts/
 rm -rf temp
 rm -rf temp.zip
 
-
+rm -rf _posts/products/
 echo "starting scraper import"
 #curl -X GET "https://process.bikefi.net/pull.php" -o temp.zip
 #ls
