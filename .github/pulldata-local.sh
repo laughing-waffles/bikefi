@@ -1,5 +1,5 @@
 #! /bin/bash
-
+echo "starting airtable import to json in _data folder"
 curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Electric%20Bikes?maxRecords=100&view=Grid%20view" \
  -H "Authorization: Bearer $1" > _data/ebikes.json
 curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Lenders?maxRecords=100&view=Grid%20view" \
@@ -14,23 +14,22 @@ curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Dealers?maxRecords=10
 
 if [ $2 = "staging" ]
 then
-	echo "\033[0;31mStaging environment!\033[0m"
-	echo "User-agent: * Disallow: /" > robots.txt
-	FAST=10
+    echo "\033[0;31mStaging environment!\033[0m"
+    echo "User-agent: * Disallow: /" > robots.txt
+    FAST=10
 fi
 
-
+echo "starting airtable import to markdown files"
 rm -rf temp
-rm -rf _posts/bikes/
 rm -rf _posts/bike-shops/
-curl -X GET "https://objectif.app/ebike/generatemd.php?type=$2" > temp.zip
+curl -X GET "https://process.bikefi.net/airtabletomd.php" > temp.zip
 unzip temp.zip
 mkdir _posts/
 mv temp/* _posts/
 rm -rf temp
 rm -rf temp.zip
 
-rm -rf _posts/products/
+
 echo "starting scraper import"
 #curl -X GET "https://process.bikefi.net/pull.php" -o temp.zip
 #ls
