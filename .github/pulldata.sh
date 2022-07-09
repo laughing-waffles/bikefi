@@ -1,5 +1,5 @@
 #! /bin/bash
-
+echo "starting airtable import to json in _data folder"
 curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Electric%20Bikes?maxRecords=100&view=Grid%20view" \
  -H "Authorization: Bearer $1" > _data/ebikes.json
 curl -X GET "https://api.airtable.com/v0/appQDiGy9oyBWoqcC/Lenders?maxRecords=100&view=Grid%20view" \
@@ -19,11 +19,10 @@ then
 	FAST=10
 fi
 
-
+echo "starting airtable import to markdown files"
 rm -rf temp
-rm -rf _posts/bikes/
 rm -rf _posts/bike-shops/
-curl -X GET "https://objectif.app/ebike/generatemd.php?type=$2" > temp.zip
+curl -X GET "https://process.bikefi.net/airtabletomd.php" > temp.zip
 unzip temp.zip
 mkdir _posts/
 mv temp/* _posts/
